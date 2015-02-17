@@ -1,0 +1,39 @@
+body {
+	color: #eee;
+}
+.navbar {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+.navbar .navbar-toggle:focus, .navbar .navbar-toggle:hover {
+	background-color: #ddd;
+}
+.navbar .navbar-nav>li>a, .navbar .navbar-nav>li>a:focus, .navbar .navbar-nav>li>a:hover {
+	color: white;
+	background: transparent;
+}
+.navbar .navbar-brand, .navbar .navbar-brand:hover {
+	color: white;
+	background: transparent;
+}
+.navbar-collapse {
+  border: none;
+  background-color:rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset;
+     -moz-box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset;
+          box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset;
+}
+@media (min-width: 768px){
+	.navbar-collapse {
+		background-color:transparent;
+	}
+}
+
+#header {
+	text-align: center;
+	font-size: 36pt;
+	background-color: rgba(255, 255, 255, 0.3);
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
