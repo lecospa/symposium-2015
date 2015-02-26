@@ -7,7 +7,6 @@
 
 {block name=body}
 {strip}
-
 {* 導覽列 *}
 <nav class="navbar navbar-default">
 <div class="container">
@@ -30,9 +29,9 @@
 			<li><a href="#">Invited Speaker</a></li>
 			{*<li><a href="#">Talk Submission</a></li>
 			<li><a href="#">Program</a></li>
-			<li><a href="#">Social Activities </a></li>
-			<li><a href="#">Visiting Taiwan</a></li>
-			<li><a href="#">Accommodation</a></li>
+			<li><a href="#">Social Activities </a></li>*}
+			<li><a href="visiting.php">Visiting Taiwan</a></li>
+			{*<li><a href="#">Accommodation</a></li>
 			<li><a href="#">Photo Gallery</a></li>*}
 		</ul>
 	</div><!-- /.navbar-collapse -->
@@ -42,10 +41,11 @@
 
 <div class="container">
 	<div id="header">Put Lecospa Logo (TBD)</div>
+	<div stlye="height: 20px; width: 100%;">&nbsp;</div>
 	<div id="bulletin">
-		<div class="item">Things 1</div>
-		<div class="item">Things 2</div>
-		<div class="item">Things 3</div>
+		<div class="item col-width" style="background-color: rgba(10,140,190,0.8);">Things 1</div>
+		<div class="item col-width" style="background-color: rgba(255, 255, 255, 0.8); color: black;">Things 2</div>
+		<div class="item col-width" style="background-color: rgba(92, 154, 92, 0.8);">Things 3</div>
 	</div>
 </div>
 
@@ -57,9 +57,11 @@
 <script>
 var container = document.querySelector('#bulletin');
 var msnry = new Masonry( container, {
-  // options
-  columnWidth: 200,
+  columnWidth: container.querySelector('.col-width'),
   itemSelector: '.item'
+});
+$(window).bind("load", function() {
+	msnry.layout();
 });
 </script>
 {/literal}{/block}
