@@ -27,12 +27,12 @@
 			<li><a href="#">Registration</a></li>
 			<li><a href="#">Committee</a></li>
 			<li><a href="#">Invited Speaker</a></li>
-			{*<li><a href="#">Talk Submission</a></li>
+			<li><a href="#">Talk Submission</a></li>
 			<li><a href="#">Program</a></li>
-			<li><a href="#">Social Activities </a></li>*}
+			<li><a href="#">Social Activities </a></li>
 			<li><a href="visiting.php">Visiting Taiwan</a></li>
-			{*<li><a href="#">Accommodation</a></li>
-			<li><a href="#">Photo Gallery</a></li>*}
+			<li><a href="#">Accommodation</a></li>
+			<li><a href="#">Photo Gallery</a></li>
 		</ul>
 	</div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
@@ -43,9 +43,22 @@
 	<div id="header">Put Lecospa Logo (TBD)</div>
 	<div stlye="height: 20px; width: 100%;">&nbsp;</div>
 	<div id="bulletin">
-		<div class="item col-width" style="background-color: rgba(10,140,190,0.8);">Things 1</div>
+		<div class="item col-width" style="background-color: rgba(10,140,190,0.8);"></div>
 		<div class="item col-width" style="background-color: rgba(255, 255, 255, 0.8); color: black;">Things 2</div>
 		<div class="item col-width" style="background-color: rgba(92, 154, 92, 0.8);">Things 3</div>
+		<div class="item col-width" style="background-color: white;">
+			<div class="fb-like-box" data-href="https://www.facebook.com/pages/LeCosPA/153896001443097" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false" data-width="250px"></div>
+{* Facebook API *}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=622070731147437&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{* End of Facebook API *}
+		</div>
 	</div>
 </div>
 
