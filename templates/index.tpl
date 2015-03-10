@@ -40,10 +40,12 @@
 {/strip}
 
 <div class="container">
-	<div id="header">Put Lecospa Logo (TBD)</div>
+	<div id="header">
+		<a href="img/lecospa-logo.png"><img src="img/lecospa-logo.png" class="img-responsive"></a>
+	</div>
 	<div stlye="height: 20px; width: 100%;">&nbsp;</div>
 	<div id="bulletin">
-		<div class="item col-width" style="background-color: rgba(10,140,190,0.8);"></div>
+		<div class="item col-width" style="background-color: rgba(10,140,190,0.8);">Things 1</div>
 		<div class="item col-width" style="background-color: rgba(255, 255, 255, 0.8); color: black;">Things 2</div>
 		<div class="item col-width" style="background-color: rgba(92, 154, 92, 0.8);">Things 3</div>
 		<div class="item col-width" style="background-color: white;">
