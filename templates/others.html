@@ -1,0 +1,78 @@
+{extends file='bootstrap.html'}
+{block name=head}
+<link href="css/docs.css" rel="stylesheet">
+{/block}
+{block name=body}
+<div class="navbar navbar-fixed-top top-bar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="../">Lecospa</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- Docs page layout -->
+<div class="bs-header" id="content" style="background-color:orange">
+    <div class="container">
+		<h1>Attending KDD 2015</h1>
+    </div>
+</div>
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+		<!-- =======================================================
+		==== Sidebar menu
+		============================================================ -->
+		<div class="col-md-3">
+			<div class="bs-sidebar hidden-print" role="complementary">
+				<ul class="nav bs-sidenav">
+					<!--<li><a href="#registration">Registration</a></li>-->
+					<li><a href="#venue-hotel">Conference hotel & venue: <strong>Hilton Sydney</strong></a></li>
+					<li><a href="#metro-central">Metro Hotel Sydney Central</a></li>
+					<li><a href="#metro-pitt">Metro Hotel on Pitt</a></li>
+					<li><a href="#ibis-world-square">ibis World Square</a></li>
+					<li><a href="#ibis-sydney-darling-harbour">ibis Sydney Darling Harbour</a></li>
+					<li><a href="#central-station-hotel">Central Station Hotel</a></li>
+					<li><a href="#yha">Sydney Central YHA</a></li>
+					<li><a href="#information-about-sydney">About Sydney</a></li>
+					<li><a href="#travel">Travel Information</s></a></li>
+					<li><a href="#visa">Visa Information</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-9" role="main">
+			<a name="metro-central"></a>
+			<section class="bs-docs-section">
+				<div class="page-header">
+					<h1 id="metro-central">Metro Hotel Sydney Central</h1>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+					</div>
+				</div>
+			</section>
+		</div> <!-- End of content -->
+    </div> <!-- End of ".row" -->
+</div> <!-- End of ".bs-docs-container" -->
+
+<!-- Footer
+================================================== -->
+<footer class="footer" role="contentinfo">
+    <div class="container">
+    </div>
+</footer>
+{/block}
+{block name=body_script}{literal}
+<script src="js/application.js"></script>
+{/literal}{/block}

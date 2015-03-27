@@ -1,0 +1,50 @@
+{extends file='bootstrap.html'}
+
+{block name=head}
+<link href="css/responsive-full-background-image.css" rel="stylesheet">
+<link href="css/homepage.css" rel="stylesheet">
+{/block}
+
+{block name=body}
+	{include file='index/menu.tpl'}
+<div class="container">
+	<div id="header">
+		<a href="http://lecospa.ntu.edu.tw/?attachment_id=2494"><img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/03/symposium-header-2.png" class="img-responsive"></a>
+	</div>
+	<div stlye="height: 20px; width: 100%;">&nbsp;</div>
+	<div id="bulletin">
+		<div class="item col-width" style="background-color: rgba(10,140,190,0.8);"><img src="img/poster.png" class="img-responsive"></div>
+		<div class="item col-width" style="background-color: rgba(255, 255, 255, 0.8); color: black;">Things 2</div>
+		<div class="item col-width" style="background-color: rgba(92, 154, 92, 0.8);">Things 3</div>
+		<div class="item col-width" style="background-color: white;">
+			<div class="fb-like-box" data-href="https://www.facebook.com/pages/LeCosPA/153896001443097" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false" data-width="250px"></div>
+{* Facebook API *}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=622070731147437&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{* End of Facebook API *}
+		</div>
+	</div>
+</div>
+
+{/block}
+
+
+{block name=body_script}{literal}
+<script src="js/masonry.pkgd.min.js"></script>
+<script>
+var container = document.querySelector('#bulletin');
+var msnry = new Masonry( container, {
+  columnWidth: container.querySelector('.col-width'),
+  itemSelector: '.item'
+});
+$(window).bind("load", function() {
+	msnry.layout();
+});
+</script>
+{/literal}{/block}
