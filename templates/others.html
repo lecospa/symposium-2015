@@ -1,26 +1,5 @@
-{extends file='bootstrap.html'}
-{block name=head}
-<link href="css/docs.css" rel="stylesheet">
-{/block}
-{block name=body}
-<div class="navbar navbar-fixed-top top-bar" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="../">Lecospa</a>
-		</div>
-		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-			</ul>
-		</div>
-	</div>
-</div>
-
+{extends file='others.tpl'}
+{block name=main}
 <!-- Docs page layout -->
 <div class="bs-header" id="content" style="background-color:orange">
     <div class="container">
@@ -31,9 +10,6 @@
 
 <div class="container bs-docs-container">
     <div class="row">
-		<!-- =======================================================
-		==== Sidebar menu
-		============================================================ -->
 		<div class="col-md-3">
 			<div class="bs-sidebar hidden-print" role="complementary">
 				<ul class="nav bs-sidenav">
@@ -73,6 +49,3 @@
     </div>
 </footer>
 {/block}
-{block name=body_script}{literal}
-<script src="js/application.js"></script>
-{/literal}{/block}
