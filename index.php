@@ -1,6 +1,3 @@
 <?php
-require_once('libs/Smarty.class.php');
-$smarty = new Smarty;
-
-$smarty->caching = true;
+require_once('init.php');
 $smarty->display('index.html');

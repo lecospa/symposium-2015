@@ -1,11 +1,11 @@
 <?php
-session_start();
+require_once('../init.php');
 
 if ($_POST['submit'] == 'submit') {
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
-	$mysqli = new mysqli('localhost', 'symposium_2015', 'Wwz6wPFeyq2AsueK', 'symposium_2015');
+	$mysqli->get_connection();
 	if ($mysqli->connect_error) {
 		die('connect error');
 	}
@@ -23,9 +23,5 @@ if ($_POST['submit'] == 'submit') {
 	header('location: done.php');
 
 } else {
-	require_once('libs/Smarty.class.php');
-	$smarty = new Smarty;
-
-	$smarty->caching = true;
 	$smarty->display('ispeaker/login.html');
 }
