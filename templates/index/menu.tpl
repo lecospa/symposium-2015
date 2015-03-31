@@ -14,16 +14,21 @@
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav" style="margin-top: 25px; margin-bottom: 25px;">
-				<li><a href="#">Bulletin</a></li>
-				<li><a href="#">Registration</a></li>
-				{*<li><a href="#">Committee</a></li>i
-				<li><a href="#">Invited Speaker</a></li>
-				<li><a href="#">Talk Submission</a></li>
-				<li><a href="#">Program</a></li>*}
-				<li><a href="#">Social Activities </a></li>
-				<li><a href="visiting.php">Visiting Taiwan</a></li>
-				<li><a href="#">Accommodation</a></li>
-				<li><a href="#">Photo Gallery</a></li>
+				{*<li><a href="#">Bulletin</a></li>*}
+				<li><a href="registration.php">Registration</a></li>
+				<li><a href="#">Committee</a></li>
+				<li><a href="ispeakers.php">Invited Speaker</a></li>
+				{*<li><a href="#">Talk Submission</a></li>*}
+				<li><a href="#">Program</a></li>
+				{*<li><a href="#">Social Activities</a></li>*}
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Visiting<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="visiting.php">Visiting Taiwan</a></li>
+						<li><a href="#">Accommodation</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Photos</a></li>
 			</ul>
 		</div>
 	</div>
