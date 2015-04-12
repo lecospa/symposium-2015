@@ -1,8 +1,7 @@
 <?php
 require_once('../init.php');
 require_once(ROOT . '/models/ispeakers.php');
+exit();
 
 $mysqli = get_connection();
-$data = ISpeakers::all($mysqli);
-
-print_r($data);
+ISpeakers::update_slide_file($mysqli, 1, "test.pdf");
