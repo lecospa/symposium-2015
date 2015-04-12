@@ -22,7 +22,6 @@ $smarty->cache_dir    = ROOT . '/cache/';
 /*
  * Web path
  */
-
 if (__DIR__ == '/var/www/lecospa.test.mar98.tk') {
 	define('TOP', 'http://lecospa.test.mar98.tk/');
 } else {
