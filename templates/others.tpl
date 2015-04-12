@@ -18,7 +18,7 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="registration.php">Registration</a></li>
+				<li><a href="{$smarty.const.TOP}registration.php">Registration</a></li>
 				<li><a href="#">Committee</a></li>
 				<li><a href="{$smarty.const.TOP}ispeakers.php">Invited Speaker</a></li>
 				{*<li><a href="#">Talk Submission</a></li>*}
