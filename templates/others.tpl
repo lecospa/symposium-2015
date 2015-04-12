@@ -1,6 +1,7 @@
 {extends file='bootstrap.html'}
+
 {block name=head}
-<link href="http://lecospa.ntu.edu.tw/symposium/2015/css/docs.css" rel="stylesheet">
+	<link href="{$smarty.const.TOP}css/docs.css" rel="stylesheet">
 {/block}
 
 {block name=body}
@@ -13,20 +14,20 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="http://lecospa.ntu.edu.tw/symposium/2015/">Lecospa</a>
+			<a class="navbar-brand" href="{$smarty.const.TOP}">Lecospa</a>
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="registration.php">Registration</a></li>
 				<li><a href="#">Committee</a></li>
-				<li><a href="ispeakers.php">Invited Speaker</a></li>
+				<li><a href="{$smarty.const.TOP}ispeakers.php">Invited Speaker</a></li>
 				{*<li><a href="#">Talk Submission</a></li>*}
 				<li><a href="#">Program</a></li>
 				{*<li><a href="#">Social Activities</a></li>*}
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Visiting<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="visiting.php">Visiting Taiwan</a></li>
+						<li><a href="{$smarty.const.TOP}visiting.php">Visiting Taiwan</a></li>
 						<li><a href="#">Accommodation</a></li>
 					</ul>
 				</li>
@@ -39,6 +40,6 @@
 
 {/block}
 
-{block name=body_script}{literal}
-<script src="http://lecospa.ntu.edu.tw/symposium/2015/js/application.js"></script>
-{/literal}{/block}
+{block name=body_script}
+	<script src="{$smarty.const.TOP}js/application.js"></script>
+{/block}

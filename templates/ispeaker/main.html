@@ -16,7 +16,7 @@
 					<tr><th>Title</th><td>{$ispeaker['title']}</td></tr>
 					<tr><th>Slide</th><td>
 						{if $ispeaker['slide_file']}
-							<a href="http://lecospa.ntu.edu.tw/symposium/2015/uploads/{$ispeaker['slide_file']}">{$ispeaker['slide_file']}</a>
+							<a href="{$smarty.const.TOP}uploads/{$ispeaker['slide_file']}">{$ispeaker['slide_file']}</a>
 						{else}
 							No
 						{/if}

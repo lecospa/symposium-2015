@@ -37,4 +37,11 @@ class ISpeakers {
 		$conn->close();
 		return $data;
 	}
+	function update_slide_file($conn, $id, $slide_file) {
+		$stmt = $conn->prepare("UPDATE `ispeakers` SET `slide_file` = ? WHERE `id` = ?");
+		$stmt->bind_param('ss', $slide_file, $id);
+		$stmt->execute();
+		$stmt->close();
+		$conn->close();
+	}
 }
