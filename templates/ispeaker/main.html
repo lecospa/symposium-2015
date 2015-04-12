@@ -1,0 +1,40 @@
+{extends file='../others.tpl'}
+{block name=main}
+<div class="bs-header" id="content" style="background-image: none; background-color:orange;">
+    <div class="container">
+		<h1>Invited Speaker</h1>
+    </div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<tbody>
+					{nocache}
+					<tr><th>Name</th><td>{$ispeaker['name']}</td></tr>
+					<tr><th>E-mail</th><td>{$ispeaker['email']}</td></tr>
+					<tr><th>Title</th><td>{$ispeaker['title']}</td></tr>
+					<tr><th>Slide</th><td>
+						{if $ispeaker['slide_file']}
+							<a href="http://lecospa.ntu.edu.tw/symposium/2015/uploads/{$ispeaker['slide_file']}">{$ispeaker['slide_file']}</a>
+						{else}
+							No
+						{/if}
+					</td></tr>
+					<tr><th>Upload Slide</th><td>
+						<form enctype="multipart/form-data" action="upload.php" method="POST" class="form-inline">
+							<input name="slidefile" id="slidefileinput" type="file" class="form-control" />
+							<button name="submit" type="submit" value="submit" class="btn btn-default">Upload</button>
+						</form>
+					</td></tr>
+					{/nocache}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<footer class="footer" role="contentinfo">
+    <div class="container">
+    </div>
+</footer>
+{/block}
