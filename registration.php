@@ -1,9 +1,4 @@
 <?php
 require_once('init.php');
-if ($_POST['submit'] == 'Submit') {
-	try {
-	} catch (RuntimeException $e) {
-	}
-} else {
-	$smarty->display('registration.html');
-}
+$smarty->assign('opendate', mktime(0, 0, 0, 4, 15, 2015));
+$smarty->display('registration.html');

@@ -2,15 +2,18 @@
 
 class ISpeakers {
 	function all($conn) {
-		$stmt = $conn->prepare("SELECT `email`, `slide_file` FROM `ispeakers`");
+		$stmt = $conn->prepare("SELECT `name`, `email`, `slide_file`, `title`, `abstract` FROM `ispeakers`");
 		$stmt->execute();
 		//$stmt->store_result();
-		$stmt->bind_result($email, $slide_file);
+		$stmt->bind_result($name, $email, $slide_file, $title, $abstract);
 		$data = array();
 		while ($stmt->fetch()) {
 			$data[] = array(
+				'name' => $name,
 				'email' => $email,
-				'slide_file' => $slide_file
+				'slide_file' => $slide_file,
+				'title' => $title,
+				'abstract' => $abstract
 			);
 		}
 

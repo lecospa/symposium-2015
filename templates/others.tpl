@@ -29,6 +29,7 @@
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="{$smarty.const.TOP}visiting.php">Visiting Taiwan</a></li>
 						<li><a href="#">Accommodation</a></li>
+						<li><a href="{$smarty.const.TOP}map.php">Accommodation</a></li>
 					</ul>
 				</li>
 				<li><a href="#">Photos</a></li>
