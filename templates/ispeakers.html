@@ -8,10 +8,18 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-offset-2 col-md-8">
-			<div class="pull-right"><a href="ispeaker/login.php">Login</a></div>
-			<pre>講者列表</pre>
-
+			{*<div class="pull-right"><a href="ispeaker/login.php">Login</a></div>*}
 		</div>
+	</div>
+	<div class="row">
+		{foreach $ispeakers as $ispeaker}
+			<div class="col-md-6">
+				<div class="thumbnail">
+					<h3>{$ispeaker['name']} <small>{$ispeaker['title']}</small></h3>
+					<p>{$ispeaker['abstract']}</p>
+				</div>
+			</div>
+		{/foreach}
 	</div>
 </div>
 <footer class="footer" role="contentinfo">
