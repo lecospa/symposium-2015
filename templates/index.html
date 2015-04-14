@@ -36,8 +36,7 @@
 	<div stlye="height: 20px; width: 100%;">&nbsp;</div>
 	<div id="bulletin">
 		<div class="item col-width" style="background-color: rgba(10,140,190,0.8);"><img src="{$smarty.const.TOP}img/poster.png" class="img-responsive"></div>
-		<div class="item col-width" style="background-color: rgba(255, 255, 255, 0.8); color: black;">Things 2</div>
-		<div class="item col-width" style="background-color: rgba(92, 154, 92, 0.8);">Things 3</div>
+		{*<div class="item col-width" style="background-color: rgba(255, 255, 255, 0.8); color: black;">Things 2</div>*}
 		<div class="item col-width" style="background-color: white;">
 			<div class="fb-like-box" data-href="https://www.facebook.com/pages/LeCosPA/153896001443097" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false" data-width="250px"></div>
 			{* Facebook API *}{literal}
@@ -50,6 +49,9 @@
 			  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));</script>
 			{/literal}{* End of Facebook API *}
+		</div>
+		<div class="item col-width" style="background-color: rgba(92, 154, 92, 0.8);">
+			<h3>Early Bird Registration!!</h3><a class="btn btn-primary" href="{$smarty.const.TOP}registration.php">Register Now</a>
 		</div>
 	</div>
 </div>

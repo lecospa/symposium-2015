@@ -6,6 +6,7 @@
     </div>
 </div>
 <div class="container bs-docs-container">
+	<br />
 	<div class="row">
 		<div class="col-md-12">
 			{*
@@ -32,7 +33,7 @@
 			*}
 			{* kktix embed *}
 			{if $smarty.now < $opendate}
-				Will begin soon...
+				<div class="alert alert-info" role="alert">We will begin registration on 15, April, 00:00. Stay tuned!</div>
 			{else}
 			<iframe class="kktix" src="https://kktix.com/tickets_widget?slug=847266bd" frameborder="0" height="420" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe>
 			{/if}
