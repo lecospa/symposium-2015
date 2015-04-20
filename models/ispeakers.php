@@ -1,4 +1,5 @@
 <?php
+namespace Models;
 
 class ISpeakers {
 	function all($conn) {

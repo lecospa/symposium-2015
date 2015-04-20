@@ -1,6 +1,10 @@
 <?php
 require_once('init.php');
+class Map extends View {
+	function get() {
+		$this->smarty->assign('scope', __CLASS__);
 
-$smarty->assign('scope', 'map');
-
-$smarty->display('map.html');
+		$this->smarty->display('map.html');
+	}
+}
+new Map;

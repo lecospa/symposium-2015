@@ -3,7 +3,7 @@ require_once('../init.php');
 require_once(ROOT.'/models/ispeakers.php');
 
 if ($_SESSION['valid'] == false) {
-	header('location: login.php');
+	header('location: ispeakers.php');
 	exit();
 }
 
