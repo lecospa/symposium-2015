@@ -8,7 +8,7 @@
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Visiting<span class="caret"></span></a>
 	<ul class="dropdown-menu" role="menu">
 		<li {if $scope eq 'Visiting'}class="active"{/if}><a href="{$smarty.const.TOP}visiting.php">Visiting Taiwan</a></li>
-		<li {if $scope eq 'Accomodation'}class="active"{/if}><a href="{$smarty.const.TOP}accomodation.php">Accommodation</a></li>
+		<li {if $scope eq 'Accommodation'}class="active"{/if}><a href="{$smarty.const.TOP}accommodation.php">Accommodation</a></li>
 		<li {if $scope eq 'Map'}class="active"{/if}><a href="{$smarty.const.TOP}map.php">Map</a></li>
 	</ul>
 </li>
