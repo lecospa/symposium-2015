@@ -1,12 +1,16 @@
 <?php
+namespace ISpeaker;
 require_once('../init.php');
-require_once(ROOT.'/models/ispeakers.php');
 
-if ($_SESSION['valid'] == true) {
-	$info = ISpeakers::get(get_connection(), $_SESSION['auth_id']);
-	$smarty->assign('ispeaker', $info);
-
-	$smarty->display('ispeaker/main.html');
-} else {
-	header('location: login.php');
+class MMain extends \View {
+	function get() {
+		if ($_SESSION['valid'] == true) {
+			$info = \Models\ISpeakers::get(\db::get(), $_SESSION['auth_id']);
+			$this->smarty->assign('ispeaker', $info);
+			$this->smarty->display('ispeaker/main.html');
+		} else {
+			header('location: ../ispeakers.php');
+		}
+	}
 }
+new MMain;

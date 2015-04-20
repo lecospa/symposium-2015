@@ -1,4 +1,9 @@
 <?php
 require_once('init.php');
-$smarty->assign('scope', 'program');
-$smarty->display('program.html');
+class Program extends View {
+	function get() {
+		$this->smarty->assign('scope', __CLASS__);
+		$this->smarty->display('program.html');
+	}
+}
+new Program;

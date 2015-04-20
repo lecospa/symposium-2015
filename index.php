@@ -1,3 +1,8 @@
 <?php
 require_once('init.php');
-$smarty->display('index.html');
+class Index extends View {
+	function get() {
+		$this->smarty->display('index.html');
+	}
+}
+new Index;
