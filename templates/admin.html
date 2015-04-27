@@ -1,0 +1,38 @@
+{extends file='others.tpl'}
+{block name=main}
+<div class="bs-header" id="content" style="background-image: none; background-color:green;">
+    <div class="container">
+		<h1>Admin</h1>
+    </div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Title</th>
+						<th>Abstract</th>
+						<th>Login URL</th>
+					</tr>
+					{foreach $ispeakers as $ispeaker}
+					<tr>
+						<td>{$ispeaker['name']|escape}</td>
+						<td>{$ispeaker['email']|escape}</td>
+						<td>{$ispeaker['title']|escape}</td>
+						<td>{$ispeaker['abstract']|escape|nl2br}</td>
+						<td><a href="{$smarty.const.TOP}ispeaker/main.php?token={$ispeaker['auth']['token']}">{$smarty.const.TOP}ispeaker/main.php?token={$ispeaker['auth']['token']}</a></td>
+					</tr>
+					{/foreach}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<footer class="footer" role="contentinfo">
+    <div class="container">
+    </div>
+</footer>
+{/block}
