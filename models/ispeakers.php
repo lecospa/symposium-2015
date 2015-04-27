@@ -2,10 +2,33 @@
 namespace Models;
 
 class ISpeakers {
+	function all_with_token($conn) {
+		$stmt = $conn->prepare("SELECT A.`id`, A.`name`, A.`email`, A.`slide_file`, A.`title`, A.`abstract`, B.`token` FROM `ispeakers` AS A LEFT JOIN `auth` AS B ON A.`id` = B.`id` WHERE B.`scope` = 'ispeakers' ORDER BY A.`name`");
+		$stmt->execute();
+		$stmt->bind_result($id, $name, $email, $slide_file, $title, $abstract, $token);
+		$data = array();
+		while ($stmt->fetch()) {
+			$data[] = array(
+				'id' => $id,
+				'name' => $name,
+				'email' => $email,
+				'slide_file' => $slide_file,
+				'title' => $title,
+				'abstract' => $abstract,
+				'auth' => array(
+					'token' => $token,
+					'scope' => 'ispeakers'
+				)
+			);
+		}
+
+		$stmt->close();
+		$conn->close();
+		return $data;
+	}
 	function all($conn) {
 		$stmt = $conn->prepare("SELECT `name`, `email`, `slide_file`, `title`, `abstract` FROM `ispeakers`");
 		$stmt->execute();
-		//$stmt->store_result();
 		$stmt->bind_result($name, $email, $slide_file, $title, $abstract);
 		$data = array();
 		while ($stmt->fetch()) {
@@ -55,5 +78,14 @@ class ISpeakers {
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
+	}
+	function insert($conn, $name, $email) {
+		$stmt = $conn->prepare("INSERT INTO `ispeakers` (`name`, `email`) VALUES (?, ?)");
+		$stmt->bind_param('ss', $name, $email);
+		$stmt->execute();
+		$id = $stmt->insert_id;
+		$stmt->close();
+		$conn->close();
+		return $id;
 	}
 }
