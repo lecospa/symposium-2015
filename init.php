@@ -31,7 +31,7 @@ class View {
 		$this->set_smarty();
 		
 		/* Implement self define HTTP Method */
-		if (array_key_exists('method', $_POST) && $_POST['method'] == 'POST') {
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$this->method = 'POST';
 			method_exists($this, 'post') && $this->post();
 		} else {
