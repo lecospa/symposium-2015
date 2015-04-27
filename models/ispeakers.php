@@ -23,16 +23,17 @@ class ISpeakers {
 		return $data;
 	}
 	function get($conn, $id) {
-		$stmt = $conn->prepare("SELECT `name`, `email`, `title`, `slide_file` FROM `ispeakers` WHERE `id` = ?");
+		$stmt = $conn->prepare("SELECT `name`, `email`, `title`, `abstract`, `slide_file` FROM `ispeakers` WHERE `id` = ?");
 		$stmt->bind_param('s', $id);
 		$stmt->execute();
-		$stmt->bind_result($name, $email, $title, $slide_file);
+		$stmt->bind_result($name, $email, $title, $abstract, $slide_file);
 		$data = null;
 		if ($stmt->fetch()) {
 			$data = array(
 				'name' => $name,
 				'email' => $email,
 				'title' => $title,
+				'abstract' => $abstract,
 				'slide_file' => $slide_file
 			);
 		}
