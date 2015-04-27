@@ -79,4 +79,13 @@ class ISpeakers {
 		$stmt->close();
 		$conn->close();
 	}
+	function insert($conn, $name, $email) {
+		$stmt = $conn->prepare("INSERT INTO `ispeakers` (`name`, `email`) VALUES (?, ?)");
+		$stmt->bind_param('ss', $name, $email);
+		$stmt->execute();
+		$id = $stmt->insert_id;
+		$stmt->close();
+		$conn->close();
+		return $id;
+	}
 }
