@@ -49,4 +49,11 @@ class ISpeakers {
 		$stmt->close();
 		$conn->close();
 	}
+	function update_title_abstract($conn, $id, $title, $abstract) {
+		$stmt = $conn->prepare("UPDATE `ispeakers` SET `title` = ?, `abstract` = ? WHERE `id` = ?");
+		$stmt->bind_param('sss', $title, $abstract, $id);
+		$stmt->execute();
+		$stmt->close();
+		$conn->close();
+	}
 }
