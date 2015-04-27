@@ -15,10 +15,10 @@ class IspeakersInsert extends \View {
 				return;
 			}
 			
-			$id = \Models\ISpeakers::insert(\db::get(), $name, $email);
-			$token = self::generatorPassword(20);
+			$speaker_id = \Models\ISpeakers::insert(\db::get(), $name, $email);
+			$speaker_token = self::generatorPassword(20);
 			
-			\Models\Auth::insert(\db::get(), 'ispeakers', $id, $token);
+			\Models\Auth::insert(\db::get(), 'ispeakers', $speaker_id, $speaker_token);
 			header('Location: ' . TOP . 'admin/index.php?token='.$token);
 		}
 	}
