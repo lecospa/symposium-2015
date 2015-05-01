@@ -4,40 +4,45 @@ body {
 
 /* white navbar */
 .navbar {
-	background: transparent;
+	//background: transparent;
+	background-color:rgba(248, 248, 248, 0.8);
 	border: none;
-	box-shadow: none;
+	//box-shadow: none;
 }
 .navbar .navbar-toggle:focus, .navbar .navbar-toggle:hover {
 	background-color: #ddd;
 }
 .navbar .navbar-nav>li>a, .navbar .navbar-nav>li>a:focus, .navbar .navbar-nav>li>a:hover {
-	color: white;
+	//color: black; /*white;*/
+	background: transparent;
+}
+.navbar .navbar-nav>li.active>a, .navbar .navbar-nav>li.active>a:hover {
+	font-weight: bold;
 	background: transparent;
 }
 .navbar .navbar-brand, .navbar .navbar-brand:hover {
-	color: white;
+	//color: black; /*white;*/
 	background: transparent;
 }
-.navbar-collapse {
+/*.navbar-collapse {
   border: none;
   background-color:rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset;
      -moz-box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset;
           box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset;
-}
+}*/
 @media (min-width: 768px){
 	.navbar-collapse {
-		background-color:transparent;
+		//background-color:transparent;
 	}
 }
 
 /* container */
 @media (min-width: 768px) {
-	.container { width: 720px; }
+	//.container { width: 720px; }
 }
 @media (min-width: 992px) {
-	.container { width: 907px; }
+	//.container { width: 907px; }
 }
 
 /*
