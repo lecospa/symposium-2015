@@ -1,0 +1,19 @@
+Rong-Gen Cai	cairg@itp.ac.cn
+Kiwoon Choi	kchoi@kaist.ac.kr
+Warrick J. Couch	warrick.couch@aao.gov.au
+Bruce Dawson	bruce.dawson@adelaide.edu.au
+Loretta Dunne	loretta.dunne@canterbury.ac.nz
+Yungui Gong	yggong@mail.hust.edu.cn
+Shu-ichiro Inutsuka	inutsuka@nagoya-u.jp
+Gungwon Kang	gwkang@kisti.re.kr
+Seunghwan Kim	swan@postech.ac.kr
+Sang Pyo Kim	sangkim@kunsan.ac.kr
+Masaki Mori	morim@fc.ritsumei.ac.jp
+Misao Sasaki	misao@yukawa.kyoto-u.ac.jp
+Takahiro Tanaka	t.tanaka@tap.scphys.kyoto-u.ac.jp
+Raymond volkas	raymondv@unimelb.edu.au
+Xiao-Feng Wang
+Stuart Wyithe	swyithe@unimelb.edu.au
+Jun'ichi Yokoyama	yokoyama@resceu.s.u-tokyo.ac.jp
+Shuangnan Zhang	zhangsn@ihep.ac.cn
+Zhong-Hong Zhu	zhuzh@bnu.edu.cn
