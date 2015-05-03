@@ -14,6 +14,8 @@ spl_autoload_register('my_autoloader');
  */
 if (__DIR__ == '/var/www/lecospa.test.mar98.tk') {
 	define('TOP', 'http://lecospa.test.mar98.tk/');
+} else if (__DIR__ == '/home/ycchen/public_html/symposium-2015') {
+	define('TOP', 'http://nas.mar98.tk/~ycchen/symposium-2015/');
 } else {
 	define('TOP', 'http://lecospa.ntu.edu.tw/symposium/2015/');
 }
