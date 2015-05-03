@@ -13,6 +13,7 @@
 				<tbody>
 					<tr>
 						<th>Name</th>
+						<th>Photo</th>
 						<th>Email</th>
 						<th>Title</th>
 						<th>Abstract</th>
@@ -21,6 +22,7 @@
 					{foreach $ispeakers as $ispeaker}
 					<tr>
 						<td>{$ispeaker['name']|escape}</td>
+						<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" style="max-height: 100px;"></td>
 						<td>{$ispeaker['email']|escape}</td>
 						<td>{$ispeaker['title']|escape}</td>
 						<td>{$ispeaker['abstract']|escape|nl2br}</td>

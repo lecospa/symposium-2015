@@ -13,10 +13,10 @@
 	</div>
 	<div class="row">
 		{foreach $ispeakers as $ispeaker}
-			<div class="col-md-6">
+			<div class="col-md-3">
 				<div class="thumbnail">
-					<h3>{$ispeaker['name']} <small>{$ispeaker['title']}</small></h3>
-					<p>{$ispeaker['abstract']}</p>
+					<img src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" class="img-responsive img-circle" style="height: 150px;">
+					<h4>{$ispeaker['name']|escape}</h4>
 				</div>
 			</div>
 		{/foreach}
