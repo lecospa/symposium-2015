@@ -15,25 +15,41 @@ class Upload extends \View {
 		}
 
 		try {
-			if (!isset($_FILES['slidefile']['error']) || is_array($_FILES['slidefile']['error']) ) {
+			$target = $_GET['target'];
+			if ($target == 'slide') {
+				$valid_ext = array('jpg', 'pdf');
+			} else if ($target == 'img') {
+				$valid_ext = array('jpg', 'png', 'jpeg');
+			} else {
+				throw new RuntimeException('Invalid target');
+			}
+
+			if (!isset($_FILES['file']['error']) || is_array($_FILES['file']['error']) ) {
 				throw new RuntimeException('Invalid parameters.');
 			}
-			if ($_FILES['slidefile']['error'] != UPLOAD_ERR_OK) {
+			if ($_FILES['file']['error'] != UPLOAD_ERR_OK) {
 				throw new RuntimeException('Error');
 			}
-			$path_parts = pathinfo($_FILES['slidefile']['name']);
+			$path_parts = pathinfo($_FILES['file']['name']);
 			$ext = $path_parts['extension'];
-			if (in_array($ext, array('jpg', 'pdf'), true) === false) {
+			if (in_array(strtolower($ext), $valid_ext, true) === false) {
 				throw new RuntimeException('Invalid file format.');
 			}
 
-			$filename = sprintf('%s.%s', sha1_file($_FILES['slidefile']['tmp_name']), $ext);
+			$filename = sprintf('%s.%s', sha1_file($_FILES['file']['tmp_name']), $ext);
 			$fullfilename = ROOT . '/uploads/' . $filename;
 
-			if (!move_uploaded_file($_FILES['slidefile']['tmp_name'], $fullfilename)) {
+			if (!move_uploaded_file($_FILES['file']['tmp_name'], $fullfilename)) {
 				throw new RuntimeException('Failed to move uploaded file.');
 			}
-			\Models\ISpeakers::update_slide_file(get_connection(), $auth['id'], $filename);
+
+			if ($target == 'slide') {
+				\Models\ISpeakers::update_slide_file(get_connection(), $auth['id'], $filename);
+			} else if ($target == 'img') {
+				\Models\ISpeakers::update_img(get_connection(), $auth['id'], $filename);
+			}
+
+
 			header('location: main.php?token='.$token);
 		} catch (RuntimeException $e) {
 			echo $e->getMessage();
