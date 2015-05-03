@@ -1,6 +1,6 @@
 <li {if $scope eq 'Index'}class="active"{/if}><a href="{$smarty.const.TOP}">Home</a></li>
 <li {if $scope eq 'Registration'}class="active"{/if}><a href="{$smarty.const.TOP}registration.php">Registration</a></li>
-<li {if $scope eq 'Commitee'}class="committee"{/if}><a href="#">Committee</a></li>
+<li {if $scope eq 'Committee'}class="active"{/if}><a href="{$smarty.const.TOP}committee.php">Committee</a></li>
 <li {if $scope eq 'ISpeakers'}class="active"{/if}><a href="{$smarty.const.TOP}ispeakers.php">Invited Speaker</a></li>
 {*<li><a href="#">Talk Submission</a></li>*}
 <li {if $scope eq 'Program'}class="active"{/if}><a href="{$smarty.const.TOP}program.php">Program</a></li>
