@@ -3,9 +3,9 @@ namespace Models;
 
 class ISpeakers {
 	function all_with_token($conn) {
-		$stmt = $conn->prepare("SELECT A.`id`, A.`name`, A.`email`, A.`slide_file`, A.`title`, A.`abstract`, B.`token`, A.`img` FROM `ispeakers` AS A LEFT JOIN `auth` AS B ON A.`id` = B.`id` WHERE B.`scope` = 'ispeakers' ORDER BY A.`name`");
+		$stmt = $conn->prepare("SELECT A.`id`, A.`name`, A.`email`, A.`slide_file`, A.`title`, A.`abstract`, A.`address_datetime`, A.`occupation`, A.`resume`, A.`room`, B.`token`, A.`img` FROM `ispeakers` AS A LEFT JOIN `auth` AS B ON A.`id` = B.`id` WHERE B.`scope` = 'ispeakers' ORDER BY A.`name`");
 		$stmt->execute();
-		$stmt->bind_result($id, $name, $email, $slide_file, $title, $abstract, $token, $img);
+		$stmt->bind_result($id, $name, $email, $slide_file, $title, $abstract, $address_datetime, $occupation, $resume, $room, $token, $img);
 		$data = array();
 		while ($stmt->fetch()) {
 			$data[] = array(
@@ -15,6 +15,10 @@ class ISpeakers {
 				'slide_file' => $slide_file,
 				'title' => $title,
 				'abstract' => $abstract,
+				'address_datetime' => $address_datetime,
+				'occupation' => $occupation,
+				'resume' => $resume,
+				'room' => $room,
 				'auth' => array(
 					'token' => $token,
 					'scope' => 'ispeakers'
@@ -28,9 +32,9 @@ class ISpeakers {
 		return $data;
 	}
 	function all($conn) {
-		$stmt = $conn->prepare("SELECT `name`, `email`, `slide_file`, `title`, `abstract`, `img` FROM `ispeakers` ORDER BY `name`");
+		$stmt = $conn->prepare("SELECT `name`, `email`, `slide_file`, `title`, `abstract`, `address_datetime`, `occupation`, `resume`, `room`, `img` FROM `ispeakers` ORDER BY `name`");
 		$stmt->execute();
-		$stmt->bind_result($name, $email, $slide_file, $title, $abstract, $img);
+		$stmt->bind_result($name, $email, $slide_file, $title, $abstract, $address_datetime, $occupation, $resume, $room, $img);
 		$data = array();
 		while ($stmt->fetch()) {
 			$data[] = array(
@@ -39,6 +43,10 @@ class ISpeakers {
 				'slide_file' => $slide_file,
 				'title' => $title,
 				'abstract' => $abstract,
+				'address_datetime' => $address_datetime,
+				'occupation' => $occupation,
+				'resume' => $resume,
+				'room' => $room,
 				'img' => $img
 			);
 		}
@@ -47,10 +55,10 @@ class ISpeakers {
 		return $data;
 	}
 	function get($conn, $id) {
-		$stmt = $conn->prepare("SELECT `name`, `email`, `title`, `abstract`, `slide_file`, `img` FROM `ispeakers` WHERE `id` = ?");
+		$stmt = $conn->prepare("SELECT `name`, `email`, `title`, `abstract`, `slide_file`, `address_datetime`, `occupation`, `resume`, `room`, `img` FROM `ispeakers` WHERE `id` = ?");
 		$stmt->bind_param('s', $id);
 		$stmt->execute();
-		$stmt->bind_result($name, $email, $title, $abstract, $slide_file, $img);
+		$stmt->bind_result($name, $email, $title, $abstract, $slide_file, $address_datetime, $occupation, $resume, $room, $img);
 		$data = null;
 		if ($stmt->fetch()) {
 			$data = array(
@@ -59,6 +67,10 @@ class ISpeakers {
 				'title' => $title,
 				'abstract' => $abstract,
 				'slide_file' => $slide_file,
+				'address_datetime' => $address_datetime,
+				'occupation' => $occupation,
+				'resume' => $resume,
+				'room' => $room,
 				'img' => $img
 			);
 		}
@@ -84,6 +96,13 @@ class ISpeakers {
 	function update_title_abstract($conn, $id, $title, $abstract) {
 		$stmt = $conn->prepare("UPDATE `ispeakers` SET `title` = ?, `abstract` = ? WHERE `id` = ?");
 		$stmt->bind_param('sss', $title, $abstract, $id);
+		$stmt->execute();
+		$stmt->close();
+		$conn->close();
+	}
+	function update_($conn, $id, $title, $abstract, $address_datetime, $occupation, $resume, $room) {
+		$stmt = $conn->prepare("UPDATE `ispeakers` SET `title` = ?, `abstract` = ?, `address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ? WHERE `id` = ?");
+		$stmt->bind_param('sssssss', $title, $abstract, $address_datetime, $occupation, $resume, $room, $id);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
