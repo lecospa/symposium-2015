@@ -23,7 +23,12 @@ class MMain extends \View {
 		if ($auth['scope'] == 'ispeakers') {
 			$title = $_POST['inputtitle'];
 			$abstract = $_POST['inputabstract'];
-			\Models\ISpeakers::update_title_abstract(\db::get(), $auth['id'], $title, $abstract);
+			$address_datetime = $_POST['inputaddressdatetime'];
+			$occupation = $_POST['inputoccupation'];
+			$resume = $_POST['inputresume'];
+			$room = $_POST['inputroom'];
+			$conn = \db::get();
+			\Models\ISpeakers::update_($conn, $auth['id'], $title, $abstract, $address_datetime, $occupation, $resume, $room);
 
 			$info = \Models\ISpeakers::get(\db::get(), $auth['id']);
 			$this->smarty->assign('ispeaker', $info);
