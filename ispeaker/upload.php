@@ -17,7 +17,7 @@ class Upload extends \View {
 		try {
 			$target = $_GET['target'];
 			if ($target == 'slide') {
-				$valid_ext = array('jpg', 'pdf');
+				$valid_ext = array('pdf', 'doc', 'docx', 'ppt', 'pptx');
 			} else if ($target == 'img') {
 				$valid_ext = array('jpg', 'png', 'jpeg');
 			} else {
