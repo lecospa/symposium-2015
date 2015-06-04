@@ -34,7 +34,7 @@
 		<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/06/symposium-header-8.png" class="img-responsive">
 	</div>
 	<div stlye="height: 20px; width: 100%;">&nbsp;</div>
-	<div id="bulletin">
+	<div id="bulletin-1">
 		<div class="item col-width" style="background-color: rgba(255, 51, 102, 0.8);">
 			<h3>Early Bird Registration!!</h3><a class="btn btn-primary" href="{$smarty.const.TOP}registration.php">Register Now</a>
 		</div>
@@ -43,6 +43,16 @@
 			<p style="color: black;">LeCosPA is a university-level research center of the National Taiwan University founded in 2007 through the primary donation of Mr. Chee-Chun Leung, Co-founder and Vice President of the Taiwan based Quanta Computers, Inc. LeCosPA is dedicated to the advancement of cosmology and particle astrophysics.</p>
 			<p><a href="http://lecospa.ntu.edu.tw/lecospa/about/">Read More »</a></p>
 		</div>
+		<div class="item col-width" style="background-color: rgba(200, 200, 200, 0.8);">
+			<h3 style="color: yellow;">Invited Speakers</h3>
+			<iframe src="player.php" width="100%" height="200" frameborder="0"></iframe>
+		</div>
+	</div>
+	<div id="bulletin-2">
+		<div class="item col-width" style="background-color: rgba(255, 255, 255, 0.8);">
+			<a href="http://www.ntu.edu.tw/english/index.html"><img src="{$smarty.const.TOP}img/ntu.logo.png" class="img-responsive">National Taiwan University</a>
+		</div>
+		{* Weather Plugin *}
 		<div class="item col-width" style="background-color: rgba(10,140,190,0.8); height: 239px;">
 			<a href="http://www.accuweather.com/en/tw/taipei-city/315078/weather-forecast/315078" class="aw-widget-legal">
 			<!-- By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
@@ -50,12 +60,6 @@
 		</div>
 		<div class="item col-width" style="background-color: rgba(10, 140, 190, 0.8); color: black;">
 			<a href="http://eng.taiwan.net.tw/" style="color: yellow;"><img src="{$smarty.const.TOP}img/eng.taiwan.png" class="img-responsive">http://eng.taiwan.net.tw/</a>
-		</div>
-		<div class="item col-width" style="background-color: rgba(255, 255, 255, 0.8);">
-			<a href="http://www.ntu.edu.tw/english/index.html"><img src="{$smarty.const.TOP}img/ntu.logo.png" class="img-responsive">National Taiwan University</a>
-		</div>
-		<div class="item col-width" style="background-color: rgba(0, 0, 0, 0.8);">
-			<iframe src="https://www.flickr.com/photos/61079897@N08/sets/72157653875148496/player" width="100%" height="160" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 		</div>
 		<div class="item col-width" style="background-color: rgba(92, 154, 92, 0.8);">
 			<h3>Photo Gallery</h3>
@@ -87,13 +91,16 @@
 <script src="{$smarty.const.TOP}js/masonry.pkgd.min.js"></script>
 {literal}
 <script>
-var container = document.querySelector('#bulletin');
-var msnry = new Masonry( container, {
-  columnWidth: container.querySelector('.col-width'),
+var t1 = document.querySelector("#bulletin-1"), msnry1 = new Masonry(t1, {
+  columnWidth: t1.querySelector('.col-width'),
+  itemSelector: '.item'
+}), t2 = document.querySelector("#bulletin-2"), msnry2 = new Masonry(t2, {
+  columnWidth: t2.querySelector('.col-width'),
   itemSelector: '.item'
 });
 $(window).bind("load", function() {
-	msnry.layout();
+	msnry1.layout();
+	msnry2.layout();
 });
 </script>
 {/literal}{/block}
