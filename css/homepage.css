@@ -48,12 +48,12 @@ body {
 /*
  * 3-column style
  */
-.col-width { width: 98%; margin-left: 1%; margin-right: 1%;}
+.col-width { width: 99%; margin-left: 0.5%; margin-right: 0.5%;}
 @media screen and (min-width: 768px) {
-	.col-width { width: 48%; }
+	.col-width { width: 49%; }
 }
 @media screen and (min-width: 992px) {
-	.col-width { width: 31.33%; }
+	.col-width { width: 32.33%; }
 }
 
 #header {
