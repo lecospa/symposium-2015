@@ -34,6 +34,13 @@ ul.container li img {
 	right: 0;
 	bottom: 0;
 }
+ul.container li div {
+	position: fixed;
+	bottom: 30px;
+	text-align: center;
+	left: 0;
+	right: 0;
+}
 .nav {
 	opacity: 0;
 	position: fixed;
@@ -75,7 +82,7 @@ body:hover .nav {
 <ul class="container">
 {foreach $ispeakers as $ispeaker}
 {if $ispeaker['img'] neq ""}
-<li><img src="{$smarty.const.TOP}uploads/{$ispeaker['img']}"></li>
+<li><a href="{$smarty.const.TOP}ispeakers.php" target="_top"><img src="{$smarty.const.TOP}uploads/{$ispeaker['img']}"></a><div><span style="font-weight: bold;">{$ispeaker['name']|escape}</span><br/>{$ispeaker['occupation']|escape}</div></li>
 {/if}
 {/foreach}
 </ul>
