@@ -4,8 +4,8 @@ body {
 
 /* white navbar */
 .navbar {
-	//background: transparent;
-	background-color:rgba(248, 248, 248, 0.8);
+	background: transparent;
+	//background-color:rgba(248, 248, 248, 0.8);
 	border: none;
 	//box-shadow: none;
 }
@@ -29,6 +29,8 @@ body {
  */
 .item {
 	width: 99%; margin-left: 0.5%; margin-right: 0.5%;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 @media screen and (min-width: 750px) {
 	#bulletin-1 .item {
