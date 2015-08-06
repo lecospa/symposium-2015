@@ -3,9 +3,9 @@
 */
 body {
   /* Location of the image */
-  background-image: url('http://lecospa.ntu.edu.tw/wp-content/uploads/2015/08/15.jpg');
+  background-image: url('http://lecospa.ntu.edu.tw/wp-content/uploads/2015/08/圖片3-crop-crop-crop.png');
   /* Image is centered vertically and horizontally at all times */
-  background-position: center center;
+  /*background-position: center center;*/
   /* Image doesn't repeat */
   background-repeat: no-repeat;
   /* Makes the image fixed in the viewport so that it doesn't move when 

@@ -1,75 +1,42 @@
 {extends file='others.tpl'}
 {block name=main}
-<div class="bs-header" id="content" style="background-image: none; background-color:rgb(191,84,46);">
-    <div class="container">
-		<h1>Others</h1>
-    </div>
+<div class="page-header">
+	<h1 id="weather">Weather</h1>
 </div>
-<div class="container">
-	<div class="row">
-		<div class="col-md-9">
-			<div class="page-header">
-				<h1 id="weather">Weather</h1>
-			</div>
-			<dl>
-				<dt>Weather</dt>
-				<dd>Winter starts from December, but weather is generally mild, with average low and high temperatures of 13 °C (55 °F) and 18 °C (64 °F) for Taipei, and damp with occasional showers. (You may need an umbrella)</dd>
-				<dt>Clothing</dt>
-				<dd>There is a big difference in temperature between day and night. During day time a long-sleeve shirt is adequate, but in early morning and evening a coat is needed, sometimes also a sweater. If you visit mountainous areas, a sweater and a water-proof coat is recommended.</dd>
-			</dl>
-			<h2>December Average Temperature</h2>
-			<img src="img/Average%20Temp.JPG" class="img-responsive center-block" />
-			<h2>December Average Precipitation</h2>
-			<img src="img/Average%20precipitation.JPG" class="img-responsive center-block" />
+<dl>
+	<dt>Weather</dt>
+	<dd>Winter starts from December, but weather is generally mild, with average low and high temperatures of 13 °C (55 °F) and 18 °C (64 °F) for Taipei, and damp with occasional showers. (You may need an umbrella)</dd>
+	<dt>Clothing</dt>
+	<dd>There is a big difference in temperature between day and night. During day time a long-sleeve shirt is adequate, but in early morning and evening a coat is needed, sometimes also a sweater. If you visit mountainous areas, a sweater and a water-proof coat is recommended.</dd>
+</dl>
+<h2>December Average Temperature</h2>
+<img src="img/Average%20Temp.JPG" class="img-responsive center-block" />
+<h2>December Average Precipitation</h2>
+<img src="img/Average%20precipitation.JPG" class="img-responsive center-block" />
 
-			{include file='visiting-souvenir.html'}
-			{include file='visiting-electricity.html'}
-			
-			<div class="page-header">
-				<h1 id="currency-and-exchange">Currency &amp; Exchange</h1>
-				<p>The New Taiwan Dollar (NT$) is the currency used in Taiwan. Foreign currency exchange is available at banks and international hotels. Some banks at the International Airport operate 24 hours. Please visit the <a href="http://www.taoyuan-airport.com/english/">airport website</a>. The exchange rate changes everyday, please consult the services in the <a href="http://www.bot.com.tw/English/Pages/default.aspx">Bank of Taiwan</a> to get the detailed exchange rate.</p>
-				<p>Other website:</p>
-				<ul>
-					<li><a href="http://eng.taiwan.net.tw/m1.aspx?sNo=0002065">Currency</a></li>
-					<li><a href="http://www.xe.com/currencyconverter/">Currency Converter</a></li>
-				</ul>
-			</div>
+{include file='visiting-souvenir.html'}
+{include file='visiting-electricity.html'}
 
-			<div class="page-header">
-				<h1 id="useful-websites">Useful Websites</h1>
-				<ul>
-					{*<li>Bureau of Consular Affairs, Ministry of Foreign Affairs, Republic of China (Taiwan): <a href="http://www.boca.gov.tw/mp?mp=2">http://www.boca.gov.tw/mp?mp=2</a></li>*}
-					<li>Information for Foreigners: <a href="http://iff.immigration.gov.tw/mp.asp?mp=iff_en">http://iff.immigration.gov.tw/mp.asp?mp=iff_en</a></li>
-					<li><a href="http://www.gis.tw/1106ogctc/images/tour/Taipei%20Tour%20Map.pdf">Taipei Tourist Map</a></li>
-					<li>Taipei City Government: <a href="http://english.gov.taipei/">http://english.gov.taipei/</a></li>
-					<li>NTU Visitor Center: <a href="http://visitorcenter.cloud.ntu.edu.tw/eng/index.php">http://visitorcenter.cloud.ntu.edu.tw/eng/index.php</a></li>
-					<li>NTU Campus Location &amp; Area: <a href="http://www.ntu.edu.tw/english/about/location.html">http://www.ntu.edu.tw/english/about/location.html</a></li>
-					<li>Campus Maps: <a href="http://www.ntu.edu.tw/english/about/map.html">http://www.ntu.edu.tw/english/about/map.html</a></li>
-				</ul>
-			</div>
-		</div>
-		{* sidenav 類似目錄 *}
-		<div class="col-md-3">
-			<div class="bs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
-				<ul class="nav bs-sidenav">
-					<li><a href="#weather">Weather</a></li>
-					<li><a href="#souvenir">Souvenir</a>
-						<ul class="nav">
-							<li><a href="#pineapple-cake">Pineapple cake - Chia Te</a></li>
-							<li><a href="#honey-cake">Honey Cake- E.G.Sain</a></li>
-							<li><a href="#stick-cake">Ink. Stick Cake- Vigor kobo</a></li>
-						</ul>
-					</li>
-					<li><a href="#electricity">Electricity</a></li>
-					<li><a href="#currency-and-exchange">Currency &amp; Exchange</a></li>
-					<li><a href="#useful-websites">Useful Websites</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<div class="page-header">
+	<h1 id="currency-and-exchange">Currency &amp; Exchange</h1>
 </div>
-<div id="footer" class="footer" role="contentinfo">
-    <div class="container">
-    </div>
+<p>The New Taiwan Dollar (NT$) is the currency used in Taiwan. Foreign currency exchange is available at banks and international hotels. Some banks at the International Airport operate 24 hours. Please visit the <a href="http://www.taoyuan-airport.com/english/">airport website</a>. The exchange rate changes everyday, please consult the services in the <a href="http://www.bot.com.tw/English/Pages/default.aspx">Bank of Taiwan</a> to get the detailed exchange rate.</p>
+<p>Other website:</p>
+<ul>
+	<li><a href="http://eng.taiwan.net.tw/m1.aspx?sNo=0002065">Currency</a></li>
+	<li><a href="http://www.xe.com/currencyconverter/">Currency Converter</a></li>
+</ul>
+
+<div class="page-header">
+	<h1 id="useful-websites">Useful Websites</h1>
 </div>
+<ul>
+	{*<li>Bureau of Consular Affairs, Ministry of Foreign Affairs, Republic of China (Taiwan): <a href="http://www.boca.gov.tw/mp?mp=2">http://www.boca.gov.tw/mp?mp=2</a></li>*}
+	<li>Information for Foreigners: <a href="http://iff.immigration.gov.tw/mp.asp?mp=iff_en">http://iff.immigration.gov.tw/mp.asp?mp=iff_en</a></li>
+	<li><a href="http://www.gis.tw/1106ogctc/images/tour/Taipei%20Tour%20Map.pdf">Taipei Tourist Map</a></li>
+	<li>Taipei City Government: <a href="http://english.gov.taipei/">http://english.gov.taipei/</a></li>
+	<li>NTU Visitor Center: <a href="http://visitorcenter.cloud.ntu.edu.tw/eng/index.php">http://visitorcenter.cloud.ntu.edu.tw/eng/index.php</a></li>
+	<li>NTU Campus Location &amp; Area: <a href="http://www.ntu.edu.tw/english/about/location.html">http://www.ntu.edu.tw/english/about/location.html</a></li>
+	<li>Campus Maps: <a href="http://www.ntu.edu.tw/english/about/map.html">http://www.ntu.edu.tw/english/about/map.html</a></li>
+</ul>
 {/block}
