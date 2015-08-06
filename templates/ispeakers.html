@@ -1,31 +1,16 @@
 {extends file='others.tpl'}
 {block name=main}
-<div class="bs-header" id="content" style="background-image: none; background-color:green;">
-    <div class="container">
-		<h1>Invited Speakers
-    </div>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-md-offset-2 col-md-8">
-			{*<div class="pull-right"><a href="ispeaker/login.php">Login</a></div>*}
-		</div>
-	</div>
-	<div class="row">
-		{foreach $ispeakers as $ispeaker}
-			<div class="col-md-3">
-				<div class="thumbnail">
-					<img src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" class="img-responsive img-circle" style="height: 150px;">
-					<h4>{$ispeaker['name']|escape}</h4>
-					<p>Institution: {$ispeaker['occupation']|escape}</p>
-					<p>{$ispeaker['email']|escape}</p>
-				</div>
+<h1>Invited Speakers</h1>
+<div class="row">
+	{foreach $ispeakers as $ispeaker}
+		<div class="col-md-3">
+			<div class="thumbnail">
+				<img src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" class="img-responsive img-circle" style="height: 150px;">
+				<h4>{$ispeaker['name']|escape}</h4>
+				<p>Institution: {$ispeaker['occupation']|escape}</p>
+				<p>{$ispeaker['email']|escape}</p>
 			</div>
-		{/foreach}
-	</div>
+		</div>
+	{/foreach}
 </div>
-<footer class="footer" role="contentinfo">
-    <div class="container">
-    </div>
-</footer>
 {/block}

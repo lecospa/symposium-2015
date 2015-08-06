@@ -1,206 +1,48 @@
-{extends file='bootstrap.html'}
+{extends file='others.tpl'}
 
-{block name=head}
-<link href="{$smarty.const.TOP}css/responsive-full-background-image.css" rel="stylesheet">
-<link href="{$smarty.const.TOP}css/homepage.css" rel="stylesheet">
+{block name=main}
+<p>To celebrate the centenary of Einstein’s General Relativity, we organize the 
+2nd LeCosPA International Symposium “Everything about Gravity” on 
+December 14-18, 2015 in Taipei under the auspices of the Division of 
+Astrophysics-Cosmology-Gravity (DACG), Association of Asia-Pacific Physical 
+Societies (AAPPS).</p>
+<p>We will examine all aspects of gravity, including but not limited to 
+mathematical structures of GR, big bang and black hole singularities, 
+modified gravity, quantum gravity, emergent gravity, cosmology, dark matter 
+and dark energy, AdS/CFT correspondence, information loss paradox, 
+gravitational waves from big bang and other sources, experimental and 
+observational gravity, etc.</p>
+<p>After 100 years of remarkable success of GR, which is a classical theory, and 
+tremendous advancement in our understanding of the other three 
+fundamental interactions through quantum field theory, the development of 
+a quantum theory of gravity has become a major task in physics in the 21st 
+century. This symposium is therefore not just for looking back, but also for 
+looking forward. The Topics include,</p>
+<ul>
+	<li>Overview: 100 Years of General Relativity</li>
+	<li>Mathematical Structure &amp; Observational/Experimental Tests of GR
+		<ul><li>What is GR’s range of validity?</li></ul>
+	</li>
+	<li>Cosmology
+		<ul>
+			<li>How did universe begin?</li>
+			<li>Can the structure of quantum gravity shed lights on standard model?</li>
+		</ul>
+	</li>
+	<li>Fundamental Nature of Gravity
+		<ul>
+			<li>How to reconcile GR and QM?</li>
+			<li>What is the solution to information lost paradox?</li>
+			<li>Would theory of quantum gravity be unique?</li>
+			<li>How universal is holographic principle?</li>
+		</ul>
+	</li>
+	<li>New Ideas
+		<ul>
+			<li>What are the possible applications of holographic principle?</li>
+			<li>Modified theories of gravity</li>
+			<li>Is gravity fundamental or emergent?</li>
+		</ul>
+	</li>
+</ul>
 {/block}
-
-{block name=body}
-{strip}{* 導覽列 *}
-<div class="navbar navbar-default navbar-static-top">
-	<div class="container">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="http://lecospa.ntu.edu.tw" style="height: 70px;">
-				<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/08/LeCosPA_Logo.png" style="height: 70px; " />
-			</a>
-		</div>
-	</div>
-</div>
-{/strip}{* end 導覽列 *}
-
-<div class="container">
-	<div id="header">
-		<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/08/symposium-header-9.png" class="img-responsive">
-	</div>
-	<div class="row">
-		<div class="col-xs-12 item" style="background-color: rgba(0, 0, 0, 0.4); color: black;">
-			<h1 style="color: white;">Second LeCosPA Symposium</h1>
-			<button class="btn btn-warning">TODO: add link to about page</button>
-			{*<p style="color: black;">To celebrate the centenary of Einstein’s General Relativity, we organize the 
-			2nd LeCosPA International Symposium “Everything about Gravity” on 
-			December 14-18, 2015 in Taipei under the auspices of the Division of 
-			Astrophysics-Cosmology-Gravity (DACG), Association of Asia-Pacific Physical 
-			Societies (AAPPS).</p>
-			<p>We will examine all aspects of gravity, including but not limited to 
-			mathematical structures of GR, big bang and black hole singularities, 
-			modified gravity, quantum gravity, emergent gravity, cosmology, dark matter 
-			and dark energy, AdS/CFT correspondence, information loss paradox, 
-			gravitational waves from big bang and other sources, experimental and 
-			observational gravity, etc.</p>
-			<p>After 100 years of remarkable success of GR, which is a classical theory, and 
-			tremendous advancement in our understanding of the other three 
-			fundamental interactions through quantum field theory, the development of 
-			a quantum theory of gravity has become a major task in physics in the 21st 
-			century. This symposium is therefore not just for looking back, but also for 
-			looking forward. The Topics include,</p>
-			<ul>
-				<li>Overview: 100 Years of General Relativity</li>
-				<li>Mathematical Structure &amp; Observational/Experimental Tests of GR
-					<ul><li>What is GR’s range of validity?</li></ul>
-				</li>
-				<li>Cosmology
-					<ul>
-						<li>How did universe begin?</li>
-						<li>Can the structure of quantum gravity shed lights on standard model?</li>
-					</ul>
-				</li>
-				<li>Fundamental Nature of Gravity
-					<ul>
-						<li>How to reconcile GR and QM?</li>
-						<li>What is the solution to information lost paradox?</li>
-						<li>Would theory of quantum gravity be unique?</li>
-						<li>How universal is holographic principle?</li>
-					</ul>
-				</li>
-				<li>New Ideas
-					<ul>
-						<li>What are the possible applications of holographic principle?</li>
-						<li>Modified theories of gravity</li>
-						<li>Is gravity fundamental or emergent?</li>
-					</ul>
-				</li>
-			</ul>*}
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3 col-sm-6 item" style="background-color: rgba(255, 51, 102, 0.8); text-align: center;">
-			<h2>Registration</h2>
-			<p>Early Bird Registration<br>Deadline: Oct 15, 2015<br>Formal Deadline: Dec 10, 2015</p>
-			<p><a class="btn btn-primary" href="{$smarty.const.TOP}registration.php">Register Now!!</a></p>
-		</div>
-		<div class="col-md-3 col-sm-6 item" style="background-color: rgba(153, 51, 255, 0.3); text-align: center;">
-			<a href="{$smarty.const.TOP}program.php"><h2 style="color: white;">Program</h2></a>
-		</div>
-		<div class="col-md-3 col-sm-6 item" style="background-color: rgba(255, 153, 204, 0.6); text-align: center;">
-			<a href="{$smarty.const.TOP}ispeakers.php"><h2 style="color: white;">Plenary Speakers</h2></a>
-		</div>
-		<div class="col-md-3 col-sm-6 item" style="background-color: rgba(153, 204, 255, 0.6); text-align: center;">
-			<a href="{$smarty.const.TOP}ispeakers.php"><h2 style="color: white;">Parallel Organizers and Speakers</h2></a>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4 col-sm-6 item" style="background-color: rgba(153, 51, 255, 0.3); text-align: center;">
-			<a href="{$smarty.const.TOP}program.php"><h2 style="color: white;">Companion Program</h2></a>
-		</div>
-		<div class="col-md-4 col-sm-6 item" style="background-color: rgba(153, 204, 255, 0.6); text-align: center;">
-			<h2 style="color: white;">Social Events</h2>
-			<p><a class="btn btn-info" href="{$smarty.const.TOP}social.php">To be announced.</a></p>
-		</div>
-		<div class="col-md-4 col-sm-6 item" style="background-color: rgba(255, 153, 204, 0.6); text-align: center;">
-			<a href="{$smarty.const.TOP}ispeakers.php"><h2 style="color: white;">Accommodations &amp; Transportation</h2></a>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4 col-sm-6 item" style="background-color: rgba(153, 204, 255, 0.6); text-align: center;">
-			<a href="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/07/Symposium%E6%B5%B7%E5%A0%B11X100V.jpg">
-				<h2 style="color: white;">Poster Download</h2>
-				<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/07/Symposium%E6%B5%B7%E5%A0%B11X100V-726x1024.jpg" class="img-responsive">
-			</a>
-		</div>
-		<div class="col-md-4 col-sm-6 item" style="background-color: rgba(153, 51, 255, 0.3); text-align: center;">
-			<a href="http://eng.taiwan.net.tw/">
-				<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/08/visiting-taiwan-1024x760.png" class="img-responsive">
-			</a>
-		</div>
-		{*<div class="col-md-4 col-sm-6 item" style="background-color: rgba(200, 200, 200, 0.8);">
-			<h3 style="color: yellow;">Invited Speakers</h3>
-			<iframe src="player.php" width="100%" height="200" frameborder="0"></iframe>
-		</div>*}
-		{*<div class="col-md-4 col-sm-6 item" style="background-color: rgba(255, 255, 255, 0.8);">
-			<p><a href="http://www.ntu.edu.tw/english/index.html">
-				<img src="{$smarty.const.TOP}img/ntu.logo.png" class="img-responsive">National Taiwan University</a>
-			</p>
-		</div>*}
-		{*<div class="col-md-4 col-sm-6 item" style="background-color: rgba(10,140,190,0.8); height: 239px;">
-			<p>
-				<a href="http://www.accuweather.com/en/tw/taipei-city/315078/weather-forecast/315078" class="aw-widget-legal">
-				<!-- By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
-				--></a><div id="awcc1430072969150" class="aw-widget-current" data-locationkey="315078" data-unit="f" data-language="en-us" data-useip="false" data-uid="awcc1430072969150"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
-			</p>
-		</div>*}
-		{*<div class="col-md-4 col-sm-6 item" style="background-color: rgba(10, 140, 190, 0.8); color: black;">
-			<p><a href="http://eng.taiwan.net.tw/" style="color: yellow;">
-				<img src="{$smarty.const.TOP}img/eng.taiwan.png" class="img-responsive">http://eng.taiwan.net.tw/</a>
-			</p>
-		</div>*}
-		{*<div class="col-md-4 col-sm-6 item" style="background-color: rgba(92, 154, 92, 0.8);">
-			<h3>Photo Gallery</h3>
-			<p><a href="http://lecospa.ntu.edu.tw/news-and-activities/photo-gallery/#gg_cg_2544">
-				<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/04/campus_4-1024x576.png" class="img-responsive"></a>
-			</p>
-		</div>*}
-		<!--<div class="col-md-4 col-sm-6 item" style="background-color: white; height: 561px; padding-top: 10px; padding-bottom: 10px;">
-			{* Facebook *}
-			<div class="fb-like-box" data-href="https://www.facebook.com/pages/LeCosPA/153896001443097" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false" data-width="337px"></div>
-			{* Facebook API *}{literal}
-			<div id="fb-root"></div>
-			<script>(function(d, s, id) {
-			  var js, fjs = d.getElementsByTagName(s)[0];
-			  if (d.getElementById(id)) return;
-			  js = d.createElement(s); js.id = id;
-			  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=622070731147437&version=v2.0";
-			  fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));</script>
-			{/literal}{* End of Facebook API *}
-		</div>-->
-	</div>
-	<div class="row">
-		<div class="col-xs-12 item" style="background-color: rgba(92, 154, 92, 0.8); text-align: center;">
-			<h2>Sponsors and Supporters</h2>
-			<div class="row">
-				<div class="col-xs-4 col-sm-3 col-md-2">
-					<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/07/ASIAA_Logo.png" class="img-responsive">
-				</div>
-				<div class="col-xs-4 col-sm-3 col-md-2">
-					<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/07/phys_Logo.png" class="img-responsive">
-				</div>
-				<div class="col-xs-4 col-sm-3 col-md-2">
-					<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/07/GSROC_Logo.png" class="img-responsive">
-				</div>
-				<div class="col-xs-4 col-sm-3 col-md-2">
-					<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/07/CTS_Logo.png" class="img-responsive">
-				</div>
-				<div class="col-xs-4 col-sm-3 col-md-2">
-					<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/07/NTU_Logo.png" class="img-responsive">
-				</div>
-				<div class="col-xs-4 col-sm-3 col-md-2">
-					<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/07/NCTS_Logo.jpg" class="img-responsive">
-				</div>
-				<div class="col-xs-8 col-sm-6 col-md-4">
-					<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/07/科技部_Logo.png" class="img-responsive">
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-{/block}
-
-
-{block name=body_script}
-<script src="{$smarty.const.TOP}js/masonry.pkgd.min.js"></script>
-{literal}
-<script>
-/*var t1 = document.querySelector("#bulletin-1"), msnry1 = new Masonry(t1, {
-  columnWidth: t1.querySelector('.item'),
-  itemSelector: '.item'
-}), t2 = document.querySelector("#bulletin-2"), msnry2 = new Masonry(t2, {
-  columnWidth: t2.querySelector('.col-width'),
-  itemSelector: '.item'
-});
-$(window).bind("load", function() {
-	msnry1.layout();
-	msnry2.layout();
-});*/
-</script>
-{/literal}{/block}
