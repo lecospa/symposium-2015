@@ -41,6 +41,9 @@
 		<div class="col-xs-8 col-sm-6 col-md-4">
 			<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/07/科技部_Logo.png" class="img-responsive">
 		</div>
+		<div class="col-xs-4 col-sm-3 col-md-2">
+			<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/08/國際貿易局_Logo.jpg" class="img-responsive">
+		</div>
 	</div>
 </div>
 {/strip}{/block}
