@@ -1,20 +1,8 @@
 {extends file='bootstrap.html'}
 
 {block name=head}
-{*<meta http-equiv="refresh" content="10" />*}
 <link href="{$smarty.const.TOP}css/responsive-full-background-image.css" rel="stylesheet">
-{literal}
-<style>
-.nav > li > a {
-	color: white;
-	background-color: #333333;
-}
-.nav > li > a:hover, .nav > li > a:focus, .nav > li.active > a {
-	background-color: white;
-	color: black;
-}
-</style>
-{/literal}
+<link href="{$smarty.const.TOP}css/main.css" rel="stylesheet">
 {/block}
 
 {block name=body}{strip}

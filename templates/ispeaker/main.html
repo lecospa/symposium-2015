@@ -1,132 +1,121 @@
 {extends file='../others.tpl'}
 {block name=main}
-<div class="bs-header" id="content" style="background-image: none; background-color:orange;">
-    <div class="container">
-		<h1>Invited Speaker</h1>
-    </div>
+<div class="page-header">
+	<h1>Invited Speaker</h1>
 </div>
-<div class="container">
-	<div class="row">
-		<br />
-		{nocache}
-		<form action="main.php?token={$token}" method="POST" class="form-horizontal">
+{nocache}
+<form action="main.php?token={$token}" method="POST" class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Name</label>
+		<div class="col-sm-10">
+			<p class="form-control-static">{$ispeaker['name']|escape}</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Emai;</label>
+		<div class="col-sm-10">
+			<p class="form-control-static">{$ispeaker['email']|escape}</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputTitle" class="col-sm-2 control-label">Title</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="inputTitle" placeholder="Your speak title" value="{$ispeaker['title']|escape}" name="inputtitle">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputAbstract" class="col-sm-2 control-label">Abstract</label>
+		<div class="col-sm-10">
+			<textarea id="inputAbstract" class="form-control" rows="5" name="inputabstract">{$ispeaker['abstract']|escape}</textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputAddressDateTime" class="col-sm-2 control-label">Time</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="inputAddressDateTime" placeholder="2015-06-02 14:00:00" value="{$ispeaker['address_datetime']|escape}" name="inputaddressdatetime">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputOccupation" class="col-sm-2 control-label">Institution</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="inputOccupation" placeholder="Your working occupation" value="{$ispeaker['occupation']|escape}" name="inputoccupation">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputResume" class="col-sm-2 control-label">Position</label>
+		<div class="col-sm-10">
+			<textarea id="inputResume" class="form-control" rows="5" name="inputresume">{$ispeaker['resume']|escape}</textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputRoom" class="col-sm-2 control-label">Room</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="inputRoom" value="{$ispeaker['room']|escape}" name="inputroom">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-primary">Update Information</button>
+		</div>
+	</div>
+</form>
+<div class="row">
+	<div class="col-md-6">
+		<form enctype="multipart/form-data" action="upload.php?target=slide" method="POST" class="form-horizontal">
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Name</label>
+				<label class="col-sm-2 control-label">Slide</label>
 				<div class="col-sm-10">
-					<p class="form-control-static">{$ispeaker['name']|escape}</p>
+					<p class="form-control-static">
+						{if $ispeaker['slide_file']}
+							<a href="{$smarty.const.TOP}uploads/{$ispeaker['slide_file']}" target="_blank">{$ispeaker['slide_file']}</a>
+						{else}
+							No
+						{/if}
+					</p>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Emai;</label>
+				<label for="inputSlidefile" class="col-sm-2 control-label">Upload Slide</label>
 				<div class="col-sm-10">
-					<p class="form-control-static">{$ispeaker['email']|escape}</p>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputTitle" class="col-sm-2 control-label">Title</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputTitle" placeholder="Your speak title" value="{$ispeaker['title']|escape}" name="inputtitle">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputAbstract" class="col-sm-2 control-label">Abstract</label>
-				<div class="col-sm-10">
-					<textarea id="inputAbstract" class="form-control" rows="5" name="inputabstract">{$ispeaker['abstract']|escape}</textarea>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputAddressDateTime" class="col-sm-2 control-label">Time</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputAddressDateTime" placeholder="2015-06-02 14:00:00" value="{$ispeaker['address_datetime']|escape}" name="inputaddressdatetime">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputOccupation" class="col-sm-2 control-label">Institution</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputOccupation" placeholder="Your working occupation" value="{$ispeaker['occupation']|escape}" name="inputoccupation">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputResume" class="col-sm-2 control-label">Position</label>
-				<div class="col-sm-10">
-					<textarea id="inputResume" class="form-control" rows="5" name="inputresume">{$ispeaker['resume']|escape}</textarea>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputRoom" class="col-sm-2 control-label">Room</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputRoom" value="{$ispeaker['room']|escape}" name="inputroom">
+					<input name="file" id="inputSlidefile" type="file" class="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Update Information</button>
+					<input type="hidden" name="token" value="{$token}" />
+					<button type="submit" class="btn btn-default">Upload</button>
 				</div>
 			</div>
 		</form>
 	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<form enctype="multipart/form-data" action="upload.php?target=slide" method="POST" class="form-horizontal">
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Slide</label>
-					<div class="col-sm-10">
-						<p class="form-control-static">
-							{if $ispeaker['slide_file']}
-								<a href="{$smarty.const.TOP}uploads/{$ispeaker['slide_file']}" target="_blank">{$ispeaker['slide_file']}</a>
-							{else}
-								No
-							{/if}
-						</p>
-					</div>
+	<div class="col-md-6">
+		<form enctype="multipart/form-data" action="upload.php?target=img" method="POST" class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Photos</label>
+				<div class="col-sm-10">
+					<p class="form-control-static">
+						{if $ispeaker['img']}
+							<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" />
+						{else}
+							No
+						{/if}
+					</p>
 				</div>
-				<div class="form-group">
-					<label for="inputSlidefile" class="col-sm-2 control-label">Upload Slide</label>
-					<div class="col-sm-10">
-						<input name="file" id="inputSlidefile" type="file" class="form-control" />
-					</div>
+			</div>
+			<div class="form-group">
+				<label for="inputImg" class="col-sm-2 control-label">Upload Photos</label>
+				<div class="col-sm-10">
+					<input name="file" id="inputImg" type="file" class="form-control" />
 				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<input type="hidden" name="token" value="{$token}" />
-						<button type="submit" class="btn btn-default">Upload</button>
-					</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input type="hidden" name="token" value="{$token}" />
+					<button type="submit" class="btn btn-default">Upload</button>
 				</div>
-			</form>
-		</div>
-		<div class="col-md-6">
-			<form enctype="multipart/form-data" action="upload.php?target=img" method="POST" class="form-horizontal">
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Photos</label>
-					<div class="col-sm-10">
-						<p class="form-control-static">
-							{if $ispeaker['img']}
-								<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" />
-							{else}
-								No
-							{/if}
-						</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="inputImg" class="col-sm-2 control-label">Upload Photos</label>
-					<div class="col-sm-10">
-						<input name="file" id="inputImg" type="file" class="form-control" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<input type="hidden" name="token" value="{$token}" />
-						<button type="submit" class="btn btn-default">Upload</button>
-					</div>
-				</div>
-			</form>
-		</div>
-		{/nocache}
+			</div>
+		</form>
 	</div>
 </div>
-<footer class="footer" role="contentinfo">
-    <div class="container">
-    </div>
-</footer>
+{/nocache}
 {/block}

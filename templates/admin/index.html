@@ -1,47 +1,40 @@
 {extends file='../others.tpl'}
+
+{block name=title}Second LeCosPA Symposium - Admin{/block}
+
 {block name=main}
-<div class="bs-header" id="content" style="background-image: none; background-color:green;">
-    <div class="container">
-		<h1>Admin</h1>
-    </div>
+<div class="page-header">
+	<h1>Admin</h1>
 </div>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<form class="form-inline" action="{$smarty.const.TOP}admin/ispeakers_insert.php?token={$token}" method="POST">
-			<table class="table">
-				<tbody>
-					<tr>
-						<th>Name</th>
-						<th>Photo</th>
-						<th>Email</th>
-						<th>Title</th>
-						<th>Abstract</th>
-						<th>Login URL</th>
-					</tr>
-					{foreach $ispeakers as $ispeaker}
-					<tr>
-						<td>{$ispeaker['name']|escape}</td>
-						<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" style="max-height: 100px;"></td>
-						<td>{$ispeaker['email']|escape}</td>
-						<td>{$ispeaker['title']|escape}</td>
-						<td>{$ispeaker['abstract']|escape|nl2br}</td>
-						<td><a href="{$smarty.const.TOP}ispeaker/main.php?token={$ispeaker['auth']['token']}">{$smarty.const.TOP}ispeaker/main.php?token={$ispeaker['auth']['token']}</a></td>
-					</tr>
-					{/foreach}
-					<tr>
-						<td><input type="text" class="form-control" name="name" placeholder="Speaker name"></td>
-						<td><input type="email" class="form-control" name="email" placeholder="Speaker Email"></td>
-						<td colspan="3"><button type="submit" class="btn btn-primary">Create New Speaker</button></td>
-					</tr>
-				</tbody>
-			</table>
-			</form>
-		</div>
-	</div>
-</div>
-<footer class="footer" role="contentinfo">
-    <div class="container">
-    </div>
-</footer>
+<form class="form-inline" action="{$smarty.const.TOP}admin/ispeakers_insert.php?token={$token}" method="POST">
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Photo</th>
+			<th>Email</th>
+			<th>Title</th>
+			<th>Abstract</th>
+			<th>Login URL</th>
+		</tr>
+	</thead>
+	<tbody>
+		{foreach $ispeakers as $ispeaker}
+		<tr>
+			<td>{$ispeaker['name']|escape}</td>
+			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" style="max-height: 100px;"></td>
+			<td>{$ispeaker['email']|escape}</td>
+			<td>{$ispeaker['title']|escape}</td>
+			<td>{$ispeaker['abstract']|escape|nl2br}</td>
+			<td><a href="{$smarty.const.TOP}ispeaker/main.php?token={$ispeaker['auth']['token']}">{$smarty.const.TOP}ispeaker/main.php?token={$ispeaker['auth']['token']}</a></td>
+		</tr>
+		{/foreach}
+		<tr>
+			<td><input type="text" class="form-control" name="name" placeholder="Speaker name"></td>
+			<td><input type="email" class="form-control" name="email" placeholder="Speaker Email"></td>
+			<td colspan="3"><button type="submit" class="btn btn-primary">Create New Speaker</button></td>
+		</tr>
+	</tbody>
+</table>
+</form>
 {/block}
