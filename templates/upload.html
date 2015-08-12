@@ -1,0 +1,23 @@
+{extends file='others.tpl'}
+{block name=main}
+<!-- Docs page layout -->
+<div class="bs-header" id="content" style="background-image: none; background-color:green;">
+    <div class="container">
+		<h1>Registration</h1>
+    </div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<form enctype="multipart/form-data" action="upload.php" method="POST">
+				Send this file: <input name="testfile" type="file" /><br />
+				<input name="submit" type="submit" value="Submit" />
+			</form>
+		</div>
+	</div>
+</div>
+<footer class="footer" role="contentinfo">
+    <div class="container">
+    </div>
+</footer>
+{/block}
