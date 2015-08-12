@@ -1,6 +1,6 @@
 {strip}
 <li {if $scope eq 'Index'}class="active"{/if}><a href="{$smarty.const.TOP}">Home</a></li>
-<li {if $scope eq 'Committee'}class="active"{/if}><a href="{$smarty.const.TOP}committee.php">Committee</a></li>
+<li {if $scope eq 'Committee'}class="active"{/if}><a href="{$smarty.const.TOP}committee.php">Committees</a></li>
 <li {if $scope eq 'Topics'}class="active"{/if}><a href="{$smarty.const.TOP}topics.php">Topics</a></li>
 <li {if $scope eq 'ISpeakers'}class="active"{/if}><a href="{$smarty.const.TOP}ispeakers.php">Plenary Session Speakers</a></li>
 <li {if $scope eq 'I2Speakers'}class="active"{/if}><a href="{$smarty.const.TOP}i2speakers.php">Parallel Session Organizers and Speakers</a></li>
