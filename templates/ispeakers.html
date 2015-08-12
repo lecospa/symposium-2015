@@ -6,11 +6,10 @@
 <div class="row">
 	{foreach $ispeakers as $ispeaker}
 		<div class="col-md-3">
-			<div class="thumbnail">
+			<div class="thumbnail" style="height: 265px;">
 				<img src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" class="img-responsive img-circle" style="height: 150px;">
-				<h4>{$ispeaker['name']|escape}</h4>
+				<h4>{$ispeaker['first_name']|escape} {$ispeaker['last_name']|escape}</h4>
 				<p>Institution: {$ispeaker['occupation']|escape}</p>
-				<p>{$ispeaker['email']|escape}</p>
 			</div>
 		</div>
 	{/foreach}

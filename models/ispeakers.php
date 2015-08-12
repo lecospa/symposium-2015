@@ -3,14 +3,15 @@ namespace Models;
 
 class ISpeakers {
 	function all_with_token($conn) {
-		$stmt = $conn->prepare("SELECT A.`id`, A.`name`, A.`email`, A.`slide_file`, A.`title`, A.`abstract`, A.`address_datetime`, A.`occupation`, A.`resume`, A.`room`, B.`token`, A.`img` FROM `ispeakers` AS A LEFT JOIN `auth` AS B ON A.`id` = B.`id` WHERE B.`scope` = 'ispeakers' ORDER BY A.`name`");
+		$stmt = $conn->prepare("SELECT A.`id`, A.`first_name`, A.`last_name`, A.`email`, A.`slide_file`, A.`title`, A.`abstract`, A.`address_datetime`, A.`occupation`, A.`resume`, A.`room`, B.`token`, A.`img` FROM `ispeakers` AS A LEFT JOIN `auth` AS B ON A.`id` = B.`id` WHERE B.`scope` = 'ispeakers' ORDER BY A.`last_name`");
 		$stmt->execute();
-		$stmt->bind_result($id, $name, $email, $slide_file, $title, $abstract, $address_datetime, $occupation, $resume, $room, $token, $img);
+		$stmt->bind_result($id, $first_name, $last_name, $email, $slide_file, $title, $abstract, $address_datetime, $occupation, $resume, $room, $token, $img);
 		$data = array();
 		while ($stmt->fetch()) {
 			$data[] = array(
 				'id' => $id,
-				'name' => $name,
+				'first_name' => $first_name,
+				'last_name' => $last_name,
 				'email' => $email,
 				'slide_file' => $slide_file,
 				'title' => $title,
@@ -32,13 +33,14 @@ class ISpeakers {
 		return $data;
 	}
 	function all($conn) {
-		$stmt = $conn->prepare("SELECT `name`, `email`, `slide_file`, `title`, `abstract`, `address_datetime`, `occupation`, `resume`, `room`, `img` FROM `ispeakers` ORDER BY `name`");
+		$stmt = $conn->prepare("SELECT `first_name`, `last_name`, `email`, `slide_file`, `title`, `abstract`, `address_datetime`, `occupation`, `resume`, `room`, `img` FROM `ispeakers` ORDER BY `last_name`");
 		$stmt->execute();
-		$stmt->bind_result($name, $email, $slide_file, $title, $abstract, $address_datetime, $occupation, $resume, $room, $img);
+		$stmt->bind_result($first_name, $last_name, $email, $slide_file, $title, $abstract, $address_datetime, $occupation, $resume, $room, $img);
 		$data = array();
 		while ($stmt->fetch()) {
 			$data[] = array(
-				'name' => $name,
+				'first_name' => $first_name,
+				'last_name' => $last_name,
 				'email' => $email,
 				'slide_file' => $slide_file,
 				'title' => $title,
@@ -55,14 +57,15 @@ class ISpeakers {
 		return $data;
 	}
 	function get($conn, $id) {
-		$stmt = $conn->prepare("SELECT `name`, `email`, `title`, `abstract`, `slide_file`, `address_datetime`, `occupation`, `resume`, `room`, `img` FROM `ispeakers` WHERE `id` = ?");
+		$stmt = $conn->prepare("SELECT `first_name`, `last_name`, `email`, `title`, `abstract`, `slide_file`, `address_datetime`, `occupation`, `resume`, `room`, `img` FROM `ispeakers` WHERE `id` = ?");
 		$stmt->bind_param('s', $id);
 		$stmt->execute();
-		$stmt->bind_result($name, $email, $title, $abstract, $slide_file, $address_datetime, $occupation, $resume, $room, $img);
+		$stmt->bind_result($first_name, $last_name, $email, $title, $abstract, $slide_file, $address_datetime, $occupation, $resume, $room, $img);
 		$data = null;
 		if ($stmt->fetch()) {
 			$data = array(
-				'name' => $name,
+				'first_name' => $first_name,
+				'last_name' => $last_name,
 				'email' => $email,
 				'title' => $title,
 				'abstract' => $abstract,
@@ -108,8 +111,8 @@ class ISpeakers {
 		$conn->close();
 	}
 	function insert($conn, $name, $email) {
-		$stmt = $conn->prepare("INSERT INTO `ispeakers` (`name`, `email`) VALUES (?, ?)");
-		$stmt->bind_param('ss', $name, $email);
+		$stmt = $conn->prepare("INSERT INTO `ispeakers` (`first_name`, `last_name`, `email`) VALUES (?, ?, ?)");
+		$stmt->bind_param('sss', $first_name, $last_name, $email);
 		$stmt->execute();
 		$id = $stmt->insert_id;
 		$stmt->close();

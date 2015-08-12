@@ -21,7 +21,7 @@
 	<tbody>
 		{foreach $ispeakers as $ispeaker}
 		<tr>
-			<td>{$ispeaker['name']|escape}</td>
+			<td>{$ispeaker['first_name']|escape} {$ispeaker['last_name']|escape}</td>
 			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" style="max-height: 100px;"></td>
 			<td>{$ispeaker['email']|escape}</td>
 			<td>{$ispeaker['title']|escape}</td>
@@ -30,7 +30,8 @@
 		</tr>
 		{/foreach}
 		<tr>
-			<td><input type="text" class="form-control" name="name" placeholder="Speaker name"></td>
+			<td><input type="text" class="form-control" name="first_name" placeholder="Speaker First Name"></td>
+			<td><input type="text" class="form-control" name="last_name" placeholder="Speaker Last Name"></td>
 			<td><input type="email" class="form-control" name="email" placeholder="Speaker Email"></td>
 			<td colspan="3"><button type="submit" class="btn btn-primary">Create New Speaker</button></td>
 		</tr>

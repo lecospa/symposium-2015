@@ -7,7 +7,8 @@ class IspeakersInsert extends \View {
 		$token = $_GET['token'];
 		$auth = \Models\Auth::get(\db::get(), $token);
 		if ($auth['scope'] == 'sudo') {
-			$name = $_POST['name'];
+			$first_name = $_POST['first_name'];
+			$last_name = $_POST['last_name'];
 			$email = $_POST['email'];
 
 			if (empty($name)) {
@@ -15,7 +16,7 @@ class IspeakersInsert extends \View {
 				return;
 			}
 			
-			$speaker_id = \Models\ISpeakers::insert(\db::get(), $name, $email);
+			$speaker_id = \Models\ISpeakers::insert(\db::get(), $first_name, $last_name, $email);
 			$speaker_token = self::generatorPassword(20);
 			
 			\Models\Auth::insert(\db::get(), 'ispeakers', $speaker_id, $speaker_token);
