@@ -10,12 +10,12 @@
 		<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/08/symposium-header-9.png" class="img-responsive">	
 	</div>
 	<div class="row">
-		<div class="col-xs-3">
+		<div class="col-sm-3">
 			<ul class="nav nav-stacked">
 				{include file='menu-part.tpl'}
 			</ul>
 		</div>
-		<div id="main" class="col-xs-9">{block name=main}{/block}</div>
+		<div id="main" class="col-sm-9">{block name=main}{/block}</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
