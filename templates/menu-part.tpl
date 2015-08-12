@@ -15,4 +15,5 @@
 <li {if $scope eq 'About_Taiwan'}class="active"{/if}><a href="{$smarty.const.TOP}about_taiwan.php">Information about Taiwan</a></li>
 <li {if $scope eq 'Travel_Visa'}class="active"{/if}><a href="{$smarty.const.TOP}travel_and_visa.php">Travel &amp; Visa Information</a></li>
 <li {if $scope eq 'Photos'}class="active"{/if}><a href="{$smarty.const.TOP}photos.php">Conference Photos</a></li>
+<li><a href="http://lecospa.ntu.edu.tw">Back to LeCosPA</a></li>
 {/strip}
