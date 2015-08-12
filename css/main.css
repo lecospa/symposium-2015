@@ -12,6 +12,11 @@
 	vertical-align: middle;
 }
 
+@media only screen and (max-width: 750px) {
+	.sponsor {
+		width: 90px;
+	}
+}
 
 .nav > li > a {
 	color: white;
