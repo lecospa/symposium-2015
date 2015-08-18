@@ -29,7 +29,7 @@ class View {
 		$this->smarty->compile_dir  = ROOT . '/templates_c/';
 		//$this->smarty->config_dir   = ROOT . '/configs/';
 		$this->smarty->cache_dir    = ROOT . '/cache/';
-		$this->smarty->caching = true;
+		$this->smarty->caching = false;
 	}
 	function View() {
 		$this->set_smarty();
