@@ -1,9 +1,14 @@
 #main {
-	background-color: rgba(255, 255, 255, 0.7);
+	//background-color: rgba(255, 255, 255, 0.7);
 }
 
 .larger-font {
 	font-size: 15pt;
+	color: white;
+}
+
+.nav {
+	font-size: 14px;
 }
 
 .sponsor {
@@ -14,7 +19,7 @@
 
 @media only screen and (max-width: 750px) {
 	.sponsor {
-		width: 90px;
+		width: 50px;
 	}
 }
 
