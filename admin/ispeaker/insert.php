@@ -1,6 +1,6 @@
 <?php
 namespace Admin;
-require_once('../init.php');
+require_once('../../init.php');
 
 class IspeakersInsert extends \View {
 	public function post() {
@@ -11,11 +11,11 @@ class IspeakersInsert extends \View {
 			$last_name = $_POST['last_name'];
 			$email = $_POST['email'];
 
-			if (empty($name)) {
+			if (empty($first_name)) {
 				header('Location: ' . TOP . 'admin/index.php?token='.$token);
 				return;
 			}
-			
+
 			$speaker_id = \Models\ISpeakers::insert(\db::get(), $first_name, $last_name, $email);
 			$speaker_token = self::generatorPassword(20);
 			

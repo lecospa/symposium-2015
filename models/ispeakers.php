@@ -110,7 +110,7 @@ class ISpeakers {
 		$stmt->close();
 		$conn->close();
 	}
-	function insert($conn, $name, $email) {
+	function insert($conn, $first_name, $last_name, $email) {
 		$stmt = $conn->prepare("INSERT INTO `ispeakers` (`first_name`, `last_name`, `email`) VALUES (?, ?, ?)");
 		$stmt->bind_param('sss', $first_name, $last_name, $email);
 		$stmt->execute();
@@ -118,5 +118,12 @@ class ISpeakers {
 		$stmt->close();
 		$conn->close();
 		return $id;
+	}
+	function delete($conn, $id) {
+		$stmt = $conn->prepare("DELETE FROM `ispeakers` WHERE `id`=?");
+		$stmt->bind_param('s', $id);
+		$stmt->execute();
+		$stmt->close();
+		$conn->close();
 	}
 }

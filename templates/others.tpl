@@ -15,7 +15,7 @@
 				{include file='menu-part.tpl'}
 			</ul>
 		</div>
-		<div id="main" class="col-sm-9">{block name=main}{/block}</div>
+		<div id="main" class="col-sm-9" style="{block name=main_style}{/block}">{block name=main}{/block}</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
