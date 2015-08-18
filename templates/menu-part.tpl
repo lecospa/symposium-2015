@@ -2,8 +2,8 @@
 <li {if $scope eq 'Index'}class="active"{/if}><a href="{$smarty.const.TOP}">Home</a></li>
 <li {if $scope eq 'Committee'}class="active"{/if}><a href="{$smarty.const.TOP}committee.php">Committees</a></li>
 <li {if $scope eq 'Topics'}class="active"{/if}><a href="{$smarty.const.TOP}topics.php">Topics</a></li>
-<li {if $scope eq 'ISpeakers'}class="active"{/if}><a href="{$smarty.const.TOP}ispeakers.php">Plenary Session Speakers</a></li>
-<li {if $scope eq 'I2Speakers'}class="active"{/if}><a href="{$smarty.const.TOP}i2speakers.php">Parallel Session Organizers and Speakers</a></li>
+<li {if $scope eq 'ISpeakers'}class="active"{/if}><a href="{$smarty.const.TOP}ispeakers.php">Plenary Session</a></li>
+<li {if $scope eq 'I2Speakers'}class="active"{/if}><a href="{$smarty.const.TOP}i2speakers.php">Parallel Session</a></li>
 <li {if $scope eq 'Program'}class="active"{/if}><a href="{$smarty.const.TOP}program.php">Conference Program</a></li>
 <li {if $scope eq 'Registration'}class="active"{/if}><a href="{$smarty.const.TOP}registration.php">Registration</a></li>
 <li {if $scope eq ''}class="active"{/if}><a href="{$smarty.const.TOP}no.php">Title &amp; Abstract Submission</a></li>
