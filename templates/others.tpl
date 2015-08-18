@@ -7,7 +7,7 @@
 
 {block name=body}{strip}
 	<div class="row">
-		<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/08/symposium-header-11.png" class="img-responsive">	
+		<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/08/symposium-header-12.png" class="img-responsive center-block">	
 	</div>
 	<div class="row">
 		<div class="col-sm-3">
