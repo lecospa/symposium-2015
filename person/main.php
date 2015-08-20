@@ -24,13 +24,14 @@ class MMain extends \View {
 		if ($auth['scope'] == 'people') {
 			$first_name = $_POST['inputfirstname'];
 			$last_name = $_POST['inputlastname'];
+			$email = $_POST['inputemail'];
 			$title = $_POST['inputtitle'];
 			$abstract = $_POST['inputabstract'];
 			$address_datetime = $_POST['inputaddressdatetime'];
 			$occupation = $_POST['inputoccupation'];
 			$resume = $_POST['inputresume'];
 			$room = $_POST['inputroom'];
-			\Models\People::update_($conn, $auth['id'], $first_name, $last_name, $title, $abstract, $address_datetime, $occupation, $resume, $room);
+			\Models\People::update_($conn, $auth['id'], $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room);
 
 			$info = \Models\People::get($conn, $auth['id']);
 			$this->smarty->assign('person', $info);
