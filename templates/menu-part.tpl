@@ -6,7 +6,7 @@
 <li {if $scope eq 'Plenary'}class="active"{/if}><a href="{$smarty.const.TOP}plenary_speakers.php">Plenary Session</a></li>
 <li {if $scope eq 'I2Speakers'}class="active"{/if}><a href="{$smarty.const.TOP}i2speakers.php">Parallel Session</a></li>
 <li {if $scope eq 'Registration'}class="active"{/if}><a href="{$smarty.const.TOP}registration.php">Registration</a></li>
-<li {if $scope eq ''}class="active"{/if}><a href="{$smarty.const.TOP}no.php">Title &amp; Abstract Submission</a></li>
+<li {if $scope eq 'Submission'}class="active"{/if}><a href="{$smarty.const.TOP}submission.php">Title &amp; Abstract Submission</a></li>
 <li {if $scope eq 'Participants'}class="active"{/if}><a href="{$smarty.const.TOP}participants.php">List of Participants</a></li>
 <li {if $scope eq 'Accommodation'}class="active"{/if}><a href="{$smarty.const.TOP}accommodation.php">Accommodation</a></li>
 <li {if $scope eq 'Transportations'}class="active"{/if}><a href="{$smarty.const.TOP}transportations.php">Transportations</a></li>

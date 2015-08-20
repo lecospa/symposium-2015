@@ -1,0 +1,23 @@
+{extends file='others.tpl'}
+
+{block name=title}Second LeCosPA Symposium - Title &amp; Abstract Submission{/block}
+
+{block name=main}
+<div class="page-header">
+	<h1>Title & Abstract Submission</h1>
+</div>
+<p class="larger-font">After your registration, we will send you a passcode to submit your title and abstract. If you haven't received passcode from our mail, please contact <a href="mailto:ntulecospa@ntu.edu.tw">ntulecospa@ntu.edu.tw</a></p>
+<form action="person/main.php" method="GET" class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 control-label larger-font">Passcode</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="inputToken" placeholder="The passcode you received from our mail" value="" name="token">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-primary">Login</button>
+		</div>
+	</div>
+</form>
+{/block}
