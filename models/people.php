@@ -116,9 +116,9 @@ class People {
 		$stmt->execute();
 		$stmt->close();
 	}
-	static function update_($conn, $id, $first_name, $last_name, $title, $abstract, $address_datetime, $occupation, $resume, $room) {
-		$stmt = $conn->prepare("UPDATE `people` SET `first_name` = ?, `last_name` = ?, `title` = ?, `abstract` = ?, `address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ? WHERE `id` = ?");
-		$stmt->bind_param('sssssssss', $first_name, $last_name, $title, $abstract, $address_datetime, $occupation, $resume, $room, $id);
+	static function update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room) {
+		$stmt = $conn->prepare("UPDATE `people` SET `first_name` = ?, `last_name` = ?, `email` = ?, `title` = ?, `abstract` = ?, `address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ? WHERE `id` = ?");
+		$stmt->bind_param('sssssssss', $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room, $id);
 		$stmt->execute();
 		$stmt->close();
 	}
