@@ -4,7 +4,7 @@ function get_connection() {
 }
 
 class db {
-	function get() {
+	static function get() {
 		$mysqli = new mysqli('localhost', 'symposium_2015', 'Wwz6wPFeyq2AsueK', 'symposium_2015');
 		if ($mysqli->connect_error) {
 			die('connect error');

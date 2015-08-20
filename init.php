@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 session_start();
 define('ROOT', __DIR__);
 require_once(ROOT . '/db.php');
@@ -33,14 +34,32 @@ class View {
 	}
 	function View() {
 		$this->set_smarty();
-		
+
 		/* Implement self define HTTP Method */
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			$this->method = 'POST';
-			method_exists($this, 'post') && $this->post();
+			try {
+				$this->method = 'POST';
+				method_exists($this, 'post') && $this->post();
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
 		} else {
-			$this->method = 'GET';
-			method_exists($this, 'get') && $this->get();
+			try {
+				$this->method = 'GET';
+				method_exists($this, 'get') && $this->get();
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
 		}
 	}
 }
+
+function exception_error_handler($severity, $message, $file, $line) {
+	/*if (!(error_reporting() & $severity)) {
+		return;
+	}*/
+	if ($severity == E_ERROR || $severity == E_CORE_ERROR) {
+		throw new ErrorException($message, 0, $severity, $file, $line);
+	}
+}
+set_error_handler("exception_error_handler");

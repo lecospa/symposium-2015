@@ -2,11 +2,13 @@
 namespace Admin;
 require_once('../../init.php');
 
-class IspeakersInsert extends \View {
+class PersonInsert extends \View {
 	public function post() {
 		$token = $_GET['token'];
-		$auth = \Models\Auth::get(\db::get(), $token);
+		$conn = \db::get();
+		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
+			$type = $_POST['type'];
 			$first_name = $_POST['first_name'];
 			$last_name = $_POST['last_name'];
 			$email = $_POST['email'];
@@ -15,11 +17,15 @@ class IspeakersInsert extends \View {
 				header('Location: ' . TOP . 'admin/index.php?token='.$token);
 				return;
 			}
-
-			$speaker_id = \Models\ISpeakers::insert(\db::get(), $first_name, $last_name, $email);
-			$speaker_token = self::generatorPassword(20);
+			try {
+				$_id = \Models\People::insert(\db::get(), $type, $first_name, $last_name, $email);
+			} catch (\Exception $e) {
+				echo $e->getMessage();
+			}
+			$_token = self::generatorPassword(20);
 			
-			\Models\Auth::insert(\db::get(), 'ispeakers', $speaker_id, $speaker_token);
+			\Models\Auth::insert($conn, 'people', $_id, $_token);
+			$conn->close();
 			header('Location: ' . TOP . 'admin/index.php?token='.$token);
 		}
 	}
@@ -35,4 +41,4 @@ class IspeakersInsert extends \View {
 }
 
 
-new IspeakersInsert;
+new PersonInsert;

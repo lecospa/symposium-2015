@@ -2,10 +2,18 @@
 namespace Models;
 
 class People {
-	function all_with_token($conn) {
-		$stmt = $conn->prepare("SELECT A.`id`, A.`first_name`, A.`last_name`, A.`email`, A.`slide_file`, A.`title`, A.`abstract`, A.`address_datetime`, A.`occupation`, A.`resume`, A.`room`, B.`token`, A.`img` FROM `people` AS A LEFT JOIN `auth` AS B ON A.`id` = B.`id` WHERE B.`scope` = 'people' ORDER BY A.`last_name`");
+	static function all_with_token_by_type($conn, $type) {
+		$stmt = $conn->prepare("SELECT A.`id`, A.`first_name`, A.`last_name`, A.`email`, A.`slide_file`, A.`title`, A.`abstract`, 
+			A.`address_datetime`, A.`occupation`, A.`resume`, A.`room`, B.`token`, A.`img` 
+			FROM `people` AS A LEFT JOIN `auth` AS B ON A.`id` = B.`id` 
+			WHERE B.`scope` = 'people' AND A.`type`=?
+			ORDER BY A.`last_name`"
+		);
+		$stmt->bind_param('s', $type);
 		$stmt->execute();
-		$stmt->bind_result($id, $first_name, $last_name, $email, $slide_file, $title, $abstract, $address_datetime, $occupation, $resume, $room, $token, $img);
+		$stmt->bind_result($id, $first_name, $last_name, $email, $slide_file, 
+			$title, $abstract, $address_datetime, $occupation, $resume, $room, $token, $img
+		);
 		$data = array();
 		while ($stmt->fetch()) {
 			$data[] = array(
@@ -27,14 +35,20 @@ class People {
 				'img' => $img
 			);
 		}
-
 		$stmt->close();
 		return $data;
 	}
-	function all($conn) {
-		$stmt = $conn->prepare("SELECT `first_name`, `last_name`, `email`, `slide_file`, `title`, `abstract`, `address_datetime`, `occupation`, `resume`, `room`, `img` FROM `ispeakers` ORDER BY `last_name`");
+	static function all_by_type($conn, $type) {
+		$stmt = $conn->prepare("SELECT `first_name`, `last_name`, `email`, `slide_file`, `title`, `abstract`, 
+			`address_datetime`, `occupation`, `resume`, `room`, `img` 
+			FROM `people` 
+			WHERE `type`=?
+			ORDER BY `last_name`");
+		$stmt->bind_param('s', $type);
 		$stmt->execute();
-		$stmt->bind_result($first_name, $last_name, $email, $slide_file, $title, $abstract, $address_datetime, $occupation, $resume, $room, $img);
+		$stmt->bind_result($first_name, $last_name, $email, $slide_file, 
+			$title, $abstract, $address_datetime, $occupation, $resume, $room, $img
+		);
 		$data = array();
 		while ($stmt->fetch()) {
 			$data[] = array(
@@ -52,14 +66,17 @@ class People {
 			);
 		}
 		$stmt->close();
-		$conn->close();
 		return $data;
 	}
-	function get($conn, $id) {
-		$stmt = $conn->prepare("SELECT `first_name`, `last_name`, `email`, `title`, `abstract`, `slide_file`, `address_datetime`, `occupation`, `resume`, `room`, `img` FROM `ispeakers` WHERE `id` = ?");
+	static function get($conn, $id) {
+		$stmt = $conn->prepare("SELECT `first_name`, `last_name`, `email`, `title`, `abstract`, 
+			`slide_file`, `address_datetime`, `occupation`, `resume`, `room`, `img`, `type` 
+			FROM `people` WHERE `id` = ?");
 		$stmt->bind_param('s', $id);
 		$stmt->execute();
-		$stmt->bind_result($first_name, $last_name, $email, $title, $abstract, $slide_file, $address_datetime, $occupation, $resume, $room, $img);
+		$stmt->bind_result($first_name, $last_name, $email, $title, $abstract, 
+			$slide_file, $address_datetime, $occupation, $resume, $room, $img, $type
+		);
 		$data = null;
 		if ($stmt->fetch()) {
 			$data = array(
@@ -73,56 +90,52 @@ class People {
 				'occupation' => $occupation,
 				'resume' => $resume,
 				'room' => $room,
-				'img' => $img
+				'img' => $img,
+				'type' => $type
 			);
 		}
 
 		$stmt->close();
-		$conn->close();
 		return $data;
 	}
-	function update_slide_file($conn, $id, $slide_file) {
-		$stmt = $conn->prepare("UPDATE `ispeakers` SET `slide_file` = ? WHERE `id` = ?");
+	static function update_slide_file($conn, $id, $slide_file) {
+		$stmt = $conn->prepare("UPDATE `people` SET `slide_file` = ? WHERE `id` = ?");
 		$stmt->bind_param('ss', $slide_file, $id);
 		$stmt->execute();
 		$stmt->close();
-		$conn->close();
 	}
-	function update_img($conn, $id, $img) {
-		$stmt = $conn->prepare("UPDATE `ispeakers` SET `img` = ? WHERE `id` = ?");
+	static function update_img($conn, $id, $img) {
+		$stmt = $conn->prepare("UPDATE `people` SET `img` = ? WHERE `id` = ?");
 		$stmt->bind_param('ss', $img, $id);
 		$stmt->execute();
 		$stmt->close();
-		$conn->close();
 	}
-	function update_title_abstract($conn, $id, $title, $abstract) {
-		$stmt = $conn->prepare("UPDATE `ispeakers` SET `title` = ?, `abstract` = ? WHERE `id` = ?");
+	static function update_title_abstract($conn, $id, $title, $abstract) {
+		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ? WHERE `id` = ?");
 		$stmt->bind_param('sss', $title, $abstract, $id);
 		$stmt->execute();
 		$stmt->close();
-		$conn->close();
 	}
-	function update_($conn, $id, $title, $abstract, $address_datetime, $occupation, $resume, $room) {
-		$stmt = $conn->prepare("UPDATE `ispeakers` SET `title` = ?, `abstract` = ?, `address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ? WHERE `id` = ?");
-		$stmt->bind_param('sssssss', $title, $abstract, $address_datetime, $occupation, $resume, $room, $id);
+	static function update_($conn, $id, $first_name, $last_name, $title, $abstract, $address_datetime, $occupation, $resume, $room) {
+		$stmt = $conn->prepare("UPDATE `people` SET `first_name` = ?, `last_name` = ?, `title` = ?, `abstract` = ?, `address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ? WHERE `id` = ?");
+		$stmt->bind_param('sssssssss', $first_name, $last_name, $title, $abstract, $address_datetime, $occupation, $resume, $room, $id);
 		$stmt->execute();
 		$stmt->close();
-		$conn->close();
 	}
-	function insert($conn, $first_name, $last_name, $email) {
-		$stmt = $conn->prepare("INSERT INTO `ispeakers` (`first_name`, `last_name`, `email`) VALUES (?, ?, ?)");
-		$stmt->bind_param('sss', $first_name, $last_name, $email);
-		$stmt->execute();
+	static function insert($conn, $type, $first_name, $last_name, $email) {
+		$stmt = $conn->prepare("INSERT INTO `people` (`type`, `first_name`, `last_name`, `email`) VALUES (?, ?, ?, ?)");
+		$stmt->bind_param('ssss', $type, $first_name, $last_name, $email);
+		if (!$stmt->execute()) {
+			throw new \Exception($stmt->error);
+		}
 		$id = $stmt->insert_id;
 		$stmt->close();
-		$conn->close();
 		return $id;
 	}
-	function delete($conn, $id) {
-		$stmt = $conn->prepare("DELETE FROM `ispeakers` WHERE `id`=?");
+	static function delete($conn, $id) {
+		$stmt = $conn->prepare("DELETE FROM `people` WHERE `id`=?");
 		$stmt->bind_param('s', $id);
 		$stmt->execute();
 		$stmt->close();
-		$conn->close();
 	}
 }
