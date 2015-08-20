@@ -9,8 +9,17 @@ class Index extends \View {
 		if ($auth['scope'] == 'sudo') {
 			$conn = \db::get();
 			$plenary_speakers = \Models\People::all_with_token_by_type($conn, 'Plenary');
+			$iac_chairs = \Models\People::all_with_token_by_type($conn, 'IACCHAIR');
+			$iacs = \Models\People::all_with_token_by_type($conn, 'IAC');
+			$loc_chairs = \Models\People::all_with_token_by_type($conn, 'LOCCHAIR');
+			$locs = \Models\People::all_with_token_by_type($conn, 'LOC');
 			$conn->close();
+
 			$this->smarty->assign('plenary_speakers', $plenary_speakers);
+			$this->smarty->assign('iac_chairs', $iac_chairs);
+			$this->smarty->assign('iacs', $iacs);
+			$this->smarty->assign('loc_chairs', $loc_chairs);
+			$this->smarty->assign('locs', $locs);
 			$this->smarty->assign('token', $token);
 			$this->smarty->display('admin/index.html');
 		} else {
