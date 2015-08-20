@@ -1,9 +1,9 @@
 <?php
 namespace Models;
 
-class ISpeakers {
+class People {
 	function all_with_token($conn) {
-		$stmt = $conn->prepare("SELECT A.`id`, A.`first_name`, A.`last_name`, A.`email`, A.`slide_file`, A.`title`, A.`abstract`, A.`address_datetime`, A.`occupation`, A.`resume`, A.`room`, B.`token`, A.`img` FROM `ispeakers` AS A LEFT JOIN `auth` AS B ON A.`id` = B.`id` WHERE B.`scope` = 'ispeakers' ORDER BY A.`last_name`");
+		$stmt = $conn->prepare("SELECT A.`id`, A.`first_name`, A.`last_name`, A.`email`, A.`slide_file`, A.`title`, A.`abstract`, A.`address_datetime`, A.`occupation`, A.`resume`, A.`room`, B.`token`, A.`img` FROM `people` AS A LEFT JOIN `auth` AS B ON A.`id` = B.`id` WHERE B.`scope` = 'people' ORDER BY A.`last_name`");
 		$stmt->execute();
 		$stmt->bind_result($id, $first_name, $last_name, $email, $slide_file, $title, $abstract, $address_datetime, $occupation, $resume, $room, $token, $img);
 		$data = array();
@@ -22,14 +22,13 @@ class ISpeakers {
 				'room' => $room,
 				'auth' => array(
 					'token' => $token,
-					'scope' => 'ispeakers'
+					'scope' => 'people'
 				),
 				'img' => $img
 			);
 		}
 
 		$stmt->close();
-		$conn->close();
 		return $data;
 	}
 	function all($conn) {

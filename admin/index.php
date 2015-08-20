@@ -7,8 +7,10 @@ class Index extends \View {
 		$token = $_GET['token'];
 		$auth = \Models\Auth::get(\db::get(), $token);
 		if ($auth['scope'] == 'sudo') {
-
-			$ispeakers = \Models\ISpeakers::all_with_token(\db::get());
+			$conn = \db::get();
+			$ispeakers = \Models\People::all_with_token($conn);
+			$conn->close();
+			
 			$this->smarty->assign('ispeakers', $ispeakers);
 
 			$this->smarty->assign('token', $token);
