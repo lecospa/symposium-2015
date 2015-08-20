@@ -24,6 +24,30 @@
 	{/foreach}
 </div>
 
+<div class="page-header">
+	<h1>Local Organizing Committee:</h1>
+</div>
+<div class="row">
+	{foreach $loc_chairs as $person}
+		<div class="col-md-3">
+			<div class="thumbnail" style="height: 220px;">
+				<img src="{$smarty.const.TOP}uploads/{$person['img']}" class="img-responsive img-circle" style="height: 150px;">
+				<h4>{$person['first_name']|escape} {$person['last_name']|escape} (Chair)</h4>
+				<p>{$person['email']|escape}</p>
+			</div>
+		</div>
+	{/foreach}
+	{foreach $locs as $person}
+		<div class="col-md-3">
+			<div class="thumbnail" style="height: 220px;">
+				<img src="{$smarty.const.TOP}uploads/{$person['img']}" class="img-responsive img-circle" style="height: 150px;">
+				<h4>{$person['first_name']|escape} {$person['last_name']|escape}</h4>
+				<p>{$person['email']|escape}</p>
+			</div>
+		</div>
+	{/foreach}
+</div>
+
 
 <div class="page-header">
 	<h1>International Advisory Committee</h1>
