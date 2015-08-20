@@ -122,6 +122,12 @@ class People {
 		$stmt->execute();
 		$stmt->close();
 	}
+	static function update_limited($conn, $id, $title, $abstract, $address_datetime, $occupation, $resume, $room) {
+		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ? WHERE `id` = ?");
+		$stmt->bind_param('sssssss', $title, $abstract, $address_datetime, $occupation, $resume, $room, $id);
+		$stmt->execute();
+		$stmt->close();
+	}
 	static function insert($conn, $type, $first_name, $last_name, $email) {
 		$stmt = $conn->prepare("INSERT INTO `people` (`type`, `first_name`, `last_name`, `email`) VALUES (?, ?, ?, ?)");
 		$stmt->bind_param('ssss', $type, $first_name, $last_name, $email);

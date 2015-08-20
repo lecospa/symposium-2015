@@ -17,8 +17,8 @@
 			<th>Photo</th>
 			<th>Email</th>
 			<th>Title</th>
-			<th>Abstract</th>
 			<th>Login URL</th>
+			<th></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -29,8 +29,8 @@
 			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$person['img']}" style="max-height: 50px;"></td>
 			<td>{$person['email']|escape}</td>
 			<td>{$person['title']|escape}</td>
-			<td>{$person['abstract']|escape|nl2br}</td>
 			<td><a href="{$smarty.const.TOP}person/main.php?token={$person['auth']['token']}">{$smarty.const.TOP}person/main.php?token={$person['auth']['token']}</a></td>
+			<td><a class="btn btn-default" href="{$smarty.const.TOP}admin/person/edit.php?token={$token}&id={$person['id']}">編輯</a></td>
 			<td>
 				<form method="POST" action="{$smarty.const.TOP}admin/person/delete.php?token={$token}">
 					<input type="hidden" name="id" value="{$person['id']}" />
@@ -49,8 +49,8 @@
 			<th>Photo</th>
 			<th>Email</th>
 			<th>Title</th>
-			<th>Abstract</th>
 			<th>Login URL</th>
+			<th></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -61,8 +61,8 @@
 			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$person['img']}" style="max-height: 50px;"></td>
 			<td>{$person['email']|escape}</td>
 			<td>{$person['title']|escape}</td>
-			<td>{$person['abstract']|escape|nl2br}</td>
 			<td><a href="{$smarty.const.TOP}person/main.php?token={$person['auth']['token']}">{$smarty.const.TOP}person/main.php?token={$person['auth']['token']}</a></td>
+			<td><a class="btn btn-default" href="{$smarty.const.TOP}admin/person/edit.php?token={$token}&id={$person['id']}">編輯</a></td>
 			<td>
 				<form method="POST" action="{$smarty.const.TOP}admin/person/delete.php?token={$token}">
 					<input type="hidden" name="id" value="{$person['id']}" />
@@ -71,23 +71,37 @@
 			</td>
 		</tr>
 		{/foreach}
+	</tbody>
+</table>
+<h2>Add ...</h2>
+<form class="form-inline" action="{$smarty.const.TOP}admin/person/insert.php?token={$token}" method="POST">
+<table class="table table-hover" style="background-color: white;">
+	<thead>
 		<tr>
-			<td colspan="7">
-				<form class="form-inline" action="{$smarty.const.TOP}admin/person/insert.php?token={$token}" method="POST">
-					<input type="hidden" name="type" value="Plenary">
-					<select class="form-control" name="type">
-						<option value="Normal">Attendee</option>
-						<option value="Plenary">Plenary Session Speaker</option>
-						<option value="Parallel">Parallel Session Speaker</option>
-						<option value="Poster">Poster</option>
-					</select>
-					<input type="text" class="form-control" name="first_name" placeholder="Speaker First Name">
-					<input type="text" class="form-control" name="last_name" placeholder="Speaker Last Name">
-					<input type="email" class="form-control" name="email" placeholder="Speaker Email">
-					<button type="submit" class="btn btn-primary">Create New Speaker</button>
-				</form>
+			<th>Type</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<select class="form-control" name="type">
+					<option value="Normal">Attendee</option>
+					<option value="Plenary">Plenary Session Speaker</option>
+					<option value="Parallel">Parallel Session Speaker</option>
+					<option value="Poster">Poster</option>
+				</select>
 			</td>
+			<td>
+				<input type="text" class="form-control" name="first_name" placeholder="Speaker First Name">
+				<input type="text" class="form-control" name="last_name" placeholder="Speaker Last Name">
+			</td>
+			<td><input type="email" class="form-control" name="email" placeholder="Speaker Email"></td>
+			<td><button type="submit" class="btn btn-primary">Create New Speaker</button></td>
 		</tr>
 	</tbody>
 </table>
+</form>
 {/block}
