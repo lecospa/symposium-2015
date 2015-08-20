@@ -9,7 +9,7 @@
 			<div class="thumbnail" style="height: 220px;">
 				<img src="{$smarty.const.TOP}uploads/{$person['img']}" class="img-responsive img-circle" style="height: 150px;">
 				<h4>{$person['first_name']|escape} {$person['last_name']|escape}</h4>
-				<p>Institution: {$ispeaker['occupation']|escape}</p>
+				<p>Institution: {$person['occupation']|escape}</p>
 			</div>
 		</div>
 	{/foreach}
