@@ -8,14 +8,10 @@ class Index extends \View {
 		$auth = \Models\Auth::get(\db::get(), $token);
 		if ($auth['scope'] == 'sudo') {
 			$conn = \db::get();
-			$ispeakers = \Models\People::all_with_token($conn);
+			$plenary_speakers = \Models\People::all_with_token_by_type($conn, 'Plenary');
 			$conn->close();
-			
-			$this->smarty->assign('ispeakers', $ispeakers);
-
+			$this->smarty->assign('plenary_speakers', $plenary_speakers);
 			$this->smarty->assign('token', $token);
-
-
 			$this->smarty->display('admin/index.html');
 		} else {
 			header('Location: ' . TOP);

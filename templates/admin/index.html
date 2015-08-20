@@ -9,8 +9,8 @@
 <div class="page-header">
 	<h1>Admin</h1>
 </div>
-<div style="background-color: white;">
-<table class="table table-hover">
+<h2>Plenary Speakers</h2>
+<table class="table table-hover" style="background-color: white;">
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -23,17 +23,17 @@
 		</tr>
 	</thead>
 	<tbody>
-		{foreach $ispeakers as $ispeaker}
+		{foreach $plenary_speakers as $person}
 		<tr>
-			<td>{$ispeaker['first_name']|escape} {$ispeaker['last_name']|escape}</td>
-			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$ispeaker['img']}" style="max-height: 50px;"></td>
-			<td>{$ispeaker['email']|escape}</td>
-			<td>{$ispeaker['title']|escape}</td>
-			<td>{$ispeaker['abstract']|escape|nl2br}</td>
-			<td><a href="{$smarty.const.TOP}ispeaker/main.php?token={$ispeaker['auth']['token']}">{$smarty.const.TOP}ispeaker/main.php?token={$ispeaker['auth']['token']}</a></td>
+			<td>{$person['first_name']|escape} {$person['last_name']|escape}</td>
+			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$person['img']}" style="max-height: 50px;"></td>
+			<td>{$person['email']|escape}</td>
+			<td>{$person['title']|escape}</td>
+			<td>{$person['abstract']|escape|nl2br}</td>
+			<td><a href="{$smarty.const.TOP}person/main.php?token={$person['auth']['token']}">{$smarty.const.TOP}person/main.php?token={$person['auth']['token']}</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}admin/ispeaker/delete.php?token={$token}">
-					<input type="hidden" name="id" value="{$ispeaker['id']}" />
+				<form method="POST" action="{$smarty.const.TOP}admin/person/delete.php?token={$token}">
+					<input type="hidden" name="id" value="{$person['id']}" />
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">Delete</button>
 				</form>
 			</td>
@@ -41,7 +41,8 @@
 		{/foreach}
 		<tr>
 			<td colspan="7">
-				<form class="form-inline" action="{$smarty.const.TOP}admin/ispeaker/insert.php?token={$token}" method="POST">
+				<form class="form-inline" action="{$smarty.const.TOP}admin/person/insert.php?token={$token}" method="POST">
+					<input type="hidden" name="type" value="Plenary">
 					<input type="text" class="form-control" name="first_name" placeholder="Speaker First Name">
 					<input type="text" class="form-control" name="last_name" placeholder="Speaker Last Name">
 					<input type="email" class="form-control" name="email" placeholder="Speaker Email">
@@ -51,5 +52,4 @@
 		</tr>
 	</tbody>
 </table>
-</div>
 {/block}

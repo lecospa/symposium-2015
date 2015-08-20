@@ -7,9 +7,10 @@ class Upload extends \View {
 	}
 	public function post() {
 		$token = $_POST['token'];
-		$auth = \Models\Auth::get(\db::get(), $token);
+		$conn = \db::get();
+		$auth = \Models\Auth::get($conn, $token);
 		
-		if ($auth['scope'] != 'ispeakers') {
+		if ($auth['scope'] != 'people') {
 			header('location: ispeakers.php');
 			exit();
 		}
@@ -44,9 +45,9 @@ class Upload extends \View {
 			}
 
 			if ($target == 'slide') {
-				\Models\ISpeakers::update_slide_file(get_connection(), $auth['id'], $filename);
+				\Models\People::update_slide_file($conn, $auth['id'], $filename);
 			} else if ($target == 'img') {
-				\Models\ISpeakers::update_img(get_connection(), $auth['id'], $filename);
+				\Models\People::update_img($conn, $auth['id'], $filename);
 			}
 
 
