@@ -70,12 +70,14 @@ class People {
 	}
 	static function get($conn, $id) {
 		$stmt = $conn->prepare("SELECT `first_name`, `last_name`, `email`, `title`, `abstract`, 
-			`slide_file`, `address_datetime`, `occupation`, `resume`, `room`, `img`, `type` 
+			`slide_file`, `address_datetime`, `occupation`, `resume`, `room`, `img`, `type`, 
+			`session_code`
 			FROM `people` WHERE `id` = ?");
 		$stmt->bind_param('s', $id);
 		$stmt->execute();
 		$stmt->bind_result($first_name, $last_name, $email, $title, $abstract, 
-			$slide_file, $address_datetime, $occupation, $resume, $room, $img, $type
+			$slide_file, $address_datetime, $occupation, $resume, $room, $img, $type, 
+			$session_code
 		);
 		$data = null;
 		if ($stmt->fetch()) {
@@ -91,7 +93,8 @@ class People {
 				'resume' => $resume,
 				'room' => $room,
 				'img' => $img,
-				'type' => $type
+				'type' => $type,
+				'session_code' => $session_code
 			);
 		}
 
@@ -116,15 +119,21 @@ class People {
 		$stmt->execute();
 		$stmt->close();
 	}
-	static function update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room) {
-		$stmt = $conn->prepare("UPDATE `people` SET `first_name` = ?, `last_name` = ?, `email` = ?, `title` = ?, `abstract` = ?, `address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ? WHERE `id` = ?");
-		$stmt->bind_param('ssssssssss', $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room, $id);
+	
+	static function update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code, $type) {
+		$stmt = $conn->prepare("UPDATE `people` SET `first_name` = ?, `last_name` = ?, `email` = ?, `title` = ?, `abstract` = ?,
+			`address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ?, `session_code`=?, `type`=? WHERE `id` = ?"
+		);
+		$stmt->bind_param('ssssssssssss', $first_name, $last_name, $email, $title, $abstract, 
+			$address_datetime, $occupation, $resume, $room, $session_code, $type, $id
+		);
 		$stmt->execute();
 		$stmt->close();
 	}
-	static function update_limited($conn, $id, $title, $abstract, $address_datetime, $occupation, $resume, $room) {
-		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ? WHERE `id` = ?");
-		$stmt->bind_param('sssssss', $title, $abstract, $address_datetime, $occupation, $resume, $room, $id);
+
+	static function update_limited($conn, $id, $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code) {
+		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ?, `session_code`=? WHERE `id` = ?");
+		$stmt->bind_param('ssssssss', $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code, $id);
 		$stmt->execute();
 		$stmt->close();
 	}

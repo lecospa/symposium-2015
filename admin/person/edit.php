@@ -34,7 +34,9 @@ class Edit extends \View {
 			$occupation = $_POST['inputoccupation'];
 			$resume = $_POST['inputresume'];
 			$room = $_POST['inputroom'];
-			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room);
+			$session_code = $_POST['inputsessioncode'];
+			$type = $_POST['inputtype'];
+			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code, $type);
 
 			$info = \Models\People::get($conn, $id);
 			$this->smarty->assign('person', $info);
