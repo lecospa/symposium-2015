@@ -1,4 +1,4 @@
-{extends file='../../others.tpl'}
+{extends file='../../admin.tpl'}
 {block name=main}
 <div class="page-header">
 	<h1>Title & Abstract Submission</h1>
@@ -16,7 +16,6 @@
 		<label class="col-sm-2 control-label larger-font">Email</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputEmail" placeholder="Email" value="{$person['email']|escape}" name="inputemail">
-			{*<p class="form-control-static">{$person['email']|escape}</p>*}
 		</div>
 	</div>
 	<div class="form-group">
@@ -56,6 +55,27 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="inputSessionCode" class="col-sm-2 control-label larger-font">Session Code</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="inputSessionCode" value="{$person['room']|escape}" name="inputsessioncode">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputType" class="col-sm-2 control-label larger-font">Type</label>
+		<div class="col-sm-10">
+			<select class="form-control" name="inputtype" id="inputType">
+				<option value="Normal" {if $person['type'] eq 'Normal'}selected{/if}>Attendee</option>
+				<option value="Plenary" {if $person['type'] eq 'Plenary'}selected{/if}>Plenary Session Speaker</option>
+				<option value="Parallel" {if $person['type'] eq 'Parallel'}selected{/if}>Parallel Session Speaker</option>
+				<option value="Poster" {if $person['type'] eq 'Poster'}selected{/if}>Poster</option>
+				<option value="IACCHAIR" {if $person['type'] eq 'IACCHAIR'}selected{/if}>IAC Chair</option>
+				<option value="IAC" {if $person['type'] eq 'IAC'}selected{/if}>IAC</option>
+				<option value="LOCCHAIR" {if $person['type'] eq 'LOCCHAIR'}selected{/if}>LOC Chair</option>
+				<option value="LOC" {if $person['type'] eq 'LOC'}selected{/if}>LOC</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<button type="submit" class="btn btn-primary">Update Information</button>
 		</div>
@@ -63,22 +83,22 @@
 </form>
 <div class="row">
 	<div class="col-md-6">
-					<p class="form-control-static">
-						{if $person['slide_file']}
-							<a href="{$smarty.const.TOP}uploads/{$person['slide_file']}" target="_blank">{$person['slide_file']}</a>
-						{else}
-							No
-						{/if}
-					</p>
+		<p class="form-control-static">
+			{if $person['slide_file']}
+				<a href="{$smarty.const.TOP}uploads/{$person['slide_file']}" target="_blank">{$person['slide_file']}</a>
+			{else}
+				No
+			{/if}
+		</p>
 	</div>
 	<div class="col-md-6">
-					<p class="form-control-static">
-						{if $person['img']}
-							<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}uploads/{$person['img']}" />
-						{else}
-							No
-						{/if}
-					</p>
+		<p class="form-control-static">
+			{if $person['img']}
+				<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}uploads/{$person['img']}" />
+			{else}
+				No
+			{/if}
+		</p>
 	</div>
 </div>
 {/nocache}

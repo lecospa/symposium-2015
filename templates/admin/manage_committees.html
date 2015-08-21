@@ -1,98 +1,26 @@
-{extends file='../others.tpl'}
-
-{block name=title}Second LeCosPA Symposium - Admin{/block}
-
-{block name=main_style}
-{/block}
+{extends file='admin.tpl'}
 
 {block name=main}
 <div class="page-header">
 	<h1>Admin - Committees</h1>
 </div>
-<table class="table table-hover" style="background-color: white;">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Photo</th>
-			<th>Email</th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		{foreach $iac_chairs as $person}
-		<tr>
-			<td>{$person['first_name']|escape} {$person['last_name']|escape} (IAC Chair)</td>
-			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$person['img']}" style="max-height: 50px;"></td>
-			<td>{$person['email']|escape}</td>
-			<td><a class="btn btn-default" href="{$smarty.const.TOP}person/main.php?token={$person['auth']['token']}">編輯</a></td>
-			<td>
-				<form method="POST" action="{$smarty.const.TOP}admin/person/delete.php?token={$token}">
-					<input type="hidden" name="id" value="{$person['id']}" />
-					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">Delete</button>
-				</form>
-			</td>
-		</tr>
-		{/foreach}
-		{foreach $iacs as $person}
-		<tr>
-			<td>{$person['first_name']|escape} {$person['last_name']|escape} (IAC)</td>
-			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$person['img']}" style="max-height: 50px;"></td>
-			<td>{$person['email']|escape}</td>
-			<td><a class="btn btn-default" href="{$smarty.const.TOP}person/main.php?token={$person['auth']['token']}">編輯</a></td>
-			<td>
-				<form method="POST" action="{$smarty.const.TOP}admin/person/delete.php?token={$token}">
-					<input type="hidden" name="id" value="{$person['id']}" />
-					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">Delete</button>
-				</form>
-			</td>
-		</tr>
-		{/foreach}
-		{foreach $loc_chairs as $person}
-		<tr>
-			<td>{$person['first_name']|escape} {$person['last_name']|escape} (LOC Chair)</td>
-			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$person['img']}" style="max-height: 50px;"></td>
-			<td>{$person['email']|escape}</td>
-			<td><a class="btn btn-default" href="{$smarty.const.TOP}person/main.php?token={$person['auth']['token']}">編輯</a></td>
-			<td>
-				<form method="POST" action="{$smarty.const.TOP}admin/person/delete.php?token={$token}">
-					<input type="hidden" name="id" value="{$person['id']}" />
-					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">Delete</button>
-				</form>
-			</td>
-		</tr>
-		{/foreach}
-		{foreach $locs as $person}
-		<tr>
-			<td>{$person['first_name']|escape} {$person['last_name']|escape} (LOC)</td>
-			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$person['img']}" style="max-height: 50px;"></td>
-			<td>{$person['email']|escape}</td>
-			<td><a class="btn btn-default" href="{$smarty.const.TOP}person/main.php?token={$person['auth']['token']}">編輯</a></td>
-			<td>
-				<form method="POST" action="{$smarty.const.TOP}admin/person/delete.php?token={$token}">
-					<input type="hidden" name="id" value="{$person['id']}" />
-					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">Delete</button>
-				</form>
-			</td>
-		</tr>
-		{/foreach}
-		<tr>
-			<td colspan="5">
-				<form class="form-inline" action="{$smarty.const.TOP}admin/person/insert.php?token={$token}" method="POST">
-					<input type="text" class="form-control" name="first_name" placeholder="Committee First Name">
-					<input type="text" class="form-control" name="last_name" placeholder="Committee Last Name">
-					<input type="email" class="form-control" name="email" placeholder="Committee Email">
-					<select class="form-control" name="type">
-						<option value=""></option>
-						<option value="IACCHAIR">IAC Chair</option>
-						<option value="IAC">IAC</option>
-						<option value="LOCCHAIR">LOC Chair</option>
-						<option value="LOC">LOC</option>
-					</select>
-					<button type="submit" class="btn btn-primary">Create New Committee</button>
-				</form>
-			</td>
-		</tr>
-	</tbody>
-</table>
+{include file='./committees_table.part' people=$iac_chairs}
+{include file='./committees_table.part' people=$iacs}
+{include file='./committees_table.part' people=$loc_chairs}
+{include file='./committees_table.part' people=$locs}
+<form class="form-inline" action="{$smarty.const.TOP}admin/person/insert.php?token={$token}" method="POST">
+	<input type="text" class="form-control" name="first_name" placeholder="Committee First Name">
+	<input type="text" class="form-control" name="last_name" placeholder="Committee Last Name">
+	<input type="email" class="form-control" name="email" placeholder="Committee Email">
+	<select class="form-control" name="type">
+		<option value=""></option>
+		<option value="IACCHAIR">IAC Chair</option>
+		<option value="IAC">IAC</option>
+		<option value="LOCCHAIR">LOC Chair</option>
+		<option value="LOC">LOC</option>
+	</select>
+	<button type="submit" class="btn btn-primary">Create New Committee</button>
+	<br />
+	<br />
+</form>
 {/block}

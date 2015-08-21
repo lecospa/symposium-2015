@@ -28,7 +28,8 @@ class MMain extends \View {
 			$occupation = $_POST['inputoccupation'];
 			$resume = $_POST['inputresume'];
 			$room = $_POST['inputroom'];
-			\Models\People::update_limited($conn, $auth['id'], $title, $abstract, $address_datetime, $occupation, $resume, $room);
+			$session_code = $_POST['inputsessioncode'];
+			\Models\People::update_limited($conn, $auth['id'], $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code);
 
 			$info = \Models\People::get($conn, $auth['id']);
 			$this->smarty->assign('person', $info);
