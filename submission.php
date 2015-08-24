@@ -24,6 +24,9 @@ class Submission extends View {
 			$email = $_POST['email'];
 			$first_name = $_POST['first_name'];
 			$last_name = $_POST['last_name'];
+			$title = $_POST['inputtitle'];
+			$abstract = $_POST['inputabstract'];
+			$session_code = $_POST['inputsessioncode'];
 			if (empty($first_name)) {
 				header('Location: ' . TOP . 'admin/index.php?token='.$token);
 				return;
@@ -36,6 +39,7 @@ class Submission extends View {
 			$_token = self::generatorPassword(8);
 			
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
+			\Models\People::update_limited($conn, $_id, $title, $abstract, $session_code);
 			$conn->close();
 			header('Location: ' . TOP . 'person/main.php?token='.$_token);
 		}
