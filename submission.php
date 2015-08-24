@@ -18,12 +18,16 @@ class Submission extends View {
 		$token = $_GET['token'];
 		$conn = \db::get();
 		$auth = \Models\Auth::get($conn, $token);
+		$logger = new \Models\Logging($conn, $_SERVER);
 
 		if ($auth['scope'] == 'people_an') {
 			$type = $_POST['type'];
 			$email = $_POST['email'];
 			$first_name = $_POST['first_name'];
 			$last_name = $_POST['last_name'];
+			$title = $_POST['title'];
+			$abstract = $_POST['abstract'];
+			$session_code = $_POST['session_code'];
 			if (empty($first_name)) {
 				header('Location: ' . TOP . 'admin/index.php?token='.$token);
 				return;
@@ -36,6 +40,29 @@ class Submission extends View {
 			$_token = self::generatorPassword(8);
 			
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
+			\Models\People::update_limited($conn, $_id, $title, $abstract, $session_code);
+			try {
+				$logger->info('New Person', json_encode(array('id' => $_id)));
+			} catch (\Exception $e) {
+				echo $e->getMessage();
+			}
+			{
+				$to = $email;
+				$subject = '[Lecospa] Passcode for title and abstract modification - 2nd Symposium';
+				$message = 
+					"Dear $first_name, \r\n" . 
+					"Thank you for your title and abstract submission.\r\n" . "\r\n" . 
+					"We provide you the 8 characters Passcode ``$_token'' to modifying your submission.\r\n" . 
+					"The passcode is required entering into \r\nhttp://lecospa.ntu.edu.tw/symposium/2015/submission.php .\r\n" . 
+					"Or, you can use the following link \r\nhttp://lecospa.ntu.edu.tw/symposium/2015/person/main.php?token=$_token to modify your submission.\r\n" . "\r\n" . 
+					"Sincerely, \r\nLecospa 2nd Symposium Team";
+				$headers = 'From: no-reply@lecospa.ntu.edu.tw' . "\r\n" . 'Reply-To: symposium@lecospa.ntu.edu.tw';
+				
+				$logger->info('Email', json_encode(array('id' => $_id, 'email' => $to, 'message' => $message)));
+
+				mail($to, $subject, $message, $headers);
+			}
+
 			$conn->close();
 			header('Location: ' . TOP . 'person/main.php?token='.$_token);
 		}

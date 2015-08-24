@@ -24,12 +24,8 @@ class MMain extends \View {
 		if ($auth['scope'] == 'people') {
 			$title = $_POST['inputtitle'];
 			$abstract = $_POST['inputabstract'];
-			$address_datetime = $_POST['inputaddressdatetime'];
-			$occupation = $_POST['inputoccupation'];
-			$resume = $_POST['inputresume'];
-			$room = $_POST['inputroom'];
 			$session_code = $_POST['inputsessioncode'];
-			\Models\People::update_limited($conn, $auth['id'], $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code);
+			\Models\People::update_limited($conn, $auth['id'], $title, $abstract, $session_code);
 
 			$info = \Models\People::get($conn, $auth['id']);
 			$this->smarty->assign('person', $info);

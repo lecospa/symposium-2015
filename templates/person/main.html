@@ -4,17 +4,17 @@
 	<h1>Title & Abstract Submission</h1>
 </div>
 {nocache}
-<form action="main.php?token={$token}" method="POST" class="form-horizontal larger-font">
+<form action="main.php?token={$token}" method="POST" class="form-horizontal">
 	<div class="form-group">
 		<label class="col-sm-2 control-label larger-font">Name</label>
 		<div class="col-sm-10">
-			<p class="form-control-static">{$person['first_name']|escape} {$person['last_name']|escape}</p>
+			<p class="form-control-static larger-font">{$person['first_name']|escape} {$person['last_name']|escape}</p>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-2 control-label larger-font">Email</label>
 		<div class="col-sm-10">
-			<p class="form-control-static">{$person['email']|escape}</p>
+			<p class="form-control-static larger-font">{$person['email']|escape}</p>
 		</div>
 	</div>
 	<div class="form-group">
@@ -30,33 +30,21 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputAddressDateTime" class="col-sm-2 control-label larger-font">Address Time</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputAddressDateTime" placeholder="2015-06-02 14:00:00" value="{$person['address_datetime']|escape}" name="inputaddressdatetime">
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="inputOccupation" class="col-sm-2 control-label larger-font">Institution</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputOccupation" placeholder="Your working occupation" value="{$person['occupation']|escape}" name="inputoccupation">
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="inputResume" class="col-sm-2 control-label larger-font">Position</label>
-		<div class="col-sm-10">
-			<textarea id="inputResume" class="form-control" rows="5" name="inputresume">{$person['resume']|escape}</textarea>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="inputRoom" class="col-sm-2 control-label larger-font">Room</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputRoom" value="{$person['room']|escape}" name="inputroom">
-		</div>
-	</div>
-	<div class="form-group">
 		<label for="inputSessionCode" class="col-sm-2 control-label larger-font">Session Code</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputSessionCode" value="{$person['session_code']|escape}" name="inputsessioncode">
+		<div class="col-sm-3">
+			<select id="inputSessionCode" name="inputsessioncode" class="form-control">
+				<option value="" {if $person['session_code'] eq ''}selected{/if}></option>
+				<option value="MS" {if $person['session_code'] eq 'MS'}selected{/if}>MS</option>
+				<option value="OT" {if $person['session_code'] eq 'OT'}selected{/if}>OT</option>
+				<option value="OC" {if $person['session_code'] eq 'OC'}selected{/if}>OC</option>
+				<option value="CE" {if $person['session_code'] eq 'CE'}selected{/if}>CE</option>
+				<option value="CF" {if $person['session_code'] eq 'CF'}selected{/if}>CF</option>
+				<option value="DD" {if $person['session_code'] eq 'DD'}selected{/if}>DD</option>
+				<option value="BH" {if $person['session_code'] eq 'BH'}selected{/if}>BH</option>
+				<option value="HP" {if $person['session_code'] eq 'HP'}selected{/if}>HP</option>
+				<option value="AM" {if $person['session_code'] eq 'AM'}selected{/if}>AM</option>
+				<option value="EQ" {if $person['session_code'] eq 'EQ'}selected{/if}>EQ</option>
+			</select>
 		</div>
 	</div>
 	<div class="form-group">
@@ -65,13 +53,14 @@
 		</div>
 	</div>
 </form>
+<hr />
 <div class="row">
 	<div class="col-md-6">
 		<form enctype="multipart/form-data" action="upload.php?target=slide" method="POST" class="form-horizontal">
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Slide</label>
+				<label class="col-sm-2 control-label larger-font">Slide</label>
 				<div class="col-sm-10">
-					<p class="form-control-static">
+					<p class="form-control-static larger-font">
 						{if $person['slide_file']}
 							<a href="{$smarty.const.TOP}uploads/{$person['slide_file']}" target="_blank">{$person['slide_file']}</a>
 						{else}
@@ -81,7 +70,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputSlidefile" class="col-sm-2 control-label">Upload Slide</label>
+				<label for="inputSlidefile" class="col-sm-2 control-label larger-font">Upload</label>
 				<div class="col-sm-10">
 					<input name="file" id="inputSlidefile" type="file" class="form-control" />
 				</div>
@@ -97,9 +86,9 @@
 	<div class="col-md-6">
 		<form enctype="multipart/form-data" action="upload.php?target=img" method="POST" class="form-horizontal">
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Photos</label>
+				<label class="col-sm-2 control-label larger-font">Photos</label>
 				<div class="col-sm-10">
-					<p class="form-control-static">
+					<p class="form-control-static larger-font">
 						{if $person['img']}
 							<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}uploads/{$person['img']}" />
 						{else}
@@ -109,7 +98,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputImg" class="col-sm-2 control-label">Upload Photos</label>
+				<label for="inputImg" class="col-sm-2 control-label larger-font">Upload</label>
 				<div class="col-sm-10">
 					<input name="file" id="inputImg" type="file" class="form-control" />
 				</div>
