@@ -17,8 +17,8 @@ if (__DIR__ == '/var/www/lecospa.test.mar98.tk') {
 	define('TOP', 'http://lecospa.test.mar98.tk/');
 } else if (__DIR__ == '/var/www/lecospa_dev.test.mar98.tk') {
 	define('TOP', 'http://lecospa_dev.test.mar98.tk/');
-} else if (__DIR__ == '/home/ycchen/public_html/symposium-2015') {
-	define('TOP', 'http://nas.mar98.tk/~ycchen/symposium-2015/');
+} else if (__DIR__ == '/var/www/lecospa.brtsi.twbbs.org') {
+	define('TOP', 'http://lecospa.brtsi.twbbs.org/');
 } else {
 	define('TOP', 'http://lecospa.ntu.edu.tw/symposium/2015/');
 }
