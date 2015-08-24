@@ -131,9 +131,9 @@ class People {
 		$stmt->close();
 	}
 
-	static function update_limited($conn, $id, $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code) {
-		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ?, `session_code`=? WHERE `id` = ?");
-		$stmt->bind_param('ssssssss', $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code, $id);
+	static function update_limited($conn, $id, $title, $abstract, $session_code) {
+		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `session_code`=? WHERE `id` = ?");
+		$stmt->bind_param('ssss', $title, $abstract, $session_code, $id);
 		$stmt->execute();
 		$stmt->close();
 	}
