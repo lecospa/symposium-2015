@@ -1,0 +1,16 @@
+{extends file='others.tpl'}
+{block name=main}
+<div class="page-header">
+	<h1>Parallel Sessions</h1>
+</div>
+<div class="row">
+	<div class="list-group">
+	{foreach $sessions as $session}
+		<a href="{$smarty.const.TOP}session/view.php?id={$session['id']}" class="list-group-item">
+			<h4 class="list-group-item-heading">{$session['title'][0]['value']|escape}</h4>
+			<p class="list-group-item-text"></p>
+		</a>
+	{/foreach}
+	</div>
+</div>
+{/block}
