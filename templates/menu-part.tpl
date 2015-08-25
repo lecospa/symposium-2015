@@ -4,7 +4,7 @@
 <li {if $scope eq 'Topics'}class="active"{/if}><a href="{$smarty.const.TOP}topics.php">Topics</a></li>
 <li {if $scope eq 'Program'}class="active"{/if}><a href="{$smarty.const.TOP}program.php">Conference Program</a></li>
 <li {if $scope eq 'Plenary'}class="active"{/if}><a href="{$smarty.const.TOP}plenary_speakers.php">Plenary Session</a></li>
-<li {if $scope eq 'I2Speakers'}class="active"{/if}><a href="{$smarty.const.TOP}i2speakers.php">Parallel Session</a></li>
+<li {if $scope eq 'Parallel'}class="active"{/if}><a href="{$smarty.const.TOP}parallel_sessions.php">Parallel Session</a></li>
 <li {if $scope eq 'Registration'}class="active"{/if}><a href="{$smarty.const.TOP}registration.php">Registration</a></li>
 <li {if $scope eq 'Submission'}class="active"{/if}><a href="{$smarty.const.TOP}submission.php">Title &amp; Abstract Submission</a></li>
 <li {if $scope eq 'Participants'}class="active"{/if}><a href="{$smarty.const.TOP}participants.php">List of Participants</a></li>
