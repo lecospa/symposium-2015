@@ -2,7 +2,7 @@
 
 {block name=main}
 <div class="page-header">
-	<h1>Admin</h1>
+	<h1>參加者管理後台</h1>
 </div>
 
 <h2>Plenary Session Speakers</h2>
@@ -17,13 +17,13 @@
 <h2>Normal Attendees</h2>
 {include file='./person_table.part' people=$attendees}
 
-<h2>Add ...</h2>
+<h2>新增</h2>
 <form class="form-inline" action="{$smarty.const.TOP}admin/person/insert.php?token={$token}" method="POST">
 <table class="table table-hover" style="background-color: white;">
 	<thead>
 		<tr>
-			<th>Type</th>
-			<th>Name</th>
+			<th>參加類型</th>
+			<th>姓名</th>
 			<th>Email</th>
 			<th></th>
 		</tr>
@@ -31,7 +31,8 @@
 	<tbody>
 		<tr>
 			<td>
-				<select class="form-control" name="type">
+				<select class="form-control" name="type" required>
+					<option value=""></option>
 					<option value="Normal">Attendee</option>
 					<option value="Plenary">Plenary Session Speaker</option>
 					<option value="Parallel">Parallel Session Speaker</option>
@@ -39,11 +40,11 @@
 				</select>
 			</td>
 			<td>
-				<input type="text" class="form-control" name="first_name" placeholder="Speaker First Name">
-				<input type="text" class="form-control" name="last_name" placeholder="Speaker Last Name">
+				<input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+				<input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
 			</td>
 			<td><input type="email" class="form-control" name="email" placeholder="Speaker Email"></td>
-			<td><button type="submit" class="btn btn-primary">Create New Speaker</button></td>
+			<td><button type="submit" class="btn btn-primary">Create</button></td>
 		</tr>
 	</tbody>
 </table>
