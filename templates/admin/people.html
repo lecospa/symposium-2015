@@ -1,0 +1,58 @@
+{extends file='admin.tpl'}
+
+{block name=main}
+<div class="page-header">
+	<h1>與會者管理後台</h1>
+</div>
+
+<ol class="breadcrumb">
+	<li><a href="{$smarty.const.TOP}admin/index.php?token={$token}">管理後台</a></li>
+	<li class="active">與會者</li>
+</ol>
+
+
+<h2>Plenary Session Speakers</h2>
+{include file='./person_table.part' people=$plenary_speakers}
+
+<h2>Parallel Session Speakers</h2>
+{include file='./person_table.part' people=$parallel_speakers}
+
+<h2>Poster Session Speakers</h2>
+{include file='./person_table.part' people=$poster_speakers}
+
+<h2>Normal Attendees</h2>
+{include file='./person_table.part' people=$attendees}
+
+<h2>新增</h2>
+<form class="form-inline" action="{$smarty.const.TOP}admin/person/insert.php?token={$token}" method="POST">
+<table class="table table-hover" style="background-color: white;">
+	<thead>
+		<tr>
+			<th>參加類型</th>
+			<th>姓名</th>
+			<th>Email</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<select class="form-control" name="type" required>
+					<option value=""></option>
+					<option value="Normal">Attendee</option>
+					<option value="Plenary">Plenary Session Speaker</option>
+					<option value="Parallel">Parallel Session Speaker</option>
+					<option value="Poster">Poster</option>
+				</select>
+			</td>
+			<td>
+				<input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+				<input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+			</td>
+			<td><input type="email" class="form-control" name="email" placeholder="Speaker Email"></td>
+			<td><button type="submit" class="btn btn-primary">Create</button></td>
+		</tr>
+	</tbody>
+</table>
+</form>
+{/block}

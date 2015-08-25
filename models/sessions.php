@@ -7,14 +7,30 @@ class Sessions {
 		$stmt->execute();
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
-	static function get_title($conn, $id) {
-		$stmt = $conn->prepare("SELECT `id`, `value` FROM `session` WHERE `id`=? AND `name`='title'");
-		$stmt->execute(array($id));
-		return $stmt->fetch(\PDO::FETCH_ASSOC);
-	}
-	static function get_property($conn, $id, $name) {
-		$stmt = $conn->prepare("SELECT `id`, `name`, `value` FROM `session` WHERE `id`=? AND `name`=?");
+	static function get_properties($conn, $id, $name) {
+		$stmt = $conn->prepare("SELECT * FROM `session` WHERE `session_id`=? AND `name`=?");
 		$stmt->execute(array($id, $name));
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+	static function get_property($conn, $session_id, $name) {
+		$stmt = $conn->prepare("SELECT * FROM `session` WHERE `session_id`=? AND `name`=?");
+		$stmt->execute(array($session_id, $name));
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
+	}
+	static function delete_property_by_id($conn, $id) {
+		$stmt = $conn->prepare("DELETE FROM `session` WHERE `id`=?");
+		$stmt->execute(array($id));
+	}
+	static function update_property($conn, $session_id, $name, $value) {
+		if (self::get_property($conn, $session_id, $name)) {
+			$stmt = $conn->prepare("UPDATE `session` SET `value`=? WHERE `session_id`=? AND `name`=?");
+			$stmt->execute(array($value, $session_id, $name));
+		} else {
+			self::insert_property($conn, $session_id, $name, $value);
+		}
+	}
+	static function insert_property($conn, $session_id, $name, $value) {
+		$stmt = $conn->prepare("INSERT INTO `session` (`session_id`, `name`, `value`) VALUES (?,?,?)");
+		$stmt->execute(array($session_id, $name, $value));
 	}
 }

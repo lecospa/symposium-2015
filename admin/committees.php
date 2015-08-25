@@ -19,7 +19,7 @@ class Index extends \View {
 			$this->smarty->assign('loc_chairs', $loc_chairs);
 			$this->smarty->assign('locs', $locs);
 			$this->smarty->assign('token', $token);
-			$this->smarty->display('admin/manage_committees.html');
+			$this->smarty->display('admin/committees.html');
 		} else {
 			header('Location: ' . TOP);
 		}
