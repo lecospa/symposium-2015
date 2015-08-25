@@ -29,6 +29,7 @@
 			<textarea id="inputAbstract" class="form-control" rows="5" name="inputabstract">{$person['abstract']|escape}</textarea>
 		</div>
 	</div>
+	{if $persion['type'] == 'Parallel'}
 	<div class="form-group">
 		<label for="inputSessionCode" class="col-sm-2 control-label larger-font">Session Code</label>
 		<div class="col-sm-3">
@@ -46,7 +47,12 @@
 				<option value="EQ" {if $person['session_code'] eq 'EQ'}selected{/if}>EQ</option>
 			</select>
 		</div>
+		{$person['type']}
+		{*<div class="col-sm-7"><p class="larger-font">(If you have chosen Parallel Session, please select your session code)</p></div>*}
 	</div>
+	{else}
+	<input type="hidden" name="inputsessioncode" value="">
+	{/if}
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<button type="submit" class="btn btn-primary">Update Information</button>
