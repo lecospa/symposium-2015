@@ -22,7 +22,7 @@ class PersonInsert extends \View {
 			} catch (\Exception $e) {
 				echo $e->getMessage();
 			}
-			$_token = self::generatorPassword(20);
+			$_token = self::generatorPassword(8);
 			
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
 			$conn->close();
