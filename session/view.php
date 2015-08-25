@@ -6,16 +6,16 @@ class View extends \View {
 	public function get() {
 		$conn = new \Conn();
 		$id = $_GET['id'];
-		$title = \Models\Sessions::get_property($conn, $id, 'title')[0]['value'];
+		$title = \Models\Sessions::get_property($conn, $id, 'title')['value'];
 
 		$organizers = array();
-		$os = \Models\Sessions::get_property($conn, $id, 'organizer');
+		$os = \Models\Sessions::get_properties($conn, $id, 'organizer');
 		foreach($os as $o) {
 			$organizers[] = \Models\People::get($conn, $o['value']);
 		}
 		
 		$speakers = array();
-		$os = \Models\Sessions::get_property($conn, $id, 'speaker');
+		$os = \Models\Sessions::get_properties($conn, $id, 'speaker');
 		foreach($os as $o) {
 			$speakers[] = \Models\People::get($conn, $o['value']);
 		}

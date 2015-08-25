@@ -1,8 +1,13 @@
 {extends file='../../admin.tpl'}
 {block name=main}
 <div class="page-header">
-	<h1>Title & Abstract Submission</h1>
+	<h1>編輯</h1>
 </div>
+<ol class="breadcrumb">
+	<li><a href="{$smarty.const.TOP}admin/index.php?token={$token}">管理後台</a></li>
+	<li><a href="{$smarty.const.TOP}admin/people.php?token={$token}">與會者</a></li>
+	<li class="active">編輯</li>
+</ol>
 {nocache}
 <form action="edit.php?token={$token}&id={$id}" method="POST" class="form-horizontal">
 	<div class="form-group">
