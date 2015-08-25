@@ -6,8 +6,8 @@ class Edit extends \View {
 	public function get() {
 		$token = $_GET['token'];
 		$id = $_GET['id'];
-		$conn = \db::get();
-		$auth = \Models\Auth::get($conn, $token);
+		$conn = new \Conn();
+		$auth = \Models\Auth::get(\db::get(), $token);
 		if ($auth['scope'] == 'sudo') {
 			$info = \Models\People::get($conn, $id);
 			$this->smarty->assign('person', $info);
@@ -17,7 +17,6 @@ class Edit extends \View {
 		} else {
 			$this->smarty->display('person/main-noauth.html');
 		}
-		$conn->close();
 	}
 	public function post() {
 		$token = $_GET['token'];
@@ -38,7 +37,7 @@ class Edit extends \View {
 			$type = $_POST['inputtype'];
 			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code, $type);
 
-			$info = \Models\People::get($conn, $id);
+			$info = \Models\People::get(new \Conn(), $id);
 			$this->smarty->assign('person', $info);
 			$this->smarty->assign('token', $token);
 			$this->smarty->assign('id', $id);
