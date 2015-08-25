@@ -69,36 +69,12 @@ class People {
 		return $data;
 	}
 	static function get($conn, $id) {
-		$stmt = $conn->prepare("SELECT `first_name`, `last_name`, `email`, `title`, `abstract`, 
-			`slide_file`, `address_datetime`, `occupation`, `resume`, `room`, `img`, `type`, 
-			`session_code`
-			FROM `people` WHERE `id` = ?");
-		$stmt->bind_param('s', $id);
-		$stmt->execute();
-		$stmt->bind_result($first_name, $last_name, $email, $title, $abstract, 
-			$slide_file, $address_datetime, $occupation, $resume, $room, $img, $type, 
-			$session_code
-		);
+		$stmt = $conn->prepare("SELECT * FROM `people` WHERE `id`=:id");
+		$stmt->execute(array(':id' => $id));
 		$data = null;
-		if ($stmt->fetch()) {
-			$data = array(
-				'first_name' => $first_name,
-				'last_name' => $last_name,
-				'email' => $email,
-				'title' => $title,
-				'abstract' => $abstract,
-				'slide_file' => $slide_file,
-				'address_datetime' => $address_datetime,
-				'occupation' => $occupation,
-				'resume' => $resume,
-				'room' => $room,
-				'img' => $img,
-				'type' => $type,
-				'session_code' => $session_code
-			);
+		if ($row = $stmt->fetch()) {
+			return $row;
 		}
-
-		$stmt->close();
 		return $data;
 	}
 	static function update_slide_file($conn, $id, $slide_file) {
