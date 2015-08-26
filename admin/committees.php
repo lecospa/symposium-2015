@@ -5,14 +5,13 @@ require_once('../init.php');
 class Index extends \View {
 	public function get() {
 		$token = $_GET['token'];
-		$auth = \Models\Auth::get(\db::get(), $token);
+		$conn = new \Conn();
+		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$conn = \db::get();
 			$iac_chairs = \Models\People::all_with_token_by_type($conn, 'IACCHAIR');
 			$iacs = \Models\People::all_with_token_by_type($conn, 'IAC');
 			$loc_chairs = \Models\People::all_with_token_by_type($conn, 'LOCCHAIR');
 			$locs = \Models\People::all_with_token_by_type($conn, 'LOC');
-			$conn->close();
 
 			$this->smarty->assign('iac_chairs', $iac_chairs);
 			$this->smarty->assign('iacs', $iacs);
@@ -21,7 +20,7 @@ class Index extends \View {
 			$this->smarty->assign('token', $token);
 			$this->smarty->display('admin/committees.html');
 		} else {
-			header('Location: ' . TOP);
+			throw new \UnauthorizedException();
 		}
 	}
 }

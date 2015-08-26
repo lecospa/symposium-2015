@@ -3,7 +3,7 @@ require_once('../init.php');
 
 class Upload extends \View {
 	public function get() {
-		echo 'There are something wrong that you can get here';
+		throw new ForbiddenException();
 	}
 	public function post() {
 		$token = $_POST['token'];

@@ -19,5 +19,6 @@ class Conn extends PDO {
 		$user = 'symposium_2015';
 		$pass = 'Wwz6wPFeyq2AsueK';
 		parent::__construct($dns, $user, $pass);
+		$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 }

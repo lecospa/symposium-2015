@@ -23,6 +23,22 @@ if (__DIR__ == '/var/www/lecospa.test.mar98.tk') {
 	define('TOP', 'http://lecospa.ntu.edu.tw/symposium/2015/');
 }
 
+class UnauthorizedException extends Exception {
+	public function __construct($message, $code = 0, Exception $previous = null) {
+		parent::__construct($message, $code, $previous);
+	}
+}
+class ForbiddenException extends Exception {
+	public function __construct($message, $code = 0, Exception $previous = null) {
+		parent::__construct($message, $code, $previous);
+	}
+}
+class NotFoundException extends Exception {
+	public function __construct($message, $code = 0, Exception $previous = null) {
+		parent::__construct($message, $code, $previous);
+	}
+}
+
 class View {
 	function set_smarty() {
 		$this->smarty = new Smarty;
@@ -34,22 +50,27 @@ class View {
 	}
 	function View() {
 		$this->set_smarty();
-
-		/* Implement self define HTTP Method */
-		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			try {
+		try {
+			/* Implement self define HTTP Method */
+			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$this->method = 'POST';
 				method_exists($this, 'post') && $this->post();
-			} catch (Exception $e) {
-				echo $e->getMessage();
-			}
-		} else {
-			try {
+			} else {
 				$this->method = 'GET';
 				method_exists($this, 'get') && $this->get();
-			} catch (Exception $e) {
-				echo $e->getMessage();
 			}
+		} catch (NotFoundException $e) {
+			http_response_code(404);
+			$this->smarty->assign('e', $e);
+			$this->smarty->display('404.html');
+		} catch (UnauthorizedException $e) {
+			http_response_code(401);
+			echo 'unauthorized.';
+		} catch (ForbiddenException $e) {
+			http_response_code(403);
+			echo 'forbidden.';
+		} catch (Exception $e) {
+			echo $e->getMessage();
 		}
 	}
 }

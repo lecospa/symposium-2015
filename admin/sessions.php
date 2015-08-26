@@ -2,12 +2,12 @@
 namespace Admin;
 require_once('../init.php');
 
-class Index extends \View {
+class Sessions extends \View {
 	public function get() {
 		$token = $_GET['token'];
-		$auth = \Models\Auth::get(\db::get(), $token);
+		$conn = new \Conn();
+		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$conn = new \Conn();
 			$sessions = \Models\Sessions::all($conn);
 
 			foreach ($sessions as &$session) {
@@ -25,8 +25,8 @@ class Index extends \View {
 			$this->smarty->assign('token', $token);
 			$this->smarty->display('admin/sessions.html');
 		} else {
-			header('Location: ' . TOP);
+			throw new \UnauthorizedException();
 		}
 	}
 }
-new Index;
+new Sessions;
