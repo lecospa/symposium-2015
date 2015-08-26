@@ -4,6 +4,9 @@
 	<h1>Title & Abstract Submission</h1>
 </div>
 {nocache}
+{if $message != ''}
+<div class="alert alert-success" role="alert">{$message}</div>
+{/if}
 <form action="main.php?token={$token}" method="POST" class="form-horizontal">
 	<div class="form-group">
 		<label class="col-sm-2 control-label larger-font">Name</label>

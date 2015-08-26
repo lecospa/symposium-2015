@@ -9,6 +9,12 @@ class MMain extends \View {
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'people') {
 			$person = \Models\People::get($conn, $auth['id']);
+
+			if (isset($_SESSION['message'])) {
+				$this->smarty->assign('message', $_SESSION['message']);
+				unset($_SESSION['message']);
+			}
+
 			$this->smarty->assign('person', $person);
 			$this->smarty->assign('token', $token);
 			$this->smarty->display('person/main.html');
@@ -26,12 +32,11 @@ class MMain extends \View {
 			$session_code = $_POST['inputsessioncode'];
 			\Models\People::update_limited($conn, $auth['id'], $title, $abstract, $session_code);
 
-			$info = \Models\People::get($conn, $auth['id']);
-			$this->smarty->assign('person', $info);
-			$this->smarty->assign('token', $token);
-			$this->smarty->display('person/main.html');
+			$_SESSION['message'] = 'Update successfully';
+
+			header('Location: main.php?token=' . $token);
 		} else {
-			$this->smarty->display('person/main-noauth.html');
+			header('Location: main.php?token=' . $token);
 		}
 	}
 }
