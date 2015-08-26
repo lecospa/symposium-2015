@@ -18,7 +18,7 @@
 		<div id="main" class="col-sm-9" style="{block name=main_style}{/block}">{block name=main}{/block}</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-xs-12" style="text-align: center;">
 			{include file='sponsors_and_supporters.html'}
 		</div>
 	</div>
