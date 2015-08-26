@@ -1,8 +1,8 @@
 {extends file='bootstrap.html'}
 
 {block name=head}
-<link href="{$smarty.const.TOP}css/responsive-full-background-image.css" rel="stylesheet">
-<link href="{$smarty.const.TOP}css/main.css" rel="stylesheet">
+<link href="{$smarty.const.TOP}/css/responsive-full-background-image.css" rel="stylesheet">
+<link href="{$smarty.const.TOP}/css/main.css" rel="stylesheet">
 {/block}
 
 {block name=body}{strip}

@@ -5,11 +5,11 @@
 	<h1>Parallel Sessions</h1>
 </div>
 <ol class="breadcrumb">
-	<li><a href="{$smarty.const.TOP}admin/index.php?token={$token}">後台</a></li>
-	<li><a href="{$smarty.const.TOP}admin/sessions.php?token={$token}">Parallel Sessions</a></li>
+	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">後台</a></li>
+	<li><a href="{$smarty.const.TOP}/admin/sessions.php?token={$token}">Parallel Sessions</a></li>
 	<li class="active">編輯</li>
 </ol>
-<form action="{$smarty.const.TOP}admin/session/edit_title.php?token={$token}" method="POST">
+<form action="{$smarty.const.TOP}/admin/session/edit_title.php?token={$token}" method="POST">
 	<div class="row">
 		<div class="col-xs-2"><label>Title</label></div>
 		<div class="col-xs-8">
@@ -30,9 +30,9 @@
 		{foreach $session['organizers'] as $organizer}
 		<tr>
 			<td>{$organizer['content']['first_name']} {$organizer['content']['last_name']}</td>
-			<td><a href="{$smarty.const.TOP}admin/person/edit.php?token={$token}&id={$organizer['content']['id']}" class="btn btn-default">編輯</a></td>
+			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$organizer['content']['id']}" class="btn btn-default">編輯</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}admin/session/delete.php?token={$token}">
+				<form method="POST" action="{$smarty.const.TOP}/admin/session/delete.php?token={$token}">
 					<input type="hidden" name="id" value="{$organizer['id']}" />
 					<input type="hidden" name="session_id" value="{$organizer['session_id']}" />
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
@@ -41,7 +41,7 @@
 		</tr>
 		{/foreach}
 		<tr>
-			<form action="{$smarty.const.TOP}admin/session/insert.php?token={$token}" method="POST">
+			<form action="{$smarty.const.TOP}/admin/session/insert.php?token={$token}" method="POST">
 				<td>
 					<label>選擇一個Parallel Session Speaker</label>
 					<input type="hidden" name="session_id" value="{$session['id']}">
@@ -68,9 +68,9 @@
 		{foreach $session['speakers'] as $speaker}
 		<tr>
 			<td>{$speaker['content']['first_name']} {$speaker['content']['last_name']}</td>
-			<td><a href="{$smarty.const.TOP}admin/person/edit.php?token={$token}&id={$speaker['content']['id']}" class="btn btn-default">編輯</a></td>
+			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$speaker['content']['id']}" class="btn btn-default">編輯</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}admin/session/delete.php?token={$token}">
+				<form method="POST" action="{$smarty.const.TOP}/admin/session/delete.php?token={$token}">
 					<label>選擇一個Parallel Session Speaker</label>
 					<input type="hidden" name="id" value="{$speaker['id']}" />
 					<input type="hidden" name="session_id" value="{$speaker['session_id']}" />
@@ -80,7 +80,7 @@
 		</tr>
 		{/foreach}
 		<tr>
-			<form action="{$smarty.const.TOP}admin/session/insert.php?token={$token}" method="POST">
+			<form action="{$smarty.const.TOP}/admin/session/insert.php?token={$token}" method="POST">
 				<td>
 					<input type="hidden" name="session_id" value="{$session['id']}">
 					<input type="hidden" name="name" value="speaker">
