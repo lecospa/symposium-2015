@@ -10,19 +10,6 @@ function my_autoloader($class) {
 }
 spl_autoload_register('my_autoloader');
 
-/*
- * Web path
- */
-if (__DIR__ == '/var/www/lecospa.test.mar98.tk') {
-	define('TOP', 'http://lecospa.test.mar98.tk/');
-} else if (__DIR__ == '/var/www/lecospa_dev.test.mar98.tk') {
-	define('TOP', 'http://lecospa_dev.test.mar98.tk/');
-} else if (__DIR__ == '/var/www/lecospa.brtsi.twbbs.org') {
-	define('TOP', 'http://lecospa.brtsi.twbbs.org/');
-} else {
-	define('TOP', 'http://lecospa.ntu.edu.tw/symposium/2015/');
-}
-
 class UnauthorizedException extends Exception {
 	public function __construct($message, $code = 0, Exception $previous = null) {
 		parent::__construct($message, $code, $previous);
@@ -39,17 +26,32 @@ class NotFoundException extends Exception {
 	}
 }
 
-class View {
-	function set_smarty() {
-		$this->smarty = new Smarty;
-		$this->smarty->template_dir = ROOT . '/templates/';
-		$this->smarty->compile_dir  = ROOT . '/templates_c/';
-		//$this->smarty->config_dir   = ROOT . '/configs/';
-		$this->smarty->cache_dir    = ROOT . '/cache/';
-		$this->smarty->caching = false;
+function exception_error_handler($severity, $message, $file, $line) {
+	if ($severity == E_ERROR || $severity == E_CORE_ERROR) {
+		throw new ErrorException($message, 0, $severity, $file, $line);
 	}
-	function View() {
+}
+set_error_handler("exception_error_handler");
+
+class View {
+	private function set_smarty() {
+		$this->smarty = new Smarty;
+		$this->smarty->template_dir = __DIR__ . '/templates/';
+		$this->smarty->compile_dir  = __DIR__ . '/templates_c/';
+		//$this->smarty->config_dir   = __DIR__ . '/configs/';
+		$this->smarty->cache_dir    = __DIR__ . '/cache/';
+		$this->smarty->caching      = false;
+	}
+	private function set_path() {
+		$r = substr($_SERVER['SCRIPT_FILENAME'], strlen(__DIR__));
+		$uri = $_SERVER['SCRIPT_NAME'];
+		$top = substr($uri, 0, strlen($uri) - strlen($r));
+		
+		define('TOP', $top);
+	}
+	public function __construct() {
 		$this->set_smarty();
+		$this->set_path();
 		try {
 			/* Implement self define HTTP Method */
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -75,12 +77,3 @@ class View {
 	}
 }
 
-function exception_error_handler($severity, $message, $file, $line) {
-	/*if (!(error_reporting() & $severity)) {
-		return;
-	}*/
-	if ($severity == E_ERROR || $severity == E_CORE_ERROR) {
-		throw new ErrorException($message, 0, $severity, $file, $line);
-	}
-}
-set_error_handler("exception_error_handler");
