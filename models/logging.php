@@ -4,14 +4,7 @@ namespace Models;
 class Logging {
 	static function insert($conn, $event, $content, $remote_address, $forward_address) {
 		$stmt = $conn->prepare("INSERT INTO `logging` (`event`, `content`, `REMOTE_ADDR`, `HTTP_X_FORWARDED_FOR`) VALUES (?, ?, ?, ?)");
-		if (!$stmt) {
-			throw new \Exception('prepare fail');
-		}
-		$stmt->bind_param('ssss', $event, $content, $remote_address, $forward_address);
-		if (!$stmt->execute()) {
-			throw new \Exception($stmt->error);
-		}
-		$stmt->close();
+		$stmt->execute(array($event, $content, $remote_address, $forward_address));
 	}
 	private $remote_address;
 	private $forward_address;
