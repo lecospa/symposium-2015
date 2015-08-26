@@ -55,6 +55,7 @@ class Submission extends View {
 
 				mail($to, $subject, $message, $headers);
 			}
+			$_SESSION['message'] = 'Thank you for your submission, your passcode is ' . $_token;
 			header('Location: ' . TOP . 'person/main.php?token='.$_token);
 		}
 	}
