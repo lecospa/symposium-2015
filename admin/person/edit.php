@@ -7,7 +7,7 @@ class Edit extends \View {
 		$token = $_GET['token'];
 		$id = $_GET['id'];
 		$conn = new \Conn();
-		$auth = \Models\Auth::get(\db::get(), $token);
+		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
 			$info = \Models\People::get($conn, $id);
 			$this->smarty->assign('person', $info);
@@ -15,13 +15,13 @@ class Edit extends \View {
 			$this->smarty->assign('id', $id);
 			$this->smarty->display('admin/person/edit.html');
 		} else {
-			$this->smarty->display('person/main-noauth.html');
+			throw new \UnauthorizedException();
 		}
 	}
 	public function post() {
 		$token = $_GET['token'];
 		$id = $_GET['id'];
-		$conn = \db::get();
+		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
 			$first_name = $_POST['inputfirstname'];
@@ -36,16 +36,10 @@ class Edit extends \View {
 			$session_code = $_POST['inputsessioncode'];
 			$type = $_POST['inputtype'];
 			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code, $type);
-
-			$info = \Models\People::get(new \Conn(), $id);
-			$this->smarty->assign('person', $info);
-			$this->smarty->assign('token', $token);
-			$this->smarty->assign('id', $id);
-			$this->smarty->display('admin/person/edit.html');
+			header('Location: edit.php?token=' . $token . '&id=' . $id);
 		} else {
-			$this->smarty->display('person/main-noauth.html');
+			throw new \UnauthorizedException();
 		}
-		$conn->close();
 	}
 }
 new Edit;

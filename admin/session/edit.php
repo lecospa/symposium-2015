@@ -5,9 +5,9 @@ require_once('../../init.php');
 class Index extends \View {
 	public function get() {
 		$token = $_GET['token'];
-		$auth = \Models\Auth::get(\db::get(), $token);
+		$conn = new \Conn();
+		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$conn = new \Conn();
 			$session_id = $_GET['session_id'];
 			$session['id'] = $session_id;
 			$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title');
@@ -23,7 +23,7 @@ class Index extends \View {
 			$this->smarty->assign('token', $token);
 			$this->smarty->display('admin/session/edit.html');
 		} else {
-			header('Location: ' . TOP);
+			throw new \UnauthorizedException();
 		}
 	}
 }

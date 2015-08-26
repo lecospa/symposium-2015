@@ -4,7 +4,7 @@ class Committees extends View {
 	function get() {
 		$this->smarty->assign('scope', __CLASS__);
 
-		$conn = \db::get();
+		$conn = new \Conn();
 		$iac_chairs = \Models\People::all_by_type($conn, 'IACCHAIR');
 		$iacs = \Models\People::all_by_type($conn, 'IAC');
 		$loc_chairs = \Models\People::all_by_type($conn, 'LOCCHAIR');

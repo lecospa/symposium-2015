@@ -5,17 +5,18 @@ require_once('../../init.php');
 class PersonDelete extends \View {
 	public function post() {
 		$token = $_GET['token'];
-		$conn = \db::get();
+		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
 			$id = $_POST['id'];
 			if (empty($id)) {
-				header('Location: ' . TOP . 'admin/index.php?token='.$token);
+				throw new ForbiddenException();
 				return;
 			}
 			$speaker_id = \Models\People::delete($conn, $id);
-			$conn->close();
-			header('Location: ' . TOP . 'admin/index.php?token='.$token);
+			header('Location: ' . TOP . 'admin/people.php?token='.$token);
+		} else {
+			throw new UnauthorizedException();
 		}
 	}
 }
