@@ -8,7 +8,7 @@
 {include file='./committees_table.part' people=$iacs}
 {include file='./committees_table.part' people=$loc_chairs}
 {include file='./committees_table.part' people=$locs}
-<form class="form-inline" action="{$smarty.const.TOP}admin/person/insert.php?token={$token}" method="POST">
+<form class="form-inline" action="{$smarty.const.TOP}/admin/person/insert.php?token={$token}" method="POST">
 	<input type="text" class="form-control" name="first_name" placeholder="Committee First Name">
 	<input type="text" class="form-control" name="last_name" placeholder="Committee Last Name">
 	<input type="email" class="form-control" name="email" placeholder="Committee Email">

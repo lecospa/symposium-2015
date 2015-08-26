@@ -14,7 +14,7 @@ class PersonDelete extends \View {
 				return;
 			}
 			$speaker_id = \Models\People::delete($conn, $id);
-			header('Location: ' . TOP . 'admin/people.php?token='.$token);
+			header('Location: ' . TOP . '/admin/people.php?token='.$token);
 		} else {
 			throw new UnauthorizedException();
 		}

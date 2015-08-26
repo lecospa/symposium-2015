@@ -6,7 +6,7 @@
 </div>
 
 <ol class="breadcrumb">
-	<li><a href="{$smarty.const.TOP}admin/index.php?token={$token}">管理後台</a></li>
+	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">管理後台</a></li>
 	<li class="active">與會者</li>
 </ol>
 
@@ -24,7 +24,7 @@
 {include file='./person_table.part' people=$attendees}
 
 <h2>新增</h2>
-<form class="form-inline" action="{$smarty.const.TOP}admin/person/insert.php?token={$token}" method="POST">
+<form class="form-inline" action="{$smarty.const.TOP}/admin/person/insert.php?token={$token}" method="POST">
 <table class="table table-hover" style="background-color: white;">
 	<thead>
 		<tr>

@@ -30,7 +30,7 @@ class Submission extends View {
 			$abstract     = $_POST['abstract'];
 			$session_code = $_POST['session_code'];
 			if (empty($first_name) || empty($last_name) || empty($email)) {
-				header('Location: ' . TOP . 'submission.php?token='.$token);
+				header('Location: ' . TOP . '/submission.php?token='.$token);
 				return;
 			}
 			$_id = \Models\People::insert($conn, $type, $first_name, $last_name, $email);
@@ -56,7 +56,7 @@ class Submission extends View {
 				mail($to, $subject, $message, $headers);
 			}
 			$_SESSION['message'] = 'Thank you for your submission, your passcode is ' . $_token;
-			header('Location: ' . TOP . 'person/main.php?token='.$_token);
+			header('Location: ' . TOP . '/person/main.php?token='.$_token);
 		}
 	}
 	private function generatorPassword($password_len) {

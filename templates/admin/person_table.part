@@ -14,13 +14,13 @@
 		{foreach $people as $person}
 		<tr>
 			<td>{$person['first_name']|escape} {$person['last_name']|escape}</td>
-			<td><img class="img-responsive" src="{$smarty.const.TOP}uploads/{$person['img']}" style="max-height: 50px;"></td>
+			<td><img class="img-responsive" src="{$smarty.const.TOP}/uploads/{$person['img']}" style="max-height: 50px;"></td>
 			<td>{$person['email']|escape}</td>
 			<td>{$person['title']|escape|truncate:45}</td>
-			<td><a href="{$smarty.const.TOP}person/main.php?token={$person['token']}">{$person['token']}</a></td>
-			<td><a class="btn btn-default" href="{$smarty.const.TOP}admin/person/edit.php?token={$token}&id={$person['id']}">編輯</a></td>
+			<td><a href="{$smarty.const.TOP}/person/main.php?token={$person['token']}">{$person['token']}</a></td>
+			<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$person['id']}">編輯</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}admin/person/delete.php?token={$token}">
+				<form method="POST" action="{$smarty.const.TOP}/admin/person/delete.php?token={$token}">
 					<input type="hidden" name="id" value="{$person['id']}" />
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
 				</form>
