@@ -21,6 +21,10 @@ class Insert extends \View {
 			$_token = self::generatorPassword(8);
 			
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
+			
+			$logger = new \Models\Logging($conn, $_SERVER);
+			$logger->info('New Person', json_encode(array('id' => $_id, 'operator' => 'sudo')));
+
 			header('Location: ' . TOP . '/admin/people.php?token='.$token);
 		} else {
 			throw new \UnauthorizedException();
