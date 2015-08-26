@@ -14,14 +14,14 @@ class Insert extends \View {
 			$email = $_POST['email'];
 
 			if (empty($first_name) || empty($last_name)) {
-				header('Location: ' . TOP . 'admin/people.php?token='.$token);
+				header('Location: ' . TOP . '/admin/people.php?token='.$token);
 				return;
 			}
 			$_id = \Models\People::insert($conn, $type, $first_name, $last_name, $email);
 			$_token = self::generatorPassword(8);
 			
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
-			header('Location: ' . TOP . 'admin/people.php?token='.$token);
+			header('Location: ' . TOP . '/admin/people.php?token='.$token);
 		} else {
 			throw new \UnauthorizedException();
 		}

@@ -6,12 +6,12 @@
 <p class="larger-font">Title: {$title|escape}</p>
 <p class="larger-font">Organizer:
 	{foreach $organizers as $organizer}
-		&nbsp;<a href="{$smarty.const.TOP}person/view.php?id={$organizer['id']}">{$organizer['first_name']} {$organizer['last_name']}</a>
+		&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$organizer['id']}">{$organizer['first_name']} {$organizer['last_name']}</a>
 	{/foreach}
 </p>
 <p class="larger-font">Speakers:
 	{foreach $speakers as $speaker}
-		&nbsp;<a href="{$smarty.const.TOP}person/view.php?id={$speaker['id']}">{$speaker['first_name']} {$speaker['last_name']}</a> {$speaker['title']|escape}
+		&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$speaker['id']}">{$speaker['first_name']} {$speaker['last_name']}</a> {$speaker['title']|escape}
 	{/foreach}
 </p>
 {/block}
