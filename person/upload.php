@@ -3,16 +3,15 @@ require_once('../init.php');
 
 class Upload extends \View {
 	public function get() {
-		throw new ForbiddenException();
+		throw new \ForbiddenException();
 	}
 	public function post() {
 		$token = $_POST['token'];
-		$conn = \db::get();
+		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		
 		if ($auth['scope'] != 'people') {
-			header('location: ispeakers.php');
-			exit();
+			throw new \UnauthorizedException();
 		}
 
 		try {
