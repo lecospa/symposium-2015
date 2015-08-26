@@ -3,9 +3,10 @@ require_once('init.php');
 class Submission extends View {
 	function get() {
 		$token = $_GET['token'];
-		$auth = \Models\Auth::get(\db::get(), $token);
+		$conn = new \Conn();
+		$auth = \Models\Auth::get($conn, $token);
 
-		if ($auth['scope'] == 'people_an') {
+		if ($auth && $auth['scope'] == 'people_an') {
 			$this->smarty->assign('scope', __CLASS__);
 			$this->smarty->assign('token', $token);
 			$this->smarty->display('submission_creation.html');
@@ -16,36 +17,28 @@ class Submission extends View {
 	}
 	function post() {
 		$token = $_GET['token'];
-		$conn = \db::get();
+		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		$logger = new \Models\Logging($conn, $_SERVER);
 
 		if ($auth['scope'] == 'people_an') {
-			$type = $_POST['type'];
-			$email = $_POST['email'];
-			$first_name = $_POST['first_name'];
-			$last_name = $_POST['last_name'];
-			$title = $_POST['title'];
-			$abstract = $_POST['abstract'];
+			$type         = $_POST['type'];
+			$email        = $_POST['email'];
+			$first_name   = $_POST['first_name'];
+			$last_name    = $_POST['last_name'];
+			$title        = $_POST['title'];
+			$abstract     = $_POST['abstract'];
 			$session_code = $_POST['session_code'];
-			if (empty($first_name)) {
-				header('Location: ' . TOP . 'admin/index.php?token='.$token);
+			if (empty($first_name) || empty($last_name) || empty($email)) {
+				header('Location: ' . TOP . 'submission.php?token='.$token);
 				return;
 			}
-			try {
-				$_id = \Models\People::insert($conn, $type, $first_name, $last_name, $email);
-			} catch (\Exception $e) {
-				echo $e->getMessage();
-			}
+			$_id = \Models\People::insert($conn, $type, $first_name, $last_name, $email);
 			$_token = self::generatorPassword(8);
-			
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
 			\Models\People::update_limited($conn, $_id, $title, $abstract, $session_code);
-			try {
-				$logger->info('New Person', json_encode(array('id' => $_id)));
-			} catch (\Exception $e) {
-				echo $e->getMessage();
-			}
+			$logger->info('New Person', json_encode(array('id' => $_id)));
+			
 			{
 				$to = $email;
 				$subject = '[Lecospa] Passcode for title and abstract modification - 2nd Symposium';
@@ -62,8 +55,6 @@ class Submission extends View {
 
 				mail($to, $subject, $message, $headers);
 			}
-
-			$conn->close();
 			header('Location: ' . TOP . 'person/main.php?token='.$_token);
 		}
 	}

@@ -1,11 +1,11 @@
 <?php
-namespace Admin;
+namespace Admin\Person;
 require_once('../../init.php');
 
-class PersonInsert extends \View {
+class Insert extends \View {
 	public function post() {
 		$token = $_GET['token'];
-		$conn = \db::get();
+		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
 			$type = $_POST['type'];
@@ -13,20 +13,17 @@ class PersonInsert extends \View {
 			$last_name = $_POST['last_name'];
 			$email = $_POST['email'];
 
-			if (empty($first_name)) {
-				header('Location: ' . TOP . 'admin/index.php?token='.$token);
+			if (empty($first_name) || empty($last_name)) {
+				header('Location: ' . TOP . 'admin/people.php?token='.$token);
 				return;
 			}
-			try {
-				$_id = \Models\People::insert(\db::get(), $type, $first_name, $last_name, $email);
-			} catch (\Exception $e) {
-				echo $e->getMessage();
-			}
+			$_id = \Models\People::insert($conn, $type, $first_name, $last_name, $email);
 			$_token = self::generatorPassword(8);
 			
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
-			$conn->close();
-			header('Location: ' . TOP . 'admin/index.php?token='.$token);
+			header('Location: ' . TOP . 'admin/people.php?token='.$token);
+		} else {
+			throw new \UnauthorizedException();
 		}
 	}
 	private function generatorPassword($password_len) {
@@ -41,4 +38,4 @@ class PersonInsert extends \View {
 }
 
 
-new PersonInsert;
+new Insert;
