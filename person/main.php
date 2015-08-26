@@ -33,7 +33,6 @@ class MMain extends \View {
 		} else {
 			$this->smarty->display('person/main-noauth.html');
 		}
-		$conn->close();
 	}
 }
 new MMain;

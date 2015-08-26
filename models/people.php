@@ -27,15 +27,11 @@ class People {
 	}
 	static function update_slide_file($conn, $id, $slide_file) {
 		$stmt = $conn->prepare("UPDATE `people` SET `slide_file` = ? WHERE `id` = ?");
-		$stmt->bind_param('ss', $slide_file, $id);
-		$stmt->execute();
-		$stmt->close();
+		$stmt->execute(array($slide_file, $id));
 	}
 	static function update_img($conn, $id, $img) {
 		$stmt = $conn->prepare("UPDATE `people` SET `img` = ? WHERE `id` = ?");
-		$stmt->bind_param('ss', $img, $id);
-		$stmt->execute();
-		$stmt->close();
+		$stmt->execute(array($img, $id));
 	}
 	static function update_title_abstract($conn, $id, $title, $abstract) {
 		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ? WHERE `id` = ?");

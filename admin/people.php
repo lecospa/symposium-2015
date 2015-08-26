@@ -20,7 +20,7 @@ class Index extends \View {
 			$this->smarty->assign('token', $token);
 			$this->smarty->display('admin/people.html');
 		} else {
-			throw new UnauthorizedException();
+			throw new \UnauthorizedException();
 		}
 	}
 }
