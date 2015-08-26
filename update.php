@@ -5,7 +5,7 @@ class Update extends View {
 		$conn = new \Conn();
 		$logging = new \Models\Logging($conn, $_SERVER);
 
-		header('Content-Type: text/plain')
+		header('Content-Type: text/plain');
 		exec('git pull origin master', $output);
 		foreach ($output as $line) {
 			echo $line."\n";
