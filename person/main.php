@@ -29,20 +29,14 @@ class MMain extends \View {
 		if ($auth['scope'] == 'people') {
 			$title = $_POST['inputtitle'];
 			$abstract = $_POST['inputabstract'];
-			$type = $_POST['inputtype'];
 			$session_code = $_POST['inputsessioncode'];
-
-			if ($type != 'Plenary' && $type != 'Parallel' && $type != 'Poster' && $type != 'Normal') {
-				throw new \ForbiddenException();
-			}
-
-			\Models\People::update_limited($conn, $auth['id'], $title, $abstract, $type, $session_code);
+			\Models\People::update_limited($conn, $auth['id'], $title, $abstract, $session_code);
 
 			$_SESSION['message'] = 'Update successfully';
 
 			header('Location: main.php?token=' . $token);
 		} else {
-			throw new \UnauthorizedException();
+			header('Location: main.php?token=' . $token);
 		}
 	}
 }
