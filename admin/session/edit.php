@@ -19,7 +19,9 @@ class Index extends \View {
 			foreach ($session['speakers'] as &$speaker) {
 				$speaker['content'] = \Models\People::get($conn, $speaker['value']);
 			}
+			$people = \Models\People::all_by_type($conn, 'Parallel');
 			$this->smarty->assign('session', $session);
+			$this->smarty->assign('people', $people);
 			$this->smarty->assign('token', $token);
 			$this->smarty->display('admin/session/edit.html');
 		} else {
