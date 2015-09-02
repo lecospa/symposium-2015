@@ -10,24 +10,43 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label larger-font">Name</label>
 		<div class="col-sm-3">
-			<input type="text" class="form-control" name="first_name" placeholder="Your First Name" required>
+			<input type="text" class="form-control" name="last_name" placeholder="Your Last Name" required>
 		</div>
 		<div class="col-sm-3">
-			<input type="text" class="form-control" name="last_name" placeholder="Your Last Name" required>
+			<input type="text" class="form-control" name="first_name" placeholder="Your First Name" required>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="input_email" class="col-sm-2 control-label larger-font">Email</label>
+		<div class="col-sm-4">
+			<input type="email" class="form-control" id="input_email" name="email" placeholder="Your Email" required>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="input_session" class="col-sm-2 control-label larger-font">Choice of Sessions</label>
-		<div class="col-sm-3">
-			<select id="input_session" class="form-control" name="type" required>
-				<option value=""></option>
-				<option value="Plenary">Plenary Session Speaker</option>
-				<option value="Parallel">Parallel Session Speaker</option>
-				<option value="Poster">Poster</option>
-			</select>
+		<div class="col-sm-9 larger-font">
+			<label class="radio-inline">
+				<input type="radio" name="type" id="input_session" value="Plenary" onclick="hide(this,'sc');" required>Plenary Session Speaker
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="type" id="input_session" value="Parallel" onclick="show(this,'sc');" required>Parallel Session Speaker
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="type" id="input_session" value="Poster" onclick="hide(this,'sc');" required>Poster
+			</label>
 		</div>
 	</div>
-	<div class="form-group">
+<!--Show/Hide Session Code--!>
+<script type="text/javascript">
+	function show(obj,item){
+		document.getElementById(item).style.display = obj.checked?"block":"none";
+	}
+	function hide(obj,item){
+		document.getElementById(item).style.display = obj.checked?"none":"block";
+	}
+</script>
+<!----------------------------!>
+	<div class="form-group" id="sc" style="display:none">
 		<label for="inputSessionCode" class="col-sm-2 control-label larger-font">Session Code</label>
 		<div class="col-sm-3">
 			<select id="inputSessionCode" name="session_code" class="form-control">
@@ -45,12 +64,6 @@
 			</select>
 		</div>
 		<div class="col-sm-7"><p class="larger-font">(If you have chosen Parallel Session, please select your session code)</p></div>
-	</div>
-	<div class="form-group">
-		<label for="input_email" class="col-sm-2 control-label larger-font">Email</label>
-		<div class="col-sm-4">
-			<input type="email" class="form-control" id="input_email" name="email" placeholder="Your Email" required>
-		</div>
 	</div>
 	<div class="form-group">
 		<label for="input_title" class="col-sm-2 control-label larger-font">Title</label>
