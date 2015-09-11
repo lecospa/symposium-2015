@@ -39,8 +39,9 @@
 			</label>
 		</div>
 	</div>
-<!--Show/Hide Session Code-->
-<script type="text/javascript">
+{* Show/Hide Session Code *}
+{literal}
+<script>
 	function show(obj,item){
 		document.getElementById(item).style.display = obj.checked?"block":"none";
 	}
@@ -48,7 +49,7 @@
 		document.getElementById(item).style.display = obj.checked?"none":"block";
 	}
 </script>
-<!---------------------------->
+{/literal}
 	<div class="form-group" id="sc" style="display:none">
 		<label for="inputSessionCode" class="col-sm-2 control-label larger-font">Session Code</label>
 		<div class="col-sm-3">
