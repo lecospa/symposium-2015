@@ -25,7 +25,8 @@
 
 <h2>新增</h2>
 <form class="form-inline" action="{$smarty.const.TOP}/admin/person/insert.php?token={$token}" method="POST">
-<table class="table table-hover" style="background-color: white;">
+<div class="table-responsive">
+<table class="table table-hover">
 	<thead>
 		<tr>
 			<th>參加類型</th>
@@ -54,5 +55,6 @@
 		</tr>
 	</tbody>
 </table>
+</div>
 </form>
 {/block}
