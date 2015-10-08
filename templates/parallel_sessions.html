@@ -6,9 +6,20 @@
 {foreach $sessions as $session}
 <div class="panel panel-default">
 	<div class="panel-heading"><a href="{$smarty.const.TOP}/session/view.php?id={$session['id']}">
-			{$session['title']['value']|escape}
+			{$session['title']|escape}
 	</a></div>
-	<div class="panel-body"></div>
+	<div class="panel-body">
+		<p>Organizer:
+		{foreach $session['organizers'] as $organizer}
+			&nbsp;{$organizer['first_name']|escape} {$organizer['last_name']|escape} (Email: {$organizer['email']|escape})
+		{/foreach}
+		</p>
+		<p>Expected Speaker: 
+		{foreach $session['speakers'] as $o}
+			&nbsp;{$o['first_name']|escape} {$o['last_name']|escape}
+		{/foreach}
+		</p>
+	</div>
 </div>
 {/foreach}
 	<div class="list-group">

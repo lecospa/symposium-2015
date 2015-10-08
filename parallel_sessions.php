@@ -7,7 +7,19 @@ class Parallel extends View {
 		$conn = new \Conn();
 		$sessions = \Models\Sessions::all($conn);
 		foreach ($sessions as &$session) {
-			$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title');
+			$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
+
+			$session['organizers'] = array();
+			$os = \Models\Sessions::get_properties($conn, $session['id'], 'organizer');
+			foreach($os as $o) {
+				$session['organizers'][] = \Models\People::get($conn, $o['value']);
+			}
+
+			$session['speakers'] = array();
+			$os = \Models\Sessions::get_properties($conn, $session['id'], 'speakers');
+			foreach($os as $o) {
+				$session['speakers'][] = \Models\People::get($conn, $o['value']);
+			}
 		}
 
 		$this->smarty->assign('sessions', $sessions);
