@@ -10,9 +10,10 @@ class Index extends \View {
 		if ($auth['scope'] == 'sudo') {
 			$session_id = $_GET['session_id'];
 			$session['id'] = $session_id;
-			$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title');
-			$session['date'] = \Models\Sessions::get_property($conn, $session['id'], 'date');
-			$session['time'] = \Models\Sessions::get_property($conn, $session['id'], 'time');
+			$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
+			$session['location'] = \Models\Sessions::get_property($conn, $session['id'], 'location')['value'];
+			$session['date'] = \Models\Sessions::get_property($conn, $session['id'], 'date')['value'];
+			$session['time'] = \Models\Sessions::get_property($conn, $session['id'], 'time')['value'];
 			$session['organizers'] = \Models\Sessions::get_properties($conn, $session['id'], 'organizer');
 			foreach ($session['organizers'] as &$organizer) {
 				$organizer['content'] = \Models\People::get($conn, $organizer['value']);

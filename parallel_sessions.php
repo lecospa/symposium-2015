@@ -8,6 +8,9 @@ class Parallel extends View {
 		$sessions = \Models\Sessions::all($conn);
 		foreach ($sessions as &$session) {
 			$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
+			$session['location'] = \Models\Sessions::get_property($conn, $session['id'], 'location')['value'];
+			$session['date'] = \Models\Sessions::get_property($conn, $session['id'], 'date')['value'];
+			$session['time'] = \Models\Sessions::get_property($conn, $session['id'], 'time')['value'];
 
 			$session['organizers'] = array();
 			$os = \Models\Sessions::get_properties($conn, $session['id'], 'organizer');

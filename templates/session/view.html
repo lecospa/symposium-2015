@@ -6,17 +6,15 @@
 <p class="larger-font">Session: {$title|escape}</p>
 <p class="larger-font">Organizer(s):
 	{foreach $organizers as $organizer}
-		&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$organizer['id']}">{$organizer['first_name']} {$organizer['last_name']} (Email: {$organizer['email']|escape})</a>
+	&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$organizer['id']}">{$organizer['first_name']} {$organizer['last_name']}</a> (Email: {$organizer['email']|escape})
 	{/foreach}
 </p>
-<p class="larger-font">Location:
-</p>
-<p class="larger-font">Date&nbsp;&amp;&nbsp;Time:
-</p>
+<p class="larger-font">Location: {$location|escape}</p>
+<p class="larger-font">Date&nbsp;&amp;&nbsp;Time: {$date|escape} {$time|escape}</p>
 
 	{foreach $speakers as $speaker}
 <p class="larger-font">
-		Expected Speakers:&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$speaker['id']}">{$speaker['first_name']} {$speaker['last_name']} (Email: {$speaker['email']|escape})</a><br>
+Expected Speakers:&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$speaker['id']}">{$speaker['first_name']} {$speaker['last_name']}</a> (Email: {$speaker['email']|escape})<br>
 		Talk Title:&nbsp;{$speaker['title']|escape}<br>
 		Talk Abstract:&nbsp;{$speaker['abstract']|escape}<br>
 </p>

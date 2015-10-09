@@ -14,7 +14,19 @@
 		<div class="col-xs-2"><label>Title</label></div>
 		<div class="col-xs-8">
 			<input type="hidden" name="session_id" value="{$session['id']}">
-			<input class="form-control" type="text" name="value" value="{$session['title']['value']|escape}">
+			<input class="form-control" type="text" name="value" value="{$session['title']|escape}">
+		</div>
+		<div class="col-xs-2">
+			<button type="submit" class="btn btn-default">更新</button>
+		</div>
+	</div>
+</form>
+<form action="{$smarty.const.TOP}/admin/session/edit_location.php?token={$token}" method="POST">
+	<div class="row">
+		<div class="col-xs-2"><label>Location</label></div>
+		<div class="col-xs-8">
+			<input type="hidden" name="session_id" value="{$session['id']}">
+			<input class="form-control" type="text" name="value" value="{$session['location']|escape}">
 		</div>
 		<div class="col-xs-2">
 			<button type="submit" class="btn btn-default">更新</button>
@@ -26,10 +38,10 @@
 		<div class="col-xs-2"><label>Date &amp; time</label></div>
 		<div class="col-xs-2">
 			<input type="hidden" name="session_id" value="{$session['id']}">
-			<input class="form-control" type="text" name="date" value="{$session['date']['value']|escape}" placeholder="0000/00/00">
+			<input class="form-control" type="text" name="date" value="{$session['date']|escape}" placeholder="0000/00/00">
 		</div>
 		<div class="col-xs-2">
-			<input class="form-control" type="text" name="time" value="{$session['time']['value']|escape}" placeholder="00:00">
+			<input class="form-control" type="text" name="time" value="{$session['time']|escape}" placeholder="00:00">
 		</div>
 		<div class="col-xs-2">
 			<button type="submit" class="btn btn-default">更新</button>
