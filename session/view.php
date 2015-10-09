@@ -7,6 +7,9 @@ class View extends \View {
 		$conn = new \Conn();
 		$id = $_GET['id'];
 		$title = \Models\Sessions::get_property($conn, $id, 'title')['value'];
+		$location = \Models\Sessions::get_property($conn, $id, 'location')['value'];
+		$date = \Models\Sessions::get_property($conn, $id, 'date')['value'];
+		$time = \Models\Sessions::get_property($conn, $id, 'time')['value'];
 
 		$organizers = array();
 		$os = \Models\Sessions::get_properties($conn, $id, 'organizer');
@@ -21,6 +24,9 @@ class View extends \View {
 		}
 
 		$this->smarty->assign('title', $title);
+		$this->smarty->assign('location', $location);
+		$this->smarty->assign('date', $date);
+		$this->smarty->assign('time', $time);
 		$this->smarty->assign('organizers', $organizers);
 		$this->smarty->assign('speakers', $speakers);
 		$this->smarty->display('session/view.html');
