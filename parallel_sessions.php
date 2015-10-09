@@ -16,12 +16,11 @@ class Parallel extends View {
 			}
 
 			$session['speakers'] = array();
-			$os = \Models\Sessions::get_properties($conn, $session['id'], 'speakers');
+			$os = \Models\Sessions::get_properties($conn, $session['id'], 'speaker');
 			foreach($os as $o) {
 				$session['speakers'][] = \Models\People::get($conn, $o['value']);
 			}
 		}
-
 		$this->smarty->assign('sessions', $sessions);
 		$this->smarty->display('parallel_sessions.html');
 	}
