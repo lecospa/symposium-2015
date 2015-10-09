@@ -3,15 +3,22 @@
 <div class="page-header">
 	<h1>Parallel Session <small>{$title|escape}</small></h1>
 </div>
-<p class="larger-font">Title: {$title|escape}</p>
-<p class="larger-font">Organizer:
+<p class="larger-font">Session: {$title|escape}</p>
+<p class="larger-font">Organizer(s):
 	{foreach $organizers as $organizer}
-		&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$organizer['id']}">{$organizer['first_name']} {$organizer['last_name']}</a>
+		&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$organizer['id']}">{$organizer['first_name']} {$organizer['last_name']} (Email: {$organizer['email']|escape})</a>
 	{/foreach}
 </p>
-<p class="larger-font">Speakers:
+<p class="larger-font">Location:
+</p>
+<p class="larger-font">Date&nbsp;&amp;&nbsp;Time:
+</p>
+
 	{foreach $speakers as $speaker}
-		&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$speaker['id']}">{$speaker['first_name']} {$speaker['last_name']}</a> {$speaker['title']|escape}
-	{/foreach}
+<p class="larger-font">
+		Expected Speakers:&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$speaker['id']}">{$speaker['first_name']} {$speaker['last_name']} (Email: {$speaker['email']|escape})</a><br>
+		Talk Title:&nbsp;{$speaker['title']|escape}<br>
+		Talk Abstract:&nbsp;{$speaker['abstract']|escape}<br>
 </p>
+	{/foreach}
 {/block}
