@@ -14,7 +14,7 @@
 
 	{foreach $speakers as $speaker}
 <p class="larger-font">
-Expected Speakers:&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$speaker['id']}">{$speaker['first_name']} {$speaker['last_name']}</a> (Email: {$speaker['email']|escape})<br>
+Expected Speakers {$speaker@iteration}: <a href="{$smarty.const.TOP}/person/view.php?id={$speaker['id']}">{$speaker['first_name']} {$speaker['last_name']}</a> (Email: {$speaker['email']|escape})<br>
 		Talk Title:&nbsp;{$speaker['title']|escape}<br>
 		Talk Abstract:&nbsp;{$speaker['abstract']|escape}<br>
 </p>
