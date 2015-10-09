@@ -10,11 +10,17 @@
 			{$session['title']|escape}
 	</a></div>
 	<div class="panel-body">
-		<p>Organizer:
-		{foreach $session['organizers'] as $organizer}
-			&nbsp;{$organizer['first_name']|escape} {$organizer['last_name']|escape} (Email: {$organizer['email']|escape})
-		{/foreach}
-		</p>
+
+		<div class="row">
+			<div class="col-sm-1">
+				Organizer:
+			</div>
+			<div class="col-sm-11">
+				{foreach $session['organizers'] as $organizer}
+					&nbsp;&nbsp;{$organizer['first_name']|escape} {$organizer['last_name']|escape} (Email: {$organizer['email']|escape})<br>
+				{/foreach}
+			</div>
+		</div>
 		<p>Expected Speaker: 
 		{foreach $session['speakers'] as $o}
 			&nbsp;{$o['first_name']|escape} {$o['last_name']|escape}
