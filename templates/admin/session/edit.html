@@ -2,10 +2,10 @@
 
 {block name=main}
 <div class="page-header">
-	<h1>Parallel Sessions</h1>
+	<h1>Parallel Sessions <small>{$session['title']['value']|escape}</small></h1>
 </div>
 <ol class="breadcrumb">
-	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">後台</a></li>
+	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">管理後台</a></li>
 	<li><a href="{$smarty.const.TOP}/admin/sessions.php?token={$token}">Parallel Sessions</a></li>
 	<li class="active">編輯</li>
 </ol>
@@ -21,7 +21,22 @@
 		</div>
 	</div>
 </form>
-<h4>Organizers</h4>
+<form action="{$smarty.const.TOP}/admin/session/edit_datetime.php?token={$token}" method="POST">
+	<div class="row">
+		<div class="col-xs-2"><label>Date &amp; time</label></div>
+		<div class="col-xs-2">
+			<input type="hidden" name="session_id" value="{$session['id']}">
+			<input class="form-control" type="text" name="date" value="{$session['date']['value']|escape}" placeholder="0000/00/00">
+		</div>
+		<div class="col-xs-2">
+			<input class="form-control" type="text" name="time" value="{$session['time']['value']|escape}" placeholder="00:00">
+		</div>
+		<div class="col-xs-2">
+			<button type="submit" class="btn btn-default">更新</button>
+		</div>
+	</div>
+</form>
+<h2>Organizers</h2>
 <table class="table">
 	<thead>
 		<tr><th>Name</th><th></th><th></th></tr>
@@ -43,7 +58,7 @@
 		<tr>
 			<form action="{$smarty.const.TOP}/admin/session/insert.php?token={$token}" method="POST">
 				<td>
-					<label>選擇一個Parallel Session Speaker</label>
+					<label>選擇一個Parallel Session的人</label>
 					<input type="hidden" name="session_id" value="{$session['id']}">
 					<input type="hidden" name="name" value="organizer">
 					<select class="form-control" name="value" required>
@@ -53,13 +68,13 @@
 						{/foreach}
 					</select>
 				</td>
-				<td><button type="submit" class="btn btn-default">Add</button></td>
+				<td><button type="submit" class="btn btn-default">新增</button></td>
 				<td></td>
 			</form>
 		</tr>
 	</tbody>
 </table>
-<h4>Speakers</h4>
+<h2>Speakers</h2>
 <table class="table">
 	<thead>
 		<tr><th>Name</th><th></th><th></th></tr>
@@ -71,7 +86,6 @@
 			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$speaker['content']['id']}" class="btn btn-default">編輯</a></td>
 			<td>
 				<form method="POST" action="{$smarty.const.TOP}/admin/session/delete.php?token={$token}">
-					<label>選擇一個Parallel Session Speaker</label>
 					<input type="hidden" name="id" value="{$speaker['id']}" />
 					<input type="hidden" name="session_id" value="{$speaker['session_id']}" />
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
@@ -82,6 +96,7 @@
 		<tr>
 			<form action="{$smarty.const.TOP}/admin/session/insert.php?token={$token}" method="POST">
 				<td>
+					<label>選擇一個Parallel Session的人</label>
 					<input type="hidden" name="session_id" value="{$session['id']}">
 					<input type="hidden" name="name" value="speaker">
 					<select class="form-control" name="value" required>
@@ -91,7 +106,7 @@
 						{/foreach}
 					</select>
 				</td>
-				<td><button type="submit" class="btn btn-default">Add</button></td>
+				<td><button type="submit" class="btn btn-default">新增</button></td>
 				<td></td>
 			</form>
 		</tr>
