@@ -2,7 +2,7 @@
 
 {block name=main}
 <div class="page-header">
-	<h1>Parallel Sessions <small>{$session['title']['value']|escape}</small></h1>
+	<h1>Parallel Sessions <small>{$session['title']|escape}</small></h1>
 </div>
 <ol class="breadcrumb">
 	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">管理後台</a></li>
@@ -97,8 +97,9 @@
 			<td>{$speaker['content']['first_name']} {$speaker['content']['last_name']}</td>
 			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$speaker['content']['id']}" class="btn btn-default">編輯</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}/admin/session/delete.php?token={$token}">
+				<form method="POST" action="{$smarty.const.TOP}/admin/session/delete_speaker.php?token={$token}">
 					<input type="hidden" name="id" value="{$speaker['id']}" />
+					<input type="hidden" name="person_id" value="{$speaker['content']['id']}" />
 					<input type="hidden" name="session_id" value="{$speaker['session_id']}" />
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
 				</form>
@@ -106,11 +107,10 @@
 		</tr>
 		{/foreach}
 		<tr>
-			<form action="{$smarty.const.TOP}/admin/session/insert.php?token={$token}" method="POST">
+			<form action="{$smarty.const.TOP}/admin/session/insert_speaker.php?token={$token}" method="POST">
 				<td>
 					<label>選擇一個Parallel Session的人</label>
 					<input type="hidden" name="session_id" value="{$session['id']}">
-					<input type="hidden" name="name" value="speaker">
 					<select class="form-control" name="value" required>
 						<option value=""></option>
 						{foreach $people as $person}
