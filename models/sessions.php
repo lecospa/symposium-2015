@@ -21,6 +21,10 @@ class Sessions {
 		$stmt = $conn->prepare("DELETE FROM `session` WHERE `id`=?");
 		$stmt->execute(array($id));
 	}
+	static function delete_property_by_name_value($conn, $name, $value) {
+		$stmt = $conn->prepare("DELETE FROM `session` WHERE `name`=? AND `value`=?");
+		$stmt->execute(array($name, $value));
+	}
 	static function update_property($conn, $session_id, $name, $value) {
 		if (self::get_property($conn, $session_id, $name)) {
 			$stmt = $conn->prepare("UPDATE `session` SET `value`=? WHERE `session_id`=? AND `name`=?");

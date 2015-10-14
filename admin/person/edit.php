@@ -10,9 +10,16 @@ class Edit extends \View {
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
 			$info = \Models\People::get($conn, $id);
+
+			$sessions = \Models\Sessions::all($conn);
+			foreach ($sessions as &$session) {
+				$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
+			}
+
 			$this->smarty->assign('person', $info);
 			$this->smarty->assign('token', $token);
 			$this->smarty->assign('id', $id);
+			$this->smarty->assign('sessions', $sessions);
 			$this->smarty->display('admin/person/edit.html');
 		} else {
 			throw new \UnauthorizedException();
@@ -36,6 +43,9 @@ class Edit extends \View {
 			$session_code = $_POST['inputsessioncode'];
 			$type = $_POST['inputtype'];
 			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code, $type);
+			\Models\Sessions::delete_property_by_name_value($conn, 'speaker', $id);
+			\Models\Sessions::insert_property($conn, $session_code, 'speaker', $id);
+
 			header('Location: edit.php?token=' . $token . '&id=' . $id);
 		} else {
 			throw new \UnauthorizedException();
