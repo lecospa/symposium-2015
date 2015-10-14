@@ -9,6 +9,13 @@ class Submission extends View {
 		if ($auth && $auth['scope'] == 'people_an') {
 			$this->smarty->assign('scope', __CLASS__);
 			$this->smarty->assign('token', $token);
+
+			$sessions = \Models\Sessions::all($conn);
+			foreach ($sessions as &$session) {
+				$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
+			}
+			$this->smarty->assign('sessions', $sessions);
+
 			$this->smarty->display('submission_creation.html');
 		} else {
 			$this->smarty->assign('scope', __CLASS__);
@@ -37,8 +44,10 @@ class Submission extends View {
 			$_token = self::generatorPassword(8);
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
 			\Models\People::update_limited($conn, $_id, $title, $abstract, $session_code);
+			\Models\Sessions::insert_property($conn, $session_code, 'speaker', $_id);
+
 			$logger->info('New Person', json_encode(array('id' => $_id)));
-			
+
 			{
 				$to = $email;
 				$subject = '[Lecospa] Passcode for title and abstract modification - 2nd Symposium';
@@ -50,7 +59,7 @@ class Submission extends View {
 					"Or, you can use the following link \r\nhttp://lecospa.ntu.edu.tw/symposium/2015/person/main.php?token=$_token to modify your submission.\r\n" . "\r\n" . 
 					"Sincerely, \r\nLecospa 2nd Symposium Team";
 				$headers = 'From: no-reply@lecospa.ntu.edu.tw' . "\r\n" . 'Reply-To: symposium@lecospa.ntu.edu.tw';
-				
+
 				$logger->info('Email', json_encode(array('id' => $_id, 'email' => $to, 'message' => $message)));
 
 				mail($to, $subject, $message, $headers);

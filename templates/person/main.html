@@ -38,19 +38,12 @@
 	{if $person['type'] == 'Parallel'}
 	<div class="form-group">
 		<label for="inputSessionCode" class="col-sm-2 control-label larger-font">Session Code</label>
-		<div class="col-sm-3">
+		<div class="col-sm-6">
 			<select id="inputSessionCode" name="inputsessioncode" class="form-control">
-				<option value="" {if $person['session_code'] eq ''}selected{/if}></option>
-				<option value="MS" {if $person['session_code'] eq 'MS'}selected{/if}>MS</option>
-				<option value="OT" {if $person['session_code'] eq 'OT'}selected{/if}>OT</option>
-				<option value="OC" {if $person['session_code'] eq 'OC'}selected{/if}>OC</option>
-				<option value="CE" {if $person['session_code'] eq 'CE'}selected{/if}>CE</option>
-				<option value="CF" {if $person['session_code'] eq 'CF'}selected{/if}>CF</option>
-				<option value="DD" {if $person['session_code'] eq 'DD'}selected{/if}>DD</option>
-				<option value="BH" {if $person['session_code'] eq 'BH'}selected{/if}>BH</option>
-				<option value="HP" {if $person['session_code'] eq 'HP'}selected{/if}>HP</option>
-				<option value="AM" {if $person['session_code'] eq 'AM'}selected{/if}>AM</option>
-				<option value="EQ" {if $person['session_code'] eq 'EQ'}selected{/if}>EQ</option>
+				<option value="0" {if $person['session_id'] eq '0'}selected{/if}></option>
+				{foreach $sessions as $session}
+				<option value="{$session['id']}" {if $person['session_id'] eq $session['id']}selected{/if}>{$session['title']}</option>
+				{/foreach}
 			</select>
 		</div>
 	</div>

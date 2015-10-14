@@ -15,8 +15,14 @@ class MMain extends \View {
 				unset($_SESSION['message']);
 			}
 
+			$sessions = \Models\Sessions::all($conn);
+			foreach ($sessions as &$session) {
+				$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
+			}
+
 			$this->smarty->assign('person', $person);
 			$this->smarty->assign('token', $token);
+			$this->smarty->assign('sessions', $sessions);
 			$this->smarty->display('person/main.html');
 		} else {
 			$this->smarty->display('person/main-noauth.html');
@@ -31,6 +37,8 @@ class MMain extends \View {
 			$abstract = $_POST['inputabstract'];
 			$session_code = $_POST['inputsessioncode'];
 			\Models\People::update_limited($conn, $auth['id'], $title, $abstract, $session_code);
+			\Models\Sessions::delete_property_by_name_value($conn, 'speaker', $auth['id']);
+			\Models\Sessions::insert_property($conn, $session_code, 'speaker', $auth['id']);
 
 			$_SESSION['message'] = 'Update successfully';
 
