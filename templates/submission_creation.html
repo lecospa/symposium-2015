@@ -52,22 +52,15 @@
 {/literal}
 	<div class="form-group" id="sc" style="display:none">
 		<label for="inputSessionCode" class="col-sm-2 control-label larger-font">Session Code</label>
-		<div class="col-sm-3">
+		<div class="col-sm-4">
 			<select id="inputSessionCode" name="session_code" class="form-control">
-				<option value=""></option>
-				<option value="MS">MS</option>
-				<option value="OT">OT</option>
-				<option value="OC">OC</option>
-				<option value="CE">CE</option>
-				<option value="CF">CF</option>
-				<option value="DD">DD</option>
-				<option value="BH">BH</option>
-				<option value="HP">HP</option>
-				<option value="AM">AM</option>
-				<option value="EQ">EQ</option>
+				<option value="0" {if $person['session_id'] eq '0'}selected{/if}></option>
+				{foreach $sessions as $session}
+				<option value="{$session['id']}" {if $person['session_id'] eq $session['id']}selected{/if}>{$session['title']}</option>
+				{/foreach}
 			</select>
 		</div>
-		<div class="col-sm-7"><p class="larger-font">(If you have chosen Parallel Session, please select your session code)</p></div>
+		<div class="col-sm-6"><p class="larger-font">(If you have chosen Parallel Session, please select your session code)</p></div>
 	</div>
 	<div class="form-group">
 		<label for="input_title" class="col-sm-2 control-label larger-font">Title</label>

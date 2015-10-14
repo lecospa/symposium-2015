@@ -49,7 +49,7 @@ class People {
 	}
 
 	static function update_limited($conn, $id, $title, $abstract, $session_code) {
-		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `session_code`=? WHERE `id` = ?");
+		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `session_id`=? WHERE `id` = ?");
 		$stmt->execute(array($title, $abstract, $session_code, $id));
 	}
 	static function insert($conn, $type, $first_name, $last_name, $email) {
