@@ -57,7 +57,7 @@ class Submission extends View {
 					"We provide you the 8 characters Passcode ``$_token'' to modifying your submission.\r\n" . 
 					"The passcode is required entering into \r\nhttp://lecospa.ntu.edu.tw/symposium/2015/submission.php .\r\n" . 
 					"Or, you can use the following link \r\nhttp://lecospa.ntu.edu.tw/symposium/2015/person/main.php?token=$_token to modify your submission.\r\n" . "\r\n" . 
-					"Sincerely, \r\nLecospa 2nd Symposium Team";
+					"Sincerely, \r\n2nd LeCosPA Symposium Team";
 				$headers = 'From: no-reply@lecospa.ntu.edu.tw' . "\r\n" . 'Reply-To: symposium@lecospa.ntu.edu.tw';
 
 				$logger->info('Email', json_encode(array('id' => $_id, 'email' => $to, 'message' => $message)));
