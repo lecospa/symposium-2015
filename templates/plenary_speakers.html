@@ -7,7 +7,7 @@
 	{foreach $plenary_speakers as $person}
 		<div class="col-md-3">
 			<div class="thumbnail" style="height: 220px;">
-				<img src="{$smarty.const.TOP}/uploads/{$person['img']}" class="img-responsive img-circle" style="height: 150px;" href="{$smarty.const.TOP}/person/view.php?id={$person['id']}">
+				<a href="{$smarty.const.TOP}/person/view.php?id={$person['id']}"><img src="{$smarty.const.TOP}/uploads/{$person['img']}" class="img-responsive img-circle" style="height: 150px;"></a>
 				<h4><a href="{$smarty.const.TOP}/person/view.php?id={$person['id']}">{$person['first_name']|escape} {$person['last_name']|escape}</a></h4>
 				<p>Institution: {$person['occupation']|escape}</p>
 			</div>
