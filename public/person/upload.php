@@ -1,7 +1,7 @@
 <?php
-require_once('../init.php');
+require_once('../../init.php');
 
-class Upload extends \View {
+class Upload extends \Controllers\Controller {
 	public function get() {
 		throw new \ForbiddenException();
 	}

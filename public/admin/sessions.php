@@ -1,8 +1,7 @@
 <?php
-namespace Admin;
-require_once('../init.php');
+require_once('../../init.php');
 
-class Sessions extends \View {
+class Sessions extends \Controllers\Controller {
 	public function get() {
 		$token = $_GET['token'];
 		$conn = new \Conn();
