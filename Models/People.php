@@ -1,5 +1,11 @@
 <?php
 namespace Models;
+/*
+ * 存取參加者(Person)的各欄位資料
+ *
+ * @param
+ * conn: 資料庫連線
+ */
 
 class People {
 	static function all_with_token_by_type($conn, $type) {
@@ -56,6 +62,10 @@ class People {
 		$stmt = $conn->prepare("UPDATE `people` SET `session_id`=? WHERE `id` = ?");
 		$stmt->execute(array($session_id, $id));
 	}
+	/*
+	 * 新增一個Person
+	 * @return 代表Person的id
+	 */
 	static function insert($conn, $type, $first_name, $last_name, $email) {
 		$stmt = $conn->prepare("INSERT INTO `people` (`type`, `first_name`, `last_name`, `email`) VALUES (?, ?, ?, ?)");
 		$stmt->execute(array($type, $first_name, $last_name, $email));
