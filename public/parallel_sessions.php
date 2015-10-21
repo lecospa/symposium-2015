@@ -1,6 +1,6 @@
 <?php
-require_once('init.php');
-class Parallel extends View {
+require_once('../init.php');
+class Parallel extends \Controllers\Controller {
 	function get() {
 		$this->smarty->assign('scope', __CLASS__);
 

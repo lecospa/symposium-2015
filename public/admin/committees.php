@@ -1,8 +1,8 @@
 <?php
 namespace Admin;
-require_once('../init.php');
+require_once('../../init.php');
 
-class Index extends \View {
+class Index extends \Controllers\Controller {
 	public function get() {
 		$token = $_GET['token'];
 		$conn = new \Conn();

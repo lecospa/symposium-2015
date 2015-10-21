@@ -1,6 +1,6 @@
 <?php
-require_once('init.php');
-class Submission extends View {
+require_once('../init.php');
+class Submission extends \Controllers\Controller {
 	function get() {
 		$token = $_GET['token'];
 		$conn = new \Conn();
