@@ -1,0 +1,119 @@
+{extends file='../others.tpl'}
+{block name=main}
+<div class="page-header">
+	<h1>Title & Abstract Submission</h1>
+</div>
+<p class="larger-font">Each of our plenary session is 30 minutes' talk with 5 minutes Q&amp;A. As to the parallel session’s talk, the length of the talk will be arranged by its session chair. Therefore you are welcome to put down your proposed talk length, and the session chair will contact you in the near future.</p>
+<br>
+
+{nocache}
+{if $message != ''}
+<div class="alert alert-success" role="alert">{$message}</div>
+{/if}
+<form action="main.php?token={$token}" method="POST" class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 control-label larger-font">Name</label>
+		<div class="col-sm-10">
+			<p class="form-control-static larger-font">{$person['first_name']|escape} {$person['last_name']|escape}</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label larger-font">Email</label>
+		<div class="col-sm-10">
+			<p class="form-control-static larger-font">{$person['email']|escape}</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputTitle" class="col-sm-2 control-label larger-font">Title</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="inputTitle" placeholder="Your speak title" value="{$person['title']|escape}" name="inputtitle">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputAbstract" class="col-sm-2 control-label larger-font">Abstract <small>(less than 300 words)</small></label>
+		<div class="col-sm-10">
+			<textarea id="inputAbstract" class="form-control" rows="5" name="inputabstract">{$person['abstract']|escape}</textarea>
+		</div>
+	</div>
+	{if $person['type'] == 'Parallel'}
+	<div class="form-group">
+		<label for="inputSessionCode" class="col-sm-2 control-label larger-font">Session Code</label>
+		<div class="col-sm-6">
+			<select id="inputSessionCode" name="inputsessioncode" class="form-control">
+				<option value="0" {if $person['session_id'] eq '0'}selected{/if}></option>
+				{foreach $sessions as $session}
+				<option value="{$session['id']}" {if $person['session_id'] eq $session['id']}selected{/if}>{$session['title']}</option>
+				{/foreach}
+			</select>
+		</div>
+	</div>
+	{else}
+	<input type="hidden" name="inputsessioncode" value="">
+	{/if}
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-primary">Update Information</button>
+		</div>
+	</div>
+</form>
+<hr />
+<div class="row">
+	<div class="col-md-6">
+		<form enctype="multipart/form-data" action="upload.php?target=slide" method="POST" class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label larger-font">Slide</label>
+				<div class="col-sm-10">
+					<p class="form-control-static larger-font">
+						{if $person['slide_file']}
+							<a href="{$smarty.const.TOP}/uploads/{$person['slide_file']}" target="_blank">{$person['slide_file']}</a>
+						{else}
+							No
+						{/if}
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputSlidefile" class="col-sm-2 control-label larger-font">Upload</label>
+				<div class="col-sm-10">
+					<input name="file" id="inputSlidefile" type="file" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input type="hidden" name="token" value="{$token}" />
+					<button type="submit" class="btn btn-default">Upload</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-6">
+		<form enctype="multipart/form-data" action="upload.php?target=img" method="POST" class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label larger-font">Photos</label>
+				<div class="col-sm-10">
+					<p class="form-control-static larger-font">
+						{if $person['img']}
+							<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}/uploads/{$person['img']}" />
+						{else}
+							No
+						{/if}
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputImg" class="col-sm-2 control-label larger-font">Upload</label>
+				<div class="col-sm-10">
+					<input name="file" id="inputImg" type="file" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input type="hidden" name="token" value="{$token}" />
+					<button type="submit" class="btn btn-default">Upload</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{/nocache}
+{/block}
