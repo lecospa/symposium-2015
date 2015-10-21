@@ -1,8 +1,8 @@
 <?php
 namespace Person;
-require_once('../init.php');
+require_once('../../init.php');
 
-class MMain extends \View {
+class MMain extends \Controllers\Controller {
 	public function get() {
 		$token = $_GET['token'];
 		$conn = new \Conn();

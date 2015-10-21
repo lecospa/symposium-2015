@@ -4,8 +4,6 @@ session_start();
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/db.php';
 
-define('ROOT', __DIR__);
-
 class UnauthorizedException extends Exception {
 	public function __construct($message, $code = 0, Exception $previous = null) {
 		parent::__construct($message, $code, $previous);
@@ -29,46 +27,21 @@ function exception_error_handler($severity, $message, $file, $line) {
 }
 set_error_handler("exception_error_handler");
 
-class View {
-	private function set_smarty() {
-		$this->smarty = new Smarty;
-		$this->smarty->template_dir = __DIR__ . '/templates/';
-		$this->smarty->compile_dir  = __DIR__ . '/templates_c/';
-		$this->smarty->cache_dir    = __DIR__ . '/cache/';
-		$this->smarty->caching      = false;
-	}
-	private function set_path() {
-		$r = substr($_SERVER['SCRIPT_FILENAME'], strlen(__DIR__));
-		$uri = $_SERVER['SCRIPT_NAME'];
-		$top = substr($uri, 0, strlen($uri) - strlen($r));
-		
-		define('TOP', $top);
-	}
-	public function __construct() {
-		$this->set_smarty();
-		$this->set_path();
-		try {
-			/* Implement self define HTTP Method */
-			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-				$this->method = 'POST';
-				method_exists($this, 'post') && $this->post();
-			} else {
-				$this->method = 'GET';
-				method_exists($this, 'get') && $this->get();
-			}
-		} catch (NotFoundException $e) {
-			http_response_code(404);
-			$this->smarty->assign('e', $e);
-			$this->smarty->display('404.html');
-		} catch (UnauthorizedException $e) {
-			http_response_code(401);
-			echo 'unauthorized.';
-		} catch (ForbiddenException $e) {
-			http_response_code(403);
-			echo 'forbidden.';
-		} catch (Exception $e) {
-			echo $e->getMessage();
-		}
-	}
+function set_path() {
+	$r = substr($_SERVER['SCRIPT_FILENAME'], strlen(__DIR__ . '/public'));
+	$uri = $_SERVER['SCRIPT_NAME'];
+	$top = substr($uri, 0, strlen($uri) - strlen($r));
+	
+	define('TOP', $top);
 }
+set_path();
 
+function set_smarty() {
+	$smarty = new Smarty;
+	$smarty->template_dir = __DIR__ . '/templates/';
+	$smarty->compile_dir  = __DIR__ . '/templates_c/';
+	$smarty->cache_dir    = __DIR__ . '/cache/';
+	$smarty->caching      = false;
+	\Controllers\Controller::$smarty_static = $smarty;
+}
+set_smarty();

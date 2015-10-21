@@ -1,8 +1,8 @@
 <?php
 namespace ISpeaker;
-require_once('../init.php');
+require_once('../../init.php');
 
-class View extends \View {
+class View extends \Controllers\Controller {
 	public function get() {
 		$conn = new \Conn();
 		$id = $_GET['id'];

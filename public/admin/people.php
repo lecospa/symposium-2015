@@ -1,8 +1,7 @@
 <?php
-namespace Admin;
-require_once('../init.php');
+require_once('../../init.php');
 
-class Index extends \View {
+class AdminPeopleIndex extends \Controllers\Controller {
 	public function get() {
 		$token = $_GET['token'];
 		$conn = new \Conn();
@@ -24,4 +23,4 @@ class Index extends \View {
 		}
 	}
 }
-new Index;
+new AdminPeopleIndex;
