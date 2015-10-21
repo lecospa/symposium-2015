@@ -1,14 +1,10 @@
 <?php
 error_reporting(E_ALL);
 session_start();
-define('ROOT', __DIR__);
-require_once(ROOT . '/db.php');
-require_once(ROOT . '/libs/Smarty.class.php');
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/db.php';
 
-function my_autoloader($class) {
-	include(strtolower(str_replace("\\", "/", $class)) . '.php');
-}
-spl_autoload_register('my_autoloader');
+define('ROOT', __DIR__);
 
 class UnauthorizedException extends Exception {
 	public function __construct($message, $code = 0, Exception $previous = null) {
@@ -38,7 +34,6 @@ class View {
 		$this->smarty = new Smarty;
 		$this->smarty->template_dir = __DIR__ . '/templates/';
 		$this->smarty->compile_dir  = __DIR__ . '/templates_c/';
-		//$this->smarty->config_dir   = __DIR__ . '/configs/';
 		$this->smarty->cache_dir    = __DIR__ . '/cache/';
 		$this->smarty->caching      = false;
 	}
