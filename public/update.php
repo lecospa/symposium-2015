@@ -1,6 +1,7 @@
 <?php
-require_once('init.php');
-class Update extends View {
+require_once('../init.php');
+
+class Update extends \Controllers\Controller {
 	public function post() {
 		$conn = new \Conn();
 		$logging = new \Models\Logging($conn, $_SERVER);
