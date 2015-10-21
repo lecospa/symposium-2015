@@ -1,0 +1,10 @@
+<?php
+class Conn extends PDO {
+	public function __construct() {
+		$dns = 'mysql:host=localhost;dbname=;charset=utf8';
+		$user = '';
+		$pass = '';
+		parent::__construct($dns, $user, $pass);
+		$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	}
+}
