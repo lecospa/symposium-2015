@@ -1,8 +1,8 @@
 <?php
 namespace Admin\People;
-require_once('../../init.php');
+require_once('../../../init.php');
 
-class Edit extends \View {
+class Edit extends \Controllers\Controller {
 	public function get() {
 		$token = $_GET['token'];
 		$id = $_GET['id'];

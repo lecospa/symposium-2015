@@ -1,8 +1,8 @@
 <?php
 namespace Admin\Session;
-require_once('../../init.php');
+require_once('../../../init.php');
 
-class Delete extends \View {
+class Delete extends \Controllers\Controller {
 	public function post() {
 		$token = $_GET['token'];
 		$conn = new \Conn();
