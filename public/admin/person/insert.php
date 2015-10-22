@@ -1,8 +1,8 @@
 <?php
 namespace Admin\Person;
-require_once('../../init.php');
+require_once('../../../init.php');
 
-class Insert extends \View {
+class Insert extends \Controllers\Controller {
 	public function post() {
 		$token = $_GET['token'];
 		$conn = new \Conn();

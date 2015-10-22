@@ -1,8 +1,8 @@
 <?php
 namespace Admin;
-require_once('../../init.php');
+require_once('../../../init.php');
 
-class PersonDelete extends \View {
+class PersonDelete extends \Controllers\Controller {
 	public function post() {
 		$token = $_GET['token'];
 		$conn = new \Conn();
