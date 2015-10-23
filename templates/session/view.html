@@ -3,20 +3,23 @@
 <div class="page-header">
 	<h1>Parallel Session <small style="color:#DDDDDD;">{$title|escape}</small></h1>
 </div>
-<p class="larger-font">Session: {$title|escape}</p>
-<p class="larger-font">Organizer(s):
-	{foreach $organizers as $organizer}
-	&nbsp;{$organizer['first_name']} {$organizer['last_name']} (Email: {$organizer['email']|escape})
-	{/foreach}
-</p>
-<p class="larger-font">Location: {$location|escape}</p>
-<p class="larger-font">Date&nbsp;&amp;&nbsp;Time: {$date|escape} {$time|escape}</p>
-
-	{foreach $speakers as $speaker}
+<h3>Session: </h3><p class="larger-font">{$title|escape}</p>
+<h3>Organizer(s):</h3>
 <p class="larger-font">
-		Expected Speakers {$speaker@iteration}: {$speaker['first_name']} {$speaker['last_name']} (Email: {$speaker['email']|escape})<br>
-		Talk Title:&nbsp;{$speaker['title']|escape}<br>
-		Talk Abstract:&nbsp;{$speaker['abstract']|escape}<br>
+{foreach $organizers as $organizer}
+	{$organizer['first_name']|escape} {$organizer['last_name']|escape} (Email: {$organizer['email']|escape})
+	{if not $organizer@last}, {/if}
+{/foreach}
 </p>
-	{/foreach}
+<h3>Location: </h3><p class="larger-font">{$location|escape}</p>
+<h3>Date &amp; Time: <p class="larger-font">{$date|escape} {$time|escape}</p>
+<hr>
+{foreach $speakers as $speaker}
+<h3>Expected Speakers {$speaker@iteration}:</h3>
+<h4>{$speaker['first_name']|escape} {$speaker['last_name']|escape} (Email: {$speaker['email']|escape})</h4>
+	<dl class="larger-font">
+		<dt>Talk Title:</dt><dd>{$speaker['title']|escape}</dd>
+		<dt>Talk Abstract:</dt><dd>{$speaker['abstract']|escape}</dd>
+	</dl>
+{/foreach}
 {/block}
