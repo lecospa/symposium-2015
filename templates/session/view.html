@@ -5,11 +5,6 @@
 </div>
 <p class="larger-font">Session: {$title|escape}</p>
 <p class="larger-font">Organizer(s):
-<!--
-	{foreach $organizers as $organizer}
-	&nbsp;<a href="{$smarty.const.TOP}/person/view.php?id={$organizer['id']}">{$organizer['first_name']} {$organizer['last_name']}</a> (Email: {$organizer['email']|escape})
-	{/foreach}
--->
 	{foreach $organizers as $organizer}
 	&nbsp;{$organizer['first_name']} {$organizer['last_name']} (Email: {$organizer['email']|escape})
 	{/foreach}
@@ -19,7 +14,6 @@
 
 	{foreach $speakers as $speaker}
 <p class="larger-font">
-<!--Expected Speakers {$speaker@iteration}: <a href="{$smarty.const.TOP}/person/view.php?id={$speaker['id']}">{$speaker['first_name']} {$speaker['last_name']}</a> (Email: {$speaker['email']|escape})<br>-->
 		Expected Speakers {$speaker@iteration}: {$speaker['first_name']} {$speaker['last_name']} (Email: {$speaker['email']|escape})<br>
 		Talk Title:&nbsp;{$speaker['title']|escape}<br>
 		Talk Abstract:&nbsp;{$speaker['abstract']|escape}<br>
