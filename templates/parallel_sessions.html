@@ -3,29 +3,37 @@
 <div class="page-header">
 	<h1>Parallel Sessions</h1>
 </div>
-<p class="larger-font">If you are interested in giving a talk in the following session(s), please contact the organizer(s) of that session. The organizer(s) has the right to arrange the time and the order for the session.</p>
+<div class="alert alert-info" role="alert">
+If you are interested in giving a talk in the following session(s), please contact the organizer(s) of that session. The organizer(s) has the right to arrange the time and the order for the session.
+</div>
 {foreach $sessions as $session}
 <div class="panel panel-default">
 	<div class="panel-heading"><a href="{$smarty.const.TOP}/session/view.php?id={$session['id']}">
 			{$session['title']|escape}
 	</a></div>
 	<div class="panel-body">
-
 		<div class="row">
 			<div class="col-sm-1">
 				Organizer:
 			</div>
 			<div class="col-sm-11">
 				{foreach $session['organizers'] as $organizer}
-					&nbsp;&nbsp;{$organizer['first_name']|escape} {$organizer['last_name']|escape} (Email: {$organizer['email']|escape})<br>
+					{$organizer['first_name']|escape} {$organizer['last_name']|escape} (Email: {$organizer['email']|escape})
+					{if not $organizer@last}<br>{/if}
 				{/foreach}
 			</div>
 		</div>
-		<p>Expected Speaker: 
-		{foreach $session['speakers'] as $o}
-			&nbsp;{$o['first_name']|escape} {$o['last_name']|escape}
-		{/foreach}
-		</p>
+		<div class="row">
+			<div class="col-sm-2">
+				Expected Speaker: 
+			</div>
+			<div class="col-sm-10">
+				{foreach $session['speakers'] as $o}
+					{$o['first_name']|escape} {$o['last_name']|escape}
+					{if not $o@last}, {/if}
+				{/foreach}
+			</div>
+		</div>
 	</div>
 </div>
 {/foreach}
