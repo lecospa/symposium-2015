@@ -59,7 +59,7 @@
 			<td>{$organizer['content']['first_name']} {$organizer['content']['last_name']}</td>
 			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$organizer['content']['id']}" class="btn btn-default">編輯</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}/admin/session/delete.php?token={$token}">
+				<form method="POST" action="{$smarty.const.TOP}/api/session/organizer.php?token={$token}&method=delete" class="ajax-del-form">
 					<input type="hidden" name="id" value="{$organizer['id']}" />
 					<input type="hidden" name="session_id" value="{$organizer['session_id']}" />
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
@@ -126,3 +126,22 @@
 </table>
 
 {/block}
+
+{block name='body_script'}{literal}
+<script>
+$(".ajax-del-form").submit(function(event){
+	event.preventDefault();
+	var me = $(this), 
+		container = me.parent().parent(), 
+		button = me.children('button');
+	button.html('<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> 刪除').attr('disabled', true);
+	$.ajax({
+		type: "POST", 
+		url: me.attr("action"),
+		data: me.serialize(),
+	}).done(function(res) {
+		container.fadeOut(function(){$(this).remove();});
+	});
+});
+</script>
+{/literal}{/block}

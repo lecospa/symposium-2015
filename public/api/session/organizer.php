@@ -10,7 +10,7 @@ class OrganizerController extends \Controllers\APIController {
 		if ($auth['scope'] == 'sudo') {
 			$id = $_POST['id'];
 			$session_id = $_POST['session_id'];
-			//\Models\Sessions::delete_property_by_id($conn, $id);
+			\Models\Sessions::delete_property_by_id($conn, $id);
 			$this->json(array('status' => 'success'));
 		} else {
 			throw new \UnauthorizedException();
