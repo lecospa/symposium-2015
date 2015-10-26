@@ -3,6 +3,7 @@
 {block name=title}Second LeCosPA Symposium - Admin{/block}
 
 {block name=head}
+<link href="{$smarty.const.TOP}/css/admin.css" rel="stylesheet">
 {/block}
 
 {block name=body}
