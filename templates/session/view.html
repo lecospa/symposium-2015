@@ -17,8 +17,8 @@
 {foreach $speakers as $speaker}
 <h3>Expected Speakers {$speaker@iteration}:</h3>
 <h4>{$speaker['first_name']|escape} {$speaker['last_name']|escape} (Email: {$speaker['email']|escape})</h4>
-<p class="larger-font">Time: {$speaker['address_datetime']|escape}</p>
 	<dl class="larger-font">
+		<dt>Talk Time:</dt><dd>{$speaker['address_datetime']|escape}</dd>
 		<dt>Talk Title:</dt><dd>{$speaker['title']|escape}</dd>
 		<dt>Talk Abstract:</dt><dd>{$speaker['abstract']|escape}</dd>
 	</dl>
