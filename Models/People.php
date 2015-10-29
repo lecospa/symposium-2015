@@ -44,13 +44,13 @@ class People {
 		$stmt->execute(array($title, $abstract, $id));
 	}
 	
-	static function update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $occupation, $resume, $room, $session_code, $type) {
+	static function update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $talk_time, $occupation, $resume, $room, $session_code, $type) {
 		$stmt = $conn->prepare("UPDATE `people` SET `first_name` = ?, `last_name` = ?, `email` = ?, `title` = ?, `abstract` = ?,
-			`address_datetime` = ?, `occupation` = ?, `resume` = ?, `room` = ?, `session_id`=?, `type`=? WHERE `id` = ?"
+			`address_datetime` = ?, `talk_time` = ?, `occupation` = ?, `resume` = ?, `room` = ?, `session_id`=?, `type`=? WHERE `id` = ?"
 		);
 		$stmt->execute(array(
 			$first_name, $last_name, $email, $title, $abstract, 
-			$address_datetime, $occupation, $resume, $room, $session_code, $type, $id
+			$address_datetime, $talk_time, $occupation, $resume, $room, $session_code, $type, $id
 		));
 	}
 
