@@ -44,7 +44,7 @@ class Edit extends \Controllers\Controller {
 			$session_code = $_POST['inputsessioncode'];
 			$type = $_POST['inputtype'];
 			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $talk_time, $occupation, $resume, $room, $session_code, $type);
-			\Models\Sessions::delete_property_by_name_value($conn, 'speaker', $id)
+			\Models\Sessions::delete_property_by_name_value($conn, 'speaker', $id);
 			\Models\Sessions::insert_property($conn, $session_code, 'speaker', $id);
 
 			header('Location: edit.php?token=' . $token . '&id=' . $id);
