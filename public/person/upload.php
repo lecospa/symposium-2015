@@ -37,7 +37,7 @@ class Upload extends \Controllers\Controller {
 			}
 
 			$filename = sprintf('%s.%s', sha1_file($_FILES['file']['tmp_name']), $ext);
-			$fullfilename = ROOT . '/uploads/' . $filename;
+			$fullfilename = __DIR__ . '/../uploads/' . $filename;
 
 			if (!move_uploaded_file($_FILES['file']['tmp_name'], $fullfilename)) {
 				throw new RuntimeException('Failed to move uploaded file.');
