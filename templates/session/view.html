@@ -11,10 +11,9 @@
 	<br>
 	{if $organizer['img']}
 		<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}/uploads/{$organizer['img']}" />
-	{else}
-		No
+		<br>
 	{/if}
-	<br>
+	
 	{if not $organizer@last}<br>{/if}
 {/foreach}
 </p>
