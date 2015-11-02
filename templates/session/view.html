@@ -8,7 +8,14 @@
 <p class="larger-font">
 {foreach $organizers as $organizer}
 	{$organizer['first_name']|escape} {$organizer['last_name']|escape} (Email: {$organizer['email']|escape})
-	{if not $organizer@last}, {/if}
+	<br>
+	{if $organizer['img']}
+		<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}/uploads/{$organizer['img']}" />
+	{else}
+		No
+	{/if}
+	<br>
+	{if not $organizer@last}<br>{/if}
 {/foreach}
 </p>
 <h3>Location: </h3><p class="larger-font">{$location|escape}</p>
