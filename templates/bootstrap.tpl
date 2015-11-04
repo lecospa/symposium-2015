@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="Symposium,LeCosPA,Everything about Gravity" />
 	<meta name="description" content="Celebrating the Centenary of Einstein's General Relativity, Dec, 14-18, 2015, NTU, Taiwan" />
-	<meta property="og:title" content="Second LeCosPA Symposium" />
+	<meta property="og:title" content="{block name=title}Second LeCosPA Symposium{/block}" />
 	<meta property="og:url" content="http://lecospa.ntu.edu.tw/symposium/2015/" />
-
     <title>{block name=title}Second LeCosPA Symposium{/block}</title>
-    <link href="{$smarty.const.TOP}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{$smarty.const.TOP}/css/{block name=bootstrap_theme}bootstrap-darkly.min.css{/block}" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>

@@ -1,17 +1,9 @@
-#main > h1, #main > h2, #main > h3, #main > h4 {
-	color: white;
-}
-.page-header > h1, .page-header > h2, .page-header > h3, .page-header > h4 {
-	color: white;
+body {
+	font-size: 20px;
 }
 
-.larger-font {
-	font-size: 15pt;
-	color: #DDDDDD;
-}
-
-.nav {
-	font-size: 14px;
+.table-of-content {
+	font-size: 15px;
 }
 
 .sponsor {
@@ -26,15 +18,9 @@
 	}
 }
 
-.nav > li > a {
-	color: white;
-	background-color: #333333;
-}
-.nav > li > a:hover, .nav > li > a:focus, .nav > li.active > a {
-	background-color: white;
-	color: black;
-}
-
+/*
+ * rotating glyphicon
+ */
 @keyframes spin {
 	from { transform: scale(1) rotate(0deg);}
 	to { transform: scale(1) rotate(360deg);}
