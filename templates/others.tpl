@@ -1,4 +1,4 @@
-{extends file='bootstrap.html'}
+{extends file='bootstrap.tpl'}
 
 {block name=head}
 <link href="{$smarty.const.TOP}/css/responsive-full-background-image.css" rel="stylesheet">
@@ -11,9 +11,9 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-3">
-			<ul class="nav nav-stacked">
+			<div class="list-group table-of-content">
 				{include file='menu-part.tpl'}
-			</ul>
+			</div>
 		</div>
 		<div id="main" class="col-sm-9" style="{block name=main_style}{/block}">{block name=main}{/block}</div>
 	</div>

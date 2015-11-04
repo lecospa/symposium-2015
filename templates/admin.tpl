@@ -1,6 +1,7 @@
-{extends file='bootstrap.html'}
+{extends file='bootstrap.tpl'}
 
 {block name=title}Second LeCosPA Symposium - Admin{/block}
+{block name=bootstrap_theme}bootstrap.min.css{/block}
 
 {block name=head}
 <link href="{$smarty.const.TOP}/css/admin.css" rel="stylesheet">

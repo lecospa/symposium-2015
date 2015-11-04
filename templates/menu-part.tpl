@@ -1,21 +1,21 @@
 {strip}
-<li {if $scope eq 'Index'}class="active"{/if}><a href="{$smarty.const.TOP}/">Home</a></li>
-<li {if $scope eq 'Committees'}class="active"{/if}><a href="{$smarty.const.TOP}/committees.php">Committees</a></li>
-<li {if $scope eq 'Topics'}class="active"{/if}><a href="{$smarty.const.TOP}/topics.php">Topics</a></li>
-<li {if $scope eq 'Program'}class="active"{/if}><a href="{$smarty.const.TOP}/program.php">Conference Program</a></li>
-<li {if $scope eq 'Plenary'}class="active"{/if}><a href="{$smarty.const.TOP}/plenary_speakers.php">Plenary Session</a></li>
-<li {if $scope eq 'Parallel'}class="active"{/if}><a href="{$smarty.const.TOP}/parallel_sessions.php">Parallel Session</a></li>
-<li {if $scope eq 'Registration'}class="active"{/if}><a href="{$smarty.const.TOP}/registration.php">Registration</a></li>
-<li {if $scope eq 'Submission'}class="active"{/if}><a href="{$smarty.const.TOP}/submission.php">Title &amp; Abstract Submission</a></li>
-<li {if $scope eq 'Participants'}class="active"{/if}><a href="{$smarty.const.TOP}/participants.php">List of Participants</a></li>
-<li {if $scope eq 'Accommodation'}class="active"{/if}><a href="{$smarty.const.TOP}/accommodation.php">Accommodation</a></li>
-<li {if $scope eq 'Transportations'}class="active"{/if}><a href="{$smarty.const.TOP}/transportations.php">Transportations</a></li>
-<li {if $scope eq 'Social'}class="active"{/if}><a href="{$smarty.const.TOP}/social.php">Social Events</a></li>
-<li {if $scope eq 'Companion'}class="active"{/if}><a href="{$smarty.const.TOP}/companion_program.php">Companion Program</a></li>
-<li {if $scope eq 'About_Taiwan'}class="active"{/if}><a href="{$smarty.const.TOP}/about_taiwan.php">Information about Taiwan</a></li>
-<li {if $scope eq 'Travel_Visa'}class="active"{/if}><a href="{$smarty.const.TOP}/travel_and_visa.php">Travel &amp; Visa Information</a></li>
-<li {if $scope eq 'Photos'}class="active"{/if}><a href="{$smarty.const.TOP}/photos.php">Conference Photos</a></li>
-<li {if $scope eq 'Contact'}class="active"{/if}><a href="{$smarty.const.TOP}/contact.php">Contact Us</a></li>
-<li {if $scope eq 'Publications'}class="active"{/if}><a href="{$smarty.const.TOP}/publications.php">Publications</a></li>
-<li><a href="http://lecospa.ntu.edu.tw">Back to LeCosPA</a></li>
+<a class="list-group-item {if $scope eq 'Index'} active{/if}" href="{$smarty.const.TOP}/">Home</a>
+<a class="list-group-item {if $scope eq 'Committees'} active{/if}" href="{$smarty.const.TOP}/committees.php">Committees</a>
+<a class="list-group-item {if $scope eq 'Topics'} active{/if}" href="{$smarty.const.TOP}/topics.php">Topics</a>
+<a class="list-group-item {if $scope eq 'Program'} active{/if}" href="{$smarty.const.TOP}/program.php">Conference Program</a>
+<a class="list-group-item {if $scope eq 'Plenary'} active{/if}" href="{$smarty.const.TOP}/plenary_speakers.php">Plenary Session</a>
+<a class="list-group-item {if $scope eq 'Parallel'} active{/if}" href="{$smarty.const.TOP}/parallel_sessions.php">Parallel Session</a>
+<a class="list-group-item {if $scope eq 'Registration'} active{/if}" href="{$smarty.const.TOP}/registration.php">Registration</a>
+<a class="list-group-item {if $scope eq 'Submission'} active{/if}" href="{$smarty.const.TOP}/submission.php">Title &amp; Abstract Submission</a>
+<a class="list-group-item {if $scope eq 'Participants'} active{/if}" href="{$smarty.const.TOP}/participants.php">List of Participants</a>
+<a class="list-group-item {if $scope eq 'Accommodation'} active{/if}" href="{$smarty.const.TOP}/accommodation.php">Accommodation</a>
+<a class="list-group-item {if $scope eq 'Transportations'} active{/if}" href="{$smarty.const.TOP}/transportations.php">Transportations</a>
+<a class="list-group-item {if $scope eq 'Social'} active{/if}" href="{$smarty.const.TOP}/social.php">Social Events</a>
+<a class="list-group-item {if $scope eq 'Companion'} active{/if}" href="{$smarty.const.TOP}/companion_program.php">Companion Program</a>
+<a class="list-group-item {if $scope eq 'About_Taiwan'} active{/if}" href="{$smarty.const.TOP}/about_taiwan.php">Information about Taiwan</a>
+<a class="list-group-item {if $scope eq 'Travel_Visa'} active{/if}" href="{$smarty.const.TOP}/travel_and_visa.php">Travel &amp; Visa Information</a>
+<a class="list-group-item {if $scope eq 'Photos'} active{/if}" href="{$smarty.const.TOP}/photos.php">Conference Photos</a>
+<a class="list-group-item {if $scope eq 'Contact'} active{/if}" href="{$smarty.const.TOP}/contact.php">Contact Us</a>
+<a class="list-group-item {if $scope eq 'Publications'} active{/if}" href="{$smarty.const.TOP}/publications.php">Publications</a>
+<a class="list-group-item" href="http://lecospa.ntu.edu.tw">Back to LeCosPA</a>
 {/strip}
