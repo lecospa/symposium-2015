@@ -28,3 +28,22 @@ body {
 .glyphicon-refresh-animate {
 	animation: spin .7s infinite linear;
 }
+
+/*
+ * Arrow connecting items
+ */
+ul.arrow {
+	list-style-type: none;
+	padding-left: 0;
+}
+ul.arrow li {
+	display: inline-block;
+}
+ul.arrow li::before {
+	content: '→';
+	padding-left: 3px;
+	padding-right: 3px;
+}
+ul.arrow li:first-child::before {
+	content: '';
+}

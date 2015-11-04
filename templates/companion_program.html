@@ -1,14 +1,10 @@
 {extends file='others.tpl'}
-{block name=main}
+{block name=main}{strip}
 <div class="page-header">
 	<h1>Companion Program</h1>
-
-
-
 </div>
-<p class="larger-font">LeCosPA offers you various types of tours to experience Taiwan during the symposium.</p>
-<p class="larger-font">If you are interested in these tours, all you have to do is to email to <a href="mailto:edisonts@ms6.hinet.net">edisonts@ms6.hinet.net</a> <strong><u>by December 12, 2015</u></strong>. In the email, please address the tour(s) you want to have, the date you are planning to go and the hotel you stay. Our travel agency will contact you immediately.</p>
-<br>
+<p >LeCosPA offers you various types of tours to experience Taiwan during the symposium.</p>
+<p >If you are interested in these tours, all you have to do is to email to <a href="mailto:edisonts@ms6.hinet.net">edisonts@ms6.hinet.net</a> <em>by December 12, 2015</em>. In the email, please address the tour(s) you want to have, the date you are planning to go and the hotel you stay. Our travel agency will contact you immediately.</p>
 
 <h1>Taipei Night Tour</h1>
 <div class="row">
@@ -25,18 +21,22 @@
     <img src="{$smarty.const.TOP}/img/companion_program/SmallSausageinLargeSausage.jpg" class="img-responsive center-block">
     </div>
 </div>
-<p class="larger-font">Tour stop</p>
-<p class="larger-font">Mongolian Bar-B-Q Dinner &gt;&gt; Bo-An Temple &gt;&gt; Hwahsi Street Night Market &gt;&gt; Taipei 101 (not incl. ticket to observatory)</p>
+<p >Tour stop</p>
+<ul class="arrow">
+	<li>Mongolian Bar-B-Q Dinner</li>
+	<li>Bo-An Temple</li>
+	<li>Hwahsi Street Night Market</li>
+	<li>Taipei 101 (not incl. ticket to observatory)</li>
+</ul>
 <table class="table table-bordered larger-font" style="background-color:black;">
 	<tr><th>Meet up Time</th><td>18:00-18:30 pm</td></tr>
 	<tr><th>Where to Meet</th><td>Hotel Lobby (Howard International House)</td></tr>
 	<tr><th>Total Duration</th><td>3.5 hrs</td></tr>
 	<tr><th>Fare</th><td>Adult: TWD1,500, Kid: TWD 1,500</td></tr>
 </table>
-<br>
 
 <h1>Folk Arts Tour</h1>
-<p class="larger-font">Sanhsia Tsushih Temple &gt;&gt; Old street in Sanhsia &gt;&gt; Yingko’s pottery Factory &amp; Showroom &gt;&gt; Pottery Street in Yingko</p>
+<ul class="arrow"><li>Sanhsia Tsushih Temple</li><li>Old street in Sanhsia</li><li>Yingko’s pottery Factory &amp; Showroom</li><li>Pottery Street in Yingko</li></ul>
 
 <table class="table table-bordered larger-font" style="background-color:black;">
 	<tr><th>Meet up Time</th><td>13:00-14:00 pm</td></tr>
@@ -44,8 +44,6 @@
 	<tr><th>Total Duration</th><td>4 hrs</td></tr>
 	<tr><th>Fare</th><td>Adult: TWD1,300, Kid: TWD 1,000</td></tr>
 </table>
-<br>
-
 <div class="row">
 	<div class="col-sm-2">
 	<img src="{$smarty.const.TOP}/img/companion_program/Ceramics2.jpeg" class="img-responsive center-block">
@@ -57,33 +55,34 @@
 	<img src="{$smarty.const.TOP}/img/companion_program/Ceramics3.jpeg" class="img-responsive center-block">
 	</div>
 	<div class="col-sm-4">
-	<img src="{$smarty.const.TOP}/img/companion_program/OldstreetinSanhsia.jpg" class="img-responsive center-block">
+	<img src="{$smarty.const.TOP}/img/companion_program/OldstreetinSanhsia-480.jpg" class="img-responsive center-block">
 	</div>
 </div>
 <br>
 
 <h1>Yangmingshan National Park &amp; Hot-Spring Tour</h1>
+<ul class="arrow">
+	<li>Yangmingshan National park</li>
+	<li>Hot-Spring Bath (nude bath)</li>
+</ul>
 <table class="table table-bordered larger-font" style="background-color:black;">
 	<tr><th>Meet up Time</th><td>13:00-14:00 pm</td></tr>
 	<tr><th>Where to Meet</th><td>Hotel Lobby (Howard International House)</td></tr>
 	<tr><th>Total Duration</th><td>4 hrs</td></tr>
 	<tr><th>Fare</th><td>Adult: TWD1,500, Kid: TWD 1,200</td></tr>
 </table>
-<p class="larger-font">Yangmingshan National park &gt;&gt; Hot-Spring Bath (nude bath)</p>
-<br>
 
-<h2 style="text-align:center">Yangmingshan National Park</h2>
-<img src="{$smarty.const.TOP}/img/companion_program/YangmingshanNationalpark-zhuzhihu.jpg" class="img-responsive center-block">
-<p class="larger-font">Yangmingshan, the mountainous area north of Taipei City, is famous for its beautiful scenery with traces of volcanic activities and abundant natural resources. Yangmingshan National Park is Taiwan’s third national park and the one closest to a major city. All year round, Yangmingshan has attractions to offer – flowers in spring, beautiful sky in summer, fruits and maple leaves in autumn, as well as hot-spring bathing and snow in winter.</p>
-<br>
+<h2>Yangmingshan National Park</h2>
+<img src="{$smarty.const.TOP}/img/companion_program/YangmingshanNationalpark-zhuzhihu-1440.jpg" class="img-responsive center-block img-thumbnail">
+<p >Yangmingshan, the mountainous area north of Taipei City, is famous for its beautiful scenery with traces of volcanic activities and abundant natural resources. Yangmingshan National Park is Taiwan’s third national park and the one closest to a major city. All year round, Yangmingshan has attractions to offer – flowers in spring, beautiful sky in summer, fruits and maple leaves in autumn, as well as hot-spring bathing and snow in winter.</p>
 
+<h2>Hot-Spring Bathing with Beautiful Mountain Views</h2>
 <div class="row">
 	<div class="col-sm-6">
-	<h2>Hot-Spring Bathing with Beautiful Mountain Views</h2>
-	<p class="larger-font">The Tatun Mountain Range has the largest density of hot springs in Taiwan. Among the 10 different hot-spring locations in the area, Yangmingshan Hot Spring belongs to the mild alkaline sulfuric hot springs. The water has a light milky color and a temperature of about 70 degrees centigrade at its source. Bathing in the hot-spring water has a relaxing and refreshing effect. It helps to relieve muscle pains, nervous pains, digestive problems arteriosclerosis and other ailments.</p>
+		<p>The Tatun Mountain Range has the largest density of hot springs in Taiwan. Among the 10 different hot-spring locations in the area, Yangmingshan Hot Spring belongs to the mild alkaline sulfuric hot springs. The water has a light milky color and a temperature of about 70 degrees centigrade at its source. Bathing in the hot-spring water has a relaxing and refreshing effect. It helps to relieve muscle pains, nervous pains, digestive problems arteriosclerosis and other ailments.</p>
 	</div>
 	<div class="col-sm-6">
-	<br><br><img src="{$smarty.const.TOP}/img/companion_program/Unknown.jpeg" class="img-responsive center-block">
+		<img src="{$smarty.const.TOP}/img/companion_program/hot-sprint-720.jpg" class="img-responsive img-thumbnail center-block">
 	</div>
 </div>
 <br>
@@ -95,27 +94,30 @@
     <tr><th>Total Duration</th><td>4 hrs</td></tr>
     <tr><th>Fare</th><td>Adult: TWD1,300, Kid: TWD 1,100</td></tr>
 </table>
-<p class="larger-font">Chiufen Village &gt;&gt; Chinkuashih Village (pass by) &gt;&gt; Beitou Cape &gt;&gt; Nanya Rock Formations &gt;&gt; Bay of Yin and Yang</p>
-<br>
+<ul class="arrow">
+	<li>Chiufen Village</li>
+	<li>Chinkuashih Village (pass by)</li>
+	<li>Beitou Cape</li>
+	<li>Nanya Rock Formations</li>
+	<li>Bay of Yin and Yang</li>
+</ul>
 
+<h2>Chiufen Village</h2>
 <div class="row">
 	<div class="col-sm-6">
-    <br><br><img src="{$smarty.const.TOP}/img/companion_program/juifenVillage-2.jpg" class="img-responsive center-block">
+		<img src="{$smarty.const.TOP}/img/companion_program/juifen-8.jpg" class="img-responsive center-block">
     </div>
 	<div class="col-sm-6">
-    <h2>Chiufen Village</h2>
-    <p class="larger-font">The village of chiufan was once a center of gold mining in Taiwan. The gold is now gone, but the quaint old village, built of closely packed houses clinging to steep mountainsides, continues to offer enchanting scenery and fascinating glimpses into the lifestyle of the past.</p>
+		<p>The village of chiufan was once a center of gold mining in Taiwan. The gold is now gone, but the quaint old village, built of closely packed houses clinging to steep mountainsides, continues to offer enchanting scenery and fascinating glimpses into the lifestyle of the past.</p>
     </div>
 </div>
-<br>
-
+<h2>The Northeast Coast National Scenic Area</h2>
 <div class="row">
 	<div class="col-sm-6">
-	<h2>The Northeast Coast National Scenic Area</h2>
-	<p class="larger-font">The Northeast Coast National Scenic Area is located in the northeast corner of Taiwan. The scenic area is noted for its numerous capes and bays backed by green mountains.</p>
+		<p>The Northeast Coast National Scenic Area is located in the northeast corner of Taiwan. The scenic area is noted for its numerous capes and bays backed by green mountains.</p>
 	</div>
 	<div class="col-sm-6">
-	<br><br><img src="{$smarty.const.TOP}/img/companion_program/images-1.jpeg" class="img-responsive center-block">
+		<img src="{$smarty.const.TOP}/img/companion_program/images-1.jpeg" class="img-responsive center-block">
 	</div>
 </div>
 <br>
@@ -126,62 +128,80 @@
     <tr><th>Where to Meet</th><td>Hotel Lobby (Howard International House)</td></tr>
     <tr><th>Total Duration</th><td>1 day</td></tr>
     <tr><th>Fare</th>
-		<td>
-		<p>Adult: TWD5,200, Kid: TWD 4,200<br>
+		<td>Adult: TWD5,200, Kid: TWD 4,200<br>
 		*To destination by plane, back by railway; including lunch<br>
-		*Passport needed for enplaning</p>
+		*Passport needed for enplaning
 		</td>
 	</tr>
 </table>
-<p class="larger-font">Itinerary</p>
-<p class="larger-font">Pick-up at hotel → transfer to Sungshan Airport → Enplane for Hualien →Arrive at Hualien → Enbus for Takoro Gorge Gateway → Eternal-Spring Shrine → Swallow Grotto → pass by Tunnel of nine Turns → Tienhsiang → Marble factory → Chihsing Beach → Hualien Stone Sculptural Park → Entrain to hotel</p>
-<br>
-
+<p >Itinerary</p>
+<ul class="arrow">
+	<li>Pick-up at hotel</li>
+	<li>transfer to Sungshan Airport</li>
+	<li>Enplane for Hualien</li>
+	<li>Arrive at Hualien</li>
+	<li>Enbus for Takoro Gorge Gateway</li>
+	<li>Eternal-Spring Shrine</li>
+	<li>Swallow Grotto</li>
+	<li>pass by Tunnel of nine Turns</li>
+	<li>Tienhsiang</li>
+	<li>Marble factory</li>
+	<li>Chihsing Beach</li>
+	<li>Hualien Stone Sculptural Park</li>
+	<li>Entrain to hotel</li>
+</ul>
+<h2>Taroko National Park</h2>
 <div class="row">
     <div class="col-sm-6">
-	<h2>Taroko National Park</h2>
-    <img src="{$smarty.const.TOP}/img/companion_program/Eternal-SpringShrine.jpg" class="img-responsive center-block">
+		<img src="{$smarty.const.TOP}/img/companion_program/Eternal-SpringShrine-720.jpg" class="img-responsive center-block img-thumbnail">
     </div>
     <div class="col-sm-6">
-	<br><br><br><p class="larger-font">Taroko National Park is internationally known as one of the world’s scenic wonders. It features breathtaking marble walls and a winding river running through a deep gorge. Among tourist spots in the gorge are Eternal-Spring Shrine, Swallow Grotto, Tunnel of Nine Turns, and the scenic town of Tiensiang. Swallow Grotto is swallows used to nest. At the Tunnel of Nine Turns the highway passes a series of tunnels at the narrowest stretch of the gorge where visitors can marvel at truly amazing geological features.</p>
+		<p>Taroko National Park is internationally known as one of the world’s scenic wonders. It features breathtaking marble walls and a winding river running through a deep gorge. Among tourist spots in the gorge are Eternal-Spring Shrine, Swallow Grotto, Tunnel of Nine Turns, and the scenic town of Tiensiang. Swallow Grotto is swallows used to nest. At the Tunnel of Nine Turns the highway passes a series of tunnels at the narrowest stretch of the gorge where visitors can marvel at truly amazing geological features.</p>
     </div>
 </div>
-<br>
-
 <h1>3-Day Tour: Sun Moon Lake &amp; Alishan</h1>
 <table class="table table-bordered larger-font" style="background-color:black;">
 	<tr><th>Meet up Time</th><td>8:00-9:00 am</td></tr>
 	<tr><th>Where to Meet</th><td>Hotel Lobby (Howard International House)</td></tr>
 	<tr><th>Total Duration</th><td>3 day</td></tr>
 	<tr><th>Fare</th>
-	    <td>
-	    <p>Adult: TWD12,500, Kid: TWD 10,000<br>
+	    <td>Adult: TWD12,500, Kid: TWD 10,000<br>
 		*TWD 4,000 extra for single room<br>
-	    *incl. breakfast, not incl. lunch and dinner</p>
-	    </td>
+	    *incl. breakfast, not incl. lunch and dinner
+		</td>
 	</tr>
 </table>
-<p class="larger-font">Itinerary</p>
-<p class="larger-font">1st day : Pick-up from hotel → Enbus for Nantou → Puli(cultural and artistic town) → Sun Moon Lake → lake bus tour → Wen Wu Temple → Ita Thao Indigenous Village → Tse-En Pagoda → Holy Monk Shrine →Sun Moon Lake (overnight)<br>Hotel: Fleur de Chine Hotel, Sun Moon Lake (mountain-view room)(5-star)</p>
-<p class="larger-font">2nd day : Sun Moon Lake → Alishan National Scenic Area / tea plantation and tea art exhibition center → Chiayi City (overnight)<br>Hotel : Nice Prince Hotel, Chiayi(5-star)</p>
-<p class="larger-font">3rd day : Chiayi → Lukang (historical and cultural town) → enbus for Taipei</p>
+<p>Itinerary</p>
+<dl class="dl-horizontal">
+	<dt>1st day</dt>
+	<dd>
+		<ul class="arrow"><li>Pick-up from hotel</li><li>Enbus for Nantou</li><li>Puli(cultural and artistic town)</li><li>Sun Moon Lake</li><li>lake bus tour</li><li>Wen Wu Temple</li><li>Ita Thao Indigenous Village</li><li>Tse-En Pagoda</li><li>Holy Monk Shrine</li><li>Sun Moon Lake (overnight)</li></ul>
+		<p>Hotel: Fleur de Chine Hotel, Sun Moon Lake (mountain-view room)(5-star)</p>
+	</dd>
+	<dt>2nd day</dt>
+	<dd>
+		<ul class="arrow"><li>Sun Moon Lake</li><li>Alishan National Scenic Area / tea plantation and tea art exhibition center</li><li>Chiayi City (overnight)</li></ul>
+		<p>Hotel : Nice Prince Hotel, Chiayi(5-star)</p>
+	</dt>
+	<dt>3rd day</dt>
+	<dd><ul class="arrow"><li>Chiayi</li><li>Lukang (historical and cultural town)</li><li>enbus for Taipei</li></ul></dd>
+</dl>
 <div class="row">
 	<div class="col-sm-6">
-	<img src="{$smarty.const.TOP}/img/companion_program/AlishanNationalScenicArea-1.jpg" class="img-responsive center-block">
+		<img src="{$smarty.const.TOP}/img/companion_program/AlishanNationalScenicArea-1-720.jpg" class="img-responsive center-block img-thumbnail">
 	</div>
 	<div class="col-sm-6">
-	<img src="{$smarty.const.TOP}/img/companion_program/SunMoonLake-1.jpg" class="img-responsive center-block">
+		<img src="{$smarty.const.TOP}/img/companion_program/SunMoonLake-1-720.jpg" class="img-responsive center-block img-thumbnail">
 	</div>
 </div>
 <br><br>
 
-<p style="color:white;">Edison Travel Service 宏祥旅行社<br>
+<blockquote>Edison Travel Service 宏祥旅行社<br>
 Business Hours: 7:00am~11:00pm<br>
 Tel: +886-2-2563-5313, 2563-4621, 2541-6785<br>
 Fax: +886-2-2563-4803, 2531-1353<br>
 E-MAIL: <a href="mailto:edisonts@ms6.hinet.net">edisonts@ms6.hinet.net</a><br>
 ADD: 4F, No. 190, Song Jiang Rd., Taipei, Taiwan<br>
 <a href="http://www.edison.com.tw">http://www.edison.com.tw</a><br>
-觀光局註冊編號：交觀田字第0381號</p>
-
-{/block}
+觀光局註冊編號：交觀田字第0381號</blockquote>
+{/strip}{/block}
