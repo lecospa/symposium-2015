@@ -9,27 +9,19 @@
 	<li><a href="{$smarty.const.TOP}/admin/sessions.php?token={$token}">Parallel Sessions</a></li>
 	<li class="active">編輯</li>
 </ol>
-<form action="{$smarty.const.TOP}/admin/session/edit_title.php?token={$token}" method="POST">
+<form action="{$smarty.const.TOP}/api/session/title.php?token={$token}&session_id={$session.id}&method=patch" method="POST" id="session_title_patch">
 	<div class="row">
-		<div class="col-xs-2"><label>Title</label></div>
-		<div class="col-xs-8">
-			<input type="hidden" name="session_id" value="{$session['id']}">
-			<input class="form-control" type="text" name="value" value="{$session['title']|escape}">
-		</div>
-		<div class="col-xs-2">
-			<button type="submit" class="btn btn-default">更新</button>
+		<div class="col-xs-2"><label>Session 標題</label><span class="label label-success ajax-status pull-right" style="display: none;">儲存</span></div>
+		<div class="col-xs-6">
+			<input class="form-control" type="text" name="title" value="{$session.title|escape}">
 		</div>
 	</div>
 </form>
-<form action="{$smarty.const.TOP}/admin/session/edit_location.php?token={$token}" method="POST">
+<form action="{$smarty.const.TOP}/api/session/location.php?token={$token}&session_id={$session.id}&method=patch" method="POST" id="session_location_patch">
 	<div class="row">
-		<div class="col-xs-2"><label>Location</label></div>
-		<div class="col-xs-8">
-			<input type="hidden" name="session_id" value="{$session['id']}">
-			<input class="form-control" type="text" name="value" value="{$session['location']|escape}">
-		</div>
-		<div class="col-xs-2">
-			<button type="submit" class="btn btn-default">更新</button>
+		<div class="col-xs-2"><label>地點</label></div>
+		<div class="col-xs-4">
+			<input class="form-control" type="text" name="location" value="{$session.location|escape}">
 		</div>
 	</div>
 </form>
@@ -59,10 +51,10 @@
 			<td>{$organizer['content']['first_name']} {$organizer['content']['last_name']}</td>
 			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$organizer['content']['id']}" class="btn btn-default">編輯</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}/api/session/organizer.php?token={$token}&method=delete" class="ajax-del-form">
+				<form method="POST" action="{$smarty.const.TOP}/api/session/organizer.php?token={$token}&method=delete" class="session_organizer_delete">
 					<input type="hidden" name="id" value="{$organizer['id']}" />
 					<input type="hidden" name="session_id" value="{$organizer['session_id']}" />
-					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
+					<button class="btn btn-danger" onClick="return confirm('確定刪除？');"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate ajax-status" style="display: none;"></span>刪除</button>
 				</form>
 			</td>
 		</tr>
@@ -129,18 +121,42 @@
 
 {block name='body_script'}{literal}
 <script>
-$(".ajax-del-form").submit(function(event){
-	event.preventDefault();
+$(".session_organizer_delete").submit(function(e){
+	e.preventDefault();
 	var me = $(this), 
 		container = me.parent().parent(), 
-		button = me.children('button');
-	button.html('<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> 刪除').attr('disabled', true);
+		button = me.children('button'),
+		state = me.find(".ajax-status");
+	button.attr('disabled', true);
+	state.show();
 	$.ajax({
-		type: "POST", 
-		url: me.attr("action"),
-		data: me.serialize(),
+		type: me.attr("method"), url: me.attr("action"), data: me.serialize()
 	}).done(function(res) {
 		container.fadeOut(function(){$(this).remove();});
+	});
+});
+$("#session_title_patch input").change(function(){$("#session_title_patch").submit()});
+$("#session_title_patch").submit(function(e){
+	e.preventDefault();
+	var me = $(this),
+		state = me.find(".ajax-status");
+	state.show();
+	$.ajax({
+		type: me.attr("method"), url: me.attr("action"), data: me.serialize()
+	}).done(function(res) {
+		state.fadeOut(3000);
+	});
+});
+$("#session_location_patch input").change(function(){$("#session_location_patch").submit()});
+$("#session_location_patch").submit(function(e){
+	e.preventDefault();
+	var me = $(this),
+		state = me.find(".ajax-status");
+	state.show();
+	$.ajax({
+		type: me.attr("method"), url: me.attr("action"), data: me.serialize()
+	}).done(function(res) {
+		state.fadeOut(3000);
 	});
 });
 </script>
