@@ -10,6 +10,8 @@ body {
 	width: 90px;
 	display: inline-block;
 	vertical-align: middle;
+	padding-left: 3px;
+	padding-right: 3px;
 }
 
 @media only screen and (max-width: 750px) {
