@@ -6,9 +6,10 @@ class BaseController {
 	public $smarty;
 	public function __construct() {
 		$this->smarty = self::$smarty_static;
-	}
-	public function run() {
+		
 		try {
+			method_exists($this, 'pre_run') && $this->pre_run();
+
 			/* Implement self define HTTP Method */
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				switch ($_REQUEST['method']) {
