@@ -3,30 +3,33 @@
 <div class="page-header">
 	<h1>Parallel Session <small style="color:#DDDDDD;">{$title|escape}</small></h1>
 </div>
-<h3>Session: </h3><p class="larger-font">{$title|escape}</p>
+<h3>Session:</h3><p>{$title|escape}</p>
 <h3>Organizer(s):</h3>
-<p class="larger-font">
 {foreach $organizers as $organizer}
-	{$organizer['first_name']|escape} {$organizer['last_name']|escape} (Email: {$organizer['email']|escape})
-	<br>
-	{if $organizer['img']}
-		<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}/uploads/{$organizer['img']}" />
-		<br>
-	{/if}
-	
-	{if not $organizer@last}<br>{/if}
+<div class="media">
+	<div class="media-left">
+		{if $organizer.img}
+			<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}/uploads/{$organizer.img}" />
+		{else}
+			<div style="width: 150px;"></div>
+		{/if}
+	</div>
+	<div class="media-body">
+		<h4 class="media-heading">{$organizer.first_name|escape} {$organizer.last_name|escape} (Email: {$organizer.email|escape})</h4>
+	</div>
+</div>
 {/foreach}
-</p>
-<h3>Location: </h3><p class="larger-font">{$location|escape}</p>
-<h3>Date &amp; Time: <p class="larger-font">{$date|escape} {$time|escape}</p>
+
+<h3>Location:</h3><p>{$location|escape}</p>
+<h3>Date &amp; Time:</h3><p>{$date|escape} {$time|escape}</p>
 <hr>
 {foreach $speakers as $speaker}
 <h3>Expected Speakers {$speaker@iteration}:</h3>
-<h4>{$speaker['first_name']|escape} {$speaker['last_name']|escape} (Email: {$speaker['email']|escape})</h4>
-	<dl class="larger-font">
-		<dt>Talk Time:</dt><dd>{$speaker['talk_time']|escape}</dd>
-		<dt>Talk Title:</dt><dd>{$speaker['title']|escape}</dd>
-		<dt>Talk Abstract:</dt><dd>{$speaker['abstract']|escape}</dd>
-	</dl>
+<h4>{$speaker.first_name|escape} {$speaker.last_name|escape} (Email: {$speaker.email|escape})</h4>
+<dl>
+	<dt>Talk Time:</dt><dd>{$speaker.talk_time|escape}</dd>
+	<dt>Talk Title:</dt><dd>{$speaker.title|escape}</dd>
+	<dt>Talk Abstract:</dt><dd>{$speaker.abstract|escape|nl2br}</dd>
+</dl>
 {/foreach}
 {/block}
