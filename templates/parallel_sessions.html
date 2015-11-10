@@ -13,14 +13,14 @@ If you are interested in giving a talk in the following session(s), please conta
 	</a></div>
 	<div class="panel-body">
 		<dl class="dl-horizontal">
-			<dt>Organizer:</dt>
+			<dt>Organizer</dt>
 			<dd>
 				{foreach $session.organizers as $organizer}
 					{$organizer.first_name|escape} {$organizer.last_name|escape} (Email: {$organizer.email|escape})
 					{if not $organizer@last}<br>{/if}
 				{/foreach}
 			</dd>
-			<dt>Expected Speaker:</dt>
+			<dt>Expected Speaker</dt>
 			<dd>
 				{foreach $session.speakers as $o}
 					{$o.first_name|escape} {$o.last_name|escape}
