@@ -10,7 +10,7 @@
 <a class="list-group-item {if $scope eq 'Participants'} active{/if}" href="{$smarty.const.TOP}/participants.php">List of Participants</a>
 <a class="list-group-item {if $scope eq 'Accommodation'} active{/if}" href="{$smarty.const.TOP}/accommodation.php">Accommodation</a>
 <a class="list-group-item {if $scope eq 'Transportations'} active{/if}" href="{$smarty.const.TOP}/transportations.php">Transportations</a>
-<a class="list-group-item {if $scope eq 'Social'} active{/if}" href="{$smarty.const.TOP}/social.php">Social Events</a>
+<a class="list-group-item {if $scope eq 'SocialEvent'} active{/if}" href="{$smarty.const.TOP}/social_events.php">Social Events</a>
 <a class="list-group-item {if $scope eq 'Companion'} active{/if}" href="{$smarty.const.TOP}/companion_program.php">Companion Program</a>
 <a class="list-group-item {if $scope eq 'About_Taiwan'} active{/if}" href="{$smarty.const.TOP}/about_taiwan.php">Information about Taiwan</a>
 <a class="list-group-item {if $scope eq 'Travel_Visa'} active{/if}" href="{$smarty.const.TOP}/travel_and_visa.php">Travel &amp; Visa Information</a>
