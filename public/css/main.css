@@ -49,3 +49,26 @@ ul.arrow li::before {
 ul.arrow li:first-child::before {
 	content: '';
 }
+
+.menu {
+	padding: 8px 15px;
+	margin-top: 21px;
+	margin-bottom: 21px;
+	list-style: none;
+	background-color: #464545;
+	border-radius: 4px;
+}
+.menu > li {
+	display: inline-block;
+}
+.menu a {
+	color: #fff;
+}
+.menu > .active {
+	color: #999;
+}
+.menu > li+li:before {
+	content: "\00B7";
+	padding: 0 5px;
+	color: #fff;
+}
