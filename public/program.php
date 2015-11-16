@@ -6,12 +6,16 @@ class Program extends \Controllers\Controller {
 		
 		$conn = new \Conn();
 		$plenary_speakers = \Models\People::all_by_type($conn, 'Plenary');
+		$parallel_speakers = \Models\People::all_by_type($conn, 'Parallel');
 		$p = array();
 		foreach ($plenary_speakers as $plenary_speaker) {
 			$p[$plenary_speaker['id']] = $plenary_speaker;
 		}
+		foreach ($parallel_speakers as $parallel_speaker) {
+			$p[$parallel_speaker['id']] = $parallel_speaker;
+		}
 
-		$this->smarty->assign('plenary_speakers', $p);
+		$this->smarty->assign('people', $p);
 
 		$this->smarty->display('program.html');
 	}
