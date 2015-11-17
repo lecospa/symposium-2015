@@ -11,6 +11,7 @@ class Index extends \Controllers\Controller {
 			$session_id = $_GET['session_id'];
 			$session['id'] = $session_id;
 			$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
+			$session['abbreviation'] = \Models\Sessions::get_property($conn, $session['id'], 'abbreviation')['value'];
 			$session['location'] = \Models\Sessions::get_property($conn, $session['id'], 'location')['value'];
 			$session['date'] = \Models\Sessions::get_property($conn, $session['id'], 'date')['value'];
 			$session['time'] = \Models\Sessions::get_property($conn, $session['id'], 'time')['value'];
