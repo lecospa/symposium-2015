@@ -11,6 +11,7 @@ class Sessions extends \Controllers\Controller {
 
 			foreach ($sessions as &$session) {
 				$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title');
+				$session['abbreviation'] = \Models\Sessions::get_property($conn, $session['id'], 'abbreviation');
 				$session['organizers'] = \Models\Sessions::get_properties($conn, $session['id'], 'organizer');
 				foreach ($session['organizers'] as &$organizer) {
 					$organizer['content'] = \Models\People::get($conn, $organizer['value']);

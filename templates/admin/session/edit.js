@@ -20,6 +20,14 @@ $("#title_input").change(function() {
 		state.fadeOut(3000);
 	});
 });
+$("#abbreviation_input").change(function() {
+	var me = $(this), state = $("#abbreviation_patch_status").show();
+	$.ajax({
+		type: me.data("method"), url: me.data("action"), data: {'abbreviation': me.val()}
+	}).done(function(res) {
+		state.fadeOut(3000);
+	});
+});
 $("#location_input").change(function() {
 	var me = $(this), state = $("#location_patch_status").show();
 	$.ajax({

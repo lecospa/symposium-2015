@@ -16,6 +16,16 @@ class Program extends \Controllers\Controller {
 		}
 
 		$this->smarty->assign('people', $p);
+		
+		$sessions = \Models\Sessions::all($conn);
+		$s = array();
+		foreach ($sessions as $session) {
+			$s[$session['id']] = array(
+				'id' => $session['id'],
+				'abbreviation' => \Models\Sessions::get_property($conn, $session['id'], 'abbreviation')['value']
+			);
+		}
+		$this->smarty->assign('session', $s);
 
 		$this->smarty->display('program.html');
 	}

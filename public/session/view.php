@@ -7,6 +7,7 @@ class View extends \Controllers\Controller {
 		$conn = new \Conn();
 		$id = $_GET['id'];
 		$title = \Models\Sessions::get_property($conn, $id, 'title')['value'];
+		$abbreviation = \Models\Sessions::get_property($conn, $id, 'abbreviation')['value'];
 		$location = \Models\Sessions::get_property($conn, $id, 'location')['value'];
 		$date = \Models\Sessions::get_property($conn, $id, 'date')['value'];
 		$time = \Models\Sessions::get_property($conn, $id, 'time')['value'];
@@ -24,6 +25,7 @@ class View extends \Controllers\Controller {
 		}
 
 		$this->smarty->assign('title', $title);
+		$this->smarty->assign('abbreviation', $abbreviation);
 		$this->smarty->assign('location', $location);
 		$this->smarty->assign('date', $date);
 		$this->smarty->assign('time', $time);
