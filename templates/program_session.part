@@ -1,0 +1,1 @@
+<a href="{$smarty.const.TOP}/session/view.php?id={$session.id}">{$session.abbreviation|escape}</a>
