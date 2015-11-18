@@ -3,7 +3,7 @@
 <div class="page-header">
 	<h1>Title & Abstract Submission</h1>
 </div>
-<p class="larger-font">Each of our plenary session is 30 minutes' talk with 5 minutes Q&amp;A. As to the parallel session’s talk, the length of the talk will be arranged by its session chair. Therefore you are welcome to put down your proposed talk length, and the session chair will contact you in the near future.</p>
+<p>Each of our plenary session is 30 minutes' talk with 5 minutes Q&amp;A. As to the parallel session’s talk, the length of the talk will be arranged by its session chair. Therefore you are welcome to put down your proposed talk length, and the session chair will contact you in the near future.</p>
 <br>
 
 {nocache}
@@ -12,32 +12,32 @@
 {/if}
 <form action="main.php?token={$token}" method="POST" class="form-horizontal">
 	<div class="form-group">
-		<label class="col-sm-2 control-label larger-font">Name</label>
+		<label class="col-sm-2 control-label">Name</label>
 		<div class="col-sm-10">
-			<p class="form-control-static larger-font">{$person['first_name']|escape} {$person['last_name']|escape}</p>
+			<p class="form-control-static">{$person['first_name']|escape} {$person['last_name']|escape}</p>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-2 control-label larger-font">Email</label>
+		<label class="col-sm-2 control-label">Email</label>
 		<div class="col-sm-10">
-			<p class="form-control-static larger-font">{$person['email']|escape}</p>
+			<p class="form-control-static">{$person['email']|escape}</p>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputTitle" class="col-sm-2 control-label larger-font">Title</label>
+		<label for="inputTitle" class="col-sm-2 control-label">Title</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputTitle" placeholder="Your speak title" value="{$person['title']|escape}" name="inputtitle">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputAbstract" class="col-sm-2 control-label larger-font">Abstract <small>(less than 300 words)</small></label>
+		<label for="inputAbstract" class="col-sm-2 control-label">Abstract <small>(less than 300 words)</small></label>
 		<div class="col-sm-10">
 			<textarea id="inputAbstract" class="form-control" rows="5" name="inputabstract">{$person['abstract']|escape}</textarea>
 		</div>
 	</div>
 	{if $person['type'] == 'Parallel'}
 	<div class="form-group">
-		<label for="inputSessionCode" class="col-sm-2 control-label larger-font">Session Code</label>
+		<label for="inputSessionCode" class="col-sm-2 control-label">Session Code</label>
 		<div class="col-sm-6">
 			<select id="inputSessionCode" name="inputsessioncode" class="form-control">
 				<option value="0" {if $person['session_id'] eq '0'}selected{/if}></option>
@@ -61,9 +61,9 @@
 	<div class="col-md-6">
 		<form enctype="multipart/form-data" action="upload.php?target=slide" method="POST" class="form-horizontal">
 			<div class="form-group">
-				<label class="col-sm-2 control-label larger-font">Slide</label>
+				<label class="col-sm-2 control-label">Slide</label>
 				<div class="col-sm-10">
-					<p class="form-control-static larger-font">
+					<p class="form-control-static">
 						{if $person['slide_file']}
 							<a href="{$smarty.const.TOP}/uploads/{$person['slide_file']}" target="_blank">{$person['slide_file']}</a>
 						{else}
@@ -73,7 +73,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputSlidefile" class="col-sm-2 control-label larger-font">Upload</label>
+				<label for="inputSlidefile" class="col-sm-2 control-label">Upload</label>
 				<div class="col-sm-10">
 					<input name="file" id="inputSlidefile" type="file" class="form-control" />
 				</div>
@@ -89,9 +89,9 @@
 	<div class="col-md-6">
 		<form enctype="multipart/form-data" action="upload.php?target=img" method="POST" class="form-horizontal">
 			<div class="form-group">
-				<label class="col-sm-2 control-label larger-font">Photos</label>
+				<label class="col-sm-2 control-label">Photos</label>
 				<div class="col-sm-10">
-					<p class="form-control-static larger-font">
+					<p class="form-control-static">
 						{if $person['img']}
 							<img class="img-responsive img-thumbnail" style="width: 150px;" src="{$smarty.const.TOP}/uploads/{$person['img']}" />
 						{else}
@@ -101,7 +101,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputImg" class="col-sm-2 control-label larger-font">Upload</label>
+				<label for="inputImg" class="col-sm-2 control-label">Upload</label>
 				<div class="col-sm-10">
 					<input name="file" id="inputImg" type="file" class="form-control" />
 				</div>

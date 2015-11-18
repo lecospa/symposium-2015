@@ -16,8 +16,5 @@ class OrganizerController extends \Controllers\APIController {
 			throw new \UnauthorizedException();
 		}
 	}
-	public function post() {
-		$this->json("hello");
-	}
 }
 new OrganizerController;
