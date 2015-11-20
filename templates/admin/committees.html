@@ -2,25 +2,53 @@
 
 {block name=main}
 <div class="page-header">
-	<h1>Admin - Committees</h1>
+	<h1>Committees</h1>
 </div>
-{include file='./committees_table.part' people=$iac_chairs}
-{include file='./committees_table.part' people=$iacs}
-{include file='./committees_table.part' people=$loc_chairs}
-{include file='./committees_table.part' people=$locs}
-<form class="form-inline" action="{$smarty.const.TOP}/admin/person/insert.php?token={$token}" method="POST">
-	<input type="text" class="form-control" name="first_name" placeholder="Committee First Name">
-	<input type="text" class="form-control" name="last_name" placeholder="Committee Last Name">
-	<input type="email" class="form-control" name="email" placeholder="Committee Email">
-	<select class="form-control" name="type">
+
+<ol class="breadcrumb">
+	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">管理後台</a></li>
+	<li class="active">Committees</li>
+</ol>
+
+<div class="table-responsive">
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>姓名</th>
+			<th>照片</th>
+			<th>Email</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr><th colspan="5">IAC Chair</th></tr>
+		{include file='./committees_table.part.tpl' people=$committees['IACCHAIR'] type='IACCHAIR'}
+		<tr><th colspan="5">IAC</th></tr>
+		{include file='./committees_table.part.tpl' people=$committees['IAC'] type='IAC'}
+		<tr><th colspan="5">LOC Chair</th></tr>
+		{include file='./committees_table.part.tpl' people=$committees['LOCCHAIR'] type='LOCCHAIR'}
+		<tr><th colspan="5">LOC</th></tr>
+		{include file='./committees_table.part.tpl' people=$committees['LOC'] type='LOC'}
+	</tbody>
+</table>
+</div>
+<form class="form-inline" action="{$smarty.const.TOP}/admin/committee.php?token={$token}" method="POST">
+	姓名
+	<select class="form-control" name="person_id" required>
 		<option value=""></option>
+		{foreach $people as $person}
+			<option value="{$person.id}">{$person.first_name|escape} {$person.last_name|escape}</option>
+		{/foreach}
+	</select>
+	職稱
+	<select class="form-control" name="type" required>
+		<option value="">請選擇</option>
 		<option value="IACCHAIR">IAC Chair</option>
 		<option value="IAC">IAC</option>
 		<option value="LOCCHAIR">LOC Chair</option>
 		<option value="LOC">LOC</option>
 	</select>
-	<button type="submit" class="btn btn-primary">Create New Committee</button>
-	<br />
-	<br />
+	<button type="submit" class="btn btn-primary">新增</button>
 </form>
 {/block}
