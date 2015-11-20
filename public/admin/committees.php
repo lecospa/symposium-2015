@@ -8,15 +8,28 @@ class Index extends \Controllers\Controller {
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$iac_chairs = \Models\People::all_with_token_by_type($conn, 'IACCHAIR');
-			$iacs = \Models\People::all_with_token_by_type($conn, 'IAC');
-			$loc_chairs = \Models\People::all_with_token_by_type($conn, 'LOCCHAIR');
-			$locs = \Models\People::all_with_token_by_type($conn, 'LOC');
+			$committees = array();
 
-			$this->smarty->assign('iac_chairs', $iac_chairs);
-			$this->smarty->assign('iacs', $iacs);
-			$this->smarty->assign('loc_chairs', $loc_chairs);
-			$this->smarty->assign('locs', $locs);
+			$stmt = $conn->prepare("SELECT `people`.* FROM `committee_person` LEFT JOIN `people` ON `committee_person`.`person_id` = `people`.`id` WHERE `committee_person`.`type`=?");
+
+			$stmt->execute(array('IACCHAIR'));
+			$committees['IACCHAIR'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+			$stmt->execute(array('IAC'));
+			$committees['IAC'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			
+			$stmt->execute(array('LOCCHAIR'));
+			$committees['LOCCHAIR'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+			$stmt->execute(array('LOC'));
+			$committees['LOC'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+			$stmt = $conn->prepare("SELECT `id`, `first_name`, `last_name` FROM `people` ORDER BY `last_name` ASC, `last_name` ASC");
+			$stmt->execute();
+			$people = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+			$this->smarty->assign('committees', $committees);
+			$this->smarty->assign('people', $people);
 			$this->smarty->assign('token', $token);
 			$this->smarty->display('admin/committees.html');
 		} else {
