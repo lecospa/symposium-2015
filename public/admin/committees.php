@@ -10,7 +10,7 @@ class Index extends \Controllers\Controller {
 		if ($auth['scope'] == 'sudo') {
 			$committees = array();
 
-			$stmt = $conn->prepare("SELECT `people`.* FROM `committee_person` LEFT JOIN `people` ON `committee_person`.`person_id` = `people`.`id` WHERE `committee_person`.`type`=?");
+			$stmt = $conn->prepare("SELECT `people`.* FROM `committee_person` LEFT JOIN `people` ON `committee_person`.`person_id` = `people`.`id` WHERE `committee_person`.`type`=? ORDER BY `people`.`last_name` ASC, `people`.`first_name` ASC");
 
 			$stmt->execute(array('IACCHAIR'));
 			$committees['IACCHAIR'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
