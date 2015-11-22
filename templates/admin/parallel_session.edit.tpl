@@ -77,12 +77,15 @@
 <h2>Speakers</h2>
 <table class="table">
 	<thead>
-		<tr><th>Name</th><th></th><th></th></tr>
+		<tr><th>Name</th><th style="width: 100px;">順序</th><th></th><th></th></tr>
 	</thead>
 	<tbody>
 		{foreach $session.speakers as $speaker}
 		<tr>
 			<td>{$speaker.first_name} {$speaker.last_name}</td>
+			<td>
+				<input class="session-ordering-input form-control" data-method="POST" data-action="{$smarty.const.TOP}/api/session/person/session_ordering.php?token={$token}&session_id={$session.id}&person_id={$speaker.id}&method=patch" type="text" value="{$speaker.session_ordering}">
+			</td>
 			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$speaker.id}" class="btn btn-default">編輯</a></td>
 			<td>
 				<form method="POST" action="{$smarty.const.TOP}/admin/parallel_session/person.php?token={$token}&session_id={$session.id}&person_id={$speaker.id}&method=delete">
@@ -102,6 +105,7 @@
 						{/foreach}
 					</select>
 				</td>
+				<td></td>
 				<td><button type="submit" class="btn btn-default">新增</button></td>
 				<td></td>
 			</form>
