@@ -45,9 +45,9 @@ class Sessions {
 	/*
 	 * for parallel session only
 	 */
-	static function get_people($conn, $session_id) {
-		$stmt = $conn->prepare("SELECT * FROM `people` WHERE `type`='Parallel' AND `session_id`=? ");
-		$stmt->execute(array($session_id));
+	static function get_people($conn, $id) {
+		$stmt = $conn->prepare("SELECT * FROM `people` WHERE `type`='Parallel' AND `session_id`=? ORDER BY `session_ordering`");
+		$stmt->execute(array($id));
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 }
