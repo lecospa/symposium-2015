@@ -18,11 +18,7 @@ class View extends \Controllers\Controller {
 			$organizers[] = \Models\People::get($conn, $o['value']);
 		}
 		
-		$speakers = array();
-		$os = \Models\Sessions::get_properties($conn, $id, 'speaker');
-		foreach($os as $o) {
-			$speakers[] = \Models\People::get($conn, $o['value']);
-		}
+		$speakers = \Models\Sessions::get_people($conn, $id);
 
 		$this->smarty->assign('title', $title);
 		$this->smarty->assign('abbreviation', $abbreviation);

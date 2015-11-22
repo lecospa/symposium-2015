@@ -82,13 +82,12 @@
 	<tbody>
 		{foreach $session['speakers'] as $speaker}
 		<tr>
-			<td>{$speaker['content']['first_name']} {$speaker['content']['last_name']}</td>
-			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$speaker['content']['id']}" class="btn btn-default">編輯</a></td>
+			<td>{$speaker.first_name} {$speaker.last_name}</td>
+			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$speaker.id}" class="btn btn-default">編輯</a></td>
 			<td>
 				<form method="POST" action="{$smarty.const.TOP}/admin/session/delete_speaker.php?token={$token}">
-					<input type="hidden" name="id" value="{$speaker['id']}" />
-					<input type="hidden" name="person_id" value="{$speaker['content']['id']}" />
-					<input type="hidden" name="session_id" value="{$speaker['session_id']}" />
+					<input type="hidden" name="person_id" value="{$speaker.id}" />
+					<input type="hidden" name="session_id" value="{$session.id}" />
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
 				</form>
 			</td>

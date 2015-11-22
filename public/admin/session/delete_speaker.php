@@ -8,10 +8,8 @@ class Delete extends \Controllers\Controller {
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$id = $_POST['id'];
 			$person_id = $_POST['person_id'];
 			$session_id = $_POST['session_id'];
-			\Models\Sessions::delete_property_by_id($conn, $id);
 			\Models\People::update_session_id($conn, $person_id, '0');
 
 			header('Location: edit.php?token=' . $token . '&session_id=' . $session_id);

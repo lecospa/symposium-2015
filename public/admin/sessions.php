@@ -16,10 +16,7 @@ class Sessions extends \Controllers\Controller {
 				foreach ($session['organizers'] as &$organizer) {
 					$organizer['content'] = \Models\People::get($conn, $organizer['value']);
 				}
-				$session['speakers'] = \Models\Sessions::get_properties($conn, $session['id'], 'speaker');
-				foreach ($session['speakers'] as &$speaker) {
-					$speaker['content'] = \Models\People::get($conn, $speaker['value']);
-				}
+				$session['speakers'] = \Models\Sessions::get_people($conn, $session['id']);
 			}
 			$this->smarty->assign('sessions', $sessions);
 			$this->smarty->assign('token', $token);

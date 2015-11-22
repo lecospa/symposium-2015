@@ -35,10 +35,8 @@ class MMain extends \Controllers\Controller {
 		if ($auth['scope'] == 'people') {
 			$title = $_POST['inputtitle'];
 			$abstract = $_POST['inputabstract'];
-			$session_code = $_POST['inputsessioncode'];
-			\Models\People::update_limited($conn, $auth['id'], $title, $abstract, $session_code);
-			\Models\Sessions::delete_property_by_name_value($conn, 'speaker', $auth['id']);
-			\Models\Sessions::insert_property($conn, $session_code, 'speaker', $auth['id']);
+			$session_id = $_POST['inputsessioncode'];
+			\Models\People::update_limited($conn, $auth['id'], $title, $abstract, $session_id);
 
 			$_SESSION['message'] = 'Update successfully';
 

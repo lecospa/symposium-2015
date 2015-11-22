@@ -54,9 +54,9 @@ class People {
 		));
 	}
 
-	static function update_limited($conn, $id, $title, $abstract, $session_code) {
+	static function update_limited($conn, $id, $title, $abstract, $session_id) {
 		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `session_id`=? WHERE `id` = ?");
-		$stmt->execute(array($title, $abstract, $session_code, $id));
+		$stmt->execute(array($title, $abstract, $session_id, $id));
 	}
 	static function update_session_id($conn, $id, $session_id) {
 		$stmt = $conn->prepare("UPDATE `people` SET `session_id`=? WHERE `id` = ?");
