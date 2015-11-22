@@ -12,6 +12,11 @@ class Sessions {
 		$stmt->execute(array($id, $name));
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
+	static function get($conn, $id) {
+		$stmt = $conn->prepare("SELECT * FROM `sessions` WHERE `id`=?");
+		$stmt->execute(array($id));
+		return $stmt->fetch();
+	}
 	static function get_property($conn, $session_id, $name) {
 		$stmt = $conn->prepare("SELECT * FROM `session` WHERE `session_id`=? AND `name`=?");
 		$stmt->execute(array($session_id, $name));

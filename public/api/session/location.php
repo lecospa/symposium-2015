@@ -10,7 +10,8 @@ class Title extends \Controllers\APIController {
 		if ($auth['scope'] == 'sudo') {
 			$session_id = $_GET['session_id'];
 			$location = $_POST['location'];
-			\Models\Sessions::update_property($conn, $session_id, 'location', $location);
+			$stmt = $conn->prepare("UPDATE `sessions` SET `location`=? WHERE `id`=?");
+			$stmt->execute(array($location, $session_id));
 			$this->json(array('status' => 'success'));
 		} else {
 			throw new UnauthorizedException();
