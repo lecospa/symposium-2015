@@ -7,18 +7,11 @@ class Parallel extends \Controllers\Controller {
 		$conn = new \Conn();
 		$sessions = \Models\Sessions::all($conn);
 		foreach ($sessions as &$session) {
-			$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
-			$session['abbreviation'] = \Models\Sessions::get_property($conn, $session['id'], 'abbreviation')['value'];
-			$session['location'] = \Models\Sessions::get_property($conn, $session['id'], 'location')['value'];
-			$session['date'] = \Models\Sessions::get_property($conn, $session['id'], 'date')['value'];
-			$session['time'] = \Models\Sessions::get_property($conn, $session['id'], 'time')['value'];
-
 			$session['organizers'] = array();
 			$os = \Models\Sessions::get_properties($conn, $session['id'], 'organizer');
 			foreach($os as $o) {
 				$session['organizers'][] = \Models\People::get($conn, $o['value']);
 			}
-
 			$session['speakers'] = \Models\Sessions::get_people($conn, $session['id']);
 		}
 		$this->smarty->assign('sessions', $sessions);
