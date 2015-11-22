@@ -11,9 +11,6 @@ class Submission extends \Controllers\Controller {
 			$this->smarty->assign('token', $token);
 
 			$sessions = \Models\Sessions::all($conn);
-			foreach ($sessions as &$session) {
-				$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
-			}
 			$this->smarty->assign('sessions', $sessions);
 
 			$this->smarty->display('submission_creation.html');
@@ -44,7 +41,6 @@ class Submission extends \Controllers\Controller {
 			$_token = self::generatorPassword(8);
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
 			\Models\People::update_limited($conn, $_id, $title, $abstract, $session_code);
-			\Models\Sessions::insert_property($conn, $session_code, 'speaker', $_id);
 
 			$logger->info('New Person', json_encode(array('id' => $_id)));
 
