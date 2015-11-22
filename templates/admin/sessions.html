@@ -18,8 +18,8 @@
 		{/foreach}
 		</p>
 		<p>Speakers
-		{foreach $session['speakers'] as $speaker}
-			<span class="label label-default">{$speaker['content']['first_name']} {$speaker['content']['last_name']}</span>
+		{foreach $session.speakers as $speaker}
+			<span class="label label-default">{$speaker.first_name|escape} {$speaker.last_name|escape}</span>
 		{/foreach}
 		</p>
 	</div>
