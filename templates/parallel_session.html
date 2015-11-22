@@ -1,17 +1,14 @@
 {extends file='others.tpl'}
 {block name=main}
 <div class="page-header">
-	<h1>Parallel Session <small style="color:#DDDDDD;">{$session.title|escape} ({$session.abbreviation|escape})</small></h1>
+	<h1>Parallel Session &dash; {$session.title|escape} ({$session.abbreviation|escape})</h1>
 </div>
-<h3>Session:</h3><p>{$session.title|escape} ({$session.abbreviation|escape})</p>
-<h3>Organizer(s):</h3>
+<h2>Organizer(s):</h2>
 {foreach $organizers as $organizer}
 <div class="media">
-	<div class="media-left">
+	<div class="media-left" style="width: 150px;">
 		{if $organizer.img}
-			<div style="width: 150px;"><img class="img-responsive img-thumbnail" src="{$smarty.const.TOP}/uploads/{$organizer.img}" /></div>
-		{else}
-			<div style="width: 150px;"></div>
+			<img class="img-responsive img-thumbnail" src="{$smarty.const.TOP}/uploads/{$organizer.img}" />
 		{/if}
 	</div>
 	<div class="media-body">
@@ -20,16 +17,16 @@
 </div>
 {/foreach}
 
-<h3>Location:</h3><p>{$session.location|escape}</p>
-<h3>Date &amp; Time:</h3><p>{$session.date|escape} {$session.time|escape}</p>
+<h2>Location:</h2><p>{$session.location|escape}</p>
+<h2>Date &amp; Time:</h2><p>{$session.date|escape} {$session.time|escape}</p>
 <hr>
 {foreach $speakers as $speaker}
-<h3>Expected Speakers {$speaker@iteration}:</h3>
-<h4>{$speaker.first_name|escape} {$speaker.last_name|escape} (Email: {$speaker.email|escape})</h4>
-<dl>
-	<dt>Talk Time:</dt><dd>{$speaker.talk_time|escape}</dd>
-	<dt>Talk Title:</dt><dd>{$speaker.title|escape}</dd>
-	<dt>Talk Abstract:</dt><dd>{$speaker.abstract|escape|nl2br}</dd>
+<h2>Expected Speakers {$speaker@iteration}:</h2>
+<p>{$speaker.first_name|escape} {$speaker.last_name|escape} (Email: {$speaker.email|escape})</p>
+<dl class="dl-horizontal">
+	<dt>Talk Time</dt><dd>{$speaker.talk_time|escape}</dd>
+	<dt>Talk Title</dt><dd>{$speaker.title|escape}</dd>
+	<dt>Talk Abstract</dt><dd>{$speaker.abstract|escape|nl2br}</dd>
 </dl>
 {/foreach}
 {/block}
