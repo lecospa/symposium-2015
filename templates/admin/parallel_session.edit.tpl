@@ -46,10 +46,10 @@
 		<tr><th>Name</th><th></th><th></th></tr>
 	</thead>
 	<tbody>
-		{foreach $session['organizers'] as $organizer}
+		{foreach $session.organizers as $organizer}
 		<tr>
-			<td>{$organizer['content']['first_name']} {$organizer['content']['last_name']}</td>
-			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$organizer['content']['id']}" class="btn btn-default">編輯</a></td>
+			<td>{$organizer.content.first_name|escape} {$organizer.content.last_name|escape}</td>
+			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$organizer.content.id}" class="btn btn-default">編輯</a></td>
 			<td>
 				<button class="btn btn-danger organizer-delete-button" data-method="POST" data-action="{$smarty.const.TOP}/api/session/organizer.php?token={$token}&session_id={$organizer.session_id}&id={$organizer.id}&method=delete">刪除</button>
 			</td>
@@ -59,12 +59,12 @@
 			<form action="{$smarty.const.TOP}/admin/session/insert.php?token={$token}" method="POST">
 				<td>
 					<label>選擇一個Parallel Session的人</label>
-					<input type="hidden" name="session_id" value="{$session['id']}">
+					<input type="hidden" name="session_id" value="{$session.id}">
 					<input type="hidden" name="name" value="organizer">
 					<select class="form-control" name="value" required>
 						<option value=""></option>
 						{foreach $people as $person}
-						<option value="{$person['id']}">{$person['first_name']} {$person['last_name']}</option>
+						<option value="{$person.id}">{$person.first_name|escape} {$person.last_name|escape}</option>
 						{/foreach}
 					</select>
 				</td>
@@ -82,7 +82,7 @@
 	<tbody>
 		{foreach $session.speakers as $speaker}
 		<tr>
-			<td>{$speaker.first_name} {$speaker.last_name}</td>
+			<td>{$speaker.first_name|escape} {$speaker.last_name|escape}</td>
 			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$speaker.id}" class="btn btn-default">編輯</a></td>
 			<td>
 				<form method="POST" action="{$smarty.const.TOP}/admin/parallel_session/person.php?token={$token}&session_id={$session.id}&person_id={$speaker.id}&method=delete">
@@ -102,7 +102,7 @@
 						{/foreach}
 					</select>
 				</td>
-				<td><button type="submit" class="btn btn-default">新增</button></td>
+				<td><button type="submit" class="btn btn-primary">新增</button></td>
 				<td></td>
 			</form>
 		</tr>
