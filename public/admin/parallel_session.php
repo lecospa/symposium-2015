@@ -1,8 +1,8 @@
 <?php
 namespace Admin;
-require_once('../../../init.php');
+require_once('../../init.php');
 
-class Index extends \Controllers\Controller {
+class ParallelSession extends \Controllers\Controller {
 	public function get() {
 		$token = $_GET['token'];
 		$conn = new \Conn();
@@ -19,10 +19,10 @@ class Index extends \Controllers\Controller {
 			$this->smarty->assign('session', $session);
 			$this->smarty->assign('people', $people);
 			$this->smarty->assign('token', $token);
-			$this->smarty->display('admin/session/edit.html');
+			$this->smarty->display('admin/parallel_session.edit.tpl');
 		} else {
 			throw new \UnauthorizedException();
 		}
 	}
 }
-new Index;
+new ParallelSession;

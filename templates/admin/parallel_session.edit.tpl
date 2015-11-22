@@ -2,7 +2,7 @@
 
 {block name=main}
 <div class="page-header">
-	<h1>Parallel Sessions <small>{$session['title']|escape}</small></h1>
+	<h1>Parallel Sessions <small>{$session.title|escape}</small></h1>
 </div>
 <ol class="breadcrumb">
 	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">管理後台</a></li>
@@ -80,28 +80,25 @@
 		<tr><th>Name</th><th></th><th></th></tr>
 	</thead>
 	<tbody>
-		{foreach $session['speakers'] as $speaker}
+		{foreach $session.speakers as $speaker}
 		<tr>
 			<td>{$speaker.first_name} {$speaker.last_name}</td>
 			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$speaker.id}" class="btn btn-default">編輯</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}/admin/session/delete_speaker.php?token={$token}">
-					<input type="hidden" name="person_id" value="{$speaker.id}" />
-					<input type="hidden" name="session_id" value="{$session.id}" />
+				<form method="POST" action="{$smarty.const.TOP}/admin/parallel_session/person.php?token={$token}&session_id={$session.id}&person_id={$speaker.id}&method=delete">
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
 				</form>
 			</td>
 		</tr>
 		{/foreach}
 		<tr>
-			<form action="{$smarty.const.TOP}/admin/session/insert_speaker.php?token={$token}" method="POST">
+			<form action="{$smarty.const.TOP}/admin/parallel_session/person.php?token={$token}&session_id={$session.id}" method="POST">
 				<td>
 					<label>選擇一個Parallel Session的人</label>
-					<input type="hidden" name="session_id" value="{$session['id']}">
-					<select class="form-control" name="value" required>
+					<select class="form-control" name="person_id" required>
 						<option value=""></option>
 						{foreach $people as $person}
-						<option value="{$person['id']}">{$person['first_name']} {$person['last_name']}</option>
+						<option value="{$person.id}">{$person.first_name|escape} {$person.last_name|escape}</option>
 						{/foreach}
 					</select>
 				</td>
@@ -116,6 +113,6 @@
 
 {block name='body_script'}
 <script>
-{include file='./edit.js'}
+{include file='./parallel_session.edit.js'}
 </script>
 {/block}
