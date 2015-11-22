@@ -10,7 +10,8 @@ class Abbreviation extends \Controllers\APIController {
 		if ($auth['scope'] == 'sudo') {
 			$session_id = $_GET['session_id'];
 			$abbreviation = $_POST['abbreviation'];
-			\Models\Sessions::update_property($conn, $session_id, 'abbreviation', $abbreviation);
+			$stmt = $conn->prepare("UPDATE `sessions` SET `abbreviation`=? WHERE `id`=?");
+			$stmt->execute(array($abbreviation, $session_id));
 			$this->json(array('status' => 'success'));
 		} else {
 			throw new UnauthorizedException();

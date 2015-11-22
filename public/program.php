@@ -20,10 +20,7 @@ class Program extends \Controllers\Controller {
 		$sessions = \Models\Sessions::all($conn);
 		$s = array();
 		foreach ($sessions as $session) {
-			$s[$session['id']] = array(
-				'id' => $session['id'],
-				'abbreviation' => \Models\Sessions::get_property($conn, $session['id'], 'abbreviation')['value']
-			);
+			$s[$session['id']] = $session;
 		}
 		$this->smarty->assign('session', $s);
 

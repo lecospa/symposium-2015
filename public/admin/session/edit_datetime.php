@@ -11,8 +11,10 @@ class Index extends \Controllers\Controller {
 			$session_id = $_POST['session_id'];
 			$date = $_POST['date'];
 			$time = $_POST['time'];
-			\Models\Sessions::update_property($conn, $session_id, 'date', $date);
-			\Models\Sessions::update_property($conn, $session_id, 'time', $time);
+			
+			$stmt = $conn->prepare("UPDATE `sessions` SET `date`=?, `time`=? WHERE `id`=?");
+			$stmt->execute(array($date, $time, $session_id));
+
 			header('Location: edit.php?token=' . $token . '&session_id=' . $session_id);
 		} else {
 			throw new UnauthorizedException();

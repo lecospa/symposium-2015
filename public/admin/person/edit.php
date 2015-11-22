@@ -12,9 +12,6 @@ class Edit extends \Controllers\Controller {
 			$info = \Models\People::get($conn, $id);
 
 			$sessions = \Models\Sessions::all($conn);
-			foreach ($sessions as &$session) {
-				$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
-			}
 
 			$this->smarty->assign('person', $info);
 			$this->smarty->assign('token', $token);

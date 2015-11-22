@@ -9,12 +9,7 @@ class Index extends \Controllers\Controller {
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
 			$session_id = $_GET['session_id'];
-			$session['id'] = $session_id;
-			$session['title'] = \Models\Sessions::get_property($conn, $session['id'], 'title')['value'];
-			$session['abbreviation'] = \Models\Sessions::get_property($conn, $session['id'], 'abbreviation')['value'];
-			$session['location'] = \Models\Sessions::get_property($conn, $session['id'], 'location')['value'];
-			$session['date'] = \Models\Sessions::get_property($conn, $session['id'], 'date')['value'];
-			$session['time'] = \Models\Sessions::get_property($conn, $session['id'], 'time')['value'];
+			$session = \Models\Sessions::get($conn, $session_id);
 			$session['organizers'] = \Models\Sessions::get_properties($conn, $session['id'], 'organizer');
 			foreach ($session['organizers'] as &$organizer) {
 				$organizer['content'] = \Models\People::get($conn, $organizer['value']);
