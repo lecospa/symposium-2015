@@ -1,9 +1,9 @@
 {extends file='others.tpl'}
 {block name=main}
 <div class="page-header">
-	<h1>Parallel Session <small style="color:#DDDDDD;">{$title|escape} ({$abbreviation|escape})</small></h1>
+	<h1>Parallel Session <small style="color:#DDDDDD;">{$session.title|escape} ({$session.abbreviation|escape})</small></h1>
 </div>
-<h3>Session:</h3><p>{$title|escape} ({$abbreviation|escape})</p>
+<h3>Session:</h3><p>{$session.title|escape} ({$session.abbreviation|escape})</p>
 <h3>Organizer(s):</h3>
 {foreach $organizers as $organizer}
 <div class="media">
@@ -20,8 +20,8 @@
 </div>
 {/foreach}
 
-<h3>Location:</h3><p>{$location|escape}</p>
-<h3>Date &amp; Time:</h3><p>{$date|escape} {$time|escape}</p>
+<h3>Location:</h3><p>{$session.location|escape}</p>
+<h3>Date &amp; Time:</h3><p>{$session.date|escape} {$session.time|escape}</p>
 <hr>
 {foreach $speakers as $speaker}
 <h3>Expected Speakers {$speaker@iteration}:</h3>
