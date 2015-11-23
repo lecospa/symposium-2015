@@ -36,13 +36,14 @@
 			{/foreach}</td>
 			<td>{foreach $person['talks'] as $talk}
 				{if $talk.session eq 'Plenary'}
-					<a href="{$smarty.const.TOP}/plenary_session.php?id={$person.id}">
-						<span class="label label-{if $talk.title eq ''}default{else}success{/if}">Plenary
+					<a href="{$smarty.const.TOP}/plenary_session.php?talk_id={$talk.id}">
+						<span class="label label-{if $talk.title eq ''}default{else}success{/if}">
+							Plenary
 						</span>
 					</a>
 				{elseif $talk.session eq 'Parallel'}
-					<a href="{$smarty.const.TOP}/parallel_session.php?id={$talk.session_id}">
-						<span class="label label-{if $talk.title eq ''}default{else}success{/if}">Parallel ({$talk.session_id})</span>
+					<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$talk.session_id}&token={$token}">
+						<span class="label label-{if $talk.title eq ''}default{else}success{/if}">Parallel ({$sessions[$talk.session_id].abbreviation})</span>
 					</a>
 				{elseif $talk.session eq 'Poster'}
 					<span class="label label-default">{$talk.session}</span>
