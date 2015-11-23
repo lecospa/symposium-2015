@@ -1,4 +1,4 @@
-{extends file='../others.tpl'}
+{extends file='others.tpl'}
 {block name=main}
 <div class="page-header">
 	<h1>Title &amp; Abstract Submission</h1>
