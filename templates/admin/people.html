@@ -18,9 +18,8 @@
 			<th>相片</th>
 			<th>Email</th>
 			<th>Passcode</th>
-			<th></th>
-			<th></th>
-			<th></th>
+			<th>Committee</th>
+			<th>Sessions</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -32,21 +31,28 @@
 			<td><img class="img-responsive" src="{$smarty.const.TOP}/uploads/{$person['img']}" style="max-height: 50px;"></td>
 			<td>{$person['email']|escape}</td>
 			<td><a href="{$smarty.const.TOP}/person/main.php?token={$person['token']}">{$person['token']}</a></td>
-			<td>
-			{foreach $person['talks'] as $talk}
-				{$talk.session}:{$talk.session_id}
+			<td>{foreach $person.committees as $committee}
+				<span class="label label-default">{$committee.type}</span>
+			{/foreach}</td>
+			<td>{foreach $person['talks'] as $talk}
+				{if $talk.session eq 'Plenary'}
+					<a href="{$smarty.const.TOP}/plenary_session.php?id={$person.id}">
+						<span class="label label-{if $talk.title eq ''}default{else}success{/if}">Plenary
+						</span>
+					</a>
+				{elseif $talk.session eq 'Parallel'}
+					<a href="{$smarty.const.TOP}/parallel_session.php?id={$talk.session_id}">
+						<span class="label label-{if $talk.title eq ''}default{else}success{/if}">Parallel ({$talk.session_id})</span>
+					</a>
+				{elseif $talk.session eq 'Poster'}
+					<span class="label label-default">{$talk.session}</span>
+				{/if}
 			{/foreach}
-			</td>
-			<td>
-			{foreach $person.committees as $committee}
-				{$committee.type}
-			{/foreach}
-			</td>
-			<td>
 			{foreach $person.organizers as $organizer}
-				{$organizer.session_id}
-			{/foreach}
-			</td>
+				<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$organizer.session_id}&token={$token}">
+					<span class="label label-primary">{$organizer.session_id}</span>
+				</a>
+			{/foreach}</td>
 			<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$person['id']}&mode=edit">編輯</a></td>
 			<td>
 				<form method="POST" action="{$smarty.const.TOP}/admin/person/delete.php?token={$token}">
