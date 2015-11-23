@@ -11,7 +11,7 @@ class Person extends \Controllers\Controller {
 			$person = \Models\People::get($conn, $id);
 			
 			$stmt = $conn->prepare("SELECT * FROM `talks` WHERE `person_id`=?");
-			$stmt->execute(array($person_id));
+			$stmt->execute(array($id));
 			$talks = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			
 			$sessions = \Models\Sessions::all($conn);

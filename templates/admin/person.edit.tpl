@@ -8,7 +8,7 @@
 	<li><a href="{$smarty.const.TOP}/admin/people.php?token={$token}">與會者</a></li>
 	<li class="active">編輯</li>
 </ol>
-<form action="person.php?token={$token}&id={$id}&method=patch" method="POST" class="form-horizontal">
+<form action="person.php?token={$token}&id={$person.id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
 		<label class="col-sm-2 control-label">姓名</label>
 		<div class="col-sm-5">
@@ -48,9 +48,9 @@
 		</div>
 	</div>
 </form>
-{for $talks as $talk}
-{talk.session} - {talk.session_id}
-<form action="person/talk.php?token={$token}&person_id={$person_id}&talk_id={$talk_id}" method="POST" class="form-horizontal">
+{foreach $talks as $talk}
+{$talk.session} - {$talk.session_id}
+<form action="person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
 		<label for="inputTitle" class="col-sm-2 control-label">Title</label>
 		<div class="col-sm-10">
