@@ -9,11 +9,11 @@ class SessionOrdering extends \Controllers\APIController {
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
 			$session_id = $_GET['session_id'];
-			$person_id = $_GET['person_id'];
+			$talk_id = $_GET['talk_id'];
 			$session_ordering = $_POST['session_ordering'];
 			
-			$stmt = $conn->prepare("UPDATE `people` SET `session_ordering`=? WHERE `id`=?");
-			$stmt->execute(array($session_ordering, $person_id));
+			$stmt = $conn->prepare("UPDATE `talks` SET `session_ordering`=? WHERE `id`=?");
+			$stmt->execute(array($session_ordering, $talk_id));
 
 			$this->json(array('status' => 'success'));
 		} else {
