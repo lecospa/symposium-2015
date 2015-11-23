@@ -19,7 +19,7 @@
 			<th>Email</th>
 			<th>Passcode</th>
 			<th>Committee</th>
-			<th>Sessions</th>
+			<th>Sessions <span class="label label-primary"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Organizer</span></th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -57,7 +57,7 @@
 			{/foreach}
 			{foreach $person.organizers as $organizer}
 				<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$organizer.session_id}&token={$token}">
-					<span class="label label-primary">{$organizer.session_id}</span>
+					<span class="label label-primary"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$sessions[$organizer.session_id].abbreviation}</span>
 				</a>
 			{/foreach}</td>
 			<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$person['id']}&mode=edit">編輯</a></td>
