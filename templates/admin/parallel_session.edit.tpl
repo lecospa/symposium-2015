@@ -80,13 +80,13 @@
 		<tr><th>姓名</th><th style="width: 100px;">順序</th><th></th><th></th></tr>
 	</thead>
 	<tbody>
-		{foreach $session.speakers as $speaker}
+		{foreach $session.talks as $talk}
 		<tr>
-			<td>{$speaker.first_name|escape} {$speaker.last_name|escape}</td>
+			<td>{$talk.speaker.first_name|escape} {$talk.speaker.last_name|escape}</td>
 			<td>
-				<input class="session-ordering-input form-control" data-method="POST" data-action="{$smarty.const.TOP}/api/session/person/session_ordering.php?token={$token}&session_id={$session.id}&person_id={$speaker.id}&method=patch" type="text" value="{$speaker.session_ordering}">
+				<input class="session-ordering-input form-control" data-method="POST" data-action="{$smarty.const.TOP}/api/session/talk/session_ordering.php?token={$token}&session_id={$session.id}&talk_id={$talk.id}&method=patch" type="text" value="{$talk.session_ordering}">
 			</td>
-			<td><a href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$speaker.id}&mode=edit" class="btn btn-default">編輯</a></td>
+			<td><a href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$talk.speaker.id}&mode=edit" class="btn btn-default">編輯</a></td>
 			<td>
 				{*<form method="POST" action="{$smarty.const.TOP}/admin/parallel_session/person.php?token={$token}&session_id={$session.id}&person_id={$speaker.id}&method=delete">
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
