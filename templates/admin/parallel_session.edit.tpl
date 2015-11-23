@@ -88,14 +88,14 @@
 			</td>
 			<td><a href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$talk.speaker.id}&mode=edit" class="btn btn-default">編輯</a></td>
 			<td>
-				{*<form method="POST" action="{$smarty.const.TOP}/admin/parallel_session/person.php?token={$token}&session_id={$session.id}&person_id={$speaker.id}&method=delete">
+				<form method="POST" action="{$smarty.const.TOP}/admin/parallel_session/talk.php?token={$token}&session_id={$session.id}&talk_id={$talk.id}&method=delete">
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
-				</form>*}<button class="btn btn-danger" disabled>維護中</button>
+				</form>
 			</td>
 		</tr>
 		{/foreach}
 		<tr>
-			<form action="{$smarty.const.TOP}/admin/parallel_session/person.php?token={$token}&session_id={$session.id}" method="POST">
+			<form action="{$smarty.const.TOP}/admin/parallel_session/talk.php?token={$token}&session_id={$session.id}" method="POST">
 				<td>
 					<label>選擇一個Parallel Session的人</label>
 					<select class="form-control" name="person_id" required>
@@ -105,7 +105,7 @@
 						{/foreach}
 					</select>
 				</td>
-				<td><button type="submit" class="btn btn-primary" disabled>新增</button></td>
+				<td><button type="submit" class="btn btn-primary">新增</button></td>
 				<td></td>
 				<td></td>
 			</form>
