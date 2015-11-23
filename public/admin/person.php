@@ -9,7 +9,11 @@ class Person extends \Controllers\Controller {
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
 			$person = \Models\People::get($conn, $id);
-			$talks = null;
+			
+			$stmt = $conn->prepare("SELECT * FROM `talks` WHERE `person_id`=?");
+			$stmt->execute(array($person_id));
+			$talks = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			
 			$sessions = \Models\Sessions::all($conn);
 
 			$this->smarty->assign('person', $person);

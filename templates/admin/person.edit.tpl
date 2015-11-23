@@ -39,74 +39,73 @@
 	<div class="form-group">
 		<label for="inputRoom" class="col-sm-2 control-label">Room</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputRoom" value="{$person['room']|escape}" name="inputroom">
+			<input type="text" class="form-control" id="inputRoom" value="{$person.room|escape}" name="room">
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-primary">Update Information</button>
+			<button type="submit" class="btn btn-primary">更新</button>
 		</div>
 	</div>
 </form>
-<form  class="form-horizontal">
+{for $talks as $talk}
+{talk.session} - {talk.session_id}
+<form action="person/talk.php?token={$token}&person_id={$person_id}&talk_id={$talk_id}" method="POST" class="form-horizontal">
 	<div class="form-group">
 		<label for="inputTitle" class="col-sm-2 control-label">Title</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputTitle" placeholder="Your speak title" value="{$person['title']|escape}" name="inputtitle">
+			<input type="text" class="form-control" id="inputTitle" placeholder="Your speak title" value="{$talk.title|escape}" name="title">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputAbstract" class="col-sm-2 control-label">Abstract <small>(less than 300 words)</small></label>
 		<div class="col-sm-10">
-			<textarea id="inputAbstract" class="form-control" rows="5" name="inputabstract">{$person['abstract']|escape}</textarea>
+			<textarea id="inputAbstract" class="form-control" rows="10" name="abstract">{$talk.abstract|escape|nl2br}</textarea>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputAddressDateTime" class="col-sm-2 control-label">Address Time</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputAddressDateTime" placeholder="2015-06-02 14:00:00" value="{$person['address_datetime']|escape}" name="inputaddressdatetime">
+			<input type="text" class="form-control" id="inputAddressDateTime" placeholder="2015-06-02 14:00:00" value="{$talk.address_datetime|escape}" name="address_datetime">
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="inputTalkTime" class="col-sm-2 control-label">Talk Time</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputTalkTime" placeholder="30 minutes" value="{$person['talk_time']|escape}" name="inputtalktime">
+			<input type="text" class="form-control" id="inputTalkTime" placeholder="30 minutes" value="{$talk.talk_time|escape}" name="talk_time">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputType" class="col-sm-2 control-label">Session</label>
+		<div class="col-sm-10">
+			<select class="form-control" name="session" id="inputType">
+				<option value="Normal" {if $talk.session eq 'Normal'}selected{/if}>Attendee</option>
+				<option value="Plenary" {if $talk.session eq 'Plenary'}selected{/if}>Plenary Session Speaker</option>
+				<option value="Parallel" {if $talk.session eq 'Parallel'}selected{/if}>Parallel Session Speaker</option>
+				<option value="Poster" {if $talk.session eq 'Poster'}selected{/if}>Poster</option>
+			</select>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputSessionCode" class="col-sm-2 control-label">Session Code</label>
 		<div class="col-sm-6">
 			<select id="inputSessionCode" name="inputsessioncode" class="form-control">
-				<option value="0" {if $person['session_id'] eq '0'}selected{/if}></option>
+				<option value="0" {if $talk.session_id eq '0'}selected{/if}></option>
 				{foreach $sessions as $session}
-				<option value="{$session['id']}" {if $person['session_id'] eq $session['id']}selected{/if}>{$session['title']}</option>
+				<option value="{$session.id}" {if $talk.session_id eq $session.id}selected{/if}>{$session.title}</option>
 				{/foreach}
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputType" class="col-sm-2 control-label">Type</label>
-		<div class="col-sm-10">
-			<select class="form-control" name="inputtype" id="inputType">
-				<option value="Normal" {if $person['type'] eq 'Normal'}selected{/if}>Attendee</option>
-				<option value="Plenary" {if $person['type'] eq 'Plenary'}selected{/if}>Plenary Session Speaker</option>
-				<option value="Parallel" {if $person['type'] eq 'Parallel'}selected{/if}>Parallel Session Speaker</option>
-				<option value="Poster" {if $person['type'] eq 'Poster'}selected{/if}>Poster</option>
-				<option value="IACCHAIR" {if $person['type'] eq 'IACCHAIR'}selected{/if}>IAC Chair</option>
-				<option value="IAC" {if $person['type'] eq 'IAC'}selected{/if}>IAC</option>
-				<option value="LOCCHAIR" {if $person['type'] eq 'LOCCHAIR'}selected{/if}>LOC Chair</option>
-				<option value="LOC" {if $person['type'] eq 'LOC'}selected{/if}>LOC</option>
-			</select>
-		</div>
-	</div>
-	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-primary">Update Information</button>
+			<button type="submit" class="btn btn-primary">更新</button>
 		</div>
 	</div>
 </form>
-<div class="row">
+{/foreach}
+{*<div class="row">
 	<div class="col-md-6">
 		<p class="form-control-static">
 			{if $person['slide_file']}
@@ -125,5 +124,5 @@
 			{/if}
 		</p>
 	</div>
-</div>
+</div>*}
 {/block}
