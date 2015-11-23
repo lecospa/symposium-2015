@@ -7,6 +7,16 @@ class Sessions {
 		$stmt->execute();
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
+	static function all_with_id_as_key($conn) {
+		$stmt = $conn->prepare("SELECT * FROM `sessions`");
+		$stmt->execute();
+		$sessions = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		$s = array();
+		foreach ($sessions as $session) {
+			$s[$session['id']] = $session;
+		}
+		return $s;
+	}
 	static function get_properties($conn, $id, $name) {
 		$stmt = $conn->prepare("SELECT * FROM `session` WHERE `session_id`=? AND `name`=?");
 		$stmt->execute(array($id, $name));
@@ -45,11 +55,6 @@ class Sessions {
 	/*
 	 * for parallel session only
 	 */
-	static function get_people($conn, $id) {
-		$stmt = $conn->prepare("SELECT * FROM `people` WHERE `type`='Parallel' AND `session_id`=? ORDER BY `session_ordering`");
-		$stmt->execute(array($id));
-		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-	}
 	static function get_talks($conn, $id) {
 		$stmt = $conn->prepare("SELECT * FROM `talks` WHERE `session`='Parallel' AND `session_id`=? ORDER BY `session_ordering`");
 		$stmt->execute(array($id));

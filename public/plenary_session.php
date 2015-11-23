@@ -4,14 +4,19 @@ require_once('../init.php');
 
 class PlenarySession extends \Controllers\Controller {
 	public function get() {
-//讀取網址的ID
-		$id = $_GET['id'];
-//用ID找到person後把資料拿出來
 		$conn = new \Conn();
-		$person = \Models\People::get($conn, $id);
+		$talk_id = $_GET['talk_id'];
 
-		$this->smarty->assign('person', $person);
-		$this->smarty->display('plenary_session.html');
+		$talk = \Models\Talks::get($conn, $talk_id);
+		if (is_null($talk)) {
+			throw new \NotFoundException();
+		} else if ($talk['session'] != 'Plenary') {
+			throw new \NotFoundException();
+		}
+		$talk['person'] = \Models\People::get($conn, $talk['person_id']);
+
+		$this->smarty->assign('talk', $talk);
+		$this->smarty->display('plenary_session.tpl');
 	}
 }
 new PlenarySession;
