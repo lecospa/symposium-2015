@@ -13,13 +13,13 @@
 	<div class="panel-heading">{$session.title|escape} ({$session.abbreviation|escape}) <a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$session.id}&token={$token}" class="pull-right">編輯</a></div>
 	<div class="panel-body">
 		<p>Organizers
-		{foreach $session['organizers'] as $organizer}
-			<span class="label label-default">{$organizer['content']['first_name']} {$organizer['content']['last_name']}</span>
+		{foreach $session.organizers as $organizer}
+			<span class="label label-default">{$organizer.content.first_name|escape} {$organizer.content.last_name|escape}</span>
 		{/foreach}
 		</p>
 		<p>Speakers
-		{foreach $session.speakers as $speaker}
-			<span class="label label-default">{$speaker.first_name|escape} {$speaker.last_name|escape}</span>
+		{foreach $session.talks as $talk}
+			<span class="label label-default">{$talk.person.first_name|escape} {$talk.person.last_name|escape}</span>
 		{/foreach}
 		</p>
 	</div>

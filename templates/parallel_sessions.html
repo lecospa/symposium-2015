@@ -22,8 +22,8 @@ If you are interested in giving a talk in the following session(s), please conta
 			</dd>
 			<dt>Expected Speaker</dt>
 			<dd>
-				{foreach $session.speakers as $o}
-					{$o.first_name|escape} {$o.last_name|escape}
+				{foreach $session.talks as $o}
+					{$o.speaker.first_name|escape} {$o.speaker.last_name|escape}
 					{if not $o@last}, {/if}
 				{/foreach}
 			</dd>

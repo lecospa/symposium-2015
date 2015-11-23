@@ -12,7 +12,10 @@ class Parallel extends \Controllers\Controller {
 			foreach($os as $o) {
 				$session['organizers'][] = \Models\People::get($conn, $o['value']);
 			}
-			$session['speakers'] = \Models\Sessions::get_people($conn, $session['id']);
+			$session['talks'] = \Models\Sessions::get_talks($conn, $session['id']);
+			foreach ($session['talks'] as &$talk) {
+				$talk['speaker'] = \Models\People::get($conn, $talk['person_id']);
+			}
 		}
 		$this->smarty->assign('sessions', $sessions);
 		$this->smarty->display('parallel_sessions.html');

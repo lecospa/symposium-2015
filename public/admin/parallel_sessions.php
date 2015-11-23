@@ -14,11 +14,14 @@ class Sessions extends \Controllers\Controller {
 				foreach ($session['organizers'] as &$organizer) {
 					$organizer['content'] = \Models\People::get($conn, $organizer['value']);
 				}
-				$session['speakers'] = \Models\Sessions::get_people($conn, $session['id']);
+				$session['talks'] = \Models\Sessions::get_talks($conn, $session['id']);
+				foreach ($session['talks'] as &$talk) {
+					$talk['person'] = \Models\People::get($conn, $talk['person_id']);
+				}
 			}
 			$this->smarty->assign('sessions', $sessions);
 			$this->smarty->assign('token', $token);
-			$this->smarty->display('admin/sessions.html');
+			$this->smarty->display('admin/parallel_sessions.tpl');
 		} else {
 			throw new \UnauthorizedException();
 		}
