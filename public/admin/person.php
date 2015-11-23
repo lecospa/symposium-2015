@@ -1,29 +1,28 @@
 <?php
-namespace Admin\People;
-require_once('../../../init.php');
+require_once('../../init.php');
 
-class Edit extends \Controllers\Controller {
+class Person extends \Controllers\Controller {
 	public function get() {
 		$token = $_GET['token'];
 		$id = $_GET['id'];
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$info = \Models\People::get($conn, $id);
-
+			$person = \Models\People::get($conn, $id);
+			$talks = null;
 			$sessions = \Models\Sessions::all($conn);
 
-			$this->smarty->assign('person', $info);
+			$this->smarty->assign('person', $person);
+			$this->smarty->assign('talks', $talks);
 			$this->smarty->assign('token', $token);
-			$this->smarty->assign('id', $id);
 			$this->smarty->assign('sessions', $sessions);
-			$this->smarty->display('admin/person/edit.html');
+			$this->smarty->display('admin/person.edit.tpl');
 		} else {
 			throw new \UnauthorizedException();
 		}
 	}
 	public function post() {
-		$token = $_GET['token'];
+		/*$token = $_GET['token'];
 		$id = $_GET['id'];
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
@@ -45,7 +44,7 @@ class Edit extends \Controllers\Controller {
 			header('Location: edit.php?token=' . $token . '&id=' . $id);
 		} else {
 			throw new \UnauthorizedException();
-		}
+		}*/
 	}
 }
-new Edit;
+new Person;

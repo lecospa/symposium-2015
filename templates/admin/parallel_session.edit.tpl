@@ -49,7 +49,7 @@
 		{foreach $session.organizers as $organizer}
 		<tr>
 			<td>{$organizer.content.first_name|escape} {$organizer.content.last_name|escape}</td>
-			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$organizer.content.id}" class="btn btn-default">編輯</a></td>
+			<td><a href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$organizer.content.id}&mode=edit" class="btn btn-default">編輯</a></td>
 			<td>
 				<button class="btn btn-danger organizer-delete-button" data-method="POST" data-action="{$smarty.const.TOP}/api/session/organizer.php?token={$token}&session_id={$organizer.session_id}&id={$organizer.id}&method=delete">刪除</button>
 			</td>
@@ -86,11 +86,11 @@
 			<td>
 				<input class="session-ordering-input form-control" data-method="POST" data-action="{$smarty.const.TOP}/api/session/person/session_ordering.php?token={$token}&session_id={$session.id}&person_id={$speaker.id}&method=patch" type="text" value="{$speaker.session_ordering}">
 			</td>
-			<td><a href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$speaker.id}" class="btn btn-default">編輯</a></td>
+			<td><a href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$speaker.id}&mode=edit" class="btn btn-default">編輯</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}/admin/parallel_session/person.php?token={$token}&session_id={$session.id}&person_id={$speaker.id}&method=delete">
+				{*<form method="POST" action="{$smarty.const.TOP}/admin/parallel_session/person.php?token={$token}&session_id={$session.id}&person_id={$speaker.id}&method=delete">
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
-				</form>
+				</form>*}<button class="btn btn-danger" disabled>維護中</button>
 			</td>
 		</tr>
 		{/foreach}
@@ -105,7 +105,7 @@
 						{/foreach}
 					</select>
 				</td>
-				<td><button type="submit" class="btn btn-primary">新增</button></td>
+				<td><button type="submit" class="btn btn-primary" disabled>新增</button></td>
 				<td></td>
 				<td></td>
 			</form>

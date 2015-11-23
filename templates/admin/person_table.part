@@ -19,7 +19,7 @@
 			<td>{$person['email']|escape}</td>
 			<td>{$person['title']|escape|truncate:45}</td>
 			<td><a href="{$smarty.const.TOP}/person/main.php?token={$person['token']}">{$person['token']}</a></td>
-			<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person/edit.php?token={$token}&id={$person['id']}">編輯</a></td>
+			<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$person['id']}&mode=edit">編輯</a></td>
 			<td>
 				<form method="POST" action="{$smarty.const.TOP}/admin/person/delete.php?token={$token}">
 					<input type="hidden" name="id" value="{$person['id']}" />

@@ -1,4 +1,4 @@
-{extends file='../../admin.tpl'}
+{extends file='admin.tpl'}
 {block name=main}
 <div class="page-header">
 	<h1>編輯</h1>
@@ -8,66 +8,74 @@
 	<li><a href="{$smarty.const.TOP}/admin/people.php?token={$token}">與會者</a></li>
 	<li class="active">編輯</li>
 </ol>
-{nocache}
-<form action="edit.php?token={$token}&id={$id}" method="POST" class="form-horizontal">
+<form action="person.php?token={$token}&id={$id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
-		<label class="col-sm-2 control-label larger-font">Name</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputFirstName" placeholder="First name" value="{$person['first_name']|escape}" name="inputfirstname">
-			<input type="text" class="form-control" id="inputLastName" placeholder="Last name" value="{$person['last_name']|escape}" name="inputlastname">
+		<label class="col-sm-2 control-label">姓名</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="inputFirstName" placeholder="First name" value="{$person.first_name|escape}" name="first_name">
+		</div>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="inputLastName" placeholder="Last name" value="{$person.last_name|escape}" name="last_name">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="input_email" class="col-sm-2 control-label larger-font">Email</label>
+		<label for="input_email" class="col-sm-2 control-label">Email</label>
 		<div class="col-sm-10">
-			<input type="email" class="form-control" id="input_email" placeholder="Email" value="{$person['email']|escape}" name="inputemail">
+			<input type="email" class="form-control" id="input_email" placeholder="Email" value="{$person.email|escape}" name="email">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputTitle" class="col-sm-2 control-label larger-font">Title</label>
+		<label for="inputOccupation" class="col-sm-2 control-label">機構</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="inputOccupation" placeholder="Your working occupation" value="{$person.occupation|escape}" name="occupation">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputResume" class="col-sm-2 control-label">職稱</label>
+		<div class="col-sm-10">
+			<textarea id="inputResume" class="form-control" rows="2" name="resume">{$person.resume|escape}</textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputRoom" class="col-sm-2 control-label">Room</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="inputRoom" value="{$person['room']|escape}" name="inputroom">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-primary">Update Information</button>
+		</div>
+	</div>
+</form>
+<form  class="form-horizontal">
+	<div class="form-group">
+		<label for="inputTitle" class="col-sm-2 control-label">Title</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputTitle" placeholder="Your speak title" value="{$person['title']|escape}" name="inputtitle">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputAbstract" class="col-sm-2 control-label larger-font">Abstract <small>(less than 300 words)</small></label>
+		<label for="inputAbstract" class="col-sm-2 control-label">Abstract <small>(less than 300 words)</small></label>
 		<div class="col-sm-10">
 			<textarea id="inputAbstract" class="form-control" rows="5" name="inputabstract">{$person['abstract']|escape}</textarea>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputAddressDateTime" class="col-sm-2 control-label larger-font">Address Time</label>
+		<label for="inputAddressDateTime" class="col-sm-2 control-label">Address Time</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputAddressDateTime" placeholder="2015-06-02 14:00:00" value="{$person['address_datetime']|escape}" name="inputaddressdatetime">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="inputTalkTime" class="col-sm-2 control-label larger-font">Talk Time</label>
+		<label for="inputTalkTime" class="col-sm-2 control-label">Talk Time</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputTalkTime" placeholder="30 minutes" value="{$person['talk_time']|escape}" name="inputtalktime">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputOccupation" class="col-sm-2 control-label larger-font">Institution</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputOccupation" placeholder="Your working occupation" value="{$person['occupation']|escape}" name="inputoccupation">
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="inputResume" class="col-sm-2 control-label larger-font">Position</label>
-		<div class="col-sm-10">
-			<textarea id="inputResume" class="form-control" rows="5" name="inputresume">{$person['resume']|escape}</textarea>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="inputRoom" class="col-sm-2 control-label larger-font">Room</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputRoom" value="{$person['room']|escape}" name="inputroom">
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="inputSessionCode" class="col-sm-2 control-label larger-font">Session Code</label>
+		<label for="inputSessionCode" class="col-sm-2 control-label">Session Code</label>
 		<div class="col-sm-6">
 			<select id="inputSessionCode" name="inputsessioncode" class="form-control">
 				<option value="0" {if $person['session_id'] eq '0'}selected{/if}></option>
@@ -78,7 +86,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputType" class="col-sm-2 control-label larger-font">Type</label>
+		<label for="inputType" class="col-sm-2 control-label">Type</label>
 		<div class="col-sm-10">
 			<select class="form-control" name="inputtype" id="inputType">
 				<option value="Normal" {if $person['type'] eq 'Normal'}selected{/if}>Attendee</option>
@@ -118,5 +126,4 @@
 		</p>
 	</div>
 </div>
-{/nocache}
 {/block}
