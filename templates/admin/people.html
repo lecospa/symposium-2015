@@ -28,7 +28,11 @@
 		{foreach $people as $person}
 		<tr>
 			<td>{$person['first_name']|escape} {$person['last_name']|escape}</td>
-			<td><img class="img-responsive" src="{$smarty.const.TOP}/uploads/{$person['img']}" style="max-height: 50px;"></td>
+			<td>
+				{if $person.img}
+				<img class="img-responsive" src="{$smarty.const.TOP}/uploads/{$person.img}" style="max-height: 50px;">
+				{/if}
+			</td>
 			<td>{$person['email']|escape}</td>
 			<td>
 				{foreach $person.tokens as $auth}
