@@ -12,7 +12,6 @@ class Submission extends \Controllers\Controller {
 
 			$sessions = \Models\Sessions::all($conn);
 			$this->smarty->assign('sessions', $sessions);
-
 			$this->smarty->display('submission_creation.html');
 		} else {
 			$this->smarty->assign('scope', __CLASS__);
@@ -26,23 +25,25 @@ class Submission extends \Controllers\Controller {
 		$logger = new \Models\Logging($conn, $_SERVER);
 
 		if ($auth['scope'] == 'people_an') {
-			$type         = $_POST['type'];
 			$email        = $_POST['email'];
 			$first_name   = $_POST['first_name'];
 			$last_name    = $_POST['last_name'];
+
+			$session      = $_POST['session'];
 			$title        = $_POST['title'];
 			$abstract     = $_POST['abstract'];
-			$session_code = $_POST['session_code'];
+			$session_id = $_POST['session_id'];
 			if (empty($first_name) || empty($last_name) || empty($email)) {
 				header('Location: ' . TOP . '/submission.php?token='.$token);
 				return;
 			}
-			$_id = \Models\People::insert($conn, $type, $first_name, $last_name, $email);
+			$_id = \Models\People::insert($conn, '', $first_name, $last_name, $email);
 			$_token = self::generatorPassword(8);
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
-			\Models\People::update_limited($conn, $_id, $title, $abstract, $session_code);
 
-			$logger->info('New Person', json_encode(array('id' => $_id)));
+			$stmt = $conn->prepare("INSERT INTO `talks` (`person_id`, `title`, `abstract`, `session`, `session_id`) VALUES (?,?,?,?,?)");
+			$stmt->execute(array($_id, $title, $abstract, $session, $session_id));
+			$logger->info('New Person', json_encode(array('id' => $_id, 'title'=> $title)));
 
 			{
 				$to = $email;

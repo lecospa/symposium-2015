@@ -89,7 +89,7 @@
 	<div class="form-group">
 		<label for="inputSessionCode" class="col-sm-2 control-label">Session Code</label>
 		<div class="col-sm-6">
-			<select id="inputSessionCode" name="inputsessioncode" class="form-control">
+			<select id="inputSessionCode" name="session_id" class="form-control">
 				<option value="0" {if $talk.session_id eq '0'}selected{/if}></option>
 				{foreach $sessions as $session}
 				<option value="{$session.id}" {if $talk.session_id eq $session.id}selected{/if}>{$session.title}</option>
