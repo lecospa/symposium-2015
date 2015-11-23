@@ -1,1 +1,1 @@
-<a href="{$smarty.const.TOP}/session/view.php?id={$session.id}">{$session.abbreviation|escape}</a>
+<a href="{$smarty.const.TOP}/parallel_session.php?id={$session.id}">{$session.abbreviation|escape}</a>
