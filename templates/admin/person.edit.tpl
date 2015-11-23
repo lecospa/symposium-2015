@@ -49,7 +49,7 @@
 	</div>
 </form>
 {foreach $talks as $talk}
-{$talk.session} - {$talk.session_id}
+<h2>{$talk.session} - {$talk.session_id}</h2>
 <form action="person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
 		<label for="inputTitle" class="col-sm-2 control-label">Title</label>
@@ -60,7 +60,7 @@
 	<div class="form-group">
 		<label for="inputAbstract" class="col-sm-2 control-label">Abstract <small>(less than 300 words)</small></label>
 		<div class="col-sm-10">
-			<textarea id="inputAbstract" class="form-control" rows="10" name="abstract">{$talk.abstract|escape|nl2br}</textarea>
+			<textarea id="inputAbstract" class="form-control" rows="10" name="abstract">{$talk.abstract|escape}</textarea>
 		</div>
 	</div>
 	<div class="form-group">

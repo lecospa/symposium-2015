@@ -8,26 +8,28 @@ If you are interested in giving a talk in the following session(s), please conta
 </div>
 {foreach $sessions as $session}
 <div class="panel panel-default">
-	<div class="panel-heading"><a href="{$smarty.const.TOP}/parallel_session.php?id={$session.id}">
-			{$session.title|escape} ({$session.abbreviation|escape})
-	</a></div>
+	<div class="panel-heading">
+		<a href="{$smarty.const.TOP}/parallel_session.php?id={$session.id}">{$session.title|escape} ({$session.abbreviation|escape})</a>
+	</div>
 	<div class="panel-body">
-		<dl class="dl-horizontal">
-			<dt>Organizer</dt>
-			<dd>
+		<div class="row">
+			<div class="col-sm-3">Organizer</div>
+			<div class="col-sm-9">
 				{foreach $session.organizers as $organizer}
-					{$organizer.first_name|escape} {$organizer.last_name|escape} (Email: {$organizer.email|escape})
+					{$organizer.first_name|escape} {$organizer.last_name|escape} ({$organizer.email|escape})
 					{if not $organizer@last}<br>{/if}
 				{/foreach}
-			</dd>
-			<dt>Expected Speaker</dt>
-			<dd>
-				{foreach $session.talks as $o}
-					{$o.speaker.first_name|escape} {$o.speaker.last_name|escape}
-					{if not $o@last}, {/if}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">Expected Speakers</div>
+			<div class="col-sm-9">
+				{foreach $session.talks as $talk}
+					{$talk.speaker.first_name|escape} {$talk.speaker.last_name|escape}
+					{if not $talk@last}, {/if}
 				{/foreach}
-			</dd>
-		</dl>
+			</div>
+		</div>
 	</div>
 </div>
 {/foreach}

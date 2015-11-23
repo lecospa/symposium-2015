@@ -22,7 +22,7 @@ class Committees extends \Controllers\Controller {
 		$committees['LOC'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 		$this->smarty->assign('committees', $committees);
-		$this->smarty->display('committees.html');
+		$this->smarty->display('committees.tpl');
 	}
 }
 new Committees;

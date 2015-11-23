@@ -5,10 +5,10 @@
 </div>
 <div class="row">
 	{foreach $committees['IACCHAIR'] as $person}
-		{include file='committees.part.tpl' chair=true}
+		{include file='committees.part.tpl' person=$person chair=true}
 	{/foreach}
 	{foreach $committees['IAC'] as $person}
-		{include file='committees.part.tpl'}
+		{include file='committees.part.tpl' person=$person}
 	{/foreach}
 </div>
 
@@ -17,10 +17,10 @@
 </div>
 <div class="row">
 	{foreach $committees['LOCCHAIR'] as $person}
-		{include file='committees.part.tpl' chair=true}
+		{include file='committees.part.tpl' person=$person chair=true}
 	{/foreach}
 	{foreach $committees['LOC'] as $person}
-		{include file='committees.part.tpl'}
+		{include file='committees.part.tpl' person=$person}
 	{/foreach}
 </div>
 

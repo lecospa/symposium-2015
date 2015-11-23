@@ -13,13 +13,15 @@ class ParallelSpeaker extends \Controllers\Controller {
 		foreach($os as $o) {
 			$organizers[] = \Models\People::get($conn, $o['value']);
 		}
-		
-		$speakers = \Models\Sessions::get_people($conn, $id);
+
+		$session['talks'] = \Models\Sessions::get_talks($conn, $session['id']);
+		foreach ($session['talks'] as &$talk) {
+			$talk['speaker'] = \Models\People::get($conn, $talk['person_id']);
+		}
 
 		$this->smarty->assign('session', $session);
 		$this->smarty->assign('organizers', $organizers);
-		$this->smarty->assign('speakers', $speakers);
-		$this->smarty->display('parallel_session.html');
+		$this->smarty->display('parallel_session.tpl');
 	}
 }
 new ParallelSpeaker;
