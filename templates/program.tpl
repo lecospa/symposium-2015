@@ -1,4 +1,7 @@
 {extends file='others.tpl'}
+{block name=head append}
+<link href="{$smarty.const.TOP}/css/program.css" rel="stylesheet">
+{/block}
 {block name=main}
 <div class="page-header">
 	<h1>Conference Program</h1>
@@ -147,23 +150,4 @@
 	</tbody>
 </table>
 </div>
-<style>
-table#timetable {
-	font-size: 14px;
-	background-color: white;
-	color: black;
-	min-width: 720px;
-}
-table#timetable th {
-	width: 14.2%;
-}
-table#timetable td, table#timetable th {
-	text-align: center;
-	vertical-align: middle;
-	padding: 1px;
-}
-table#timetable a {
-	color: #008000;
-}
-</style>
 {/block}

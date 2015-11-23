@@ -24,7 +24,7 @@ class Program extends \Controllers\Controller {
 		}
 		$this->smarty->assign('session', $s);
 
-		$this->smarty->display('program.html');
+		$this->smarty->display('program.tpl');
 	}
 }
 new Program;

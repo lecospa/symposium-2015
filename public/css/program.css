@@ -1,0 +1,17 @@
+table#timetable {
+	font-size: 14px;
+	background-color: white;
+	color: black;
+	min-width: 720px;
+}
+table#timetable th {
+	width: 14.2%;
+}
+table#timetable td, table#timetable th {
+	text-align: center;
+	vertical-align: middle;
+	padding: 1px;
+}
+table#timetable a {
+	color: #008000;
+}
