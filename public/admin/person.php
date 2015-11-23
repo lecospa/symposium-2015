@@ -25,30 +25,24 @@ class Person extends \Controllers\Controller {
 			throw new \UnauthorizedException();
 		}
 	}
-	public function post() {
-		/*$token = $_GET['token'];
+	public function patch() {
+		$token = $_GET['token'];
 		$id = $_GET['id'];
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$first_name = $_POST['inputfirstname'];
-			$last_name = $_POST['inputlastname'];
-			$email = $_POST['inputemail'];
-			$title = $_POST['inputtitle'];
-			$abstract = $_POST['inputabstract'];
-			$address_datetime = $_POST['inputaddressdatetime'];
-			$talk_time = $_POST['inputtalktime'];
-			$occupation = $_POST['inputoccupation'];
-			$resume = $_POST['inputresume'];
-			$room = $_POST['inputroom'];
-			$session_code = $_POST['inputsessioncode'];
-			$type = $_POST['inputtype'];
-			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $title, $abstract, $address_datetime, $talk_time, $occupation, $resume, $room, $session_code, $type);
+			$first_name = $_POST['first_name'];
+			$last_name = $_POST['last_name'];
+			$email = $_POST['email'];
+			$occupation = $_POST['occupation'];
+			$resume = $_POST['resume'];
+			$room = $_POST['room'];
+			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $occupation, $resume, $room);
 
-			header('Location: edit.php?token=' . $token . '&id=' . $id);
+			header('Location: person.php?token=' . $token . '&id=' . $id . '&mode=edit');
 		} else {
 			throw new \UnauthorizedException();
-		}*/
+		}
 	}
 }
 new Person;

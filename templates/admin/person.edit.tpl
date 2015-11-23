@@ -69,7 +69,6 @@
 			<input type="text" class="form-control" id="inputAddressDateTime" placeholder="2015-06-02 14:00:00" value="{$talk.address_datetime|escape}" name="address_datetime">
 		</div>
 	</div>
-
 	<div class="form-group">
 		<label for="inputTalkTime" class="col-sm-2 control-label">Talk Time</label>
 		<div class="col-sm-10">
