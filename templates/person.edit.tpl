@@ -8,7 +8,7 @@
 {if $message != ''}
 <div class="alert alert-success" role="alert">{$message|escape}</div>
 {/if}
-<form action="person.php?token={$token}" method="PATCH" class="form-horizontal">
+<form class="form-horizontal">
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Name</label>
 		<div class="col-sm-10">
@@ -24,7 +24,10 @@
 </form>
 
 {foreach $talks as $talk}
-{$talk.session}
+<h2>{$talk.session} Session
+{if $talk.session == 'Parallel'}
+{/if}
+</h2>
 <form action="person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
 		<label for="title-input-{$talk.id}" class="col-sm-2 control-label">Title</label>
@@ -33,16 +36,16 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="abstract-input" class="col-sm-2 control-label">Abstract <small>(less than 300 words)</small></label>
+		<label for="abstract-input-{$talk.id}" class="col-sm-2 control-label">Abstract <small>(less than 300 words)</small></label>
 		<div class="col-sm-10">
-			<textarea id="abstract-input" class="form-control" rows="10" name="abstract">{$talk.abstract|escape}</textarea>
+			<textarea id="abstract-input-{$talk.id}" class="form-control" rows="10" name="abstract">{$talk.abstract|escape}</textarea>
 		</div>
 	</div>
 	{if $talk.session == 'Parallel'}
 	<div class="form-group">
-		<label for="session-id-input" class="col-sm-2 control-label">Session Code</label>
+		<label for="session-id-input-{$talk.id}" class="col-sm-2 control-label">Session Code</label>
 		<div class="col-sm-6">
-			<select id="session-id-input" name="session_id" class="form-control">
+			<select id="session-id-input-{$talk.id}" name="session_id" class="form-control">
 				<option value="0" {if $talk.session_id eq '0'}selected{/if}></option>
 				{foreach $sessions as $session}
 				<option value="{$session.id}" {if $talk.session_id eq $session.id}selected{/if}>{$session.title}</option>
@@ -50,7 +53,6 @@
 			</select>
 		</div>
 	</div>
-	{else}
 	{/if}
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
