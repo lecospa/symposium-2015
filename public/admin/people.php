@@ -7,12 +7,16 @@ class AdminPeopleIndex extends \Controllers\Controller {
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$stmt = $conn->prepare("SELECT `people`.*, `auth`.`token` FROM `people` LEFT JOIN `auth` ON `people`.`id` = `auth`.`id` WHERE `auth`.`scope`='people' ORDER BY `last_name`, `first_name`");
+			$stmt = $conn->prepare("SELECT * FROM `people` ORDER BY `last_name`, `first_name`");
 			$stmt->execute();
 			$people = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 			foreach ($people as &$person) {
 				$person['talks'] = \Models\Talks::all_filter_person($conn, $person['id']);
+
+				$stmt = $conn->prepare("SELECT * FROM `auth` WHERE `id`=? AND `scope`='People'");
+				$stmt->execute(array($person['id']));
+				$person['tokens'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 				
 				$stmt = $conn->prepare("SELECT * FROM `committee_person` WHERE `person_id`=?");
 				$stmt->execute(array($person['id']));
