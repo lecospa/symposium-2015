@@ -23,8 +23,11 @@ class AdminPeopleIndex extends \Controllers\Controller {
 				$person['organizers'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			}
 
+			$sessions = \Models\Sessions::all_with_id_as_key($conn);
+
 			$this->smarty->assign('people', $people);
 			$this->smarty->assign('token', $token);
+			$this->smarty->assign('sessions', $sessions);
 			$this->smarty->display('admin/people.html');
 		} else {
 			throw new \UnauthorizedException();
