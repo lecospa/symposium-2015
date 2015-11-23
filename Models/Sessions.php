@@ -50,4 +50,9 @@ class Sessions {
 		$stmt->execute(array($id));
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
+	static function get_talks($conn, $id) {
+		$stmt = $conn->prepare("SELECT * FROM `talks` WHERE `session`='Parallel' AND `session_id`=? ORDER BY `session_ordering`");
+		$stmt->execute(array($id));
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
 }
