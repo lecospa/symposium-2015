@@ -7,15 +7,23 @@ class AdminPeopleIndex extends \Controllers\Controller {
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$plenary_speakers = \Models\People::all_with_token_by_type($conn, 'Plenary');
-			$parallel_speakers = \Models\People::all_with_token_by_type($conn, 'Parallel');
-			$poster_speakers = \Models\People::all_with_token_by_type($conn, 'Poster');
-			$attendees = \Models\People::all_with_token_by_type($conn, 'Normal');
+			$stmt = $conn->prepare("SELECT `people`.*, `auth`.`token` FROM `people` LEFT JOIN `auth` ON `people`.`id` = `auth`.`id` WHERE `auth`.`scope`='people' ORDER BY `last_name`, `first_name`");
+			$stmt->execute();
+			$people = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-			$this->smarty->assign('plenary_speakers', $plenary_speakers);
-			$this->smarty->assign('parallel_speakers', $parallel_speakers);
-			$this->smarty->assign('poster_speakers', $poster_speakers);
-			$this->smarty->assign('attendees', $attendees);
+			foreach ($people as &$person) {
+				$person['talks'] = \Models\Talks::all_filter_person($conn, $person['id']);
+				
+				$stmt = $conn->prepare("SELECT * FROM `committee_person` WHERE `person_id`=?");
+				$stmt->execute(array($person['id']));
+				$person['committees'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+				$stmt = $conn->prepare("SELECT * FROM `session` WHERE `name`='organizer' AND `value`=?");
+				$stmt->execute(array($person['id']));
+				$person['organizers'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			}
+
+			$this->smarty->assign('people', $people);
 			$this->smarty->assign('token', $token);
 			$this->smarty->display('admin/people.html');
 		} else {
