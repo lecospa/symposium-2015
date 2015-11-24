@@ -67,8 +67,8 @@ class Person extends \Controllers\Controller {
 				$person_id = \Models\People::insert($conn, $first_name, $last_name, $email);
 
 				// 產生密碼(token), 加入至 `Auth` 中
-				$token = self::generatorPassword(8);
-				\Models\Auth::insert($conn, 'people', $person_id, $_token);
+				$auth_token = self::generatorPassword(8);
+				\Models\Auth::insert($conn, 'people', $person_id, $auth_token);
 
 				// 插入新的 talk
 				if ($session == 'Plenary' || $session == 'Parallel' || $session == 'Poster') {
@@ -77,10 +77,8 @@ class Person extends \Controllers\Controller {
 				}
 
 				$logger->info('New Person', json_encode(array('id' => $person_id, 'operator' => 'sudo')));
-				
 
 			} catch (\Exception $e) {
-
 			}
 			header('Location: ' . TOP . '/admin/people.php?token='.$token);
 		} else {
