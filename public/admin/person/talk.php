@@ -24,5 +24,20 @@ class Talk extends \Controllers\Controller {
 			throw new \UnauthorizedException();
 		}
 	}
+	public function delete() {
+		$token = $_GET['token'];
+		$person_id = $_GET['person_id'];
+		$talk_id = $_GET['talk_id'];
+		$conn = new \Conn();
+		$auth = \Models\Auth::get($conn, $token);
+		if ($auth['scope'] == 'sudo') {
+			$stmt = $conn->prepare("DELETE FROM `talks` WHERE `id`=?");
+			$stmt->execute(array($talk_id));
+			header('Location: ../person.php?token=' . $token . '&id=' . $person_id . '&mode=edit');
+		} else {
+			throw new \UnauthorizedException();
+		}
+		
+	}
 }
 new Talk;
