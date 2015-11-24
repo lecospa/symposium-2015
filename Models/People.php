@@ -64,9 +64,9 @@ class People {
 	 * 新增一個Person
 	 * @return 代表Person的id
 	 */
-	static function insert($conn, $type, $first_name, $last_name, $email) {
-		$stmt = $conn->prepare("INSERT INTO `people` (`type`, `first_name`, `last_name`, `email`) VALUES (?, ?, ?, ?)");
-		$stmt->execute(array($type, $first_name, $last_name, $email));
+	static function insert($conn, $first_name, $last_name, $email) {
+		$stmt = $conn->prepare("INSERT INTO `people` (`first_name`, `last_name`, `email`) VALUES (?, ?, ?)");
+		$stmt->execute(array($first_name, $last_name, $email));
 		$id = $conn->lastInsertId();
 		return $id;
 	}
