@@ -62,12 +62,12 @@
 </div>
 
 <h2>新增</h2>
-<form class="form-inline" action="{$smarty.const.TOP}/admin/person/insert.php?token={$token}" method="POST">
+<form class="form-inline" action="{$smarty.const.TOP}/admin/person.php?token={$token}" method="POST">
 <div class="table-responsive">
-<table class="table table-hover">
+<table class="table table-hover table-bordered">
 	<thead>
 		<tr>
-			<th>參加類型</th>
+			<th>參加 Session</th>
 			<th>姓名</th>
 			<th>Email</th>
 			<th></th>
@@ -76,7 +76,7 @@
 	<tbody>
 		<tr>
 			<td>
-				<select class="form-control" name="type" required>
+				<select class="form-control" name="session" required>
 					<option value=""></option>
 					<option value="Normal">Attendee</option>
 					<option value="Plenary">Plenary Session Speaker</option>
@@ -89,7 +89,7 @@
 				<input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
 			</td>
 			<td><input type="email" class="form-control" name="email" placeholder="Speaker Email"></td>
-			<td><button type="submit" class="btn btn-primary" disabled>新增</button></td>
+			<td><button type="submit" class="btn btn-primary">新增</button></td>
 		</tr>
 	</tbody>
 </table>

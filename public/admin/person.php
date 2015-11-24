@@ -44,5 +44,55 @@ class Person extends \Controllers\Controller {
 			throw new \UnauthorizedException();
 		}
 	}
+	/*
+	 * 新增一個 person
+	 * 根據 session 決定是否新增預設的空白talk
+	 */
+	public function post() {
+		$token = $_GET['token'];
+		$conn = new \Conn();
+		$logger = new \Models\Logging($conn, $_SERVER);
+		$auth = \Models\Auth::get($conn, $token);
+		
+		if ($auth['scope'] == 'sudo') {
+			$session    = $_POST['session'];
+			$first_name = $_POST['first_name'];
+			$last_name  = $_POST['last_name'];
+			$email      = $_POST['email'];
+			try {
+				if (empty($first_name) || empty($last_name)) {
+					throw new \Exception('Name is required');
+				}
+				// 插入 person
+				$person_id = \Models\People::insert($conn, $first_name, $last_name, $email);
+
+				// 產生密碼(token), 加入至 `Auth` 中
+				$auth_token = self::generatorPassword(8);
+				\Models\Auth::insert($conn, 'people', $person_id, $auth_token);
+
+				// 插入新的 talk
+				if ($session == 'Plenary' || $session == 'Parallel' || $session == 'Poster') {
+					$stmt = $conn->prepare("INSERT INTO `talks` (`person_id`, `session`, `session_id`) VALUES (?,?,?)");
+					$stmt->execute(array($person_id, $session, 0));
+				}
+
+				$logger->info('New Person', json_encode(array('id' => $person_id, 'operator' => 'sudo')));
+
+			} catch (\Exception $e) {
+			}
+			header('Location: ' . TOP . '/admin/people.php?token='.$token);
+		} else {
+			throw new \UnauthorizedException();
+		}
+	}
+	private function generatorPassword($password_len) {
+		$password = '';
+		$word = 'abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ23456789';
+		$len = strlen($word);
+		for ($i = 0; $i < $password_len; $i++) {
+			$password .= $word[rand() % $len];
+		}
+		return $password;
+	}
 }
 new Person;

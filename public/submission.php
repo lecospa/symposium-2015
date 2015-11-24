@@ -37,7 +37,7 @@ class Submission extends \Controllers\Controller {
 				header('Location: ' . TOP . '/submission.php?token='.$token);
 				return;
 			}
-			$_id = \Models\People::insert($conn, '', $first_name, $last_name, $email);
+			$_id = \Models\People::insert($conn, $first_name, $last_name, $email);
 			$_token = self::generatorPassword(8);
 			\Models\Auth::insert($conn, 'people', $_id, $_token);
 
