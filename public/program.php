@@ -3,18 +3,15 @@ require_once('../init.php');
 class Program extends \Controllers\Controller {
 	function get() {
 		$this->smarty->assign('scope', __CLASS__);
-		
 		$conn = new \Conn();
-		$plenary_speakers = \Models\People::all_by_type($conn, 'Plenary');
-		$parallel_speakers = \Models\People::all_by_type($conn, 'Parallel');
-		$p = array();
-		foreach ($plenary_speakers as $plenary_speaker) {
-			$p[$plenary_speaker['id']] = $plenary_speaker;
-		}
-		foreach ($parallel_speakers as $parallel_speaker) {
-			$p[$parallel_speaker['id']] = $parallel_speaker;
-		}
 
+		$stmt = $conn->prepare("SELECT `id`, `first_name`, `last_name` FROM `people` ORDER BY `id`");
+		$stmt->execute();
+		$people = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		$p = array();
+		foreach ($people as $person) {
+			$p[$person['id']] = $person;
+		}
 		$this->smarty->assign('people', $p);
 		
 		$sessions = \Models\Sessions::all($conn);

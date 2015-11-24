@@ -19,8 +19,10 @@ class ParallelSession extends \Controllers\Controller {
 				$talk['speaker'] = \Models\People::get($conn, $talk['person_id']);
 			}
 
+			$stmt = $conn->prepare("SELECT * FROM `people` ORDER BY `last_name`, `first_name`");
+			$stmt->execute();
+			$people = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-			$people = \Models\People::all_by_type($conn, 'Parallel');
 			$this->smarty->assign('session', $session);
 			$this->smarty->assign('people', $people);
 			$this->smarty->assign('token', $token);

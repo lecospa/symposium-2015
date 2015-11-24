@@ -18,7 +18,7 @@ class Talk extends \Controllers\Controller {
 			$_SESSION['message'] = 'Update successfully';
 
 		}
-		header('Location: ' . TOP . '/person.php?token=' . $token);
+		header('Location: ' . TOP . '/person.php?token=' . $token . '&mode=edit');
 	}
 }
 new Talk;

@@ -42,7 +42,7 @@ class Slide extends \Controllers\Controller {
 			$stmt = $conn->prepare("UPDATE `talks` SET `slide_file`=? WHERE `id`=? AND `person_id`=?");
 			$stmt->execute(array($filename, $talk_id, $person_id));
 
-			header('Location: ' . TOP . '/person.php?token='.$token);
+			header('Location: ' . TOP . '/person.php?token='.$token . '&mode=edit');
 		} catch (RuntimeException $e) {
 			echo $e->getMessage();
 		}

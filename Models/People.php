@@ -8,20 +8,6 @@ namespace Models;
  */
 
 class People {
-	static function all_with_token_by_type($conn, $type) {
-		$stmt = $conn->prepare("SELECT A.*, B.`token`, B.`scope` 
-			FROM `people` AS A LEFT JOIN `auth` AS B ON A.`id` = B.`id` 
-			WHERE B.`scope` = 'people' AND A.`type`=?
-			ORDER BY A.`last_name`, A.`first_name`"
-		);
-		$stmt->execute(array($type));
-		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-	}
-	static function all_by_type($conn, $type) {
-		$stmt = $conn->prepare("SELECT * FROM `people` WHERE `type`=? ORDER BY `last_name`, `first_name`");
-		$stmt->execute(array($type));
-		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-	}
 	static function get($conn, $id) {
 		$stmt = $conn->prepare("SELECT * FROM `people` WHERE `id`=?");
 		$stmt->execute(array($id));

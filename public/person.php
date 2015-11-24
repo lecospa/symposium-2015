@@ -4,6 +4,25 @@ require_once('../init.php');
 
 class Person extends \Controllers\Controller {
 	public function get() {
+		$mode = $_GET['mode'];
+		switch ($mode) {
+		case 'edit':
+			$this->get_edit();
+			break;
+		default:
+			$id = $_GET['person_id'];
+			$conn = new \Conn;
+			$talks = \Models\Talks::all_filter_session_and_person($conn, 'Plenary', $id);
+
+			if (count($talks) == 0) {
+				throw new \NotFoundException();
+			}
+			header("HTTP/1.1 301 Moved Permanently"); 
+			header('Location: ' . TOP . '/plenary_session.php?talk_id=' . $talks[0]['id']);
+			break;
+		}
+	}
+	private function get_edit() {
 		$token = $_GET['token'];
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
