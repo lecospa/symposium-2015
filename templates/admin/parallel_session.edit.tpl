@@ -6,7 +6,7 @@
 </div>
 <ol class="breadcrumb">
 	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">管理後台</a></li>
-	<li><a href="{$smarty.const.TOP}/admin/sessions.php?token={$token}">Parallel Sessions</a></li>
+	<li><a href="{$smarty.const.TOP}/admin/parallel_sessions.php?token={$token}">Parallel Sessions</a></li>
 	<li class="active">編輯</li>
 </ol>
 <div class="row">

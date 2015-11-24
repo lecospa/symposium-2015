@@ -15,7 +15,6 @@
 	<thead>
 		<tr>
 			<th>姓名</th>
-			<th>相片</th>
 			<th>Email</th>
 			<th>Passcode</th>
 			<th>Committee</th>
@@ -27,43 +26,32 @@
 	<tbody>
 		{foreach $people as $person}
 		<tr>
-			<td>{$person['first_name']|escape} {$person['last_name']|escape}</td>
-			<td>
-				{if $person.img}
-				<img class="img-responsive" src="{$smarty.const.TOP}/uploads/{$person.img}" style="max-height: 50px;">
-				{/if}
-			</td>
-			<td>{$person['email']|escape}</td>
-			<td>
-				{foreach $person.tokens as $auth}
+			<td>{$person.first_name|escape} {$person.last_name|escape}</td>
+			<td>{$person.email|escape}</td>
+			<td>{foreach $person.tokens as $auth}
 				<a href="{$smarty.const.TOP}/person/main.php?token={$auth.token}">{$auth.token}</a><br>
-				{/foreach}
-			</td>
-			<td>{foreach $person.committees as $committee}
-				<span class="label label-default">{$committee.type}</span>
 			{/foreach}</td>
-			<td>{foreach $person['talks'] as $talk}
+			<td>{foreach $person.committees as $committee}
+				{$committee.type}
+			{/foreach}</td>
+			<td>{foreach $person.talks as $talk}
 				{if $talk.session eq 'Plenary'}
-					<a href="{$smarty.const.TOP}/plenary_session.php?talk_id={$talk.id}">
-						<span class="label label-{if $talk.title eq ''}default{else}success{/if}">Plenary</span>
-					</a>
+					<a href="{$smarty.const.TOP}/plenary_session.php?talk_id={$talk.id}" class="label label-{if $talk.title eq ''}default{else}success{/if}">Plenary</a>
 				{elseif $talk.session eq 'Parallel'}
-					<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$talk.session_id}&token={$token}">
-						<span class="label label-{if $talk.title eq ''}default{else}success{/if}">Parallel ({$sessions[$talk.session_id].abbreviation})</span>
-					</a>
+					<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$talk.session_id}&token={$token}" class="label label-{if $talk.title eq ''}default{else}success{/if}">{$sessions[$talk.session_id].abbreviation|escape}</a>
 				{elseif $talk.session eq 'Poster'}
 					<span class="label label-default">{$talk.session}</span>
 				{/if}
 			{/foreach}
 			{foreach $person.organizers as $organizer}
-				<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$organizer.session_id}&token={$token}">
-					<span class="label label-primary"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$sessions[$organizer.session_id].abbreviation}</span>
+				<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$organizer.session_id}&token={$token}" class="label label-primary">
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$sessions[$organizer.session_id].abbreviation|escape}
 				</a>
 			{/foreach}</td>
-			<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$person['id']}&mode=edit">編輯</a></td>
+			<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$person.id}&mode=edit">編輯</a></td>
 			<td>
 				<form method="POST" action="{$smarty.const.TOP}/admin/person/delete.php?token={$token}">
-					<input type="hidden" name="id" value="{$person['id']}" />
+					<input type="hidden" name="id" value="{$person.id}" />
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
 				</form>
 			</td>

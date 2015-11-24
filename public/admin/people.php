@@ -32,7 +32,7 @@ class AdminPeopleIndex extends \Controllers\Controller {
 			$this->smarty->assign('people', $people);
 			$this->smarty->assign('token', $token);
 			$this->smarty->assign('sessions', $sessions);
-			$this->smarty->display('admin/people.html');
+			$this->smarty->display('admin/people.tpl');
 		} else {
 			throw new \UnauthorizedException();
 		}
