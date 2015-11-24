@@ -1,1 +1,1 @@
-<a href="{$smarty.const.TOP}/plenary_session.php?id={$person.id}" title="{$person.title|escape}">{$person.first_name|escape} {$person.last_name|escape}</a>
+<a href="{$smarty.const.TOP}/person/view.php?id={$person.id}" title="{$person.title|escape}">{$person.first_name|escape} {$person.last_name|escape}</a>
