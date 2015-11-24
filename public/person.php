@@ -16,7 +16,8 @@ class Person extends \Controllers\Controller {
 			$person_id = $auth['id'];
 			$person = \Models\People::get($conn, $person_id);
 			$talks = \Models\Talks::all_filter_person($conn, $person_id);
-			$sessions = \Models\Sessions::all($conn);
+
+			$sessions = \Models\Sessions::all_with_id_as_key($conn);
 
 			$this->smarty->assign('person', $person);
 			$this->smarty->assign('talks', $talks);

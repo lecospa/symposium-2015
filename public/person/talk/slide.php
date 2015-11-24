@@ -1,12 +1,12 @@
 <?php
-require_once('../../init.php');
+require_once('../../../init.php');
 
-class Upload extends \Controllers\Controller {
+class Slide extends \Controllers\Controller {
 	public function get() {
 		throw new \ForbiddenException();
 	}
-	public function post() {
-		$token = $_POST['token'];
+	public function patch() {
+		$token = $_GET['token'];
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		
@@ -15,14 +15,7 @@ class Upload extends \Controllers\Controller {
 		}
 
 		try {
-			$target = $_GET['target'];
-			if ($target == 'slide') {
-				$valid_ext = array('pdf', 'doc', 'docx', 'ppt', 'pptx');
-			} else if ($target == 'img') {
-				$valid_ext = array('jpg', 'png', 'jpeg');
-			} else {
-				throw new RuntimeException('Invalid target');
-			}
+			$valid_ext = array('pdf', 'doc', 'docx', 'ppt', 'pptx');
 
 			if (!isset($_FILES['file']['error']) || is_array($_FILES['file']['error']) ) {
 				throw new RuntimeException('Invalid parameters.');
@@ -37,24 +30,23 @@ class Upload extends \Controllers\Controller {
 			}
 
 			$filename = sprintf('%s.%s', sha1_file($_FILES['file']['tmp_name']), $ext);
-			$fullfilename = __DIR__ . '/../uploads/' . $filename;
+			$fullfilename = __DIR__ . '/../../uploads/' . $filename;
 
 			if (!move_uploaded_file($_FILES['file']['tmp_name'], $fullfilename)) {
 				throw new RuntimeException('Failed to move uploaded file.');
 			}
 
-			if ($target == 'slide') {
-				\Models\People::update_slide_file($conn, $auth['id'], $filename);
-			} else if ($target == 'img') {
-				\Models\People::update_img($conn, $auth['id'], $filename);
-			}
+			$person_id = $auth['id'];
+			$talk_id = $_GET['talk_id'];
 
+			$stmt = $conn->prepare("UPDATE `talks` SET `slide_file`=? WHERE `id`=? AND `person_id`=?");
+			$stmt->execute(array($filename, $talk_id, $person_id));
 
-			header('location: main.php?token='.$token);
+			header('Location: ' . TOP . '/person.php?token='.$token);
 		} catch (RuntimeException $e) {
 			echo $e->getMessage();
 		}
 	}
 }
 
-new Upload;
+new Slide;
