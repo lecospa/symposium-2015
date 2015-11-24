@@ -26,6 +26,7 @@
 	<h2>Expected Speakers {$talk@iteration}:</h2>
 	<p>{$talk.speaker.first_name|escape} {$talk.speaker.last_name|escape} ({$talk.speaker.email|escape})</p>
 	<dl class="dl-horizontal">
+		<dt>Duration of talk</dt><dd>{$talk.address_datetime|escape}</dd>
 		<dt>Talk Time</dt><dd>{$talk.talk_time|escape}</dd>
 		<dt>Talk Title</dt><dd>{$talk.title|escape}</dd>
 		<dt>Talk Abstract</dt><dd>{$talk.abstract|escape|nl2br}</dd>
