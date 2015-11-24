@@ -14,7 +14,7 @@ class Person extends \Controllers\Controller {
 			$stmt->execute(array($id));
 			$talks = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			
-			$sessions = \Models\Sessions::all($conn);
+			$sessions = \Models\Sessions::all_with_id_as_key($conn);
 
 			$this->smarty->assign('person', $person);
 			$this->smarty->assign('talks', $talks);

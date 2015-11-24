@@ -49,7 +49,9 @@
 	</div>
 </form>
 {foreach $talks as $talk}
-<h2>{$talk.session} - {$talk.session_id}</h2>
+<h2>{$talk.session} Session
+{if $talk.session eq 'Parallel'} <small>{$sessions[$talk.session_id].title|escape}</small>{/if}
+</h2>
 <form action="person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
 		<label for="inputTitle" class="col-sm-2 control-label">Title</label>

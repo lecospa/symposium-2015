@@ -22,13 +22,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr><th colspan="5">IAC Chair</th></tr>
+		<tr><th colspan="5">IAC Chair <span class="badge">{$committees['IACCHAIR']|count}</span></th></tr>
 		{include file='./committees_table.part.tpl' people=$committees['IACCHAIR'] type='IACCHAIR'}
-		<tr><th colspan="5">IAC</th></tr>
+		<tr><th colspan="5">IAC <span class="badge">{$committees['IAC']|count}</span></th></tr>
 		{include file='./committees_table.part.tpl' people=$committees['IAC'] type='IAC'}
-		<tr><th colspan="5">LOC Chair</th></tr>
+		<tr><th colspan="5">LOC Chair <span class="badge">{$committees['LOCCHAIR']|count}</span></th></tr>
 		{include file='./committees_table.part.tpl' people=$committees['LOCCHAIR'] type='LOCCHAIR'}
-		<tr><th colspan="5">LOC</th></tr>
+		<tr><th colspan="5">LOC <span class="badge">{$committees['LOC']|count}</span></th></tr>
 		{include file='./committees_table.part.tpl' people=$committees['LOC'] type='LOC'}
 	</tbody>
 </table>
