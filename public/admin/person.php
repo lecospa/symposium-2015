@@ -94,5 +94,21 @@ class Person extends \Controllers\Controller {
 		}
 		return $password;
 	}
+	public function delete() {
+		$token = $_GET['token'];
+		$conn = new \Conn();
+		$logger = new \Models\Logging($conn, $_SERVER);
+		$auth = \Models\Auth::get($conn, $token);
+		if ($auth['scope'] == 'sudo') {
+			$person_id = $_GET['person_id'];
+			\Models\People::delete($conn, $person_id);
+			
+			$logger->info('person.delete', json_encode(array('id' => $person_id, 'operator' => 'sudo')));
+
+			header('Location: ' . TOP . '/admin/people.php?token='.$token);
+		} else {
+			throw new \UnauthorizedException();
+		}
+	}
 }
 new Person;

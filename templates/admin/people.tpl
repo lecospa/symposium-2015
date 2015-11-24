@@ -50,9 +50,8 @@
 			{/foreach}</td>
 			<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$person.id}&mode=edit">編輯</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}/admin/person/delete.php?token={$token}">
-					<input type="hidden" name="id" value="{$person.id}" />
-					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">刪除</button>
+				<form method="POST" action="{$smarty.const.TOP}/admin/person.php?token={$token}&person_id={$person.id}&method=delete">
+					<button class="btn btn-danger" onClick="return confirm('確定刪除？將會損失此人的所有資料、演講資訊');">刪除</button>
 				</form>
 			</td>
 		</tr>

@@ -49,8 +49,14 @@
 	</div>
 </form>
 {foreach $talks as $talk}
+<hr>
 <h2>{$talk.session} Session
 {if $talk.session eq 'Parallel'} <small>{$sessions[$talk.session_id].title|escape}</small>{/if}
+<div class="pull-right">
+<form method="POST" action="{$smarty.const.TOP}/admin/person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=delete">
+	<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除</button>
+</form>
+</div>
 </h2>
 <form action="person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
