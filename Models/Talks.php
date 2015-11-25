@@ -26,4 +26,15 @@ class Talks {
 			return null;
 		}
 	}
+	/*
+	 * 取得所有的 Plenary Session Talks
+	 */
+	// Ordering by people's name
+	static function all_with_session_plenary_stmt($conn) {
+		$stmt = $conn->prepare("SELECT `talks`.* FROM `talks` LEFT JOIN `people` ON `talks`.`person_id` = `people`.`id` WHERE `talks`.`session`='Plenary' ORDER BY `people`.`last_name`, `people`.`first_name`");
+		return new Query($conn, $stmt);
+	}
+	static function all_with_session_plenary($conn) {
+		return self::all_with_session_plenary_stmt($conn)->fetchAll();
+	}
 }

@@ -8,15 +8,17 @@ namespace Models;
  */
 
 class People {
-	static function get($conn, $id) {
+	/*
+	 * 取得一個 person
+	 */
+	static function get_stmt($conn) {
 		$stmt = $conn->prepare("SELECT * FROM `people` WHERE `id`=?");
-		$stmt->execute(array($id));
-		$data = null;
-		if ($row = $stmt->fetch()) {
-			return $row;
-		}
-		return $data;
+		return new Query($conn, $stmt);
 	}
+	static function get($conn, $id) {
+		return self::get_stmt($conn)->fetch(array($id));
+	}
+
 	static function update_slide_file($conn, $id, $slide_file) {
 		$stmt = $conn->prepare("UPDATE `people` SET `slide_file` = ? WHERE `id` = ?");
 		$stmt->execute(array($slide_file, $id));
