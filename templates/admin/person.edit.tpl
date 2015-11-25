@@ -48,6 +48,27 @@
 		</div>
 	</div>
 </form>
+<hr>
+<form enctype="multipart/form-data" action="person/img.php?token={$token}&person_id={$person.id}&method=patch" method="POST" class="form-horizontal">
+	<div class="form-group">
+		<div class="col-sm-2 col-sm-offset-2">
+			<p class="form-control-static">
+				{if $person.img}
+					<img src="{$smarty.const.TOP}/uploads/{$person.img}" style="height: 75px;">
+				{else}
+					No file
+				{/if}
+			</p>
+		</div>
+		<div class="col-sm-4">
+			<label for="img-input" class="control-label">Upload</label>
+			<input name="file" id="img-input" type="file" class="form-control" />
+		</div>
+		<div class="col-sm-2">
+			<button type="submit" class="btn btn-primary">上傳檔案</button>
+		</div>
+	</div>
+</form>
 {foreach $talks as $talk}
 <hr>
 <h2>{$talk.session} Session
