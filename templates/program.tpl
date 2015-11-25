@@ -78,7 +78,7 @@
 	<tr style="height: 20px;">
 		<th rowspan="6">13:30-15:30</th>
 		<td rowspan="6">Parallel Sessions:<br>{include file='program_session.part' session=$session[5]} {include file='program_session.part' session=$session[6]} {include file='program_session.part' session=$session[3]} {include file='program_session.part' session=$session[11]}</td>
-		<td rowspan="6">Parallel Sessions:<br>{include file='program_session.part' session=$session[4] suffix='I'} {include file='program_session.part' session=$session[10]} {include file='program_session.part' session=$session[8]} {include file='program_session.part' session=$session[2]}</td>
+		<td rowspan="6">Parallel Sessions:<br>{include file='program_session.part' session=$session[4] suffix='I'} {include file='program_session.part' session=$session[10] suffix="II"} {include file='program_session.part' session=$session[8]} {include file='program_session.part' session=$session[2]}</td>
 		<td rowspan="9">13:30-17:00<br>Parallel Sessions:<br>{include file='program_session.part' session=$session[9] suffix='II'} {include file='program_session.part' session=$session[7]} {include file='program_session.part' session=$session[4] suffix='II'} {include file='program_session.part' session=$session[1]}</td>
 		<td>{include file='program_session.part' session=$session[1]}</td>
 	</tr>
@@ -106,12 +106,12 @@
 	<tr style="height: 20px;">
 		<th rowspan="6">16:00-17:30</th>
 		<td rowspan="7" style="background-color: yellow;">Registration</td>
-		<td rowspan="6">Parallel Sessions:<br>{include file='program_session.part' session=$session[5]} {include file='program_session.part' session=$session[6]} {include file='program_session.part' session=$session[3]} {include file='program_session.part' session=$session[11]}</td>
+		<td rowspan="6">Parallel Sessions:<br>{include file='program_session.part' session=$session[10] suffix='I'} {include file='program_session.part' session=$session[6]} {include file='program_session.part' session=$session[3]} {include file='program_session.part' session=$session[11]}</td>
 		<td rowspan="6">
 			Parallel Sessions:<br>
 			{include file='program_session.part' session=$session[9] suffix='I'}
 			{include file='program_session.part' session=$session[4] suffix='I'}
-			{include file='program_session.part' session=$session[10]}
+			{include file='program_session.part' session=$session[10] suffix='II'}
 			{include file='program_session.part' session=$session[8]}
 		</td>
 		<td>{include file='program_session.part' session=$session[6]}</td>
