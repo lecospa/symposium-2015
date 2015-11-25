@@ -7,7 +7,7 @@
 {foreach $organizers as $organizer}
 <div class="media">
 	<div class="media-left">
-		<div style="width: 150px;">
+		<div style="max-height: 100px;">
 		{if $organizer.img}
 			<img class="img-responsive img-thumbnail" src="{$smarty.const.TOP}/uploads/{$organizer.img}" />
 		{/if}
@@ -23,7 +23,7 @@
 <h2>Date &amp; Time:</h2><p>{$session.date|escape} {$session.time|escape}</p>
 <hr>
 {foreach $session.talks as $talk}
-	<h2>Expected Speakers {$talk@iteration}:</h2>
+	<h2 id="talk-{$talk.id}">Expected Speakers {$talk@iteration}:</h2>
 	<p>{$talk.speaker.first_name|escape} {$talk.speaker.last_name|escape} ({$talk.speaker.email|escape})</p>
 	<dl class="dl-horizontal">
 		<dt>Duration of talk</dt><dd>{$talk.address_datetime|escape}</dd>
