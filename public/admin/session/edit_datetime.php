@@ -15,7 +15,7 @@ class Index extends \Controllers\Controller {
 			$stmt = $conn->prepare("UPDATE `sessions` SET `date`=?, `time`=? WHERE `id`=?");
 			$stmt->execute(array($date, $time, $session_id));
 
-			header('Location: edit.php?token=' . $token . '&session_id=' . $session_id);
+			header('Location: ../parallel_session.php?mode=edit&session_id='. $session_id . '&token=' . $token);
 		} else {
 			throw new UnauthorizedException();
 		}
