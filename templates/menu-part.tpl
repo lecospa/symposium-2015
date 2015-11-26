@@ -1,5 +1,5 @@
 {strip}
-<a class="list-group-item {if $scope eq 'Index'} active{/if}" href="{$smarty.const.TOP}/">Home</a>
+<a class="list-group-item {if $scope eq 'Index'} active{/if}" href="{$smarty.const.TOP}/">Home / Announcement</a>
 <a class="list-group-item {if $scope eq 'Committees'} active{/if}" href="{$smarty.const.TOP}/committees.php">Committees</a>
 <a class="list-group-item {if $scope eq 'Topics'} active{/if}" href="{$smarty.const.TOP}/topics.php">Topics</a>
 <a class="list-group-item {if $scope eq 'Program'} active{/if}" href="{$smarty.const.TOP}/program.php">Conference Program</a>
