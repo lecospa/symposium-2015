@@ -29,6 +29,7 @@ class Person extends \Controllers\Controller {
 		$token = $_GET['token'];
 		$id = $_GET['id'];
 		$conn = new \Conn();
+		$logger = new \Models\Logging($conn, $_SERVER);
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
 			$first_name = $_POST['first_name'];
@@ -38,6 +39,8 @@ class Person extends \Controllers\Controller {
 			$resume = $_POST['resume'];
 			$room = $_POST['room'];
 			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $occupation, $resume, $room);
+			
+			$logger->info('person.update', json_encode(array('id' => $id, 'operator' => 'sudo')));
 
 			header('Location: person.php?token=' . $token . '&id=' . $id . '&mode=edit');
 		} else {
@@ -76,7 +79,7 @@ class Person extends \Controllers\Controller {
 					$stmt->execute(array($person_id, $session, 0));
 				}
 
-				$logger->info('New Person', json_encode(array('id' => $person_id, 'operator' => 'sudo')));
+				$logger->info('person.create', json_encode(array('id' => $person_id, 'operator' => 'sudo')));
 
 			} catch (\Exception $e) {
 			}

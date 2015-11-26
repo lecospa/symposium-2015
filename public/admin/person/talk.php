@@ -8,6 +8,7 @@ class Talk extends \Controllers\Controller {
 		$talk_id = $_GET['talk_id'];
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
+		$logger = new \Models\Logging($conn, $_SERVER);
 		if ($auth['scope'] == 'sudo') {
 			$title = $_POST['title'];
 			$abstract = $_POST['abstract'];
@@ -18,6 +19,7 @@ class Talk extends \Controllers\Controller {
 
 			$stmt = $conn->prepare("UPDATE `talks` SET `title`=?, `abstract`=?, `address_datetime`=?, `talk_time`=?, `session`=?, `session_id`=? WHERE `id`=?");
 			$stmt->execute(array($title, $abstract, $address_datetime, $talk_time, $session, $session_id, $talk_id));
+			$logger->info('talk.update', json_encode(array('person_id' => $person_id, 'talk_id' => $talk_id, 'operator' => 'sudo')));
 
 			header('Location: ../person.php?token=' . $token . '&id=' . $person_id . '&mode=edit');
 		} else {
@@ -30,9 +32,11 @@ class Talk extends \Controllers\Controller {
 		$talk_id = $_GET['talk_id'];
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
+		$logger = new \Models\Logging($conn, $_SERVER);
 		if ($auth['scope'] == 'sudo') {
 			$stmt = $conn->prepare("DELETE FROM `talks` WHERE `id`=?");
 			$stmt->execute(array($talk_id));
+			$logger->info('talk.delete', json_encode(array('person_id' => $person_id, 'talk_id' => $talk_id, 'operator' => 'sudo')));
 			header('Location: ../person.php?token=' . $token . '&id=' . $person_id . '&mode=edit');
 		} else {
 			throw new \UnauthorizedException();

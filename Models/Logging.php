@@ -12,7 +12,7 @@ class Logging {
 	public function __construct($conn, $server) {
 		$this->conn = $conn;
 		$this->remote_address = $server['REMOTE_ADDR'];
-		if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+		if (!empty($_server['HTTP_X_FORWARDED_FOR'])) {
 			$this->forward_address = $server['HTTP_X_FORWARDED_FOR'];
 		}
 	}
