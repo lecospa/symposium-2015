@@ -8,46 +8,48 @@
 	<li><a href="{$smarty.const.TOP}/admin/people.php?token={$token}">與會者</a></li>
 	<li class="active">編輯</li>
 </ol>
-<form action="person.php?token={$token}&id={$person.id}&method=patch" method="POST" class="form-horizontal">
+{* person part *}
+<div class="form-horizontal">
 	<div class="form-group">
 		<label class="col-sm-2 control-label">姓名</label>
-		<div class="col-sm-5">
-			<input type="text" class="form-control" id="inputFirstName" placeholder="First name" value="{$person.first_name|escape}" name="first_name">
+		<div class="col-sm-3">
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+ type="text" data-field="first_name" class="form-control" id="first-name-input" placeholder="First name" value="{$person.first_name|escape}">
 		</div>
-		<div class="col-sm-5">
-			<input type="text" class="form-control" id="inputLastName" placeholder="Last name" value="{$person.last_name|escape}" name="last_name">
+		<div class="col-sm-3">
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+ type="text" data-field="last_name" class="form-control" id="last-name-input" placeholder="Last name" value="{$person.last_name|escape}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="email-input" class="col-sm-2 control-label">Email</label>
-		<div class="col-sm-10">
-			<input type="email" class="form-control" id="email-input" placeholder="Email" value="{$person.email|escape}" name="email">
+		<div class="col-sm-3">
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+ type="email" data-field="email" class="form-control" id="email-input" placeholder="Email" value="{$person.email|escape}">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputOccupation" class="col-sm-2 control-label">機構</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputOccupation" placeholder="Your working occupation" value="{$person.occupation|escape}" name="occupation">
+		<label for="occupation-input" class="col-sm-2 control-label">機構</label>
+		<div class="col-sm-3">
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+ type="text" data-field="occupation" class="form-control" id="occupation-input" placeholder="Your working occupation" value="{$person.occupation|escape}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputResume" class="col-sm-2 control-label">職稱</label>
-		<div class="col-sm-10">
-			<textarea id="inputResume" class="form-control" rows="2" name="resume">{$person.resume|escape}</textarea>
+		<div class="col-sm-4">
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+ type="text" data-field="resume" class="form-control" id="resume-input" value="{$person.resume|escape}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputRoom" class="col-sm-2 control-label">Room</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="inputRoom" value="{$person.room|escape}" name="room">
+		<div class="col-sm-2">
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+ type="text" data-field="room" class="form-control" id="room-input" value="{$person.room|escape}">
 		</div>
 	</div>
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-primary">更新</button>
-		</div>
-	</div>
-</form>
+</div>
 <hr>
 <form enctype="multipart/form-data" action="person/img.php?token={$token}&person_id={$person.id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
@@ -70,9 +72,10 @@
 	</div>
 </form>
 {foreach $talks as $talk}
+<section id="talk-{$talk.id}">
 <hr>
 <h2>{$talk.session} Session
-{if $talk.session eq 'Parallel'} <small>{$sessions[$talk.session_id].title|escape}</small>{/if}
+{if $talk.session eq 'Parallel'} <small>{$sessions[$talk.session_id].title|escape} ({$sessions[$talk.session_id].abbreviation|escape})</small>{/if}
 <div class="pull-right">
 <form method="POST" action="{$smarty.const.TOP}/admin/person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=delete">
 	<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除</button>
@@ -158,5 +161,10 @@
 		</div>
 	</div>
 </form>
+</section>
 {/foreach}
+{/block}
+{block name=body_script}
+<script src="{$smarty.const.TOP}/js/admin/edit.js"></script>
+<script src="{$smarty.const.TOP}/js/admin/person.edit.js"></script>
 {/block}

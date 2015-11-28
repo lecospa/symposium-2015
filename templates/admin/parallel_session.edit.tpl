@@ -18,26 +18,31 @@
 <div class="row">
 	<div class="col-xs-2"><label for="title-input">Session 標題</label></div>
 	<div class="col-xs-4">
-		<input id="title-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/title.php?token={$token}&session_id={$session.id}&method=patch" class="form-control" type="text" value="{$session.title|escape}">
+		<input id="title-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/title.php?token={$token}&session_id={$session.id}&method=patch" data-field="title"
+ class="form-control" type="text" value="{$session.title|escape}">
 	</div>
 	<div class="col-xs-1"><label for="abbreviation-input">縮寫</label></div>
 	<div class="col-xs-1">
-		<input id="abbreviation-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/abbreviation.php?token={$token}&session_id={$session.id}&method=patch" class="form-control" type="text" value="{$session.abbreviation|escape}">
+		<input id="abbreviation-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/abbreviation.php?token={$token}&session_id={$session.id}&method=patch" data-field="abbreviation"
+ class="form-control" type="text" value="{$session.abbreviation|escape}">
 	</div>
 </div>
 <div class="row">
 	<div class="col-xs-2"><label for="location-input">地點</label></div>
 	<div class="col-xs-3">
-		<input id="location-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/location.php?token={$token}&session_id={$session.id}&method=patch" class="form-control" type="text" value="{$session.location|escape}">
+		<input id="location-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/location.php?token={$token}&session_id={$session.id}&method=patch" data-field="location"
+ class="form-control" type="text" value="{$session.location|escape}">
 	</div>
 </div>
 <div class="row">
 	<div class="col-xs-2"><label>Date &amp; time</label></div>
 	<div class="col-xs-2">
-		<input id="date-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date.php?token={$token}&session_id={$session.id}&method=patch" class="form-control" type="text" value="{$session.date|escape}" placeholder="Month. Date">
+		<input id="date-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date.php?token={$token}&session_id={$session.id}&method=patch" data-field="date"
+ class="form-control" type="text" value="{$session.date|escape}" placeholder="Month. Date">
 	</div>
 	<div class="col-xs-2">
-		<input id="time-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/time.php?token={$token}&session_id={$session.id}&method=patch" class="form-control" type="text" value="{$session.time|escape}" placeholder="00:00-24:00">
+		<input id="time-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/time.php?token={$token}&session_id={$session.id}&method=patch" data-field="time"
+ class="form-control" type="text" value="{$session.time|escape}" placeholder="00:00-24:00">
 	</div>
 </div>
 
@@ -88,7 +93,8 @@
 			<td>{$talk.speaker.first_name|escape} {$talk.speaker.last_name|escape}</td>
 			<td>{$talk.address_datetime|escape} / {$talk.talk_time|escape}</td>
 			<td>
-				<input class="session-ordering-input form-control" data-method="POST" data-action="{$smarty.const.TOP}/api/session/talk/session_ordering.php?token={$token}&session_id={$session.id}&talk_id={$talk.id}&method=patch" type="text" value="{$talk.session_ordering}">
+				<input class="session-ordering-input form-control" data-method="POST" data-action="{$smarty.const.TOP}/api/session/talk/session_ordering.php?token={$token}&session_id={$session.id}&talk_id={$talk.id}&method=patch" data-field="session_ordering"
+ type="text" value="{$talk.session_ordering}">
 			</td>
 			<td><a href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$talk.speaker.id}&mode=edit" class="btn btn-default">編輯</a></td>
 			<td>
@@ -120,5 +126,6 @@
 {/block}
 
 {block name=body_script}
+<script src="{$smarty.const.TOP}/js/admin/edit.js"></script>
 <script src="{$smarty.const.TOP}/js/admin/parallel_session.edit.js"></script>
 {/block}
