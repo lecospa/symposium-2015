@@ -9,7 +9,7 @@
 <div style="overflow-y: auto;">
 <table class="table table-bordered" id="timetable">
 	<thead>
-	<tr>
+	<tr style="height: 45px;">
 		<th></th>
 		<th>12/13/2015 (Sun.)</th>
 		<th>12/14/2015 (Mon.)</th>
@@ -91,7 +91,7 @@
 	<tr style="height: 20px;">
 		<td>{include file='program_session.part' session=$session[3]}(14:30-14:50)</td>
 	</tr>
-	<tr style="height: 20px;">
+	<tr style="height: 40px;">
 		<td>{include file='program_session.part' session=$session[4]}(14:50-15:30)</td>
 	</tr>
 	<tr>
@@ -131,19 +131,16 @@
 		<td>{include file='program_session.part' session=$session[6]}(17:20-17:40)</td>
 	</tr>
 	<tr style="height: 20px;">
-		<th rowspan="3">17:40-18:15</th>
-		<td rowspan="3">{include file='program_person.part' person=$people[119]}</td>
-		<td rowspan="3">{include file='program_person.part' person=$people[57]}</td>
-		<td rowspan="5"><a href="social_symposium_banquet.php">17:40-21:00<br>Banquet at Formosa Pearl<br>(Yilan)</a></td>
+		<th rowspan="2">17:40-18:15</th>
+		<td rowspan="2">{include file='program_person.part' person=$people[119]}</td>
+		<td rowspan="2">{include file='program_person.part' person=$people[57]}</td>
+		<td rowspan="4"><a href="social_symposium_banquet.php">17:40-21:00<br>Banquet at Formosa Pearl<br>(Yilan)</a></td>
 		<td>{include file='program_session.part' session=$session[11]}(17:40-18:00)</td>
 	</tr>
 	<tr style="height: 15px;">
-		<td rowspan="4"></td>
-		<td rowspan="2">18:00-18:35<br>{include file='program_person.part' person=$people[291]}</td>
-		<td>18:00-18:15</td>
-	</tr>
-	<tr>
-		<td>Closing remarks:<br>{include file='program_person.part' person=$people[91]}</td>
+		<td rowspan="3"></td>
+		<td rowspan="1">18:00-18:35<br>{include file='program_person.part' person=$people[291]}</td>
+		<td>18:00-18:15<br>Closing remarks:<br>{include file='program_person.part' person=$people[91]}</td>
 	</tr>
 	<tr style="height: 75px;">
 		<th rowspan="2">18:15-</th>
