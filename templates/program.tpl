@@ -31,7 +31,7 @@
 		<td>{include file='program_person.part' person=$people[159]}</td>
 		<td>{include file='program_person.part' person=$people[158]}</td>
 		<td>{include file='program_person.part' person=$people[155]}</td>
-		<td>{include file='program_person.part' person=$people[123]}</td>
+		<td>{include file='program_person.part' person=$people[157]}</td>
 	</tr>
 	<tr style="height: 35px;">
 		<th>9:35-10:10</th>
@@ -46,7 +46,7 @@
 		<td>{include file='program_person.part' person=$people[118]}</td>
 		<td>{include file='program_person.part' person=$people[91]}</td>
 		<td rowspan="18">10:15-17:00<br>Taipei-Yilan Tour</td>
-		<td>{include file='program_person.part' person=$people[32]}</td>
+		<td>{include file='program_person.part' person=$people[353]}</td>
 		<td>{include file='program_person.part' person=$people[166]}</td>
 	</tr>
 	<tr style="height: 30px;">
