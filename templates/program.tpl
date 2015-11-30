@@ -46,7 +46,7 @@
 		<td>{include file='program_person.part' person=$people[118]}</td>
 		<td>{include file='program_person.part' person=$people[91]}</td>
 		<td>{include file='program_person.part' person=$people[353]}</td>
-		<td>{include file='program_person.part' person=$people[166]}</td>
+		<td>{include file='program_person.part' person=$people[126]}</td>
 	</tr>
 	<tr style="height: 30px;">
 		<th>10:45-11:15</th>
@@ -60,7 +60,7 @@
 		<td>{include file='program_person.part' person=$people[178]}</td>
 		<td>{include file='program_person.part' person=$people[191]}</td>
 		<td>{include file='program_person.part' person=$people[154]}</td>
-		<td>{include file='program_person.part' person=$people[126]}</td>
+		<td>{include file='program_person.part' person=$people[166]}</td>
 	</tr>
 	<tr style="height: 35px;">
 		<th>11:50-12:25</th>
