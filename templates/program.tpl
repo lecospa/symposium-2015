@@ -145,15 +145,21 @@
 		<td>{include file='program_session.part' session=$session[6]}(17:20-17:40)</td>
 	</tr>
 	<tr style="height: 20px;">
-		<th rowspan="2">17:40-18:15</th>
-		<td rowspan="2">{include file='program_person.part' person=$people[119]}</td>
-		<td rowspan="2">{include file='program_person.part' person=$people[57]}</td>
-		<td style="background-color: #cfe2f3;" rowspan="4"><a href="social_symposium_banquet.php">17:40-21:00<br>Banquet at Formosa Pearl<br>(Yilan)</a></td>
-		<td>{include file='program_session.part' session=$session[11]}(17:40-18:00)</td>
+		<th rowspan="3">17:40-18:15</th>
+		<td style="background-color: #d9ead3;" rowspan="1">Chair:</td>
+		<td style="background-color: #d9ead3;" rowspan="1">Chair:</td>
+		<td style="background-color: #cfe2f3;" rowspan="5"><a href="social_symposium_banquet.php">17:40-21:00<br>Banquet at Formosa Pearl<br>(Yilan)</a></td>
+		<td rowspan="1">{include file='program_session.part' session=$session[11]}(17:40-18:00)</td>
 	</tr>
 	<tr style="height: 15px;">
-		<td rowspan="3"></td>
-		<td rowspan="1">18:00-18:35<br>{include file='program_person.part' person=$people[291]}</td>
+		<td rowspan="4"></td>
+		<td rowspan="2">{include file='program_person.part' person=$people[119]}</td>
+		<td rowspan="2">{include file='program_person.part' person=$people[57]}</td>
+		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair:</td>
+	</tr>
+	<tr>
+		<td>18:00-18:35<br>{include file='program_person.part' person=$people[291]}</td>
 		<td>18:00-18:15<br>Closing remarks:<br>{include file='program_person.part' person=$people[91]}</td>
 	</tr>
 	<tr style="height: 75px;">
