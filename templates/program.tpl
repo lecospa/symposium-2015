@@ -22,8 +22,16 @@
 	<tbody>
 	<tr style="height: 60px;">
 		<th>8:00-9:00</th>
-		<td rowspan="15" style="background-color: #cccccc;"></td>
+		<td rowspan="17" style="background-color: #cccccc;"></td>
 		<td colspan="5" style="background-color: yellow;">Registration</td>
+	</tr>
+	<tr style="height: 10px;">
+		<th style="background-color: #cccccc;"></th>
+		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair:</td>
 	</tr>
 	<tr style="height: 35px;">
 		<th>9:00-9:35</th>
@@ -37,7 +45,7 @@
 		<th>9:35-10:10</th>
 		<td>{include file='program_person.part' person=$people[150]}</td>
 		<td>{include file='program_person.part' person=$people[129]}</td>
-		<td style="background-color: #cfe2f3;" rowspan="19">9:35-17:00<br>Excursion<br>Taipei-Yilan Tour</td>		
+		<td style="background-color: #cfe2f3;" rowspan="20">9:35-17:00<br>Excursion<br>Taipei-Yilan Tour</td>		
 		<td>{include file='program_person.part' person=$people[255]}</td>
 		<td>{include file='program_person.part' person=$people[122]}</td>
 	</tr>
@@ -54,6 +62,13 @@
 		<td style="background-color: #cfe2f3;">Coffee Break</td>
 		<td style="background-color: #cfe2f3;">Conference Photo &amp;<br>Coffee Break</td>
 		<td style="background-color: #cfe2f3;">Coffee Break</td>
+	</tr>
+	<tr style="height: 10px;">
+		<th style="background-color: #cccccc;"></th>
+		<td	style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair:</td>
 	</tr>
 	<tr style="height: 35px;">
 		<th>11:15-11:50</th>
