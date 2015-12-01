@@ -15,32 +15,16 @@ class Slide extends \Controllers\Controller {
 		}
 
 		try {
-			$valid_ext = array('pdf', 'doc', 'docx', 'ppt', 'pptx');
-
-			if (!isset($_FILES['file']['error']) || is_array($_FILES['file']['error']) ) {
-				throw new RuntimeException('Invalid parameters.');
-			}
-			if ($_FILES['file']['error'] != UPLOAD_ERR_OK) {
-				throw new RuntimeException('Error');
-			}
-			$path_parts = pathinfo($_FILES['file']['name']);
-			$ext = $path_parts['extension'];
-			if (in_array(strtolower($ext), $valid_ext, true) === false) {
-				throw new RuntimeException('Invalid file format.');
-			}
-
-			$filename = sprintf('%s.%s', sha1_file($_FILES['file']['tmp_name']), $ext);
-			$fullfilename = __DIR__ . '/../../uploads/' . $filename;
-
-			if (!move_uploaded_file($_FILES['file']['tmp_name'], $fullfilename)) {
-				throw new RuntimeException('Failed to move uploaded file.');
-			}
+			$handler = new \Controllers\UploadFiles;
+			$handler->valid_ext = array('pdf', 'doc', 'docx', 'ppt', 'pptx');
+			$handler->dir = __DIR__ . '/../../uploads/';
+			$handler->run();
 
 			$person_id = $auth['id'];
 			$talk_id = $_GET['talk_id'];
 
 			$stmt = $conn->prepare("UPDATE `talks` SET `slide_file`=? WHERE `id`=? AND `person_id`=?");
-			$stmt->execute(array($filename, $talk_id, $person_id));
+			$stmt->execute(array($handler->filename, $talk_id, $person_id));
 
 			header('Location: ' . TOP . '/person.php?token='.$token . '&mode=edit');
 		} catch (RuntimeException $e) {
