@@ -103,6 +103,12 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="input-location" class="col-sm-2 control-label">Location</label>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" id="input-location" placeholder="NTU" value="{$talk.location|escape}" name="location">
+		</div>
+	</div>
+	<div class="form-group">
 		<label for="inputTalkTime" class="col-sm-2 control-label">Talk Time</label>
 		<div class="col-sm-2">
 			<input type="text" class="form-control" id="inputTalkTime" placeholder="30 minutes" value="{$talk.talk_time|escape}" name="talk_time">

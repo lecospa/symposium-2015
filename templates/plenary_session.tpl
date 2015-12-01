@@ -14,6 +14,8 @@
 </div>
 <h2>Date &amp; Time</h2>
 <p>{$talk.address_datetime|escape}</p>
+<h2>Location</h2>
+<p>{$talk.location|escape}</p>
 <h2>Talk Time</h2>
 <p>{$talk.talk_time|escape}</p>
 <h2>Talk Title</h2>
