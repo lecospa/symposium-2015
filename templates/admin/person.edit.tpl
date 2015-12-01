@@ -103,9 +103,9 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="location" class="col-sm-2 control-label">Location</label>
+		<label for="input-location" class="col-sm-2 control-label">Location</label>
 		<div class="col-sm-2">
-			<input type="text" class="form-control" id="location" placeholder="NTU" value="{$talk.location|escape}" name="location">
+			<input type="text" class="form-control" id="input-location" placeholder="NTU" value="{$talk.location|escape}" name="location">
 		</div>
 	</div>
 	<div class="form-group">
