@@ -15,7 +15,6 @@ $(function() {
 	bind_patch("#title-input");
 	bind_patch("#abbreviation-input");
 	bind_patch("#location-input");
-	bind_patch("#date-input");
-	bind_patch("#time-input");
+	bind_patch("#date-time-input");
 	bind_patch(".session-ordering-input");
 });

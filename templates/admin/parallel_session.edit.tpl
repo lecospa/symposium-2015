@@ -36,13 +36,9 @@
 </div>
 <div class="row">
 	<div class="col-xs-2"><label>Date &amp; time</label></div>
-	<div class="col-xs-2">
-		<input id="date-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date.php?token={$token}&session_id={$session.id}&method=patch" data-field="date"
- class="form-control" type="text" value="{$session.date|escape}" placeholder="Month. Date">
-	</div>
-	<div class="col-xs-2">
-		<input id="time-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/time.php?token={$token}&session_id={$session.id}&method=patch" data-field="time"
- class="form-control" type="text" value="{$session.time|escape}" placeholder="00:00-24:00">
+	<div class="col-xs-4">
+		<input id="date-time-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date_time.php?token={$token}&session_id={$session.id}&method=patch" data-field="date_time"
+ class="form-control" type="text" value="{$session.date_time|escape}">
 	</div>
 </div>
 
