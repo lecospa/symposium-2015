@@ -27,7 +27,7 @@
 	</tr>
 	<tr style="height: 10px;">
 		<th style="background-color: #cccccc;"></th>
-		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[91]}</td>
 		<td style="background-color: #d9ead3;">Chair:</td>
 		<td style="background-color: #d9ead3;">Chair:</td>
 		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[74]}</td>
@@ -66,9 +66,9 @@
 	<tr style="height: 10px;">
 		<th style="background-color: #cccccc;"></th>
 		<td	style="background-color: #d9ead3;">Chair:</td>
-		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[158]}</td>
+		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[163]}</td>
 		<td style="background-color: #d9ead3;">Chair:</td>
-		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[159]}</td>
 	</tr>
 	<tr style="height: 35px;">
 		<th>11:15-11:50</th>
@@ -147,7 +147,7 @@
 	<tr style="height: 20px;">
 		<th rowspan="3">17:40-18:15</th>
 		<td style="background-color: #d9ead3;" rowspan="1">Chair: {include file='program_person.part' person=$people[166]}</td>
-		<td style="background-color: #d9ead3;" rowspan="1">Chair: {include file='program_person.part' person=$people[255]}</td>
+		<td style="background-color: #d9ead3;" rowspan="1">Chair: {include file='program_person.part' person=$people[158]}</td>
 		<td style="background-color: #cfe2f3;" rowspan="5"><a href="social_symposium_banquet.php">17:40-21:00<br>Banquet at Formosa Pearl<br>(Yilan)</a></td>
 		<td rowspan="1">{include file='program_session.part' session=$session[11]}(17:40-18:00)</td>
 	</tr>
