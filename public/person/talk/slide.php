@@ -27,7 +27,7 @@ class Slide extends \Controllers\Controller {
 			$stmt->execute(array($handler->filename, $talk_id, $person_id));
 
 			header('Location: ' . TOP . '/person.php?token='.$token . '&mode=edit');
-		} catch (RuntimeException $e) {
+		} catch (\RuntimeException $e) {
 			echo $e->getMessage();
 		}
 	}
