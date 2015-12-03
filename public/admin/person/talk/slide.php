@@ -31,6 +31,25 @@ class Slide extends \Controllers\Controller {
 			echo $e->getMessage();
 		}
 	}
+	public function delete() {
+		//取得權限
+		$token = $_GET['token'];
+		$conn = new \Conn();
+		$auth = \Models\Auth::get($conn, $token);
+		
+		if ($auth['scope'] == 'sudo') {
+			
+			$person_id = $_GET['person_id'];
+			$talk_id = $_GET['talk_id'];
+			
+			$stmt = $conn->prepare("UPDATE `talks` SET `slide_file`= '' WHERE `id`=? AND `person_id`=?");
+			$stmt->execute(array($talk_id, $person_id));
+
+			header('Location: ' . TOP . '/admin/person.php?token='.$token . '&id=' . $person_id . '&mode=edit');
+		} else {
+			throw new \UnauthorizedException();
+		}
+	}
 }
 
 new Slide;
