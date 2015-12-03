@@ -16,7 +16,7 @@ class Slide extends \Controllers\Controller {
 
 		try {
 			$handler = new \Controllers\UploadFiles;
-			$handler->valid_ext = array('pdf', 'doc', 'docx', 'ppt', 'pptx');
+			$handler->valid_ext = array('pdf', 'doc', 'docx', 'ppt', 'pptx', 'zip');
 			$handler->dir = __DIR__ . '/../../../uploads/';
 			$handler->run();
 
