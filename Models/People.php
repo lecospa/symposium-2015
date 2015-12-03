@@ -64,7 +64,7 @@ class People {
 	}
 	static function delete_slide_file($conn, $id) {
 		//從id去找應該刪掉的slide
-		$stmt = $conn->prepare("DELETE FROM `slide_file` WHERE `id` = ?");
+		$stmt = $conn->prepare("UPDATE `talks` SET `slide_file`=? WHERE `id`=? AND `person_id`=?");
 		// ???
 		$stmt->execute(array($id));
 	}
