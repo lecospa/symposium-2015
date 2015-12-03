@@ -45,8 +45,6 @@ class Slide extends \Controllers\Controller {
 			$stmt = $conn->prepare("UPDATE `talks` SET `slide_file`= '' WHERE `id`=? AND `person_id`=?");
 			$stmt->execute(array($talk_id, $person_id));
 
-			// ???
-			$logger->info('talk.slide_file.delete', json_encode(array('id' => $talk_id, 'operator' => 'sudo')));
 			header('Location: ' . TOP . '/admin/person.php?token='.$token . '&id=' . $person_id . '&mode=edit');
 		} else {
 			throw new \UnauthorizedException();
