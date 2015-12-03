@@ -167,6 +167,10 @@
 		</div>
 	</div>
 </form>
+<form method="POST" action="person/talk/slide.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=delete">
+    <button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除</button>
+</form>
+
 </section>
 {/foreach}
 {/block}

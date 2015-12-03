@@ -62,4 +62,8 @@ class People {
 		$stmt = $conn->prepare("DELETE FROM `people` WHERE `id`=?");
 		$stmt->execute(array($id));
 	}
+	static function delete_slide_file($conn, $id) {
+		$stmt = $conn->prepare("DELETE FROM `slide_file` WHERE `id` = ?");
+		$stmt->execute(array($id));
+	}
 }
