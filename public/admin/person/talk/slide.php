@@ -46,7 +46,7 @@ class Slide extends \Controllers\Controller {
 			$stmt->execute(array($talk_id, $person_id));
 
 			// ???
-			$logger->info('person.delete', json_encode(array('id' => $person_id, 'operator' => 'sudo')));
+			$logger->info('talk.slide_file.delete', json_encode(array('id' => $talk_id, 'operator' => 'sudo')));
 			header('Location: ' . TOP . '/admin/person.php?token='.$token . '&id=' . $person_id . '&mode=edit');
 		} else {
 			throw new \UnauthorizedException();
