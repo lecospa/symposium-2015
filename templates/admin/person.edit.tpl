@@ -168,7 +168,11 @@
 	</div>
 </form>
 <form method="POST" action="person/talk/slide.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=delete">
-    <button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除</button>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除檔案</button>
+		</div>
+	</div>
 </form>
 
 </section>
