@@ -4,15 +4,13 @@ require_once('../../init.php');
 class Person extends \Controllers\Controller {
 	public function get() {
 		$token = $_GET['token'];
-		$id = $_GET['id'];
+		$person_id = $_GET['id'];
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$person = \Models\People::get($conn, $id);
+			$person = \Models\People::get($conn, $person_id);
 			
-			$stmt = $conn->prepare("SELECT * FROM `talks` WHERE `person_id`=?");
-			$stmt->execute(array($id));
-			$talks = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			$talks = \Models\Talks::all_filter_person($conn, $person_id);
 			
 			$sessions = \Models\Sessions::all_with_id_as_key($conn);
 

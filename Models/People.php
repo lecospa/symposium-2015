@@ -19,6 +19,10 @@ class People {
 		return self::$get_q->fetch(array($id));
 	}
 
+	static function all($conn) {
+		return Query::prepare($conn, "SELECT * FROM `people` ORDER BY `last_name`, `first_name`")->fetchAll();
+	}
+
 	static function update_slide_file($conn, $id, $slide_file) {
 		$stmt = $conn->prepare("UPDATE `people` SET `slide_file` = ? WHERE `id` = ?");
 		$stmt->execute(array($slide_file, $id));
