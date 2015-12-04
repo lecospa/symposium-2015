@@ -19,8 +19,7 @@
 </div>
 {/foreach}
 
-<h2>Location:</h2><p>{$session.location|escape}</p>
-<h2>Date &amp; Time:</h2><p>{$session.date_time|escape}</p>
+<h2>Date & Time, Location: </h2><p>{$session.date_time_1|escape}, {$session.location_1|escape}</p>
 <hr>
 {foreach $session.talks as $talk}
 	<h2 id="talk-{$talk.id}">Expected Speakers {$talk@iteration}:</h2>
