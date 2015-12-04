@@ -90,7 +90,7 @@
 </h2>
 <form action="person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
-		<label for="title-input={$talk.id}" class="col-sm-2 control-label">Title</label>
+		<label for="title-inpu-t{$talk.id}" class="col-sm-2 control-label">Title</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="title-input-{$talk.id}" placeholder="Your speak title" value="{$talk.title|escape}" name="title">
 		</div>

@@ -15,40 +15,38 @@
 
 {* person part *}
 
-<div class="row">
-	<div class="col-xs-2"><label for="title-input">Session 標題</label></div>
-	<div class="col-xs-4">
-		<input id="title-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/title.php?token={$token}&session_id={$session.id}&method=patch" data-field="title"
+<div class="form-horizontal">
+	<div class="form-group">
+		<label for="title-input" class="col-xs-2 control-label">Session 標題</label>
+		<div class="col-xs-4">
+			<input id="title-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/title.php?token={$token}&session_id={$session.id}&method=patch" data-field="title"
  class="form-control" type="text" value="{$session.title|escape}">
+		</div>
+		<label class="col-xs-1 control-label" for="abbreviation-input">縮寫</label>
+		<div class="col-xs-1">
+			<input id="abbreviation-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/abbreviation.php?token={$token}&session_id={$session.id}&method=patch" data-field="abbreviation"
+	 class="form-control" type="text" value="{$session.abbreviation|escape}">
+		</div>
 	</div>
-	<div class="col-xs-1"><label for="abbreviation-input">縮寫</label></div>
-	<div class="col-xs-1">
-		<input id="abbreviation-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/abbreviation.php?token={$token}&session_id={$session.id}&method=patch" data-field="abbreviation"
- class="form-control" type="text" value="{$session.abbreviation|escape}">
+	<div class="form-group">
+		<label class="col-xs-2 control-label" for="date-time-1-input">日期時間 1</label>
+		<div class="col-xs-3">
+			<input id="date-time-1-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date_time_1.php?token={$token}&session_id={$session.id}&method=patch" data-field="date_time_1" class="form-control" type="text" value="{$session.date_time_1|escape}">
+		</div>
+		<label class="col-xs-1 control-label" for="location-1-input">地點 1</label>
+		<div class="col-xs-3">
+			<input id="location-1-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/location_1.php?token={$token}&session_id={$session.id}&method=patch" data-field="location_1" class="form-control" type="text" value="{$session.location_1|escape}">
+		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="col-xs-2"><label for="date-time-1-input">Date &amp; time 1</label></div>
-	<div class="col-xs-4">
-		<input id="date-time-1-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date_time_1.php?token={$token}&session_id={$session.id}&method=patch" data-field="date_time_1" class="form-control" type="text" value="{$session.date_time_1|escape}">
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-2"><label for="location-1-input">地點 1</label></div>
-	<div class="col-xs-4">
-	<input id="location-1-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/location_1.php?token={$token}&session_id={$session.id}&method=patch" data-field="location_1" class="form-control" type="text" value="{$session.location_1|escape}">
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-2"><label for="date-time-2-input">Date &amp; time 2</label></div>
-	<div class="col-xs-4">
-		<input id="date-time-2-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date_time_2.php?token={$token}&session_id={$session.id}&method=patch" data-field="date_time_2" class="form-control" type="text" value="{$session.date_time_2|escape}">
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-2"><label for="location-2-input">地點 2</label></div>
-	<div class="col-xs-4">
-		<input id="location-2-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/location_2.php?token={$token}&session_id={$session.id}&method=patch" data-field="location_2" class="form-control" type="text" value="{$session.location_2|escape}">
+	<div class="form-group">
+		<label class="col-xs-2 control-label" for="date-time-2-input">日期時間 2</label>
+		<div class="col-xs-3">
+			<input id="date-time-2-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date_time_2.php?token={$token}&session_id={$session.id}&method=patch" data-field="date_time_2" class="form-control" type="text" value="{$session.date_time_2|escape}">
+		</div>
+		<label class="col-xs-1 control-label" for="location-2-input">地點 2</label>
+		<div class="col-xs-3">
+			<input id="location-2-input" data-method="POST" data-action="{$smarty.const.TOP}/api/session/location_2.php?token={$token}&session_id={$session.id}&method=patch" data-field="location_2" class="form-control" type="text" value="{$session.location_2|escape}">
+		</div>
 	</div>
 </div>
 
