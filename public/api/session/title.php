@@ -16,7 +16,7 @@ class Title extends \Controllers\APIController {
 
 			$this->json(array('status' => 'success'));
 		} else {
-			throw new UnauthorizedException();
+			throw new \UnauthorizedException();
 		}
 	}
 }
