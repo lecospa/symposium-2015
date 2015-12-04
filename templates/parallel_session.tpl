@@ -19,8 +19,10 @@
 </div>
 {/foreach}
 
-<h2>Location:</h2><p>{$session.location|escape}</p>
-<h2>Date &amp; Time:</h2><p>{$session.date_time|escape}</p>
+{foreach $session.slots as $slot}
+<h2>Date & Time, Location {$slot@iteration}: </h2><p>{$slot.date_time|escape}, {$slot.location|escape}</p>
+{/foreach}
+
 <hr>
 {foreach $session.talks as $talk}
 	<h2 id="talk-{$talk.id}">Expected Speakers {$talk@iteration}:</h2>

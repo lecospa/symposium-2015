@@ -18,6 +18,13 @@ class Sessions extends \Controllers\Controller {
 				foreach ($session['talks'] as &$talk) {
 					$talk['person'] = \Models\People::get($conn, $talk['person_id']);
 				}
+				
+				// 將 location, date_time 合併成 slot
+				$session['slots'] = array();
+				$session['slots'][] = array('location' => $session['location_1'], 'date_time' => $session['date_time_1']);
+				if (!empty($session['location_2'])) {
+					$session['slots'][] = array('location' => $session['location_2'], 'date_time' => $session['date_time_2']);
+				}
 			}
 			$this->smarty->assign('sessions', $sessions);
 			$this->smarty->assign('token', $token);
