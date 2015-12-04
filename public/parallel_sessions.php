@@ -18,6 +18,7 @@ class Parallel extends \Controllers\Controller {
 				$talk['speaker'] = \Models\People::get($conn, $talk['person_id']);
 			}
 
+			// 將 location, date_time 合併成 slot
 			$session['slots'] = array();
 			$session['slots'][] = array('location' => $session['location_1'], 'date_time' => $session['date_time_1']);
 			if (!empty($session['location_2'])) {
