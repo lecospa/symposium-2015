@@ -14,8 +14,6 @@ $(function() {
 	});
 	bind_patch("#title-input");
 	bind_patch("#abbreviation-input");
-	bind_patch("#location-input");
-	bind_patch("#date-time-input");
 	bind_patch("#date-time-1-input");
 	bind_patch("#location-1-input");
 	bind_patch("#date-time-2-input");
