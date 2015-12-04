@@ -17,6 +17,12 @@ class Parallel extends \Controllers\Controller {
 			foreach ($session['talks'] as &$talk) {
 				$talk['speaker'] = \Models\People::get($conn, $talk['person_id']);
 			}
+
+			$session['slots'] = array();
+			$session['slots'][] = array('location' => $session['location_1'], 'date_time' => $session['date_time_1']);
+			if (!empty($session['location_2'])) {
+				$session['slots'][] = array('location' => $session['location_2'], 'date_time' => $session['date_time_2']);
+			}
 		}
 		$this->smarty->assign('sessions', $sessions);
 		$this->smarty->display('parallel_sessions.tpl');
