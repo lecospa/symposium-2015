@@ -17,7 +17,7 @@ class DateTime1Controller extends \Controllers\APIController {
 			$stmt->execute(array($date_time_1, $session_id));
 			$this->json(array('status' => 'success'));
 		} else {
-			throw new UnauthorizedException();
+			throw new \UnauthorizedException();
 		}
 	}
 }
