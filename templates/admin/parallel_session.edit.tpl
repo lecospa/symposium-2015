@@ -41,6 +41,13 @@
  class="form-control" type="text" value="{$session.date_time|escape}">
 	</div>
 </div>
+<div class="row">
+	<div class="col-xs-2"><label>Date &amp; time &nbsp; 2</label></div>
+	<div class="col-xs-4">
+		<input id="date-time-2-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date_time_2.php?token={$token}&session_id={$session.id}&method=patch" data-field="date_time_2"
+ class="form-control" type="text" value="{$session.date_time_2|escape}">
+	</div>
+</div>
 
 {* organizers part *}
 
