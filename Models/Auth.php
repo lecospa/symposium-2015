@@ -10,6 +10,14 @@ class Auth {
 		}
 		return null;
 	}
+	
+	private static $all_by_id_and_scope_q = null;
+	static public function all_by_id_and_scope($conn, $id, $scope) {
+		if (is_null(self::$all_by_id_and_scope_q)) {
+			self::$all_by_id_and_scope_q = Query::prepare($conn, "SELECT * FROM `auth` WHERE `id`=? AND `scope`=?");
+		}
+		return self::$all_by_id_and_scope_q->fetchAll(array($id, $scope));
+	}
 	static public function insert($conn, $scope, $id, $token) {
 		$stmt = $conn->prepare("INSERT INTO `auth` (`scope`, `id`, `token`) VALUES (?, ?, ?)");
 		$stmt->execute(array($scope, $id, $token));

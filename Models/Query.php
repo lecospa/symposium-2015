@@ -10,6 +10,10 @@ class Query {
 		$this->connection = $connection;
 		$this->stmt = $stmt;
 	}
+	public static function prepare($connection, $sql) {
+		$stmt = $connection->prepare($sql);
+		return new Query($connection, $stmt);
+	}
 	public function fetch($array) {
 		$this->stmt->execute($array);
 		if ($row = $this->stmt->fetch(\PDO::FETCH_ASSOC)) {

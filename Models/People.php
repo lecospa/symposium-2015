@@ -11,12 +11,16 @@ class People {
 	/*
 	 * 取得一個 person
 	 */
-	static function get_stmt($conn) {
-		$stmt = $conn->prepare("SELECT * FROM `people` WHERE `id`=?");
-		return new Query($conn, $stmt);
-	}
+	private static $get_q = null;
 	static function get($conn, $id) {
-		return self::get_stmt($conn)->fetch(array($id));
+		if (is_null(self::$get_q)) {
+			self::$get_q = Query::prepare($conn, "SELECT * FROM `people` WHERE `id`=?");
+		}
+		return self::$get_q->fetch(array($id));
+	}
+
+	static function all($conn) {
+		return Query::prepare($conn, "SELECT * FROM `people` ORDER BY `last_name`, `first_name`")->fetchAll();
 	}
 
 	static function update_slide_file($conn, $id, $slide_file) {
@@ -26,27 +30,6 @@ class People {
 	static function update_img($conn, $id, $img) {
 		$stmt = $conn->prepare("UPDATE `people` SET `img` = ? WHERE `id` = ?");
 		$stmt->execute(array($img, $id));
-	}
-	static function update_title_abstract($conn, $id, $title, $abstract) {
-		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ? WHERE `id` = ?");
-		$stmt->execute(array($title, $abstract, $id));
-	}
-	
-	static function update_($conn, $id, $first_name, $last_name, $email, $occupation, $resume, $room) {
-		$stmt = $conn->prepare("UPDATE `people` SET `first_name` = ?, `last_name` = ?, `email` = ?, `occupation` = ?, `resume` = ?, `room` = ? WHERE `id` = ?"
-		);
-		$stmt->execute(array(
-			$first_name, $last_name, $email, $occupation, $resume, $room, $id
-		));
-	}
-
-	static function update_limited($conn, $id, $title, $abstract, $session_id) {
-		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `session_id`=? WHERE `id` = ?");
-		$stmt->execute(array($title, $abstract, $session_id, $id));
-	}
-	static function update_session_id($conn, $id, $session_id) {
-		$stmt = $conn->prepare("UPDATE `people` SET `session_id`=? WHERE `id` = ?");
-		$stmt->execute(array($session_id, $id));
 	}
 	/*
 	 * 新增一個Person

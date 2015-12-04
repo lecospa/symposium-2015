@@ -2,11 +2,7 @@
 namespace Controllers;
 
 class BaseController {
-	public static $smarty_static;
-	public $smarty;
 	public function __construct() {
-		$this->smarty = self::$smarty_static;
-		
 		try {
 			method_exists($this, 'pre_run') && $this->pre_run();
 

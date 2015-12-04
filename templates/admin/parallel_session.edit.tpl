@@ -92,7 +92,7 @@
 <h2>Speakers</h2>
 <table class="table">
 	<thead>
-		<tr><th>姓名</th><th></th><th style="width: 100px;">順序</th><th></th><th></th></tr>
+		<tr><th>姓名</th><th></th><th style="width: 100px;">順序</th><th style="width: 100px;"></th><th style="width: 100px;"></th><th style="width: 100px;"></th></tr>
 	</thead>
 	<tbody>
 		{foreach $session.talks as $talk}
@@ -103,6 +103,9 @@
 				<input class="session-ordering-input form-control" data-method="POST" data-action="{$smarty.const.TOP}/api/session/talk/session_ordering.php?token={$token}&session_id={$session.id}&talk_id={$talk.id}&method=patch" data-field="session_ordering"
  type="text" value="{$talk.session_ordering}">
 			</td>
+			<td>{if $talk.slide_file neq ''}
+				<a href="{$smarty.const.TOP}/uploads/{$talk.slide_file}" class="btn btn-default"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> 投影片</a>
+			{/if}</td>
 			<td><a href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$talk.speaker.id}&mode=edit" class="btn btn-default">編輯</a></td>
 			<td>
 				<form method="POST" action="{$smarty.const.TOP}/admin/parallel_session/talk.php?token={$token}&session_id={$session.id}&talk_id={$talk.id}&method=delete">
@@ -123,6 +126,7 @@
 					</select>
 				</td>
 				<td><button type="submit" class="btn btn-primary">新增</button></td>
+				<td></td>
 				<td></td>
 				<td></td>
 			</form>

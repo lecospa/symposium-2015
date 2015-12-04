@@ -14,7 +14,7 @@ class Title1 extends \Controllers\APIController {
 			$stmt->execute(array($location_1, $session_id));
 			$this->json(array('status' => 'success'));
 		} else {
-			throw new UnauthorizedException();
+			throw new \UnauthorizedException();
 		}
 	}
 }

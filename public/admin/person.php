@@ -4,15 +4,13 @@ require_once('../../init.php');
 class Person extends \Controllers\Controller {
 	public function get() {
 		$token = $_GET['token'];
-		$id = $_GET['id'];
+		$person_id = $_GET['id'];
 		$conn = new \Conn();
 		$auth = \Models\Auth::get($conn, $token);
 		if ($auth['scope'] == 'sudo') {
-			$person = \Models\People::get($conn, $id);
+			$person = \Models\People::get($conn, $person_id);
 			
-			$stmt = $conn->prepare("SELECT * FROM `talks` WHERE `person_id`=?");
-			$stmt->execute(array($id));
-			$talks = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			$talks = \Models\Talks::all_filter_person($conn, $person_id);
 			
 			$sessions = \Models\Sessions::all_with_id_as_key($conn);
 
@@ -21,28 +19,6 @@ class Person extends \Controllers\Controller {
 			$this->smarty->assign('token', $token);
 			$this->smarty->assign('sessions', $sessions);
 			$this->smarty->display('admin/person.edit.tpl');
-		} else {
-			throw new \UnauthorizedException();
-		}
-	}
-	public function patch() {
-		$token = $_GET['token'];
-		$id = $_GET['id'];
-		$conn = new \Conn();
-		$logger = new \Models\Logging($conn, $_SERVER);
-		$auth = \Models\Auth::get($conn, $token);
-		if ($auth['scope'] == 'sudo') {
-			$first_name = $_POST['first_name'];
-			$last_name = $_POST['last_name'];
-			$email = $_POST['email'];
-			$occupation = $_POST['occupation'];
-			$resume = $_POST['resume'];
-			$room = $_POST['room'];
-			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $occupation, $resume, $room);
-			
-			$logger->info('person.update', json_encode(array('id' => $id, 'operator' => 'sudo')));
-
-			header('Location: person.php?token=' . $token . '&id=' . $id . '&mode=edit');
 		} else {
 			throw new \UnauthorizedException();
 		}

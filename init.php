@@ -57,4 +57,3 @@ function get_smarty() {
 	$smarty->caching      = false;
 	return $smarty;
 }
-\Controllers\Controller::$smarty_static = get_smarty();

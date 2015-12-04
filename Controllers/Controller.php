@@ -2,6 +2,11 @@
 namespace Controllers;
 
 class Controller extends BaseController {
+	public $smarty;
+	public function __construct() {
+		$this->smarty = get_smarty();
+		parent::__construct();
+	}
 	public function NotFound(\NotFoundException $e) {
 		http_response_code(404);
 		$this->smarty->assign('e', $e);

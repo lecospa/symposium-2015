@@ -14,7 +14,7 @@ class Abbreviation extends \Controllers\APIController {
 			$stmt->execute(array($abbreviation, $session_id));
 			$this->json(array('status' => 'success'));
 		} else {
-			throw new UnauthorizedException();
+			throw new \UnauthorizedException();
 		}
 	}
 }
