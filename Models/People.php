@@ -31,19 +31,6 @@ class People {
 		$stmt = $conn->prepare("UPDATE `people` SET `img` = ? WHERE `id` = ?");
 		$stmt->execute(array($img, $id));
 	}
-	static function update_title_abstract($conn, $id, $title, $abstract) {
-		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ? WHERE `id` = ?");
-		$stmt->execute(array($title, $abstract, $id));
-	}
-	
-	static function update_limited($conn, $id, $title, $abstract, $session_id) {
-		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `session_id`=? WHERE `id` = ?");
-		$stmt->execute(array($title, $abstract, $session_id, $id));
-	}
-	static function update_session_id($conn, $id, $session_id) {
-		$stmt = $conn->prepare("UPDATE `people` SET `session_id`=? WHERE `id` = ?");
-		$stmt->execute(array($session_id, $id));
-	}
 	/*
 	 * 新增一個Person
 	 * @return 代表Person的id
