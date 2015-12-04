@@ -42,7 +42,7 @@ function set_path() {
 	$top = substr($uri, 0, strlen($uri) - strlen($r));
 	
 	define('TOP', $top);
-	define('IMGTOP', 'http://image.lecospa.mar98.tk/');
+	define('IMGTOP', '//image.lecospa.mar98.tk/');
 }
 set_path();
 

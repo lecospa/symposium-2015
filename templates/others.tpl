@@ -7,7 +7,7 @@
 
 {block name=body}
 	<div class="row">
-		<img src="http://lecospa.ntu.edu.tw/wp-content/uploads/2015/08/symposium-header-12.png" class="img-responsive center-block">	
+		<img src="{$smarty.const.IMGTOP}symposium_2015/1f4d0edb0362c8f241034f74d3699235-symposium-header-12.png" class="img-responsive center-block">	
 	</div>
 	<div class="row">
 		<div class="col-sm-3">
