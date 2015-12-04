@@ -36,14 +36,14 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputResume" class="col-sm-2 control-label">職稱</label>
+		<label for="resume-input" class="col-sm-2 control-label">職稱</label>
 		<div class="col-sm-4">
 			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
  type="text" data-field="resume" class="form-control" id="resume-input" value="{$person.resume|escape}">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputRoom" class="col-sm-2 control-label">Room</label>
+		<label for="room-input" class="col-sm-2 control-label">Room</label>
 		<div class="col-sm-2">
 			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
  type="text" data-field="room" class="form-control" id="room-input" value="{$person.room|escape}">
@@ -51,36 +51,42 @@
 	</div>
 </div>
 <hr>
-<form enctype="multipart/form-data" action="person/img.php?token={$token}&person_id={$person.id}&method=patch" method="POST" class="form-horizontal">
+<div class="form-horizontal">
 	<div class="form-group">
-		<div class="col-sm-2 col-sm-offset-2">
+		<label class="col-sm-2 control-label">照片</label>
+		<div class="col-sm-2">
 			<p class="form-control-static">
 				{if $person.img}
-					<img src="{$smarty.const.TOP}/uploads/{$person.img}" style="height: 75px;">
+					<img src="{$smarty.const.TOP}/uploads/{$person.img}" class="img-responsive center-block img-thumbnail">
 				{else}
 					No file
 				{/if}
 			</p>
 		</div>
-		<div class="col-sm-4">
-			<label for="img-input" class="control-label">Upload</label>
-			<input name="file" id="img-input" type="file" class="form-control" />
-		</div>
-		<div class="col-sm-2">
-			<button type="submit" class="btn btn-primary">上傳檔案</button>
-		</div>
+		<form enctype="multipart/form-data" action="{$smarty.const.TOP}/admin/person/img.php?token={$token}&person_id={$person.id}&method=patch" method="POST">
+			<div class="col-sm-4">
+				<input name="file" id="img-input" type="file" class="form-control" />
+			</div>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary">上傳檔案</button>
+			</div>
+		</form>
 	</div>
-</form>
-{foreach $talks as $talk}
-<section id="talk-{$talk.id}">
-<hr>
-<h2>{$talk.session} Session
-{if $talk.session eq 'Parallel'} <small>{$sessions[$talk.session_id].title|escape} ({$sessions[$talk.session_id].abbreviation|escape})</small>{/if}
-<div class="pull-right">
-<form method="POST" action="{$smarty.const.TOP}/admin/person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=delete">
-	<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除</button>
-</form>
 </div>
+
+{* talks part *}
+{foreach $talks as $talk}
+<hr>
+<h2 id="talk-{$talk.id}">
+	{$talk.session|escape} Session
+	{if $talk.session eq 'Parallel'}
+		 <small>{$sessions[$talk.session_id].title|escape} ({$sessions[$talk.session_id].abbreviation|escape})</small>
+	{/if}
+	<div class="pull-right">
+		<form method="POST" action="{$smarty.const.TOP}/admin/person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=delete">
+			<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除</button>
+		</form>
+	</div>
 </h2>
 <form action="person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
@@ -103,15 +109,15 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="input-location" class="col-sm-2 control-label">Location</label>
+		<label for="input-location-{$talk.id}" class="col-sm-2 control-label">Location</label>
 		<div class="col-sm-2">
-			<input type="text" class="form-control" id="input-location" placeholder="NTU" value="{$talk.location|escape}" name="location">
+			<input type="text" class="form-control" id="input-location-{$talk.id}" placeholder="NTU" value="{$talk.location|escape}" name="location">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputTalkTime" class="col-sm-2 control-label">Talk Time</label>
+		<label for="input-talk-time-{$talk.id}" class="col-sm-2 control-label">Talk Time</label>
 		<div class="col-sm-2">
-			<input type="text" class="form-control" id="inputTalkTime" placeholder="30 minutes" value="{$talk.talk_time|escape}" name="talk_time">
+			<input type="text" class="form-control" id="input-talk-time-{$talk.id}" placeholder="30 minutes" value="{$talk.talk_time|escape}" name="talk_time">
 		</div>
 	</div>
 	<div class="form-group">
@@ -131,7 +137,7 @@
 			<select id="session-id-input-{$talk.id}" name="session_id" class="form-control">{strip}
 				<option value="0" {if $talk.session_id eq '0'}selected{/if}></option>
 				{foreach $sessions as $session}
-				<option value="{$session.id}" {if $talk.session_id eq $session.id}selected{/if}>{$session.title}</option>
+				<option value="{$session.id}" {if $talk.session_id eq $session.id}selected{/if}>{$session.title|escape} ({$session.abbreviation|escape})</option>
 				{/foreach}
 			{/strip}</select>
 		</div>
@@ -142,7 +148,7 @@
 		</div>
 	</div>
 </form>
-<form enctype="multipart/form-data" action="person/talk/slide.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST" class="form-horizontal">
+<div class="form-horizontal">
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Slide</label>
 		<div class="col-sm-4">
@@ -154,29 +160,28 @@
 				{/if}
 			</p>
 		</div>
-	</div>
-	<div class="form-group">
-		<label for="slide-file-input-{$talk.id}" class="col-sm-2 control-label">Upload</label>
-		<div class="col-sm-4">
-			<input name="file" id="slide-file-input-{$talk.id}" type="file" class="form-control" />
+		<div class="col-sm-2">
+			{if $talk.slide_file}
+			<form method="POST" action="person/talk/slide.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=delete">
+					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除檔案</button>
+			</form>
+			{/if}
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-primary">上傳檔案</button>
-		</div>
+		<form enctype="multipart/form-data" action="person/talk/slide.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST">
+			<label for="slide-file-input-{$talk.id}" class="col-sm-2 control-label">Upload</label>
+			<div class="col-sm-4">
+				<input name="file" id="slide-file-input-{$talk.id}" type="file" class="form-control" />
+			</div>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary">上傳檔案</button>
+			</div>
+		</form>
 	</div>
-</form>
-<form method="POST" action="person/talk/slide.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=delete" class="form-horizontal">
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除檔案</button>
-		</div>
-	</div>
-</form>
-
-</section>
+</div>
 {/foreach}
+
 {/block}
 {block name=body_script}
 <script src="{$smarty.const.TOP}/js/admin/edit.js"></script>
