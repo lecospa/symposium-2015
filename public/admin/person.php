@@ -25,28 +25,6 @@ class Person extends \Controllers\Controller {
 			throw new \UnauthorizedException();
 		}
 	}
-	public function patch() {
-		$token = $_GET['token'];
-		$id = $_GET['id'];
-		$conn = new \Conn();
-		$logger = new \Models\Logging($conn, $_SERVER);
-		$auth = \Models\Auth::get($conn, $token);
-		if ($auth['scope'] == 'sudo') {
-			$first_name = $_POST['first_name'];
-			$last_name = $_POST['last_name'];
-			$email = $_POST['email'];
-			$occupation = $_POST['occupation'];
-			$resume = $_POST['resume'];
-			$room = $_POST['room'];
-			\Models\People::update_($conn, $id, $first_name, $last_name, $email, $occupation, $resume, $room);
-			
-			$logger->info('person.update', json_encode(array('id' => $id, 'operator' => 'sudo')));
-
-			header('Location: person.php?token=' . $token . '&id=' . $id . '&mode=edit');
-		} else {
-			throw new \UnauthorizedException();
-		}
-	}
 	/*
 	 * 新增一個 person
 	 * 根據 session 決定是否新增預設的空白talk

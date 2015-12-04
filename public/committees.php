@@ -7,19 +7,10 @@ class Committees extends \Controllers\Controller {
 		$conn = new \Conn();
 		$committees = array();
 
-		$stmt = $conn->prepare("SELECT `people`.* FROM `committee_person` LEFT JOIN `people` ON `committee_person`.`person_id` = `people`.`id` WHERE `committee_person`.`type`=? ORDER BY `people`.`last_name` ASC, `people`.`first_name`");
-
-		$stmt->execute(array('IACCHAIR'));
-		$committees['IACCHAIR'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-		$stmt->execute(array('IAC'));
-		$committees['IAC'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-		
-		$stmt->execute(array('LOCCHAIR'));
-		$committees['LOCCHAIR'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-		$stmt->execute(array('LOC'));
-		$committees['LOC'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		$committees['IACCHAIR'] = \Models\Committees::get_people_by_type($conn, 'IACCHAIR');
+		$committees['IAC']      = \Models\Committees::get_people_by_type($conn, 'IAC');
+		$committees['LOCCHAIR'] = \Models\Committees::get_people_by_type($conn, 'LOCCHAIR');
+		$committees['LOC']      = \Models\Committees::get_people_by_type($conn, 'LOC');
 
 		$this->smarty->assign('committees', $committees);
 		$this->smarty->display('committees.tpl');

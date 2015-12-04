@@ -11,12 +11,12 @@ class People {
 	/*
 	 * 取得一個 person
 	 */
-	static function get_stmt($conn) {
-		$stmt = $conn->prepare("SELECT * FROM `people` WHERE `id`=?");
-		return new Query($conn, $stmt);
-	}
+	private static $get_q = null;
 	static function get($conn, $id) {
-		return self::get_stmt($conn)->fetch(array($id));
+		if (is_null(self::$get_q)) {
+			self::$get_q = Query::prepare($conn, "SELECT * FROM `people` WHERE `id`=?");
+		}
+		return self::$get_q->fetch(array($id));
 	}
 
 	static function update_slide_file($conn, $id, $slide_file) {
@@ -32,14 +32,6 @@ class People {
 		$stmt->execute(array($title, $abstract, $id));
 	}
 	
-	static function update_($conn, $id, $first_name, $last_name, $email, $occupation, $resume, $room) {
-		$stmt = $conn->prepare("UPDATE `people` SET `first_name` = ?, `last_name` = ?, `email` = ?, `occupation` = ?, `resume` = ?, `room` = ? WHERE `id` = ?"
-		);
-		$stmt->execute(array(
-			$first_name, $last_name, $email, $occupation, $resume, $room, $id
-		));
-	}
-
 	static function update_limited($conn, $id, $title, $abstract, $session_id) {
 		$stmt = $conn->prepare("UPDATE `people` SET `title` = ?, `abstract` = ?, `session_id`=? WHERE `id` = ?");
 		$stmt->execute(array($title, $abstract, $session_id, $id));
