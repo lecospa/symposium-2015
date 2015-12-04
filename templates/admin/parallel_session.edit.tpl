@@ -42,7 +42,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xs-2"><label>Date &amp; time 1</label></div>
+	<div class="col-xs-2"><label for="date-time-1-input">Date &amp; time 1</label></div>
 	<div class="col-xs-4">
 		<input id="date-time-1-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date_time_1.php?token={$token}&session_id={$session.id}&method=patch" data-field="date_time_1" class="form-control" type="text" value="{$session.date_time_1|escape}">
 	</div>
@@ -54,7 +54,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xs-2"><label>Date &amp; time 2</label></div>
+	<div class="col-xs-2"><label for="date-time-2-input">Date &amp; time 2</label></div>
 	<div class="col-xs-4">
 		<input id="date-time-2-input" data-method="POST" data-action="{$smarty.const.TOP}/api/parallel_session/date_time_2.php?token={$token}&session_id={$session.id}&method=patch" data-field="date_time_2" class="form-control" type="text" value="{$session.date_time_2|escape}">
 	</div>
