@@ -13,4 +13,11 @@ class Committees {
 		}
 		return self::$get_people_by_type_q->fetchAll(array($type));
 	}
+	/*
+	 * insert a person with given type as committee
+	 */
+	static function insert_person($conn, $type, $person_id) {
+		$q = Query::prepare($conn, "INSERT INTO `committee_person` (`type`, `person_id`) VALUES (?,?)");
+		$q->execute(array($type, $person_id));
+	}
 }
