@@ -13,8 +13,9 @@
 	<div class="panel-heading">{$session.title|escape} ({$session.abbreviation|escape}) <a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$session.id}&token={$token}" class="pull-right">編輯</a></div>
 	<div class="panel-body">
 		<dl class="dl-horizontal">
-			<dt>Date &amp; Time 1</dt><dd>{$session.date_time_1}</dd>
-			<dt>Date &amp; Time 2</dt><dd>{$session.date_time_2}</dd>
+			{foreach $session.slots as $slot}
+				<dt>Date &amp; Time {$slot@iteration}</dt><dd>{$slot.date_time}</dd>
+			{/foreach}
 			<dt>Organizers <span class="badge">{$session.organizers|count}</span></dt>
 			<dd>
 			{foreach $session.organizers as $organizer}
