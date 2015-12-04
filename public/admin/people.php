@@ -13,10 +13,8 @@ class AdminPeopleIndex extends \Controllers\Controller {
 		$people = \Models\People::all($conn);
 		foreach ($people as &$person) {
 			$person['talks'] = \Models\Talks::all_filter_person($conn, $person['id']);
-
-			$stmt = $conn->prepare("SELECT * FROM `auth` WHERE `id`=? AND `scope`='People'");
-			$stmt->execute(array($person['id']));
-			$person['tokens'] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			
+			$person['tokens'] = \Models\Auth::all_by_id_and_scope($conn, $person['id'], 'People');
 
 			$stmt = $conn->prepare("SELECT * FROM `committee_person` WHERE `person_id`=?");
 			$stmt->execute(array($person['id']));
