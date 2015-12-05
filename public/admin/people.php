@@ -3,7 +3,7 @@ require_once('../../init.php');
 
 class People extends \Controllers\AdminController {
 	public function get() {
-		$this->check('sudo');
+		$this->check('admin');
 		$conn = new \Conn();
 
 		$people = \Models\People::all($conn);

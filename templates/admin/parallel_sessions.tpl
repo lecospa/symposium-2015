@@ -10,7 +10,7 @@
 </ol>
 {foreach $sessions as $session}
 <div class="panel panel-default">
-	<div class="panel-heading">{$session.title|escape} ({$session.abbreviation|escape}) <a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$session.id}&token={$token}" class="pull-right">編輯</a></div>
+	<div class="panel-heading">{$session.title|escape} ({$session.abbreviation|escape}) <a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$session.id}" class="pull-right">編輯</a></div>
 	<div class="panel-body">
 		<dl class="dl-horizontal">
 			{foreach $session.slots as $slot}
