@@ -1,7 +1,7 @@
 <?php
 require_once('../../init.php');
 
-class Committee extends \Controllers\Controller {
+class Committee extends \Controllers\AdminController {
 	public function post() {
 		$this->check('admin');
 		$conn = new \Conn();
