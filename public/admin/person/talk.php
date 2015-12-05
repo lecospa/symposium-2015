@@ -35,7 +35,7 @@ class Talk extends \Controllers\AdminController {
 		$stmt = $conn->prepare("DELETE FROM `talks` WHERE `id`=?");
 		$stmt->execute(array($talk_id));
 		$logger->info('talk.delete', json_encode(array('person_id' => $person_id, 'talk_id' => $talk_id, 'operator' => 'sudo')));
-		header('Location: ../person.php?token=' . $token . '&id=' . $person_id . '&mode=edit');
+		header('Location: ../person.php?id=' . $person_id . '&mode=edit');
 	}
 }
 new Talk;
