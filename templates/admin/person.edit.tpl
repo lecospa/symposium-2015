@@ -4,8 +4,8 @@
 	<h1>編輯</h1>
 </div>
 <ol class="breadcrumb">
-	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">管理後台</a></li>
-	<li><a href="{$smarty.const.TOP}/admin/people.php?token={$token}">與會者</a></li>
+	<li><a href="{$smarty.const.TOP}/admin/index.php">管理後台</a></li>
+	<li><a href="{$smarty.const.TOP}/admin/people.php">與會者</a></li>
 	<li class="active">編輯</li>
 </ol>
 {* person part *}
@@ -13,39 +13,39 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label">姓名</label>
 		<div class="col-sm-3">
-			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?person_id={$person.id}&method=patch"
  type="text" data-field="first_name" class="form-control" id="first-name-input" placeholder="First name" value="{$person.first_name|escape}">
 		</div>
 		<div class="col-sm-3">
-			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?person_id={$person.id}&method=patch"
  type="text" data-field="last_name" class="form-control" id="last-name-input" placeholder="Last name" value="{$person.last_name|escape}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="email-input" class="col-sm-2 control-label">Email</label>
 		<div class="col-sm-3">
-			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?person_id={$person.id}&method=patch"
  type="email" data-field="email" class="form-control" id="email-input" placeholder="Email" value="{$person.email|escape}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="occupation-input" class="col-sm-2 control-label">機構</label>
 		<div class="col-sm-3">
-			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?person_id={$person.id}&method=patch"
  type="text" data-field="occupation" class="form-control" id="occupation-input" placeholder="Your working occupation" value="{$person.occupation|escape}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="resume-input" class="col-sm-2 control-label">職稱</label>
 		<div class="col-sm-4">
-			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?person_id={$person.id}&method=patch"
  type="text" data-field="resume" class="form-control" id="resume-input" value="{$person.resume|escape}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="room-input" class="col-sm-2 control-label">Room</label>
 		<div class="col-sm-2">
-			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?token={$token}&person_id={$person.id}&method=patch"
+			<input data-method="POST" data-action="{$smarty.const.TOP}/api/person_field.php?person_id={$person.id}&method=patch"
  type="text" data-field="room" class="form-control" id="room-input" value="{$person.room|escape}">
 		</div>
 	</div>
@@ -63,7 +63,7 @@
 				{/if}
 			</p>
 		</div>
-		<form enctype="multipart/form-data" action="{$smarty.const.TOP}/admin/person/img.php?token={$token}&person_id={$person.id}&method=patch" method="POST">
+		<form enctype="multipart/form-data" action="{$smarty.const.TOP}/admin/person/img.php?person_id={$person.id}&method=patch" method="POST">
 			<div class="col-sm-4">
 				<input name="file" id="img-input" type="file" class="form-control" />
 			</div>
@@ -83,12 +83,12 @@
 		 <small>{$sessions[$talk.session_id].title|escape} ({$sessions[$talk.session_id].abbreviation|escape})</small>
 	{/if}
 	<div class="pull-right">
-		<form method="POST" action="{$smarty.const.TOP}/admin/person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=delete">
+		<form method="POST" action="{$smarty.const.TOP}/admin/person/talk.php?person_id={$person.id}&talk_id={$talk.id}&method=delete">
 			<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除</button>
 		</form>
 	</div>
 </h2>
-<form action="person/talk.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST" class="form-horizontal">
+<form action="person/talk.php?person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST" class="form-horizontal">
 	<div class="form-group">
 		<label for="title-inpu-t{$talk.id}" class="col-sm-2 control-label">Title</label>
 		<div class="col-sm-10">
@@ -162,14 +162,14 @@
 		</div>
 		<div class="col-sm-2">
 			{if $talk.slide_file}
-			<form method="POST" action="person/talk/slide.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=delete">
+			<form method="POST" action="person/talk/slide.php?person_id={$person.id}&talk_id={$talk.id}&method=delete">
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除檔案</button>
 			</form>
 			{/if}
 		</div>
 	</div>
 	<div class="form-group">
-		<form enctype="multipart/form-data" action="person/talk/slide.php?token={$token}&person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST">
+		<form enctype="multipart/form-data" action="person/talk/slide.php?person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST">
 			<label for="slide-file-input-{$talk.id}" class="col-sm-2 control-label">Upload</label>
 			<div class="col-sm-4">
 				<input name="file" id="slide-file-input-{$talk.id}" type="file" class="form-control" />
