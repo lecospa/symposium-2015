@@ -1,24 +1,21 @@
 <?php
 namespace Controllers;
 
-class APIController extends BaseController {
+class AdminController extends Controller {
 	public $protected = true;
-	public function NotFound(\NotFoundException $e) {
-		http_response_code(404);
-		$this->json(array('error' => 'NotFoundException'));
+	
+	public function loginUrl() {
+		$r = substr($_SERVER['SCRIPT_NAME'], strlen(TOP));
+		return TOP . '/admin/login.php?redirect=' . urlencode($r);
+	}
+	public function logoutUrl() {
+		$r = substr($_SERVER['SCRIPT_NAME'], strlen(TOP));
+		return TOP . '/admin/logout.php?redirect=' . urlencode($r);
 	}
 	public function Unauthorized(\UnauthorizedException $e) {
-		http_response_code(401);
-		$this->json(array('error' => 'UnauthorizedException'));
+		header('Location: ' . $this->loginUrl());
 	}
-	public function Forbidden(\ForbiddenException $e) {
-		http_response_code(403);
-		$this->json(array('error' => 'ForbiddenException'));
-	}
-	protected function json($data) {
-		header('Content-Type: application/json; charset=utf-8');
-		echo json_encode($data);
-	}
+
 	private function isLogin() {
 		if (isset($_SESSION['scopes']) && is_array($_SESSION['scopes'])) {
 			return true;

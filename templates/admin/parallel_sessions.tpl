@@ -5,7 +5,7 @@
 	<h1>Parallel Sessions</h1>
 </div>
 <ol class="breadcrumb">
-	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">管理後台</a></li>
+	<li><a href="{$smarty.const.TOP}/admin/index.php">管理後台</a></li>
 	<li class="active">Parallel Sessions</li>
 </ol>
 {foreach $sessions as $session}
