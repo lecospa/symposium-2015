@@ -2,14 +2,10 @@
 namespace Admin;
 require_once('../../init.php');
 
-class Index extends \Controllers\Controller {
+class Committees extends \Controllers\AdminController {
 	public function get() {
-		$token = $_GET['token'];
+		$this->check('admin');
 		$conn = new \Conn();
-		$auth = \Models\Auth::get($conn, $token);
-		if ($auth['scope'] != 'sudo') {
-			throw new \UnauthorizedException();
-		}
 
 		$committees = array();
 		$committees['IACCHAIR'] = \Models\Committees::get_people_by_type($conn, 'IACCHAIR');
@@ -22,8 +18,7 @@ class Index extends \Controllers\Controller {
 
 		$this->smarty->assign('committees', $committees);
 		$this->smarty->assign('people', $people);
-		$this->smarty->assign('token', $token);
 		$this->smarty->display('admin/committees.html');
 	}
 }
-new Index;
+new Committees;

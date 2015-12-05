@@ -6,7 +6,7 @@
 </div>
 
 <ol class="breadcrumb">
-	<li><a href="{$smarty.const.TOP}/admin/index.php?token={$token}">管理後台</a></li>
+	<li><a href="{$smarty.const.TOP}/admin/index.php">管理後台</a></li>
 	<li class="active">與會者</li>
 </ol>
 
@@ -38,19 +38,19 @@
 				{if $talk.session eq 'Plenary'}
 					<a href="{$smarty.const.TOP}/plenary_session.php?talk_id={$talk.id}" class="label label-{if $talk.title eq ''}default{else}success{/if}">Plenary</a>
 				{elseif $talk.session eq 'Parallel'}
-					<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$talk.session_id}&token={$token}" class="label label-{if $talk.title eq ''}default{else}success{/if}">{$sessions[$talk.session_id].abbreviation|escape}</a>
+					<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$talk.session_id}" class="label label-{if $talk.title eq ''}default{else}success{/if}">{$sessions[$talk.session_id].abbreviation|escape}</a>
 				{elseif $talk.session eq 'Poster'}
 					<span class="label label-default">{$talk.session}</span>
 				{/if}
 			{/foreach}
 			{foreach $person.organizers as $organizer}
-				<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$organizer.session_id}&token={$token}" class="label label-primary">
+				<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$organizer.session_id}" class="label label-primary">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$sessions[$organizer.session_id].abbreviation|escape}
 				</a>
 			{/foreach}</td>
-			<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person.php?token={$token}&id={$person.id}&mode=edit">編輯</a></td>
+			<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person.php?id={$person.id}&mode=edit">編輯</a></td>
 			<td>
-				<form method="POST" action="{$smarty.const.TOP}/admin/person.php?token={$token}&person_id={$person.id}&method=delete">
+				<form method="POST" action="{$smarty.const.TOP}/admin/person.php?person_id={$person.id}&method=delete">
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？將會損失此人的所有資料、演講資訊');">刪除</button>
 				</form>
 			</td>
@@ -61,7 +61,7 @@
 </div>
 
 <h2>新增</h2>
-<form class="form-inline" action="{$smarty.const.TOP}/admin/person.php?token={$token}" method="POST">
+<form class="form-inline" action="{$smarty.const.TOP}/admin/person.php" method="POST">
 <div class="table-responsive">
 <table class="table table-hover table-bordered">
 	<thead>

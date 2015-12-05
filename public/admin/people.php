@@ -1,14 +1,10 @@
 <?php
 require_once('../../init.php');
 
-class AdminPeopleIndex extends \Controllers\Controller {
+class People extends \Controllers\AdminController {
 	public function get() {
-		$token = $_GET['token'];
+		$this->check('admin');
 		$conn = new \Conn();
-		$auth = \Models\Auth::get($conn, $token);
-		if ($auth['scope'] != 'sudo') {
-			throw new \UnauthorizedException();
-		}
 
 		$people = \Models\People::all($conn);
 		foreach ($people as &$person) {
@@ -28,9 +24,8 @@ class AdminPeopleIndex extends \Controllers\Controller {
 		$sessions = \Models\Sessions::all_with_id_as_key($conn);
 
 		$this->smarty->assign('people', $people);
-		$this->smarty->assign('token', $token);
 		$this->smarty->assign('sessions', $sessions);
 		$this->smarty->display('admin/people.tpl');
 	}
 }
-new AdminPeopleIndex;
+new People;

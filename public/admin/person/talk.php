@@ -1,48 +1,41 @@
 <?php
 require_once('../../../init.php');
 
-class Talk extends \Controllers\Controller {
+class Talk extends \Controllers\AdminController {
 	public function patch() {
-		$token = $_GET['token'];
+		$this->check('sudo');
+
 		$person_id = $_GET['person_id'];
 		$talk_id = $_GET['talk_id'];
+
 		$conn = new \Conn();
-		$auth = \Models\Auth::get($conn, $token);
 		$logger = new \Models\Logging($conn, $_SERVER);
-		if ($auth['scope'] == 'sudo') {
-			$title = $_POST['title'];
-			$abstract = $_POST['abstract'];
-			$address_datetime = $_POST['address_datetime'];
-			$location = $_POST['location'];
-			$talk_time = $_POST['talk_time'];
-			$session = $_POST['session'];
-			$session_id = $_POST['session_id'];
 
-			$stmt = $conn->prepare("UPDATE `talks` SET `title`=?, `abstract`=?, `address_datetime`=?, `location`=?, `talk_time`=?, `session`=?, `session_id`=? WHERE `id`=?");
-			$stmt->execute(array($title, $abstract, $address_datetime, $location, $talk_time, $session, $session_id, $talk_id));
-			$logger->info('talk.update', json_encode(array('person_id' => $person_id, 'talk_id' => $talk_id, 'operator' => 'sudo')));
+		$title = $_POST['title'];
+		$abstract = $_POST['abstract'];
+		$address_datetime = $_POST['address_datetime'];
+		$location = $_POST['location'];
+		$talk_time = $_POST['talk_time'];
+		$session = $_POST['session'];
+		$session_id = $_POST['session_id'];
 
-			header('Location: ../person.php?token=' . $token . '&id=' . $person_id . '&mode=edit');
-		} else {
-			throw new \UnauthorizedException();
-		}
+		$stmt = $conn->prepare("UPDATE `talks` SET `title`=?, `abstract`=?, `address_datetime`=?, `location`=?, `talk_time`=?, `session`=?, `session_id`=? WHERE `id`=?");
+		$stmt->execute(array($title, $abstract, $address_datetime, $location, $talk_time, $session, $session_id, $talk_id));
+		$logger->info('talk.update', json_encode(array('person_id' => $person_id, 'talk_id' => $talk_id, 'operator' => 'sudo')));
+
+		header('Location: ../person.php?id=' . $person_id . '&mode=edit');
 	}
 	public function delete() {
-		$token = $_GET['token'];
+		$this->check('admin');
+
 		$person_id = $_GET['person_id'];
 		$talk_id = $_GET['talk_id'];
 		$conn = new \Conn();
-		$auth = \Models\Auth::get($conn, $token);
 		$logger = new \Models\Logging($conn, $_SERVER);
-		if ($auth['scope'] == 'sudo') {
-			$stmt = $conn->prepare("DELETE FROM `talks` WHERE `id`=?");
-			$stmt->execute(array($talk_id));
-			$logger->info('talk.delete', json_encode(array('person_id' => $person_id, 'talk_id' => $talk_id, 'operator' => 'sudo')));
-			header('Location: ../person.php?token=' . $token . '&id=' . $person_id . '&mode=edit');
-		} else {
-			throw new \UnauthorizedException();
-		}
-		
+		$stmt = $conn->prepare("DELETE FROM `talks` WHERE `id`=?");
+		$stmt->execute(array($talk_id));
+		$logger->info('talk.delete', json_encode(array('person_id' => $person_id, 'talk_id' => $talk_id, 'operator' => 'sudo')));
+		header('Location: ../person.php?id=' . $person_id . '&mode=edit');
 	}
 }
 new Talk;
