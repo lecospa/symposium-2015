@@ -1,18 +1,13 @@
 <?php
 require_once('../../../../init.php');
 
-class Slide extends \Controllers\Controller {
+class Slide extends \Controllers\AdminController {
 	public function get() {
 		throw new \ForbiddenException();
 	}
 	public function patch() {
-		$token = $_GET['token'];
+		$this->check('admin');
 		$conn = new \Conn();
-		$auth = \Models\Auth::get($conn, $token);
-		
-		if ($auth['scope'] != 'sudo') {
-			throw new \UnauthorizedException();
-		}
 
 		try {
 			$handler = new \Controllers\UploadFiles;
@@ -26,29 +21,23 @@ class Slide extends \Controllers\Controller {
 			$stmt = $conn->prepare("UPDATE `talks` SET `slide_file`=? WHERE `id`=? AND `person_id`=?");
 			$stmt->execute(array($handler->filename, $talk_id, $person_id));
 
-			header('Location: ' . TOP . '/admin/person.php?token='.$token . '&id=' . $person_id . '&mode=edit');
+			header('Location: ' . TOP . '/admin/person.php?id=' . $person_id . '&mode=edit');
 		} catch (\RuntimeException $e) {
 			echo $e->getMessage();
 		}
 	}
 	public function delete() {
-		//取得權限
-		$token = $_GET['token'];
+		$this->check('admin');
 		$conn = new \Conn();
-		$auth = \Models\Auth::get($conn, $token);
-		
-		if ($auth['scope'] == 'sudo') {
-			
-			$person_id = $_GET['person_id'];
-			$talk_id = $_GET['talk_id'];
-			
-			$stmt = $conn->prepare("UPDATE `talks` SET `slide_file`= '' WHERE `id`=? AND `person_id`=?");
-			$stmt->execute(array($talk_id, $person_id));
 
-			header('Location: ' . TOP . '/admin/person.php?token='.$token . '&id=' . $person_id . '&mode=edit');
-		} else {
-			throw new \UnauthorizedException();
-		}
+
+		$person_id = $_GET['person_id'];
+		$talk_id = $_GET['talk_id'];
+
+		$stmt = $conn->prepare("UPDATE `talks` SET `slide_file`= '' WHERE `id`=? AND `person_id`=?");
+		$stmt->execute(array($talk_id, $person_id));
+
+		header('Location: ' . TOP . '/admin/person.php?id=' . $person_id . '&mode=edit');
 	}
 }
 

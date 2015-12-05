@@ -1,7 +1,7 @@
 <?php
 require_once('../../../init.php');
 
-class Talk extends \Controllers\Controller {
+class Talk extends \Controllers\AdminController {
 	public function patch() {
 		$this->check('sudo');
 
