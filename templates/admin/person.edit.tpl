@@ -165,6 +165,9 @@
 			<form method="POST" action="person/talk/slide.php?person_id={$person.id}&talk_id={$talk.id}&method=delete">
 					<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除檔案</button>
 			</form>
+			<form method="POST" action="person/talk/slide_show.php?person_id={$person.id}&talk_id={$talk.id}&method=patch">
+					<button class="btn btn-primary" onClick="return confirm('確定顯示？');">顯示檔案於網頁上</button>
+			</form>
 			{/if}
 		</div>
 	</div>
