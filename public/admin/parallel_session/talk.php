@@ -4,7 +4,7 @@ require_once('../../../init.php');
 
 class Talk extends \Controllers\AdminController {
 	public function post() {
-		$this->check('sudo' || 'talk_speaker_add');
+		$this->check('sudo');
 		$conn = new \Conn();
 		$session_id = $_GET['session_id'];
 		$person_id = $_POST['person_id'];
@@ -32,7 +32,7 @@ class Talk extends \Controllers\AdminController {
 		header('Location: ' . TOP . '/admin/parallel_session.php?mode=edit&session_id='. $session_id);
 	}
 	public function delete() {
-		$this->check('sudo' || 'talk_speaker_delete');
+		$this->check('sudo');
 		$conn = new \Conn();
 		$session_id = $_GET['session_id'];
 		$talk_id = $_GET['talk_id'];
