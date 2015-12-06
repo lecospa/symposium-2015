@@ -4,7 +4,7 @@ require_once('../../init.php');
 
 class ParallelSession extends \Controllers\AdminController {
 	public function get() {
-		$this->check('admin');
+		$this->check('admin' || 'readonly');
 		$conn = new \Conn();
 		$session_id = $_GET['session_id'];
 		$session = \Models\Sessions::get($conn, $session_id);

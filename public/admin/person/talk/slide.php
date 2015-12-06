@@ -6,7 +6,7 @@ class Slide extends \Controllers\AdminController {
 		throw new \ForbiddenException();
 	}
 	public function patch() {
-		$this->check('admin');
+		$this->check('admin' || 'slide_upload');
 		$conn = new \Conn();
 
 		try {
@@ -27,7 +27,7 @@ class Slide extends \Controllers\AdminController {
 		}
 	}
 	public function delete() {
-		$this->check('admin');
+		$this->check('admin' || 'slide_remove');
 		$conn = new \Conn();
 
 
