@@ -4,7 +4,7 @@ require_once('../../init.php');
 
 class Committees extends \Controllers\AdminController {
 	public function get() {
-		$this->check('admin' || 'readonly');
+		$this->check('committees_get');
 		$conn = new \Conn();
 
 		$committees = array();

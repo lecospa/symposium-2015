@@ -3,7 +3,7 @@ require_once('../../init.php');
 
 class Person extends \Controllers\AdminController {
 	public function get() {
-		$this->check('admin' || 'readonly');
+		$this->check('person_get');
 
 		$person_id = $_GET['id'];
 		$conn = new \Conn();

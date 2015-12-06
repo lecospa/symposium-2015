@@ -3,7 +3,7 @@ require_once('../../init.php');
 
 class People extends \Controllers\AdminController {
 	public function get() {
-		$this->check('admin' || 'readonly');
+		$this->check('people_get');
 		$conn = new \Conn();
 
 		$people = \Models\People::all($conn);

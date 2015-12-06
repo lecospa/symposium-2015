@@ -4,7 +4,7 @@ require_once('../../init.php');
 
 class PersonFieldController extends \Controllers\APIController {
 	public function patch() {
-		$this->check('admin');
+		$this->check('person_field_patch');
 		$conn = new \Conn();
 		$logger = new \Models\Logging($conn, $_SERVER);
 		$person_id = $_GET['person_id'];

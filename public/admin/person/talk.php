@@ -26,7 +26,7 @@ class Talk extends \Controllers\AdminController {
 		header('Location: ../person.php?id=' . $person_id . '&mode=edit');
 	}
 	public function delete() {
-		$this->check('admin');
+		$this->check('person_talk_delete');
 
 		$person_id = $_GET['person_id'];
 		$talk_id = $_GET['talk_id'];

@@ -3,7 +3,7 @@ require_once('../../init.php');
 
 class Committee extends \Controllers\AdminController {
 	public function post() {
-		$this->check('admin');
+		$this->check('committee_post');
 		$conn = new \Conn();
 		$type = $_POST['type'];
 		$person_id = $_POST['person_id'];
@@ -17,7 +17,7 @@ class Committee extends \Controllers\AdminController {
 		header('Location: ' . TOP . '/admin/committees.php');
 	}
 	public function delete() {
-		$this->check('admin');
+		$this->check('committee_delete');
 		$conn = new \Conn();
 		$type = $_GET['type'];
 		$person_id = $_GET['person_id'];

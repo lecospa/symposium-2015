@@ -3,7 +3,7 @@ require_once('../../init.php');
 
 class AdminIndex extends \Controllers\AdminController {
 	public function get() {
-		$this->check('admin' || 'readonly');
+		$this->check('index_get');
 
 		$this->smarty->display('admin/index.html');
 	}

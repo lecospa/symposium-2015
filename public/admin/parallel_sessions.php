@@ -3,7 +3,7 @@ require_once('../../init.php');
 
 class Sessions extends \Controllers\AdminController {
 	public function get() {
-		$this->check('admin' || 'readonly');
+		$this->check('parallel_sessions_get');
 		$conn = new \Conn();
 		$sessions = \Models\Sessions::all($conn);
 
