@@ -28,6 +28,9 @@ class Login extends \Controllers\AdminController {
 				$_SESSION['scopes'][] = $scope['scope'];
 			}
 
+			$logger = new \Models\Logging($conn, $_SERVER);
+			$logger->info('accounts.login', json_encode(array('id'=> $auth['id'])));
+
 			if ($redirect == '') {
 				$redirect = '/admin/index.php';
 			}
