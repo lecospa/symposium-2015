@@ -28,10 +28,10 @@
 	<tr style="height: 10px;">
 		<th style="background-color: #cccccc;"></th>
 		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[91]}</td>
-		<td style="background-color: #d9ead3;">Chair:</td>
-		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[155]}</td>
+		<td style="background-color: #d9ead3;">Chair: Bum-Hoon Lee</td>
 		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[74]}</td>
-		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair: Wei-Shu Hou</td>
 	</tr>
 	<tr style="height: 35px;">
 		<th>9:00-9:35</th>
@@ -65,9 +65,9 @@
 	</tr>
 	<tr style="height: 10px;">
 		<th style="background-color: #cccccc;"></th>
-		<td	style="background-color: #d9ead3;">Chair:</td>
+		<td	style="background-color: #d9ead3;">Chair: Ronald Taam</td>
 		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[163]}</td>
-		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[73]}</td>
 		<td style="background-color: #d9ead3;">Chair: {include file='program_person.part' person=$people[159]}</td>
 	</tr>
 	<tr style="height: 35px;">
@@ -155,8 +155,8 @@
 		<td rowspan="4"></td>
 		<td rowspan="2">{include file='program_person.part' person=$people[119]}</td>
 		<td rowspan="2">{include file='program_person.part' person=$people[57]}</td>
-		<td style="background-color: #d9ead3;">Chair:</td>
-		<td style="background-color: #d9ead3;">Chair:</td>
+		<td style="background-color: #d9ead3;">Chair: Juin-Huei Proty Wu</td>
+		<td style="background-color: #cccccc;"></td>
 	</tr>
 	<tr>
 		<td>18:00-18:35<br>{include file='program_person.part' person=$people[291]}</td>
