@@ -36,10 +36,8 @@ class People {
 	 * @return 代表Person的id
 	 */
 	static function insert($conn, $first_name, $last_name, $email) {
-		$stmt = $conn->prepare("INSERT INTO `people` (`first_name`, `last_name`, `email`) VALUES (?, ?, ?)");
-		$stmt->execute(array($first_name, $last_name, $email));
-		$id = $conn->lastInsertId();
-		return $id;
+		$stmt = Query::prepare($conn, "INSERT INTO `people` (`first_name`, `last_name`, `email`) VALUES (?, ?, ?)");
+		return $stmt->fetchLastId(array($first_name, $last_name, $email));
 	}
 	static function delete($conn, $id) {
 		$stmt = $conn->prepare("DELETE FROM `people` WHERE `id`=?");
