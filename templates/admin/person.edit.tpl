@@ -171,8 +171,9 @@
 	<div class="form-group">
 		<div class="col-sm-2">
 			{if $talk.slide_file}
-			<input type="text" class="form-control" id="slide_file_show" placeholder="0 or 1" value="{$talk.slide_file_show|escape}" name="Slide File Show ">
+			
 			<form method="POST" action="person/talk/slide_show.php?person_id={$person.id}&talk_id={$talk.id}&method=patch">
+				<input type="text" class="form-control" id="slide_file_show" placeholder="0 or 1" value="{$talk.slide_file_show|escape}" name="Slide File Show ">
 					<button class="btn btn-primary" onClick="return confirm('確定顯示？');">顯示檔案於網頁上</button>
 			</form>
 			{/if}
