@@ -148,7 +148,7 @@
 		<th rowspan="3">17:40-18:15</th>
 		<td style="background-color: #d9ead3;" rowspan="1">Chair: {include file='program_person.part' person=$people[166]}</td>
 		<td style="background-color: #d9ead3;" rowspan="1">Chair: {include file='program_person.part' person=$people[158]}</td>
-		<td style="background-color: #cfe2f3;" rowspan="5"><a href="social_symposium_banquet.php">17:40-21:00<br>Banquet at Formosa Pearl<br>(Yilan)</a></td>
+		<td style="background-color: #cfe2f3;" rowspan="5"><a href="social_events/symposium_banquet.php">17:40-21:00<br>Banquet at Formosa Pearl<br>(Yilan)</a></td>
 		<td rowspan="1">{include file='program_session.part' session=$session[11]}(17:40-18:00)</td>
 	</tr>
 	<tr style="height: 15px;">
@@ -164,13 +164,13 @@
 	</tr>
 	<tr style="height: 75px;">
 		<th rowspan="2">18:15-</th>
-		<td><a href="social_welcome_reception.php">18:30-19:30<br>Welcome Reception</a></td>
+		<td><a href="social_events/welcome_reception.php">18:30-19:30<br>Welcome Reception</a></td>
 		<td rowspan="2">Free Night</td>
 		<td rowspan="2">Free Night</td>
 		<td rowspan="2">Goodbye!</td>
 	</tr>
 	<tr style="height: 60px;">
-		<td><a href="social_opening_night_performance.php">19:30-20:30<br>Opening Night Concert</a></td>
+		<td><a href="social_events/opening_night_concert.php">19:30-20:30<br>Opening Night Concert</a></td>
 	</tr>
 	</tbody>
 </table>
