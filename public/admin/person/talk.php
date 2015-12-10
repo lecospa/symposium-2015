@@ -20,7 +20,7 @@ class Talk extends \Controllers\AdminController {
 		$logger = new \Models\Logging($conn, $_SERVER);
 
 		/*
-		 * 需要更新的欄位名稱，透過POST
+		 * 需要更新的欄位名稱，透過$_POST
 		 */
 		$title            = $_POST['title'];
 		$abstract         = $_POST['abstract'];
