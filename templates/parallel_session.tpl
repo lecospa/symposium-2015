@@ -5,23 +5,15 @@
 </div>
 <h2>Organizer(s):</h2>
 {foreach $organizers as $organizer}
-<div class="media">
-	<div class="media-left">
-		<div style="max-height: 100px;">
-		{if $organizer.img}
-			<img class="img-responsive img-thumbnail" src="{$smarty.const.TOP}/uploads/{$organizer.img}" />
-		{/if}
-		</div>
-	</div>
-	<div class="media-body">
-		<h4 class="media-heading">{$organizer.first_name|escape} {$organizer.last_name|escape} (Email: {$organizer.email|escape})</h4>
-	</div>
-</div>
+	<p>{$organizer.first_name|escape} {$organizer.last_name|escape} (Email: {$organizer.email|escape})</p>
 {/foreach}
 
+<h2>Date & Time, Location:</h2>
+<ul>
 {foreach $session.slots as $slot}
-<h2>Date & Time, Location {$slot@iteration}: </h2><p>{$slot.date_time|escape}, {$slot.location|escape}</p>
+<li>{$slot.date_time|escape}, {$slot.location|escape}</li>
 {/foreach}
+</ul>
 
 <hr>
 {foreach $session.talks as $talk}
