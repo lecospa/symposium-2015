@@ -29,4 +29,8 @@ class Query {
 	public function execute($array) {
 		return $this->stmt->execute($array);
 	}
+	public function fetchLastId($array) {
+		$this->stmt->execute($array);
+		return $this->connection->lastInsertId();
+	}
 }
