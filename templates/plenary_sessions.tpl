@@ -8,8 +8,11 @@
 	{foreach $plenary_sessions as $talk}
 		<div class="col-md-3 col-sm-4 col-xs-6">
 			<div class="thumbnail" style="height: 250px; position: relative;">
-				<a href="{$smarty.const.TOP}/plenary_session.php?talk_id={$talk.id}">
+				<a href="{$smarty.const.TOP}/plenary_session.php?talk_id={$talk.id}">{if $talk.person.img}
 					<img src="{$smarty.const.TOP}/uploads/{$talk.person.img}" class="img-responsive img-circle" style="height: 150px;">
+					{else}
+					<div style="height: 150px;"></div>
+					{/if}
 				</a>
 				<h4>
 					<a href="{$smarty.const.TOP}/plenary_session.php?talk_id={$talk.id}">
