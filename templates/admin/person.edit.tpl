@@ -170,13 +170,10 @@
 	</div>
 	<div class="form-group">
 		<div class="col-sm-2">
-			{if $talk.slide_file}
-			
 			<form method="POST" action="person/talk/slide_show.php?person_id={$person.id}&talk_id={$talk.id}&method=patch">
-				<input type="text" class="form-control" id="slide_file_show" placeholder="0 or 1" value="{$talk.slide_file_show|escape}" name="Slide File Show ">
+				<input type="text" class="form-control" id="slide_file_show" placeholder="0 or 1" value="{$talk.slide_file_show|escape}" name="slide_file_show">
 					<button class="btn btn-primary" onClick="return confirm('確定顯示？');">顯示檔案於網頁上</button>
 			</form>
-			{/if}
 		</div>
 	</div>
 	<div class="form-group">

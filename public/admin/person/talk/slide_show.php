@@ -9,7 +9,9 @@ class SlideShow extends \Controllers\AdminController {
 		$talk_id = $_GET['talk_id'];
 		$slide_file_show = $_POST['slide_file_show'];
 		$stmt = $conn->prepare("UPDATE `talks` SET `slide_file_show`=? WHERE `id`=?");
-		$stmt->execute(array($slide_file_show, $person_id));
+		$stmt->execute(array($slide_file_show, $talk_id));
+
+		header('Location: index.php');
 	}
 }
 
