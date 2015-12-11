@@ -20,6 +20,9 @@
 	<h2 id="talk-{$talk.id}">Expected Speakers {$talk@iteration}:</h2>
 	<p>{$talk.speaker.first_name|escape} {$talk.speaker.last_name|escape} ({$talk.speaker.email|escape})</p>
 	<dl class="dl-horizontal">
+		{if $talk.slide_file_show}
+			<dt>Slide</dt><dd><a href="{$smarty.const.TOP}/uploads/{$talk.slide_file|escape}">Download</a></dd>
+		{/if}
 		<dt>Talk Time</dt><dd>{$talk.address_datetime|escape}</dd>
 		<dt>Duration of Talk</dt><dd>{$talk.talk_time|escape}</dd>
 		<dt>Talk Title</dt><dd>{$talk.title|escape}</dd>

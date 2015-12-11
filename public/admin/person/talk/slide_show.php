@@ -18,8 +18,8 @@ class SlideShow extends \Controllers\AdminController {
 		//執行上一行 並且把兩個變數填入兩個問號
 		$stmt->execute(array($slide_file_show, $talk_id));
 		
-		//結束後回到index.php
-		header('Location: index.php');
+		//結束後回到原本的頁面.php
+		header(sprintf("location: %s/admin/person.php?id=%d&mode=edit",TOP, urlencode($person_id), urlencode($talk_id)));
 	}
 }
 

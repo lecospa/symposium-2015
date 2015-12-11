@@ -169,10 +169,17 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="col-sm-2 control-label">顯示 / 隱藏</label>
 		<div class="col-sm-2">
 			<form method="POST" action="person/talk/slide_show.php?person_id={$person.id}&talk_id={$talk.id}&method=patch">
-				<input type="text" class="form-control" id="slide_file_show" placeholder="0 or 1" value="{$talk.slide_file_show|escape}" name="slide_file_show">
-					<button class="btn btn-primary" onClick="return confirm('確定顯示？');">顯示檔案於網頁上</button>
+				{if $talk.slide_file_show}
+					<p class="form-control-static" style="color: red">目前Slide顯示中</p>
+				{else}
+					<p class="form-control-static" style="color: green">目前Slide隱藏中</p>
+				{/if}
+				<p class="form-control-static"><input type="radio" name="slide_file_show" value="1"> 顯示Slide</p>
+				<p class="form-control-static"><input type="radio" name="slide_file_show" value="0"> 隱藏Slide</p>
+				<button class="btn btn-primary">更新</button>
 			</form>
 		</div>
 	</div>
