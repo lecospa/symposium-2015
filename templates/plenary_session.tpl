@@ -23,5 +23,9 @@
 <p>{$talk.talk_time|escape}</p>
 <h3>Talk Abstract</h3>
 <p>{$talk.abstract|escape|nl2br}</p>
+{if $talk.slide_file_show}
+	<h3>Slide</h3>
+	<p><a href="{$smarty.const.TOP}/uploads/{$talk.slide_file}">Download</a></p>
+{/if}
 
 {/block}

@@ -169,6 +169,21 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="col-sm-2 control-label">顯示 / 隱藏</label>
+		<div class="col-sm-2">
+			<form method="POST" action="person/talk/slide_show.php?person_id={$person.id}&talk_id={$talk.id}&method=patch">
+				{if $talk.slide_file_show}
+					<p class="form-control-static" style="color: red">目前Slide顯示中</p>
+				{else}
+					<p class="form-control-static" style="color: green">目前Slide隱藏中</p>
+				{/if}
+				<p class="form-control-static"><input type="radio" name="slide_file_show" value="1"> 顯示Slide</p>
+				<p class="form-control-static"><input type="radio" name="slide_file_show" value="0"> 隱藏Slide</p>
+				<button class="btn btn-primary">更新</button>
+			</form>
+		</div>
+	</div>
+	<div class="form-group">
 		<form enctype="multipart/form-data" action="person/talk/slide.php?person_id={$person.id}&talk_id={$talk.id}&method=patch" method="POST">
 			<label for="slide-file-input-{$talk.id}" class="col-sm-2 control-label">Upload</label>
 			<div class="col-sm-4">
