@@ -8,6 +8,9 @@ class Person extends \Controllers\AdminController {
 		$person_id = $_GET['id'];
 		$conn = new \Conn();
 		$person = \Models\People::get($conn, $person_id);
+		if ($person === false) {
+			throw new \NotFoundException();
+		}
 
 		$talks = \Models\Talks::all_filter_person($conn, $person_id);
 

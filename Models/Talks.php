@@ -26,7 +26,7 @@ class Talks {
 		if ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
 			return $row;
 		} else {
-			return null;
+			return false;
 		}
 	}
 	/*
