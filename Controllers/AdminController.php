@@ -26,6 +26,14 @@ class AdminController extends Controller {
 	public function Unauthorized(\UnauthorizedException $e) {
 		header('Location: ' . $this->loginUrl());
 	}
+	public function NotFound(\NotFoundException $e) {
+		http_response_code(404);
+		$this->smarty->display('admin/404.tpl');
+	}
+	public function Forbidden(\ForbiddenException $e) {
+		http_response_code(403);
+		$this->smarty->display('admin/403.tpl');
+	}
 	// 檢查是否登入
 	private function isLogin() {
 		if (isset($_SESSION['scopes']) && is_array($_SESSION['scopes'])) {
