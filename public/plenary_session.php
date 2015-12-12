@@ -8,7 +8,7 @@ class PlenarySession extends \Controllers\Controller {
 		$talk_id = $_GET['talk_id'];
 
 		$talk = \Models\Talks::get($conn, $talk_id);
-		if (is_null($talk)) {
+		if ($talk === false) {
 			throw new \NotFoundException();
 		} else if ($talk['session'] != 'Plenary') {
 			throw new \NotFoundException();

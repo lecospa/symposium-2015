@@ -18,7 +18,7 @@ class Login extends \Controllers\AdminController {
 		$q = \Models\Query::prepare($conn, "SELECT * FROM `accounts` WHERE `user`=? AND `password`=?");
 		$auth = $q->fetch(array($user, $password));
 		
-		if (is_null($auth)) {
+		if ($auth === false) {
 			$this->smarty->assign('redirect', $redirect);
 			$this->smarty->display('admin/login.html');
 		} else {

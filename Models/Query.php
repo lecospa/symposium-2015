@@ -19,7 +19,7 @@ class Query {
 		if ($row = $this->stmt->fetch(\PDO::FETCH_ASSOC)) {
 			return $row;
 		} else {
-			return null;
+			return false;
 		}
 	}
 	public function fetchAll($array) {
