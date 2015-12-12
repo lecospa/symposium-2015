@@ -177,8 +177,12 @@
 				{else}
 					<p class="form-control-static" style="color: green">目前Slide隱藏中</p>
 				{/if}
-				<p class="form-control-static"><input type="radio" name="slide_file_show" value="1"> 顯示Slide</p>
-				<p class="form-control-static"><input type="radio" name="slide_file_show" value="0"> 隱藏Slide</p>
+				<div class="radio" style="color: red;">
+					<label><input type="radio" name="slide_file_show" value="1" {if $talk.slide_file_show eq '1'}checked{/if}>顯示Slide</label>
+				</div>
+				<div class="radio" style="color: green;">
+					<label><input type="radio" name="slide_file_show" value="0" {if $talk.slide_file_show eq '0'}checked{/if}>隱藏Slide</label>
+				</div>
 				<button class="btn btn-primary">更新</button>
 			</form>
 		</div>
