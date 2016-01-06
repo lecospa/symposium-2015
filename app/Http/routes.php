@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('home', ['scope' => 'Home']);
 });
 
+Route::post('update', function () {
+    exec('git pull origin master', $output);
+    return $output;
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
