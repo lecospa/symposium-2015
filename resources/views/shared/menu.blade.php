@@ -13,7 +13,7 @@
 <a class="list-group-item @if ($scope == 'Companion') active @endif" href="{{ url('/companion_program.php') }}">Companion Program</a>
 <a class="list-group-item @if ($scope == 'About_Taiwan') active @endif" href="{{ url('/about_taiwan.php') }}">Information about Taiwan</a>
 <a class="list-group-item @if ($scope == 'Travel_Visa') active @endif" href="{{ url('/travel_and_visa.php') }}">Travel &amp; Visa Information</a>
-<a class="list-group-item @if ($scope == 'Photos') active @endif" href="http://lecospa.ntu.edu.tw/news-and-activities/photo-gallery/everything-about-gravity/') }}">Conference Photos</a>
+<a class="list-group-item" href="http://lecospa.ntu.edu.tw/news-and-activities/photo-gallery/everything-about-gravity/">Conference Photos</a>
 <a class="list-group-item @if ($scope == 'ConferenceVideos') active @endif" href="{{ url('/conference_videos.php') }}">Conference Videos</a>
 <a class="list-group-item @if ($scope == 'Contact') active @endif" href="{{ route('contact') }}">Contact Us</a>
 <a class="list-group-item @if ($scope == 'Publications') active @endif" href="{{ url('/publications.php') }}">Publications</a>
