@@ -13,11 +13,20 @@
 
 Route::get('/', function () {
     return view('home', ['scope' => 'Home']);
-});
+})->name('home');
+
+Route::get('contact', function () {
+    return view('contact', ['scope' => 'Contact']);
+})->name('contact');
 
 Route::post('update', function () {
     exec('git pull origin master', $output);
+
     return $output;
+});
+
+Route::group(['prefix' => 'announcements'], function () {
+    Route::get('january_2016', 'AnnouncementController@january_2016');
 });
 
 /*
