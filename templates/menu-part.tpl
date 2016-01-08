@@ -16,7 +16,7 @@
 <a class="list-group-item {if $scope eq 'Travel_Visa'} active{/if}" href="{$smarty.const.TOP}/travel_and_visa.php">Travel &amp; Visa Information</a>
 <a class="list-group-item {if $scope eq 'Photos'} active{/if}" href="http://lecospa.ntu.edu.tw/news-and-activities/photo-gallery/everything-about-gravity/">Conference Photos</a>
 <a class="list-group-item {if $scope eq 'ConferenceVideos'} active{/if}" href="{$smarty.const.TOP}/conference_videos.php">Conference Videos</a>
-<a class="list-group-item {if $scope eq 'Contact'} active{/if}" href="{$smarty.const.TOP}/contact.php">Contact Us</a>
+<a class="list-group-item {if $scope eq 'Contact'} active{/if}" href="{$smarty.const.TOP}/contact">Contact Us</a>
 <a class="list-group-item {if $scope eq 'Publications'} active{/if}" href="{$smarty.const.TOP}/publications.php">Publications</a>
 <a class="list-group-item" href="http://lecospa.ntu.edu.tw">Back to LeCosPA</a>
 {/strip}

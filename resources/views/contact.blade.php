@@ -1,5 +1,6 @@
-{extends file='others.tpl'}
-{block name=main}
+@extends('layouts.master')
+
+@section('body')
 <div class="page-header">
 	<h1>Contact Us</h1>
 </div>
@@ -11,4 +12,4 @@
 	<div class="col-md-6"><h4>FAX</h4><p><a href="tel:+886-2-23655473">+886-2-23655473</a></p></div>
 	<div class="col-md-6"><h4>EMAIL</h4><p><a href="mailto:ntulecospa@ntu.edu.tw">ntulecospa@ntu.edu.tw</a></p></div>
 </div>
-{/block}
+@endsection
