@@ -32,4 +32,7 @@
 </div>
 <div class="row">
 </div>
+<script>
+document.getElementById('nav-committees').classList.add('active');
+</script>
 @endsection

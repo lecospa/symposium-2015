@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('home', ['scope' => 'Home']);
+    return view('home');
 })->name('home');
 
 Route::get('contact', function () {
-    return view('contact', ['scope' => 'Contact']);
+    return view('contact');
 })->name('contact');
 
 Route::get('committees', function () {
@@ -26,7 +26,7 @@ Route::get('committees', function () {
     $committees['LOCCHAIR'] = \App\Committee::with('people')->find(3);
     $committees['LOC'] = \App\Committee::with('people')->find(4);
 
-    return view('committees', ['scope' => 'Committees', 'committees' => $committees]);
+    return view('committees', ['committees' => $committees]);
 })->name('committees');
 
 Route::post('update', function () {
