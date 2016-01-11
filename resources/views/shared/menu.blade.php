@@ -1,5 +1,5 @@
 <a class="list-group-item @if ($scope == 'Home') active @endif" href="{{ route('home') }}">Home / Announcement</a>
-<a class="list-group-item @if ($scope == 'Committees') active @endif" href="{{ url('/committees.php') }}">Committees</a>
+<a class="list-group-item @if ($scope == 'Committees') active @endif" href="{{ route('committees') }}">Committees</a>
 <a class="list-group-item @if ($scope == 'Topics') active @endif" href="{{ url('/topics.php') }}">Topics</a>
 <a class="list-group-item @if ($scope == 'Program') active @endif" href="{{ url('/program.php') }}">Conference Program</a>
 <a class="list-group-item @if ($scope == 'Plenary') active @endif" href="{{ url('/plenary_sessions.php') }}">Plenary Session</a>

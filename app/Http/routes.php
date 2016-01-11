@@ -19,6 +19,16 @@ Route::get('contact', function () {
     return view('contact', ['scope' => 'Contact']);
 })->name('contact');
 
+Route::get('committees', function () {
+    $committees = [];
+    $committees['IACCHAIR'] = \App\Committee::with('people')->find(1);
+    $committees['IAC'] = \App\Committee::with('people')->find(2);
+    $committees['LOCCHAIR'] = \App\Committee::with('people')->find(3);
+    $committees['LOC'] = \App\Committee::with('people')->find(4);
+
+    return view('committees', ['scope' => 'Committees', 'committees' => $committees]);
+})->name('committees');
+
 Route::post('update', function () {
     exec('git pull origin master', $output);
 
