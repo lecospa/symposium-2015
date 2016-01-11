@@ -12,12 +12,30 @@
 */
 
 Route::get('/', function () {
-    return view('home', ['scope' => 'Home']);
+    return view('home');
 })->name('home');
 
 Route::get('contact', function () {
-    return view('contact', ['scope' => 'Contact']);
+    return view('contact');
 })->name('contact');
+
+Route::get('committees', function () {
+    $committees = [];
+    $committees['IACCHAIR'] = \App\Committee::with(['people' => function ($query) {
+        $query->orderBy('last_name', 'asc');
+    }])->find(1);
+    $committees['IAC'] = \App\Committee::with(['people' => function ($query) {
+        $query->orderBy('last_name', 'asc');
+    }])->find(2);
+    $committees['LOCCHAIR'] = \App\Committee::with(['people' => function ($query) {
+        $query->orderBy('last_name', 'asc');
+    }])->find(3);
+    $committees['LOC'] = \App\Committee::with(['people' => function ($query) {
+        $query->orderBy('last_name', 'asc');
+    }])->find(4);
+
+    return view('committees', ['committees' => $committees]);
+})->name('committees');
 
 Route::post('update', function () {
     exec('git pull origin master', $output);

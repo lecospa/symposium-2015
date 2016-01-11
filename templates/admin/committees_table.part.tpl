@@ -5,7 +5,7 @@
 	<td>{$person.email|escape}</td>
 	<td><a class="btn btn-default" href="{$smarty.const.TOP}/admin/person.php?id={$person.id}&mode=edit">編輯</a></td>
 	<td>
-		<form method="POST" action="{$smarty.const.TOP}/admin/committee.php?method=delete&type={$type}&person_id={$person.id}">
+		<form method="POST" action="{$smarty.const.TOP}/admin/committee.php?method=delete&committee_id={$committee_id}&person_id={$person.id}">
 			<button class="btn btn-danger" onClick="return confirm('確定刪除？');">移除</button>
 		</form>
 	</td>

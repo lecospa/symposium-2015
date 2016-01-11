@@ -21,4 +21,7 @@
 <p>Our symposium photos are now available at <a href="http://lecospa.ntu.edu.tw/news-and-activities/photo-gallery/everything-about-gravity/">here</a>.</p>
 <p>Thank You &amp; Happy New Year!</p>
 <p>2<sup>nd</sup> LeCosPA Symposium Organizing Team</p>
+<script>
+document.getElementById('nav-home').classList.add('active');
+</script>
 @endsection

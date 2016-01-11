@@ -23,13 +23,13 @@
 	</thead>
 	<tbody>
 		<tr><th colspan="5">IAC Chair <span class="badge">{$committees['IACCHAIR']|count}</span></th></tr>
-		{include file='./committees_table.part.tpl' people=$committees['IACCHAIR'] type='IACCHAIR'}
+		{include file='./committees_table.part.tpl' people=$committees['IACCHAIR'] committee_id='1'}
 		<tr><th colspan="5">IAC <span class="badge">{$committees['IAC']|count}</span></th></tr>
-		{include file='./committees_table.part.tpl' people=$committees['IAC'] type='IAC'}
+		{include file='./committees_table.part.tpl' people=$committees['IAC'] committee_id='2'}
 		<tr><th colspan="5">LOC Chair <span class="badge">{$committees['LOCCHAIR']|count}</span></th></tr>
-		{include file='./committees_table.part.tpl' people=$committees['LOCCHAIR'] type='LOCCHAIR'}
+		{include file='./committees_table.part.tpl' people=$committees['LOCCHAIR'] committee_id='3'}
 		<tr><th colspan="5">LOC <span class="badge">{$committees['LOC']|count}</span></th></tr>
-		{include file='./committees_table.part.tpl' people=$committees['LOC'] type='LOC'}
+		{include file='./committees_table.part.tpl' people=$committees['LOC'] committee_id='4'}
 	</tbody>
 </table>
 </div>
@@ -42,12 +42,12 @@
 		{/foreach}
 	</select>
 	職稱
-	<select class="form-control" name="type" required>
+	<select class="form-control" name="committee_id" required>
 		<option value="">請選擇</option>
-		<option value="IACCHAIR">IAC Chair</option>
-		<option value="IAC">IAC</option>
-		<option value="LOCCHAIR">LOC Chair</option>
-		<option value="LOC">LOC</option>
+		<option value="1">IAC Chair</option>
+		<option value="2">IAC</option>
+		<option value="3">LOC Chair</option>
+		<option value="4">LOC</option>
 	</select>
 	<button type="submit" class="btn btn-primary">新增</button>
 </form>

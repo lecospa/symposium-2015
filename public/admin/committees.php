@@ -8,10 +8,10 @@ class Committees extends \Controllers\AdminController {
 		$conn = new \Conn();
 
 		$committees = array();
-		$committees['IACCHAIR'] = \Models\Committees::get_people_by_type($conn, 'IACCHAIR');
-		$committees['IAC']      = \Models\Committees::get_people_by_type($conn, 'IAC');
-		$committees['LOCCHAIR'] = \Models\Committees::get_people_by_type($conn, 'LOCCHAIR');
-		$committees['LOC']      = \Models\Committees::get_people_by_type($conn, 'LOC');
+		$committees['IACCHAIR'] = \Models\Committees::get_people_by_id($conn, 1);
+		$committees['IAC']      = \Models\Committees::get_people_by_id($conn, 2);
+		$committees['LOCCHAIR'] = \Models\Committees::get_people_by_id($conn, 3);
+		$committees['LOC']      = \Models\Committees::get_people_by_id($conn, 4);
 
 		$query = \Models\Query::prepare($conn, "SELECT `id`, `first_name`, `last_name` FROM `people` ORDER BY `last_name` ASC, `last_name` ASC");
 		$people = $query->fetchAll();

@@ -8,4 +8,7 @@
 <a href="{{ action('AnnouncementController@january_2016') }}" style="color: white"><div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Announcement - January 1, 2016<span class="pull-right">» more</span></div></a>
 <a href="announcement/december_2015.php" style="color: white"><div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Announcement - December 9, 2015<span class="pull-right">» more</span></div></a>
 <a href="announcement/november_2015.php" style="color: white"><div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Announcement - November 23, 2015<span class="pull-right">» more</span></div></a>
+<script>
+document.getElementById('nav-home').classList.add('active');
+</script>
 @endsection

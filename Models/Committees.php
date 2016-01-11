@@ -6,21 +6,21 @@ namespace Models;
  */
 
 class Committees {
-	private static $get_people_by_type_q = null;
+	private static $get_people_by_id_q = null;
 	/*
 	 * 取得某`type`的所有`people`
 	 */
-	static function get_people_by_type($conn, $type) {
-		if (is_null(self::$get_people_by_type_q)) {
-			self::$get_people_by_type_q = Query::prepare($conn, "SELECT `people`.* FROM `committee_person` LEFT JOIN `people` ON `committee_person`.`person_id` = `people`.`id` WHERE `committee_person`.`type`=? ORDER BY `people`.`last_name` ASC, `people`.`first_name`");
+	static function get_people_by_id($conn, $id) {
+		if (is_null(self::$get_people_by_id_q)) {
+			self::$get_people_by_id_q = Query::prepare($conn, "SELECT `people`.* FROM `committee_person` LEFT JOIN `people` ON `committee_person`.`person_id` = `people`.`id` WHERE `committee_person`.`committee_id`=? ORDER BY `people`.`last_name` ASC, `people`.`first_name`");
 		}
-		return self::$get_people_by_type_q->fetchAll(array($type));
+		return self::$get_people_by_id_q->fetchAll(array($id));
 	}
 	/*
 	 * insert a person with given type as committee
 	 */
-	static function insert_person($conn, $type, $person_id) {
-		$q = Query::prepare($conn, "INSERT INTO `committee_person` (`type`, `person_id`) VALUES (?,?)");
-		$q->execute(array($type, $person_id));
+	static function insert_person($conn, $committee_id, $person_id) {
+		$q = Query::prepare($conn, "INSERT INTO `committee_person` (`committee_id`, `person_id`) VALUES (?,?)");
+		$q->execute(array($committee_id, $person_id));
 	}
 }
