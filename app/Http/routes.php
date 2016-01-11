@@ -21,10 +21,18 @@ Route::get('contact', function () {
 
 Route::get('committees', function () {
     $committees = [];
-    $committees['IACCHAIR'] = \App\Committee::with('people')->find(1);
-    $committees['IAC'] = \App\Committee::with('people')->find(2);
-    $committees['LOCCHAIR'] = \App\Committee::with('people')->find(3);
-    $committees['LOC'] = \App\Committee::with('people')->find(4);
+    $committees['IACCHAIR'] = \App\Committee::with(['people' => function ($query) {
+        $query->orderBy('last_name', 'asc');
+    }])->find(1);
+    $committees['IAC'] = \App\Committee::with(['people' => function ($query) {
+        $query->orderBy('last_name', 'asc');
+    }])->find(2);
+    $committees['LOCCHAIR'] = \App\Committee::with(['people' => function ($query) {
+        $query->orderBy('last_name', 'asc');
+    }])->find(3);
+    $committees['LOC'] = \App\Committee::with(['people' => function ($query) {
+        $query->orderBy('last_name', 'asc');
+    }])->find(4);
 
     return view('committees', ['committees' => $committees]);
 })->name('committees');
