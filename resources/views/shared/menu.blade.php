@@ -2,7 +2,7 @@
 <a class="list-group-item" id="nav-committees" href="{{ route('committees') }}">Committees</a>
 <a class="list-group-item" id="nav-Topics" href="{{ url('/topics.php') }}">Topics</a>
 <a class="list-group-item" id="nav-Program" href="{{ url('/program.php') }}">Conference Program</a>
-<a class="list-group-item" id="nav-Plenary" href="{{ url('/plenary_sessions.php') }}">Plenary Session</a>
+<a class="list-group-item" id="nav-plenary-sessions" href="{{ action('PlenarySessionController@index') }}">Plenary Session</a>
 <a class="list-group-item" id="nav-Parallel" href="{{ url('/parallel_sessions.php') }}">Parallel Session</a>
 <a class="list-group-item" id="nav-Registration" href="{{ url('/registration.php') }}">Registration</a>
 <a class="list-group-item" id="nav-Submission" href="{{ url('/submission.php') }}">Title &amp; Abstract Submission</a>

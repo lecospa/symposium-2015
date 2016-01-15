@@ -18,7 +18,7 @@ class Person extends \Controllers\Controller {
 				throw new \NotFoundException();
 			}
 			header("HTTP/1.1 301 Moved Permanently"); 
-			header('Location: ' . TOP . '/plenary_session.php?talk_id=' . $talks[0]['id']);
+			header('Location: ' . TOP . '/plenary_sessions/' . $talks[0]['id']);
 			break;
 		}
 	}

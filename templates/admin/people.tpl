@@ -36,7 +36,7 @@
 			{/foreach}</td>
 			<td>{foreach $person.talks as $talk}
 				{if $talk.session eq 'Plenary'}
-					<a href="{$smarty.const.TOP}/plenary_session.php?talk_id={$talk.id}" class="label label-{if $talk.title eq ''}default{else}success{/if}">Plenary</a>
+					<a href="{$smarty.const.TOP}/plenary_sessions/{$talk.id}" class="label label-{if $talk.title eq ''}default{else}success{/if}">Plenary</a>
 				{elseif $talk.session eq 'Parallel'}
 					<a href="{$smarty.const.TOP}/admin/parallel_session.php?mode=edit&session_id={$talk.session_id}" class="label label-{if $talk.title eq ''}default{else}success{/if}">{$sessions[$talk.session_id].abbreviation|escape}</a>
 				{elseif $talk.session eq 'Poster'}

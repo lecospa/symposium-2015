@@ -3,7 +3,7 @@
 <a class="list-group-item {if $scope eq 'Committees'} active{/if}" href="{$smarty.const.TOP}/committees">Committees</a>
 <a class="list-group-item {if $scope eq 'Topics'} active{/if}" href="{$smarty.const.TOP}/topics.php">Topics</a>
 <a class="list-group-item {if $scope eq 'Program'} active{/if}" href="{$smarty.const.TOP}/program.php">Conference Program</a>
-<a class="list-group-item {if $scope eq 'Plenary'} active{/if}" href="{$smarty.const.TOP}/plenary_sessions.php">Plenary Session</a>
+<a class="list-group-item {if $scope eq 'Plenary'} active{/if}" href="{$smarty.const.TOP}/plenary_sessions">Plenary Session</a>
 <a class="list-group-item {if $scope eq 'Parallel'} active{/if}" href="{$smarty.const.TOP}/parallel_sessions.php">Parallel Session</a>
 <a class="list-group-item {if $scope eq 'Registration'} active{/if}" href="{$smarty.const.TOP}/registration.php">Registration</a>
 <a class="list-group-item {if $scope eq 'Submission'} active{/if}" href="{$smarty.const.TOP}/submission.php">Title &amp; Abstract Submission</a>
