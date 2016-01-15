@@ -47,6 +47,9 @@ Route::group(['prefix' => 'announcements'], function () {
     Route::get('january_2016', 'AnnouncementController@january_2016');
 });
 
+Route::get('plenary_sessions', 'PlenarySessionController@index');
+Route::get('plenary_sessions/{talk}', 'PlenarySessionController@show');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
