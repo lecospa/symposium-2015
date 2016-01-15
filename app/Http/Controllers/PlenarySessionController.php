@@ -18,7 +18,7 @@ class PlenarySessionController extends Controller
 
     public function show($talk_id)
     {
-        $talk = Talk::with('person')->find($talk_id);
+        $talk = Talk::with('person')->findOrFail($talk_id);
 
         if ($talk->session != 'Plenary') {
             abort(404);
