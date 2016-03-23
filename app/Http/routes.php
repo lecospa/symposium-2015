@@ -19,24 +19,6 @@ Route::get('contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('committees', function () {
-    $committees = [];
-    $committees['IACCHAIR'] = \App\Committee::with(['people' => function ($query) {
-        $query->orderBy('last_name', 'asc');
-    }])->find(1);
-    $committees['IAC'] = \App\Committee::with(['people' => function ($query) {
-        $query->orderBy('last_name', 'asc');
-    }])->find(2);
-    $committees['LOCCHAIR'] = \App\Committee::with(['people' => function ($query) {
-        $query->orderBy('last_name', 'asc');
-    }])->find(3);
-    $committees['LOC'] = \App\Committee::with(['people' => function ($query) {
-        $query->orderBy('last_name', 'asc');
-    }])->find(4);
-
-    return view('committees', ['committees' => $committees]);
-})->name('committees');
-
 Route::post('update', function () {
     exec('git pull origin master', $output);
 
@@ -47,8 +29,6 @@ Route::group(['prefix' => 'announcements'], function () {
     Route::get('january_2016', 'AnnouncementController@january_2016');
 });
 
-Route::get('plenary_sessions', 'PlenarySessionController@index');
-Route::get('plenary_sessions/{talk}', 'PlenarySessionController@show');
 
 /*
 |--------------------------------------------------------------------------
