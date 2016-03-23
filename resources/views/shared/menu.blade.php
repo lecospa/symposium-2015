@@ -1,7 +1,12 @@
 <a class="list-group-item" id="nav-home" href="{{ route('home') }}">Home / Announcement</a>
+<a class="list-group-item" id="nav-committees" href="{{ route('committees') }}">Committees</a>
 <a class="list-group-item" id="nav-Topics" href="{{ url('/topics.php') }}">Topics</a>
+<a class="list-group-item" id="nav-Program" href="{{ url('/program.php') }}">Conference Program</a>
+<a class="list-group-item" id="nav-plenary-sessions" href="{{ action('PlenarySessionController@index') }}">Plenary Session</a>
+<a class="list-group-item" id="nav-Parallel" href="{{ url('/parallel_sessions.php') }}">Parallel Session</a>
 <a class="list-group-item" id="nav-Registration" href="{{ url('/registration.php') }}">Registration</a>
 <a class="list-group-item" id="nav-Submission" href="{{ url('/submission.php') }}">Title &amp; Abstract Submission</a>
+<a class="list-group-item" id="nav-Participants" href="{{ url('/participants.php') }}">List of Participants</a>
 <a class="list-group-item" id="nav-Accommodation" href="{{ url('/accommodation.php') }}">Accommodation</a>
 <a class="list-group-item" id="nav-Transportations" href="{{ url('/transportations.php') }}">Transportations</a>
 <a class="list-group-item" id="nav-SocialEvents" href="{{ url('/social_events.php') }}">Social Events</a>
